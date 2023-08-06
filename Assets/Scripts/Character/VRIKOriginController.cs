@@ -21,7 +21,10 @@ namespace Cc83.Character
     {
         public XROrigin xrOrigin;
 
-        public OriginScaleMode scaleCharacter;
+        public OriginScaleMode scaleMode;
+
+        [Tooltip("If the value of scaleMode is 'Origin', control the scaling of Camera View.")]
+        public bool scaleCameraView;
 
         private VRIK ik;
 
@@ -51,11 +54,17 @@ namespace Cc83.Character
             var rootPosition = ik.references.root.position;
             var scale = (initHeadPosition - rootPosition.y) / (headTargetPosition - rootPosition.y);
 
-            switch (scaleCharacter)
+            switch (scaleMode)
             {
                 case OriginScaleMode.Origin:
                     xrOrigin.transform.localScale *= scale;
                     ik.solver.scale = scale;
+
+                    if (!scaleCameraView)
+                    {
+                        
+                    }
+                    
                     Debug.Log($"Scale XR Origin: ({scale}, as headTargetPosition({headTargetPosition})))");
                     break;
                 case OriginScaleMode.Character:

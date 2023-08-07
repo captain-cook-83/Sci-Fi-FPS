@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2260180772748060130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2260180772748060129}
+  - component: {fileID: 2260180772748060134}
+  - component: {fileID: 2260180772748060135}
+  - component: {fileID: 2260180772748060128}
+  m_Layer: 8
+  m_Name: Poser.R
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2260180772748060129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260180772748060130}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2260180772748060134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260180772748060130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6159ad9b021465b41a6ef4745790871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awaked: 0
+  hand: {fileID: 0}
+  posable: {fileID: 0}
+  openedHandPose: {fileID: 11400000, guid: cfbe5874b71f3f64e83002b457cd3faa, type: 2}
+  indexPinchPose: {fileID: 11400000, guid: 09f69d45035bfcb43b585230fcfe89ac, type: 2}
+  fullPinchPose: {fileID: 11400000, guid: 3d53034339b84e645adcd9794314357b, type: 2}
+  precisionGripPose: {fileID: 11400000, guid: f223777a2f957ce42afd9b92005e40ec, type: 2}
+  powerGripPose: {fileID: 11400000, guid: a90e0232c0f05f146acb3c66638b8c36, type: 2}
+  customEndPose: {fileID: 0}
+  maxDistance: 1
+  ghostMatchesMastersWrist: 0
+  whenPosePointIsNull: 0
+  useLayerMask: 1
+  layerNames:
+  - Default
+  - HPTK
+  maxIterations: 60
+  onlyFingerTips: 0
+  drawLines: 0
+--- !u!114 &2260180772748060135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260180772748060130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cf4b0faea13504dbf555c1aa4f7fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSetPosable:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2260180772748060128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260180772748060130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5b4ba4cce19ac409b25b3697e7e90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awaked: 0
+  started: 0
+  model: {fileID: 2260180772748060134}

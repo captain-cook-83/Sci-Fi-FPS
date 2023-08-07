@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb1a5d81e0261440a2991a08cbe8df9, type: 3}
+  m_Name: OpenedHandWide.L
+  m_EditorClassIdentifier: jorgejgnz.hptk.runtime:HPTKv1.Input:HandPose
+  alias: OpenedHandWide.L
+  wrist:
+    name: b_l_wrist
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    space: 1
+    localScale: {x: 1.04, y: 1.04, z: 1.04}
+  fingers:
+  - finger: 1
+    bones:
+    - name: b_l_thumb0
+      position: {x: -0.020069273, y: 0.011555611, z: -0.010496605}
+      rotation: {x: 0.3643581, y: -0.32674375, z: 0.19127838, w: 0.85081977}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_thumb1
+      position: {x: -0.024852525, y: 0.000000011175871, z: -9.313226e-10}
+      rotation: {x: -0.055965267, y: -0.07117232, z: 0.011625572, w: 0.99582493}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_thumb2
+      position: {x: -0.03251291, y: -0.00000002089655, z: -0.0000000122818165}
+      rotation: {x: 0.08970359, y: -0.01649253, z: 0.10824371, w: 0.9899316}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_thumb3
+      position: {x: -0.03379316, y: -0.000000089465175, z: 0.00000022922177}
+      rotation: {x: 0.09015371, y: -0.013822209, z: 0.078807585, w: 0.99270874}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+  - finger: 2
+    bones:
+    - name: b_l_index1
+      position: {x: -0.09599682, y: 0.0073157465, z: -0.023550661}
+      rotation: {x: 0.0904022, y: -0.12369762, z: -0.010083161, w: 0.988142}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_index2
+      position: {x: -0.0379273, y: -2.220446e-18, z: -8.881784e-18}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_index3
+      position: {x: -0.024303643, y: 3.0531133e-18, z: 4.440892e-18}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+  - finger: 3
+    bones:
+    - name: b_l_middle1
+      position: {x: -0.095646605, y: 0.0025431546, z: -0.0017259055}
+      rotation: {x: 0.090930626, y: 0.01308753, z: 0.0024192166, w: 0.9957683}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_middle2
+      position: {x: -0.04292699, y: 0, z: 0}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_middle3
+      position: {x: -0.027549583, y: 0, z: 0}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+  - finger: 4
+    bones:
+    - name: b_l_ring1
+      position: {x: -0.088694386, y: 0.00652913, z: 0.017465243}
+      rotation: {x: 0.08973091, y: 0.15010683, z: 0.014919739, w: 0.9844764}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_ring2
+      position: {x: -0.0389961, y: 7.771561e-18, z: -8.881784e-18}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_ring3
+      position: {x: -0.026573397, y: -4.440892e-18, z: 0}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+  - finger: 5
+    bones:
+    - name: b_l_pinky0
+      position: {x: -0.034073584, y: 0.009419817, z: 0.022998616}
+      rotation: {x: -0.19651708, y: 0.19122581, z: 0.02244508, w: 0.9614104}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_pinky1
+      position: {x: -0.04565054, y: 0.0000009982332, z: -0.0000021940255}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_pinky2
+      position: {x: -0.030720409, y: -3.330669e-18, z: -8.881784e-18}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}
+    - name: b_l_pinky3
+      position: {x: -0.020311384, y: 6.661338e-18, z: -8.881784e-18}
+      rotation: {x: 0.09096075, y: -0.006700263, z: 0.00061201194, w: 0.9958318}
+      space: 1
+      localScale: {x: 0, y: 0, z: 0}

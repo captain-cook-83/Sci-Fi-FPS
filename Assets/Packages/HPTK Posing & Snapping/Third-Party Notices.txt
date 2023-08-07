@@ -1,0 +1,18 @@
+This asset is governed by the Asset Store EULA; however, the following components are governed by the licenses indicated below:
+
+A. ./Models/Glock/*
+
+[CC0]
+
+Author: https://www.artstation.com/rajil_jose_macatangay
+URL: https://3dmodelhaven.com/model/?c=guns&m=Glock_01
+
+B. ./Models/Hands/*
+
+[Oculus Master SDK License Agreement - 1.0]
+
+Effective date: 6/1/2020
+Copyright © Facebook Technologies, LLC and its affiliates. All rights reserved.
+The text of this may be found at: https://developer.oculus.com/licenses/oculusmastersdk-1.0/
+A copy of this text may be found at: 
+./Models/Hands/LICENSE.txt

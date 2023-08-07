@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb1a5d81e0261440a2991a08cbe8df9, type: 3}
+  m_Name: Gun.L
+  m_EditorClassIdentifier: 
+  alias: Gun.L
+  wrist:
+    name: mixamorig1:LeftHand.Correction
+    position: {x: -0.00000008381903, y: 0.23404117, z: -0.00000014086982}
+    rotation: {x: 0.2307379, y: -0.2985886, z: -0.8587992, w: 0.34650955}
+    space: 1
+    localScale: {x: 1, y: 1, z: 1}
+  thumb:
+    finger: 1
+    bones:
+    - name: mixamorig1:LeftHandThumb1.Correction
+      position: {x: -0.039358642, y: 0.011883268, z: -0.028676968}
+      rotation: {x: 0.5066607, y: -0.381963, z: 0.15050352, w: 0.75812155}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandThumb2.Correction
+      position: {x: -0.040101513, y: 0.00000010244548, z: -0.0000000060535967}
+      rotation: {x: -0.08310445, y: 0.07235563, z: 0.026040379, w: 0.99356985}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandThumb3.Correction
+      position: {x: -0.036001146, y: 0.00000018253922, z: -0.000000015483238}
+      rotation: {x: 0.084716655, y: -0.071297444, z: 0.1406844, w: 0.9838439}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  index:
+    finger: 2
+    bones:
+    - name: mixamorig1:LeftHandIndex1.Correction
+      position: {x: -0.11757901, y: 0.0011307746, z: -0.03484244}
+      rotation: {x: 0.031589568, y: 0.0021896854, z: -0.08130127, w: 0.9961866}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandIndex2.Correction
+      position: {x: -0.032984927, y: 0.00000009685755, z: -0.000000023283064}
+      rotation: {x: -0.025854884, y: 0.007104743, z: -0.0037236575, w: 0.9996339}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandIndex3.Correction
+      position: {x: -0.030810669, y: 0.000000074505806, z: -0.000000022177119}
+      rotation: {x: -0.016064502, y: 0.0271285, z: 0.070625715, w: 0.997005}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  middle:
+    finger: 3
+    bones:
+    - name: mixamorig1:LeftHandMiddle1.Correction
+      position: {x: -0.12347148, y: -0.0031580478, z: -0.010292821}
+      rotation: {x: -0.050682813, y: 0.063177615, z: -0.5979252, w: 0.7974494}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandMiddle2.Correction
+      position: {x: -0.034321927, y: -0.000000013038516, z: -0.000000074505806}
+      rotation: {x: -0.012433453, y: -0.0050785616, z: -0.72047174, w: 0.6933546}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandMiddle3.Correction
+      position: {x: -0.031609103, y: -0.0000000448199, z: -0.000000039115548}
+      rotation: {x: -0.08662965, y: -0.021309998, z: -0.49894515, w: 0.86203015}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  ring:
+    finger: 4
+    bones:
+    - name: mixamorig1:LeftHandRing1.Correction
+      position: {x: -0.12505978, y: -0.002770558, z: 0.012667494}
+      rotation: {x: -0.11037955, y: 0.05572137, z: -0.67266935, w: 0.7295394}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandRing2.Correction
+      position: {x: -0.027260806, y: -0.000000099418685, z: -0.000000037252903}
+      rotation: {x: -0.041305993, y: -0.022451432, z: -0.7306472, w: 0.6811352}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandRing3.Correction
+      position: {x: -0.026203014, y: 0.000000032247044, z: 0.000000016763806}
+      rotation: {x: -0.027204465, y: -0.027768416, z: -0.4936804, w: 0.8687747}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  pinky:
+    finger: 5
+    bones:
+    - name: mixamorig1:LeftHandPinky1.Correction
+      position: {x: -0.111020066, y: -0.0011281148, z: 0.03246795}
+      rotation: {x: -0.18618788, y: -0.008554345, z: -0.69250005, w: 0.69692534}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandPinky2.Correction
+      position: {x: -0.027346205, y: -0.000000031664968, z: -0.000000067055225}
+      rotation: {x: -0.090140305, y: 0.0009593486, z: -0.72370374, w: 0.68419844}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandPinky3.Correction
+      position: {x: -0.021939546, y: -0.000000015599653, z: 0}
+      rotation: {x: 0.0022773005, y: -0.042944912, z: -0.47403252, w: 0.87945724}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  fingers:
+  - finger: 1
+    bones:
+    - name: mixamorig1:LeftHandThumb1.Correction
+      position: {x: -0.039358642, y: 0.011883268, z: -0.028676968}
+      rotation: {x: 0.5066607, y: -0.381963, z: 0.15050352, w: 0.75812155}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandThumb2.Correction
+      position: {x: -0.040101513, y: 0.00000010244548, z: -0.0000000060535967}
+      rotation: {x: -0.08310445, y: 0.07235563, z: 0.026040379, w: 0.99356985}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandThumb3.Correction
+      position: {x: -0.036001146, y: 0.00000018253922, z: -0.000000015483238}
+      rotation: {x: 0.084716655, y: -0.071297444, z: 0.1406844, w: 0.9838439}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  - finger: 2
+    bones:
+    - name: mixamorig1:LeftHandIndex1.Correction
+      position: {x: -0.11757901, y: 0.0011307746, z: -0.03484244}
+      rotation: {x: 0.031589568, y: 0.0021896854, z: -0.08130127, w: 0.9961866}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandIndex2.Correction
+      position: {x: -0.032984927, y: 0.00000009685755, z: -0.000000023283064}
+      rotation: {x: -0.025854884, y: 0.007104743, z: -0.0037236575, w: 0.9996339}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandIndex3.Correction
+      position: {x: -0.030810669, y: 0.000000074505806, z: -0.000000022177119}
+      rotation: {x: -0.016064502, y: 0.0271285, z: 0.070625715, w: 0.997005}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  - finger: 3
+    bones:
+    - name: mixamorig1:LeftHandMiddle1.Correction
+      position: {x: -0.12347148, y: -0.0031580478, z: -0.010292821}
+      rotation: {x: -0.050682813, y: 0.063177615, z: -0.5979252, w: 0.7974494}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandMiddle2.Correction
+      position: {x: -0.034321927, y: -0.000000013038516, z: -0.000000074505806}
+      rotation: {x: -0.012433453, y: -0.0050785616, z: -0.72047174, w: 0.6933546}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandMiddle3.Correction
+      position: {x: -0.031609103, y: -0.0000000448199, z: -0.000000039115548}
+      rotation: {x: -0.08662965, y: -0.021309998, z: -0.49894515, w: 0.86203015}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  - finger: 4
+    bones:
+    - name: mixamorig1:LeftHandRing1.Correction
+      position: {x: -0.12505978, y: -0.002770558, z: 0.012667494}
+      rotation: {x: -0.11037955, y: 0.05572137, z: -0.67266935, w: 0.7295394}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandRing2.Correction
+      position: {x: -0.027260806, y: -0.000000099418685, z: -0.000000037252903}
+      rotation: {x: -0.041305993, y: -0.022451432, z: -0.7306472, w: 0.6811352}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandRing3.Correction
+      position: {x: -0.026203014, y: 0.000000032247044, z: 0.000000016763806}
+      rotation: {x: -0.027204465, y: -0.027768416, z: -0.4936804, w: 0.8687747}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+  - finger: 5
+    bones:
+    - name: mixamorig1:LeftHandPinky1.Correction
+      position: {x: -0.111020066, y: -0.0011281148, z: 0.03246795}
+      rotation: {x: -0.18618788, y: -0.008554345, z: -0.69250005, w: 0.69692534}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandPinky2.Correction
+      position: {x: -0.027346205, y: -0.000000031664968, z: -0.000000067055225}
+      rotation: {x: -0.090140305, y: 0.0009593486, z: -0.72370374, w: 0.68419844}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}
+    - name: mixamorig1:LeftHandPinky3.Correction
+      position: {x: -0.021939546, y: -0.000000015599653, z: 0}
+      rotation: {x: 0.0022773005, y: -0.042944912, z: -0.47403252, w: 0.87945724}
+      space: 1
+      localScale: {x: 1, y: 1, z: 1}

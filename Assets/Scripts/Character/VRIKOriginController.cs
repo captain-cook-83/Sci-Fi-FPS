@@ -31,6 +31,8 @@ namespace Cc83.Character
         private float initHeadPosition;
         private float initHeadTargetPosition;
 
+        private Transform xrOriginCamera;
+
         private void Awake()
         {
             Assert.AreEqual(xrOrigin.RequestedTrackingOriginMode, XROrigin.TrackingOriginMode.Floor,
@@ -38,6 +40,7 @@ namespace Cc83.Character
 
             ik = GetComponent<VRIK>();
             initHeadPosition = ik.references.head.position.y;
+            xrOriginCamera = xrOrigin.GetComponentInChildren<Camera>().transform;
 
             Debug.Log($"initHeadPosition: {initHeadPosition}");
         }
@@ -62,7 +65,7 @@ namespace Cc83.Character
 
                     if (!scaleCameraView)
                     {
-                        
+                        xrOriginCamera.localScale /= scale;
                     }
                     
                     Debug.Log($"Scale XR Origin: ({scale}, as headTargetPosition({headTargetPosition})))");

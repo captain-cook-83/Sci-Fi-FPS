@@ -1,5 +1,6 @@
 using System;
 using RootMotion.FinalIK;
+using Sirenix.OdinInspector;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -23,6 +24,7 @@ namespace Cc83.Character
 
         public OriginScaleMode scaleMode;
 
+        [ShowIf("@this.scaleMode == OriginScaleMode.Origin")]
         [Tooltip("If the value of scaleMode is 'Origin', control the scaling of Camera View.")]
         public bool scaleCameraView;
 

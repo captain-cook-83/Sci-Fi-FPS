@@ -282,6 +282,70 @@ namespace Cc83.HandPose
             Debug.Log("LoadOtherHandPose Completed.");
         }
 
+        [TitleGroup("Interactable Pose Generator")]
+        public Transform handTransform;
+        
+        [TitleGroup("Interactable Pose Generator")]
+        public Transform interactableTransform;
+
+        [TitleGroup("Interactable Pose Generator")]
+        [Button("GenerateInteractablePose", ButtonSizes.Large)]
+        public void GenerateInteractablePose()
+        {
+            var data = ScriptableObject.CreateInstance<InteractablePoseData>();
+            data.side = handSide;
+            data.rotations = GetFingerNodes();
+            data.handLocalPosition = handTransform.InverseTransformPoint(interactableTransform.position);
+
+            var interactableParent = interactableTransform.parent;
+            interactableTransform.SetParent(handTransform);
+            data.handLocalRotation = interactableTransform.localRotation;
+            interactableTransform.SetParent(interactableParent);
+            
+            var savePath = EditorUtility.SaveFilePanelInProject("Save Path", interactableTransform.name + handSide + "InteractablePose", "asset", "Select to Save InteractablePoseData.", DefaultPath);
+            if (string.IsNullOrEmpty(savePath))
+            {
+                Debug.Log("ExportOtherHandPoseData Canceled.");
+                return;
+            }
+            
+            AssetDatabase.CreateAsset(data, savePath);
+            
+            Selection.activeObject = data;
+            Debug.Log("GenerateInteractablePose Completed.");
+        }
+        
+        [TitleGroup("Interactable Pose Generator")]
+        [Button("LoadInteractablePose", ButtonSizes.Large)]
+        public void LoadInteractablePose()
+        {
+            var loadPath = EditorUtility.OpenFilePanel("Load Path", DefaultPath, "asset");
+            if (string.IsNullOrEmpty(loadPath))
+            {
+                Debug.Log("LoadInteractablePose Canceled.");
+                return;
+            }
+
+            if ((loadPath = SelectAssetsPath(loadPath)) == null)
+            {
+                return;
+            }
+
+            var data = AssetDatabase.LoadAssetAtPath<InteractablePoseData>(loadPath);
+            if (data.side != handSide)
+            {
+                EditorUtility.DisplayDialog("Detected Error", "The handSide value mismatch for the component and the poseData.", "Close");
+                return;
+            }
+            
+            interactableTransform.SetParent(handTransform);
+            interactableTransform.localRotation = data.handLocalRotation;
+            interactableTransform.localPosition = data.handLocalPosition;
+            SetFingerNodes(data);
+            
+            Debug.Log("LoadInteractablePose Completed.");
+        }
+
         private void SetFingerNodes(HandPoseData data)
         {
             for (var i = 0; i < fingerNodes.Length; i++)

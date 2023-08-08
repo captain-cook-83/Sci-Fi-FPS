@@ -7979,7 +7979,7 @@ MonoBehaviour:
       swivelOffset: 0
       wristToPalmAxis: {x: -1, y: -0, z: -0}
       palmToThumbAxis: {x: -0, y: -0, z: -1}
-      armLengthMlp: 1.05
+      armLengthMlp: 1.1
       stretchCurve:
         serializedVersion: 2
         m_Curve: []
@@ -8001,7 +8001,7 @@ MonoBehaviour:
       swivelOffset: 0
       wristToPalmAxis: {x: 1, y: 0, z: 0}
       palmToThumbAxis: {x: 0, y: 0, z: 1}
-      armLengthMlp: 1.05
+      armLengthMlp: 1.1
       stretchCurve:
         serializedVersion: 2
         m_Curve: []
@@ -8186,7 +8186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animateThreshold: 0.01
-  animateSpeed: 10
+  animateSpeed: 8
   handSide: 1
   controller: {fileID: 1418493148}
   fingerNodes:
@@ -8220,7 +8220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animateThreshold: 0.01
-  animateSpeed: 10
+  animateSpeed: 8
   handSide: 0
   controller: {fileID: 1341276587}
   fingerNodes:

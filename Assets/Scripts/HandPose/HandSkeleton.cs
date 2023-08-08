@@ -42,35 +42,7 @@ namespace Cc83.HandPose
         private float currentSelectValue;
         private float currentActiveValue;
         private float currentThumbValue;
-
-        private void OnEnable()
-        {
-            InputDevices.deviceConnected += OnDeviceConnected;
-            InputDevices.deviceDisconnected  += OnDeviceDisconnected;
-        }
-
-        private void OnDisable()
-        {
-            InputDevices.deviceConnected -= OnDeviceConnected;
-            InputDevices.deviceDisconnected -= OnDeviceDisconnected;
-        }
-
-        private void OnDeviceConnected(InputDevice device)
-        {
-            var inputDevices = new List<InputDevice>();
-            var deviceSide = handSide == HandSide.Left
-                ? InputDeviceCharacteristics.Left
-                : InputDeviceCharacteristics.Right;
-            
-            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.HeldInHand | deviceSide, inputDevices);
-            inputDevice = inputDevices.Count > 0 ? inputDevices[0] : default;
-        }
-
-        private void OnDeviceDisconnected(InputDevice device)
-        {
-            inputDevice = default;
-        }
-
+        
         private void Update()
         {
             targetThumbValue = 0;
@@ -106,6 +78,34 @@ namespace Cc83.HandPose
                 currentActiveValue = Mathf.MoveTowards(currentActiveValue, targetActiveValue, Time.deltaTime * animateSpeed);
                 CalculateFingerNodes(ActiveFingers, currentActiveValue);
             }
+        }
+
+        private void OnEnable()
+        {
+            InputDevices.deviceConnected += OnDeviceConnected;
+            InputDevices.deviceDisconnected  += OnDeviceDisconnected;
+        }
+
+        private void OnDisable()
+        {
+            InputDevices.deviceConnected -= OnDeviceConnected;
+            InputDevices.deviceDisconnected -= OnDeviceDisconnected;
+        }
+
+        private void OnDeviceConnected(InputDevice device)
+        {
+            var inputDevices = new List<InputDevice>();
+            var deviceSide = handSide == HandSide.Left
+                ? InputDeviceCharacteristics.Left
+                : InputDeviceCharacteristics.Right;
+            
+            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.HeldInHand | deviceSide, inputDevices);
+            inputDevice = inputDevices.Count > 0 ? inputDevices[0] : default;
+        }
+
+        private void OnDeviceDisconnected(InputDevice device)
+        {
+            inputDevice = default;
         }
 
         private void CalculateFingerNodes(IReadOnlyCollection<int> indexes, float value)

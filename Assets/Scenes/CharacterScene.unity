@@ -8186,7 +8186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animateThreshold: 0.01
-  animateSpeed: 1
+  animateSpeed: 10
   handSide: 1
   controller: {fileID: 1418493148}
   fingerNodes:
@@ -8220,7 +8220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animateThreshold: 0.01
-  animateSpeed: 1
+  animateSpeed: 10
   handSide: 0
   controller: {fileID: 1341276587}
   fingerNodes:

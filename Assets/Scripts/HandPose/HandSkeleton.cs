@@ -15,12 +15,13 @@ namespace Cc83.HandPose
         private const int FingerNodeCount = 3;
 
         private static readonly int[] SelectFingers = { 2, 3, 4 };
-        private static readonly int[] ActiveFingers = { 1 };
+        private static readonly int[] ActiveFingers = { 0, 1 };
 
         [Range(0.001f, 0.1f)]
         public float animateThreshold = 0.01f;
 
-        public float animateSpeed = 1;
+        [Range(5, 15)]
+        public float animateSpeed = 10;
 
         public HandSide handSide;
         public ActionBasedController controller;

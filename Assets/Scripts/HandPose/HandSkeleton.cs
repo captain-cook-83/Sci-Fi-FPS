@@ -55,14 +55,15 @@ namespace Cc83.HandPose
 
         private void CalculateFingerNodes(IReadOnlyCollection<int> indexes, float value)
         {
-            for (var f = 0; f < indexes.Count; f++)
+            foreach (var index in indexes)
             {
+                var baseIndex = index * FingerNodeCount;
                 for (var n = 0; n < FingerNodeCount; n++)
                 {
-                    var index = f * FingerNodeCount + n;
-                    var finger = fingerNodes[index];
-                    var idleValue = defaultPoseData.rotations[index];
-                    var fistValue = fistPoseData.rotations[index];
+                    var nodeIndex = baseIndex + n;
+                    var finger = fingerNodes[nodeIndex];
+                    var idleValue = defaultPoseData.rotations[nodeIndex];
+                    var fistValue = fistPoseData.rotations[nodeIndex];
 
                     finger.localRotation = Quaternion.Lerp(idleValue, fistValue, value);
                 }

@@ -113,6 +113,7 @@ namespace Cc83.HandPose
             }
             else
             {
+                EditorUtility.SetDirty(data);
                 AssetDatabase.SaveAssetIfDirty(data);
             }
 

@@ -187,8 +187,15 @@ namespace Cc83.HandPose
                 Debug.Log("ExportOtherHandPoseData Canceled.");
                 return;
             }
-                
+            
+            var fistPoseDataPath = fistPoseData != null ? AssetDatabase.GetAssetPath(fistPoseData) : null;
             AssetDatabase.CreateAsset(data, savePath);
+            
+            if (fistPoseDataPath != null && fistPoseDataPath.Equals(savePath))
+            {
+                fistPoseData = AssetDatabase.LoadAssetAtPath<HandPoseData>(fistPoseDataPath);
+            }
+            
             Selection.activeObject = data;
             Debug.Log("ExportOtherHandPoseData Completed.");
         }

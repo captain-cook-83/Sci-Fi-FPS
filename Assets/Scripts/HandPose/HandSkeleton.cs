@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -35,7 +36,7 @@ namespace Cc83.HandPose
         private float currentSelectValue;
         private float currentActiveValue;
 
-        private void Start()
+        private void Update()
         {
             targetSelectValue = controller.selectAction.action.ReadValue<float>();
             if (Math.Abs(targetSelectValue - currentSelectValue) > animateThreshold)
@@ -52,13 +53,18 @@ namespace Cc83.HandPose
             }
         }
 
-        private void CalculateFingerNodes(int[] indexes, float value)
+        private void CalculateFingerNodes(IReadOnlyCollection<int> indexes, float value)
         {
-            for (var i = 0; i < indexes.Length; i++)
+            for (var f = 0; f < indexes.Count; f++)
             {
-                for (var j = 0; j < 4; j++)
+                for (var n = 0; n < FingerNodeCount; n++)
                 {
-                    // fingerNodes[]
+                    var index = f * FingerNodeCount + n;
+                    var finger = fingerNodes[index];
+                    var idleValue = defaultPoseData.rotations[index];
+                    var fistValue = fistPoseData.rotations[index];
+
+                    finger.localRotation = Quaternion.Lerp(idleValue, fistValue, value);
                 }
             }
         }

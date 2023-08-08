@@ -1516,6 +1516,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: bd0371a125ce36a44b65b3f541d08a82, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: bd0371a125ce36a44b65b3f541d08a82, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d45014dc8b98b7c45a23f622391b559b, type: 2}
+    - target: {fileID: 9500000, guid: bd0371a125ce36a44b65b3f541d08a82, type: 3}
       propertyPath: m_CullingMode
       value: 1
       objectReference: {fileID: 0}

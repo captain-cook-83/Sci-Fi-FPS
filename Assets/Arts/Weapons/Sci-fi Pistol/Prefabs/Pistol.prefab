@@ -24,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988084119106517510}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0188, z: 0.0367}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -843,11 +843,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3699612562426939897}
-  - component: {fileID: 2507936612174241020}
   - component: {fileID: 4945776586123034389}
   - component: {fileID: 1755482968378116323}
   - component: {fileID: 2337629006672255038}
-  - component: {fileID: 4768118703904186372}
+  - component: {fileID: 6973769763954309739}
+  - component: {fileID: 2507936612174241020}
   - component: {fileID: 9089565217155297338}
   m_Layer: 0
   m_Name: Pistol
@@ -884,22 +884,6 @@ Transform:
   - {fileID: 5836533480099721039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2507936612174241020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4043241439066821443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 392a139b49d63bf46b36567dc220bee1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryLeftPose: {fileID: 11400000, guid: aef58d4984733364199b903a2062618f, type: 2}
-  primaryRightPose: {fileID: 11400000, guid: f49fda3d8953f5a41948fa6544eca818, type: 2}
-  secondaryLeftPose: {fileID: 0}
-  secondaryRightPose: {fileID: 0}
 --- !u!65 &4945776586123034389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1096,7 +1080,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &4768118703904186372
+--- !u!114 &6973769763954309739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1105,18 +1089,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4043241439066821443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a1302d0d134fa8a2a5b3bf4aec3c20, type: 3}
+  m_Script: {fileID: 11500000, guid: e7177a3a23cd0da41998c12415621c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PermittedDisplacementAxes: -1
-  m_ConstrainedAxisDisplacementMode: 1
-  m_TwoHandedRotationMode: 1
-  m_AllowTwoHandedScaling: 0
-  m_ThresholdMoveRatioForScale: 0.05
-  m_ClampScaling: 1
-  m_MinimumScaleRatio: 0.25
-  m_MaximumScaleRatio: 2
-  m_ScaleMultiplier: 0.25
+--- !u!114 &2507936612174241020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043241439066821443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392a139b49d63bf46b36567dc220bee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryLeftPose: {fileID: 11400000, guid: aef58d4984733364199b903a2062618f, type: 2}
+  primaryRightPose: {fileID: 11400000, guid: f49fda3d8953f5a41948fa6544eca818, type: 2}
+  secondaryLeftPose: {fileID: 0}
+  secondaryRightPose: {fileID: 0}
 --- !u!114 &9089565217155297338
 MonoBehaviour:
   m_ObjectHideFlags: 0

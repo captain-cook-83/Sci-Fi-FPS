@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1586772316605897592, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
       propertyPath: m_Name
-      value: Sci_Fi_Cyborg_05 Variant
+      value: Sci_Fi_Cyborg_05 WithIK
       objectReference: {fileID: 0}
     - target: {fileID: 2111776661405401538, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
       propertyPath: m_LocalPosition.x
@@ -199,7 +199,7 @@ MonoBehaviour:
       swivelOffset: 0
       wristToPalmAxis: {x: -1, y: -0, z: -0}
       palmToThumbAxis: {x: -0, y: -0, z: -1}
-      armLengthMlp: 1
+      armLengthMlp: 1.1
       stretchCurve:
         serializedVersion: 2
         m_Curve: []
@@ -221,7 +221,7 @@ MonoBehaviour:
       swivelOffset: 0
       wristToPalmAxis: {x: 1, y: 0, z: 0}
       palmToThumbAxis: {x: 0, y: 0, z: 1}
-      armLengthMlp: 1
+      armLengthMlp: 1.1
       stretchCurve:
         serializedVersion: 2
         m_Curve: []

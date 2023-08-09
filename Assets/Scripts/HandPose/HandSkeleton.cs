@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -9,8 +8,6 @@ namespace Cc83.HandPose
 {
     public partial class HandSkeleton : MonoBehaviour
     {
-        private static readonly string DefaultPath = Path.Combine("Assets", "Generated", "HandPose");
-        
         private const int FingerNodeCount = 3;
 
         private static readonly int[] SelectFingers = { 2, 3, 4 };

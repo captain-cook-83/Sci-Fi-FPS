@@ -1,4 +1,5 @@
-using System;
+using System.IO;
+using Cc83.Utils;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace Cc83.HandPose
     public partial class HandSkeleton
     {
 #if UNITY_EDITOR
+        private static readonly string DefaultPath = Path.Combine("Assets", "Generated", "HandPose");
+        
         [TitleGroup("Interactable Pose Generator")]
         public Transform handTransform;
         
@@ -87,7 +90,7 @@ namespace Cc83.HandPose
                     return;
                 }
 
-                if ((loadPath = SelectAssetsPath(loadPath)) == null)
+                if ((loadPath = PathUtils.SelectAssetsPath(loadPath)) == null)
                 {
                     return;
                 }
@@ -157,7 +160,7 @@ namespace Cc83.HandPose
                 return;
             }
 
-            if ((loadPath = SelectAssetsPath(loadPath)) == null)
+            if ((loadPath = PathUtils.SelectAssetsPath(loadPath)) == null)
             {
                 return;
             }
@@ -224,7 +227,7 @@ namespace Cc83.HandPose
                 return;
             }
 
-            if ((loadPath = SelectAssetsPath(loadPath)) == null)
+            if ((loadPath = PathUtils.SelectAssetsPath(loadPath)) == null)
             {
                 return;
             }
@@ -265,18 +268,6 @@ namespace Cc83.HandPose
             }
 
             return data;
-        }
-
-        private static string SelectAssetsPath(string filePath)
-        {
-            var index = filePath.IndexOf("Assets", StringComparison.Ordinal);
-            if (index == -1)
-            {
-                EditorUtility.DisplayDialog("Path Error", $"Invalid asset path at {filePath}", "Close");
-                return null;
-            }
-
-            return filePath[index..];
         }
 #endif
     }

@@ -580,6 +580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_Fi_Cyborg_05
       objectReference: {fileID: 0}
+    - target: {fileID: 1586772316605897592, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1748126644813642589, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.999051

@@ -1,3 +1,4 @@
+using Cc83.Character;
 using Cc83.HandPose;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -9,22 +10,28 @@ namespace Cc83.Interactable
     {
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
+            base.OnLink(grabInteractable);
+            
             var attachTransform = grabInteractable.attachTransform;
             if (!ReferenceEquals(attachTransform.parent, grabInteractable.transform))
             {
                 Debug.LogError($"AttachTransform({attachTransform.name}) must be a direct child of the grabInteractable({grabInteractable.name})");
             }
-            
-            base.OnLink(grabInteractable);
         }
         
         public override void OnGrab(XRGrabInteractable grabInteractable)
         {
-            var attachTransform = grabInteractable.attachTransform;
-            var primaryPose = grabInteractable.GetComponent<InteractablePose>().primaryRightPose;
-
-            attachTransform.SetLocalPositionAndRotation(-primaryPose.handLocalPosition, Quaternion.Inverse(primaryPose.handLocalRotation));
             base.OnGrab(grabInteractable);
+            
+            var interactor = grabInteractable.interactorsSelecting[0];
+            var handController = interactor.transform.GetComponentInParent<HandController>();
+            
+            var interactablePose = grabInteractable.GetComponent<InteractablePose>();
+            var primaryPose = handController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
+            var attachTransform = grabInteractable.attachTransform;
+            
+            handController.SetPoseData(primaryPose);
+            attachTransform.SetLocalPositionAndRotation(-primaryPose.handLocalPosition, Quaternion.Inverse(primaryPose.handLocalRotation));
         }
         
         public override void Process(XRGrabInteractable grabInteractable, XRInteractionUpdateOrder.UpdatePhase updatePhase, ref Pose targetPose, ref Vector3 localScale)

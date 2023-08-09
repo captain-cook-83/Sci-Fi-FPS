@@ -27,7 +27,7 @@ namespace Cc83.HandPose
 
         public HandPoseData defaultPoseData;
         public HandPoseData fistPoseData;
-
+        
         private InputDevice inputDevice;
         
         private float targetSelectValue;
@@ -37,6 +37,16 @@ namespace Cc83.HandPose
         private float currentSelectValue;
         private float currentActiveValue;
         private float currentThumbValue;
+
+        public void SetPoseData(HandPoseData data)
+        {
+            SetFingerNodes(data);
+        }
+
+        public void ClearPoseData()
+        {
+            SetFingerNodes(defaultPoseData);
+        }
         
         private void Update()
         {

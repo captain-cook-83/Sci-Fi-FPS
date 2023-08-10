@@ -263,7 +263,7 @@ namespace Cc83.HandPose
             }
             
             var interactable = interactableReference.interactable;
-            if (ReferenceEquals(interactable.parent, handTransform))
+            if (!ReferenceEquals(interactable.parent, handTransform))
             {
                 interactable.SetParent(handTransform);
                 Debug.Log($"Change the parent of {interactable.name} to {handTransform.name}");
@@ -277,7 +277,7 @@ namespace Cc83.HandPose
             var interactableLocalPr = interactable.GetLocalPose();
             
             var interactableShakeShadow = interactableReference.interactableShakeShadow;
-            if (ReferenceEquals(interactableShakeShadow.parent, interactable))
+            if (!ReferenceEquals(interactableShakeShadow.parent, interactable))
             {
                 interactableShakeShadow.SetParent(interactable);
                 Debug.Log($"Change the parent of {interactableShakeShadow.name} to {interactable.name}");
@@ -294,11 +294,11 @@ namespace Cc83.HandPose
             var handShadowPosition = upLocalPosition - handShadowRotation * interactablePoseData.handLocalPosition;
             
             var eulerAngles = handShadowRotation.eulerAngles;
-            Debug.Log($"Position Offset [x: {handShadowPosition.x}, y: {handShadowPosition.y}, z: {handShadowPosition.z}]");
-            Debug.Log($"Rotation Offset [x: {eulerAngles.x}, y: {eulerAngles.y}, z: {eulerAngles.z}], {handShadowRotation.eulerAngles}");
+            Debug.Log($"Inner Position Offset [x: {handShadowPosition.x}, y: {handShadowPosition.y}, z: {handShadowPosition.z}]");
+            Debug.Log($"Inner Rotation Offset [x: {eulerAngles.x}, y: {eulerAngles.y}, z: {eulerAngles.z}], {eulerAngles}");
 
             // var handShadow = new GameObject("HAND-SHADOW").transform;
-            // handShadow.SetParent(interactable.parent);
+            // handShadow.SetParent(handTransform);
             // handShadow.localPosition = handShadowPosition;
             // handShadow.localRotation = handShadowRotation;
             //
@@ -306,6 +306,13 @@ namespace Cc83.HandPose
             // interactableShadow.SetParent(handShadow);
             // interactableShadow.localPosition = interactablePoseData.handLocalPosition;
             // interactableShadow.localRotation = interactablePoseData.handLocalRotation;
+            
+            var handRotation = handTransform.localRotation;
+            var outerHandShadowPosition =  handShadowPosition;
+            var outerHandShadowRotation = Quaternion.Inverse(handShadowRotation);
+            eulerAngles = outerHandShadowRotation.eulerAngles;
+            Debug.Log($"Position Offset [x: {outerHandShadowPosition.x}, y: {outerHandShadowPosition.y}, z: {outerHandShadowPosition.z}]");
+            Debug.Log($"Rotation Offset [x: {eulerAngles.x}, y: {eulerAngles.y}, z: {eulerAngles.z}], {eulerAngles}");
         }
 
         private Quaternion[] GetFingerNodes()

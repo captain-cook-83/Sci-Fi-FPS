@@ -53,7 +53,7 @@ namespace Cc83.Character
                 shootingShakeAnimator.SetTrigger(ShootingShake);
             } else
             {
-                Debug.LogError($"Missing hand shaking animation for {name}");
+                Debug.LogWarning($"Missing hand shaking animation for {name}");
             }
         }
 

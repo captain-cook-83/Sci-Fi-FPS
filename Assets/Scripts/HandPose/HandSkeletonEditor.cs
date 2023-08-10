@@ -1,6 +1,7 @@
 using System.IO;
 using Cc83.Utils;
 using Sirenix.OdinInspector;
+using Unity.XR.CoreUtils;
 using UnityEditor;
 using UnityEngine;
 
@@ -249,6 +250,62 @@ namespace Cc83.HandPose
             SetFingerNodes(data);
             
             Debug.Log("LoadInteractablePose Completed.");
+        }
+
+        [TitleGroup("Hand Shake Animation Generator")]
+        [Button("Calculate Hand Shake Animation", ButtonSizes.Large)]
+        public void CalculateHandShakeAnimation()
+        {
+            if (interactableReference == null)
+            {
+                EditorUtility.DisplayDialog("Missing Component", "Add InteractableReference component and refer to a Interactable Transform.", "Close");
+                return;
+            }
+            
+            var interactable = interactableReference.interactable;
+            if (ReferenceEquals(interactable.parent, handTransform))
+            {
+                interactable.SetParent(handTransform);
+                Debug.Log($"Change the parent of {interactable.name} to {handTransform.name}");
+            }
+            
+            var interactablePose = interactable.GetComponent<InteractablePose>();
+            var interactablePoseData = handSide == HandSide.Left
+                ? interactablePose.primaryLeftPose
+                : interactablePose.primaryRightPose;
+
+            var interactableLocalPr = interactable.GetLocalPose();
+            
+            var interactableShakeShadow = interactableReference.interactableShakeShadow;
+            if (ReferenceEquals(interactableShakeShadow.parent, interactable))
+            {
+                interactableShakeShadow.SetParent(interactable);
+                Debug.Log($"Change the parent of {interactableShakeShadow.name} to {interactable.name}");
+            }
+            
+            var upLocalPosition = interactableLocalPr.position + interactableLocalPr.rotation * interactableShakeShadow.localPosition;
+            var upLocalRotation = interactableLocalPr.rotation * interactableShakeShadow.localRotation;
+            
+            // var eulerAngles = upLocalRotation.eulerAngles;
+            // Debug.Log($"LocalPosition[x:{upLocalPosition.x}, y:{upLocalPosition.y}, z:{upLocalPosition.z}]");
+            // Debug.Log($"LocalRotation[x:{eulerAngles.x}, y:{eulerAngles.y}, z:{eulerAngles.z}]");
+            
+            var handShadowRotation = upLocalRotation * Quaternion.Inverse(interactablePoseData.handLocalRotation);
+            var handShadowPosition = upLocalPosition - handShadowRotation * interactablePoseData.handLocalPosition;
+            
+            var eulerAngles = handShadowRotation.eulerAngles;
+            Debug.Log($"Position Offset [x: {handShadowPosition.x}, y: {handShadowPosition.y}, z: {handShadowPosition.z}]");
+            Debug.Log($"Rotation Offset [x: {eulerAngles.x}, y: {eulerAngles.y}, z: {eulerAngles.z}], {handShadowRotation.eulerAngles}");
+
+            // var handShadow = new GameObject("HAND-SHADOW").transform;
+            // handShadow.SetParent(interactable.parent);
+            // handShadow.localPosition = handShadowPosition;
+            // handShadow.localRotation = handShadowRotation;
+            //
+            // var interactableShadow = Instantiate(interactableShakeShadow.gameObject).transform;
+            // interactableShadow.SetParent(handShadow);
+            // interactableShadow.localPosition = interactablePoseData.handLocalPosition;
+            // interactableShadow.localRotation = interactablePoseData.handLocalRotation;
         }
 
         private Quaternion[] GetFingerNodes()

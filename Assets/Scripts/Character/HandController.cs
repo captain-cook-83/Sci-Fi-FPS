@@ -48,7 +48,13 @@ namespace Cc83.Character
 
         public void Shake()
         {
-            shootingShakeAnimator.SetTrigger(ShootingShake);
+            if (shootingShakeAnimator)
+            {
+                shootingShakeAnimator.SetTrigger(ShootingShake);
+            } else
+            {
+                Debug.LogError($"Missing hand shaking animation for {name}");
+            }
         }
 
 #if UNITY_EDITOR

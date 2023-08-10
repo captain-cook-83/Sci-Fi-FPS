@@ -8,11 +8,15 @@ namespace Cc83.Character
 {
     public class HandController : MonoBehaviour
     {
+        private static readonly int ShootingShake = Animator.StringToHash("ShootingShake");
+        
         public HandSide side;
 
         public HandSkeleton skeleton;
 
         public float activateAnimateSpeed = 20;
+
+        public Animator shootingShakeAnimator;
 
         private void OnValidate()
         {
@@ -40,6 +44,11 @@ namespace Cc83.Character
         public void ClearPoseData()
         {
             skeleton.ClearPoseData();
+        }
+
+        public void Shake()
+        {
+            shootingShakeAnimator.SetTrigger(ShootingShake);
         }
 
 #if UNITY_EDITOR

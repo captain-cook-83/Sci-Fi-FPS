@@ -1,4 +1,5 @@
 using System.Collections;
+using Cc83.Character;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -70,8 +71,11 @@ namespace Cc83.Interactable
             {
                 triggerAnimator.SetBool(TriggerHold, true);
             }
-
+            
             Instantiate(trajectoryPrefab, shootPoint.position, shootPoint.rotation);
+            
+            var handController = args.interactorObject.transform.GetComponentInParent<HandController>();
+            handController.Shake();
             
             if (delayedAudioHandler != null)
             {

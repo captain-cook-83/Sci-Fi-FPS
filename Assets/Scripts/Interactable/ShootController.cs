@@ -9,9 +9,12 @@ namespace Cc83.Interactable
     public class ShootController : MonoBehaviour
     {
         private static readonly int Shoot = Animator.StringToHash("Shoot");
+        private static readonly int TriggerHold = Animator.StringToHash("TriggerHold");
 
         [Range(0.01f, 0.5f)]
         public float cdTime = 0.17f;
+
+        public Animator triggerAnimator;
         
         private Animator animator;
         
@@ -26,12 +29,15 @@ namespace Cc83.Interactable
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             interactable = GetComponent<XRGrabInteractable>();
+            
             interactable.activated.AddListener(OnShootActive);
+            interactable.deactivated.AddListener(OnShootDeactivate);
         }
 
         private void OnDestroy()
         {
             interactable.activated.RemoveListener(OnShootActive);
+            interactable.deactivated.RemoveListener(OnShootDeactivate);
         }
 
         private void OnShootActive(ActivateEventArgs args)
@@ -46,6 +52,19 @@ namespace Cc83.Interactable
             
             audioSource.Play();
             animator.SetTrigger(Shoot);
+
+            if (triggerAnimator)
+            {
+                triggerAnimator.SetBool(TriggerHold, true);
+            }
+        }
+
+        private void OnShootDeactivate(DeactivateEventArgs args)
+        {
+            if (triggerAnimator)
+            {
+                triggerAnimator.SetBool(TriggerHold, false);
+            }
         }
     }
 }

@@ -6,7 +6,11 @@ namespace Cc83.HandPose
     {
         public InteractablePoseData primaryLeftPose;
         
+        public InteractablePoseData primaryLeftActivatePose;
+        
         public InteractablePoseData primaryRightPose;
+        
+        public InteractablePoseData primaryRightActivatePose;
         
         public InteractablePoseData secondaryLeftPose;
         

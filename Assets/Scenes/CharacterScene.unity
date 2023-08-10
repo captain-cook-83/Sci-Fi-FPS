@@ -986,6 +986,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &574513205 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1776945905320294077, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+  m_PrefabInstance: {fileID: 1500445005940647934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &600930773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,7 +2915,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
-  m_AttachTransform: {fileID: 1085683209}
+  m_AttachTransform: {fileID: 574513205}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -3098,7 +3103,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
-  m_AttachTransform: {fileID: 335379245}
+  m_AttachTransform: {fileID: 1695304873}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -5157,6 +5162,11 @@ Transform:
   - {fileID: 1726842925}
   m_Father: {fileID: 2024679478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1695304873 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7571077115652266415, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+  m_PrefabInstance: {fileID: 1500445005940647934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1726842925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4631591848625095010, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
@@ -5534,7 +5544,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
-  m_AttachTransform: {fileID: 1085683209}
+  m_AttachTransform: {fileID: 574513205}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}

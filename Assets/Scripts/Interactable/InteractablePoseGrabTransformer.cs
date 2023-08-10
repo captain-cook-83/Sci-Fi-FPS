@@ -28,9 +28,10 @@ namespace Cc83.Interactable
             
             var interactablePose = grabInteractable.GetComponent<InteractablePose>();
             var primaryPose = handController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
+            var primaryActivatePose = handController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
             var attachTransform = grabInteractable.attachTransform;
             
-            handController.SetPoseData(primaryPose);
+            handController.SetPoseData(primaryPose, primaryActivatePose);
             attachTransform.SetLocalPositionAndRotation(-primaryPose.handLocalPosition, Quaternion.Inverse(primaryPose.handLocalRotation));
         }
         

@@ -29,6 +29,9 @@ namespace Cc83.HandPose
         public HandPoseData fistPoseData;
         
         private InputDevice inputDevice;
+
+        private HandPoseData selectPoseData;
+        private HandPoseData activatePoseData;
         
         private float targetSelectValue;
         private float targetActiveValue;
@@ -38,16 +41,27 @@ namespace Cc83.HandPose
         private float currentActiveValue;
         private float currentThumbValue;
 
-        public void SetPoseData(HandPoseData data)
+        public void SetPoseData(HandPoseData sPoseData, HandPoseData aPoseData)
         {
-            SetFingerNodes(data);
+            selectPoseData = sPoseData;
+            activatePoseData = aPoseData;
+            
+            SetFingerNodes(selectPoseData);
         }
 
         public void ClearPoseData()
         {
-            SetFingerNodes(defaultPoseData);
+            selectPoseData = defaultPoseData;
+            activatePoseData = fistPoseData;
+            
+            SetFingerNodes(selectPoseData);
         }
-        
+
+        private void Start()
+        {
+            ClearPoseData();
+        }
+
         private void Update()
         {
             targetThumbValue = 0;
@@ -122,11 +136,19 @@ namespace Cc83.HandPose
                 {
                     var nodeIndex = baseIndex + n;
                     var finger = fingerNodes[nodeIndex];
-                    var idleValue = defaultPoseData.rotations[nodeIndex];
-                    var fistValue = fistPoseData.rotations[nodeIndex];
+                    var idleValue = selectPoseData.rotations[nodeIndex];
+                    var fistValue = activatePoseData.rotations[nodeIndex];
 
                     finger.localRotation = Quaternion.Lerp(idleValue, fistValue, value);
                 }
+            }
+        }
+        
+        private void SetFingerNodes(HandPoseData data)
+        {
+            for (var i = 0; i < fingerNodes.Length; i++)
+            {
+                fingerNodes[i].localRotation = data.rotations[i];
             }
         }
     }

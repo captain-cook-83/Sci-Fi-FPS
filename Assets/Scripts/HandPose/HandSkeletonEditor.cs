@@ -251,14 +251,6 @@ namespace Cc83.HandPose
             Debug.Log("LoadInteractablePose Completed.");
         }
 
-        private void SetFingerNodes(HandPoseData data)
-        {
-            for (var i = 0; i < fingerNodes.Length; i++)
-            {
-                fingerNodes[i].localRotation = data.rotations[i];
-            }
-        }
-
         private Quaternion[] GetFingerNodes()
         {
             var data = new Quaternion[fingerNodes.Length];

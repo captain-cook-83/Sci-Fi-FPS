@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &582477011379180471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4795479590311199499}
+  - component: {fileID: 2092333914770915034}
+  m_Layer: 0
+  m_Name: TriggerAxis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4795479590311199499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582477011379180471}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.1517501, z: -1.7652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6209478472106597843}
+  m_Father: {fileID: 3809222280786854644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2092333914770915034
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582477011379180471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 686c81c23f4e7b049b6719d9864e68ba, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &988084119106517510
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +634,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6209478472106597843}
+  - {fileID: 4795479590311199499}
   m_Father: {fileID: 3699612562426939897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3977884912532728517
@@ -941,7 +995,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryLeftPose: {fileID: 11400000, guid: aef58d4984733364199b903a2062618f, type: 2}
+  primaryLeftActivatePose: {fileID: 11400000, guid: 98f39e4ed19cf924495d20d03835e6aa, type: 2}
   primaryRightPose: {fileID: 11400000, guid: f49fda3d8953f5a41948fa6544eca818, type: 2}
+  primaryRightActivatePose: {fileID: 11400000, guid: 235491a9beb6b1f4b94355432632efa8, type: 2}
   secondaryLeftPose: {fileID: 0}
   secondaryRightPose: {fileID: 0}
 --- !u!114 &9089565217155297338
@@ -1006,6 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cdTime: 0.17
+  triggerAnimator: {fileID: 2092333914770915034}
 --- !u!82 &708647922370213324
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1565,11 +1622,11 @@ Transform:
   m_GameObject: {fileID: 5573856336608103798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.19, z: -1.82}
+  m_LocalPosition: {x: 0, y: -0.03824997, z: -0.054800034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3809222280786854644}
+  m_Father: {fileID: 4795479590311199499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5741343006867001616
 MeshFilter:

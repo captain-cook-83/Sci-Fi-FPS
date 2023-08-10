@@ -1,5 +1,8 @@
 using Cc83.HandPose;
+using RootMotion.FinalIK;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Cc83.Character
 {
@@ -27,16 +30,39 @@ namespace Cc83.Character
             }
         }
 
-        public void SetPoseData(HandPoseData data)
+        public void SetPoseData(HandPoseData selectPoseData, HandPoseData activatePoseData)
         {
-            skeleton.SetPoseData(data);
-            skeleton.enabled = false;
+            skeleton.SetPoseData(selectPoseData, activatePoseData);
         }
 
         public void ClearPoseData()
         {
-            skeleton.enabled = true;
             skeleton.ClearPoseData();
         }
+
+#if UNITY_EDITOR
+        [Button("Set Grab Anchor from VRIK", ButtonSizes.Large)]
+        public void AutoDetectHandGrabAnchor()
+        {
+            var ik = skeleton.GetComponentInParent<VRIK>();
+            var handTransform = side == HandSide.Left ? ik.references.leftHand : ik.references.rightHand;
+            
+            var directInteractor = GetComponentInChildren<XRDirectInteractor>();
+            if (directInteractor)
+            {
+                directInteractor.attachTransform = handTransform;
+                Debug.Log($"Set '{directInteractor.name}'.attachTransform to '{handTransform.name}' via VRIK references.");
+            }
+            
+            foreach (var interactor in GetComponentsInChildren<XRRayInteractor>())
+            {
+                if (interactor.useForceGrab)
+                {
+                    interactor.attachTransform = handTransform;
+                    Debug.Log($"Set '{interactor.name}'.attachTransform to '{handTransform.name}' via VRIK references.");
+                }
+            }
+        }
+#endif
     }
 }

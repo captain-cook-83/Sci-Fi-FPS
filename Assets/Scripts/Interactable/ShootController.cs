@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -19,14 +20,20 @@ namespace Cc83.Interactable
         public Transform shootPoint;
 
         public GameObject trajectoryPrefab;
+
+        public AudioClip[] shellFallAudios;
         
         private Animator animator;
         
         private AudioSource audioSource;
+
+        private AudioClip defaultAudio;
         
         private XRGrabInteractable interactable;
 
         private float triggerTime;
+
+        private Coroutine delayedAudioHandler;
 
         private void Awake()
         {
@@ -36,6 +43,8 @@ namespace Cc83.Interactable
             
             interactable.activated.AddListener(OnShootActive);
             interactable.deactivated.AddListener(OnShootDeactivate);
+
+            defaultAudio = audioSource.clip;
         }
 
         private void OnDestroy()
@@ -54,15 +63,27 @@ namespace Cc83.Interactable
 
             triggerTime = currentTime + cdTime;
             
+            audioSource.clip = defaultAudio;
             audioSource.Play();
             animator.SetTrigger(Shoot);
-
             if (triggerAnimator)
             {
                 triggerAnimator.SetBool(TriggerHold, true);
             }
 
             Instantiate(trajectoryPrefab, shootPoint.position, shootPoint.rotation);
+            
+            if (delayedAudioHandler != null)
+            {
+                StopCoroutine(delayedAudioHandler);
+                delayedAudioHandler = null;
+            }
+            
+            if (shellFallAudios.Length > 0)
+            {
+                var audioClip = shellFallAudios[Random.Range(0, shellFallAudios.Length)];
+                delayedAudioHandler = StartCoroutine(PlayShellFallAudio(audioClip, 1));
+            }
         }
 
         private void OnShootDeactivate(DeactivateEventArgs args)
@@ -71,6 +92,16 @@ namespace Cc83.Interactable
             {
                 triggerAnimator.SetBool(TriggerHold, false);
             }
+        }
+
+        private IEnumerator PlayShellFallAudio(AudioClip clip, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            delayedAudioHandler = null;
+
+            audioSource.clip = clip;
+            audioSource.Play();
         }
     }
 }

@@ -983,6 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7177a3a23cd0da41998c12415621c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  readyAudio: {fileID: 8300000, guid: 9158afb6966d445db9caf1dccf7acbcc, type: 3}
 --- !u!114 &2507936612174241020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,6 +1067,9 @@ MonoBehaviour:
   triggerAnimator: {fileID: 2092333914770915034}
   shootPoint: {fileID: 6781390521297635405}
   trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}
+  shellFallAudios:
+  - {fileID: 8300000, guid: c50dcf401ede9422da7805612256b5ac, type: 3}
+  - {fileID: 8300000, guid: 99cc49e2c75174a00b9ded676f45afc8, type: 3}
 --- !u!82 &708647922370213324
 AudioSource:
   m_ObjectHideFlags: 0

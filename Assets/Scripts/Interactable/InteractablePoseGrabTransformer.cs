@@ -1,3 +1,4 @@
+using System.Collections;
 using Cc83.Character;
 using Cc83.HandPose;
 using UnityEngine;
@@ -8,6 +9,10 @@ namespace Cc83.Interactable
 {
     public class InteractablePoseGrabTransformer : XRBaseGrabTransformer
     {
+        public AudioClip readyAudio;
+
+        private AudioSource audioSource;
+        
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
             base.OnLink(grabInteractable);
@@ -17,6 +22,8 @@ namespace Cc83.Interactable
             {
                 Debug.LogError($"AttachTransform({attachTransform.name}) must be a direct child of the grabInteractable({grabInteractable.name})");
             }
+
+            audioSource = GetComponent<AudioSource>();
         }
         
         public override void OnGrab(XRGrabInteractable grabInteractable)
@@ -33,6 +40,10 @@ namespace Cc83.Interactable
             
             handController.SetPoseData(primaryPose, primaryActivatePose);
             attachTransform.SetLocalPositionAndRotation(-primaryPose.handLocalPosition, Quaternion.Inverse(primaryPose.handLocalRotation));
+
+            StartCoroutine(ResetAudioSource(audioSource.clip, readyAudio.length));
+            audioSource.clip = readyAudio;
+            audioSource.Play();
         }
         
         public override void Process(XRGrabInteractable grabInteractable, XRInteractionUpdateOrder.UpdatePhase updatePhase, ref Pose targetPose, ref Vector3 localScale)
@@ -58,6 +69,13 @@ namespace Cc83.Interactable
                     break;
                 }
             }
+        }
+
+        private IEnumerator ResetAudioSource(AudioClip clip, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            audioSource.clip = clip;
         }
     }
 }

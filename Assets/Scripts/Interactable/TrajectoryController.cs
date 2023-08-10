@@ -4,7 +4,7 @@ namespace Cc83.Interactable
 {
     public class TrajectoryController : MonoBehaviour
     {
-        public float speed = 4;
+        public float speed = 5;
 
         private Transform t;
 
@@ -12,7 +12,7 @@ namespace Cc83.Interactable
         {
             t = transform;
             
-            Destroy(gameObject, 1);
+            Destroy(gameObject, 0.6f);
         }
 
         private void Update()

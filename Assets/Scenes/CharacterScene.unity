@@ -4263,10 +4263,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3936229787917516462, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
-      propertyPath: cdTime
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 4043241439066821443, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
       propertyPath: m_Name
       value: Pistol
@@ -5805,10 +5801,6 @@ PrefabInstance:
     - target: {fileID: 3699612562426939897, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3936229787917516462, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
-      propertyPath: cdTime
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4043241439066821443, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
       propertyPath: m_Name

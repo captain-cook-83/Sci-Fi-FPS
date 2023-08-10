@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26ecaf0de48464f9b11380a24a08c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cdTime: 0.17
+  cdTime: 0.2
   triggerAnimator: {fileID: 2092333914770915034}
   shootPoint: {fileID: 6781390521297635405}
   trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}

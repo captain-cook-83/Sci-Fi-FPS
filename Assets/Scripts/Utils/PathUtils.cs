@@ -5,6 +5,7 @@ namespace Cc83.Utils
 {
     public static class PathUtils
     {
+#if UNITY_EDITOR
         public static string SelectAssetsPath(string filePath)
         {
             var index = filePath.IndexOf("Assets", StringComparison.Ordinal);
@@ -16,5 +17,6 @@ namespace Cc83.Utils
 
             return filePath[index..];
         }
+#endif
     }
 }

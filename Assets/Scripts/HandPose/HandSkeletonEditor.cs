@@ -293,9 +293,9 @@ namespace Cc83.HandPose
             var handShadowRotation = upLocalRotation * Quaternion.Inverse(interactablePoseData.handLocalRotation);
             var handShadowPosition = upLocalPosition - handShadowRotation * interactablePoseData.handLocalPosition;
             
-            var eulerAngles = handShadowRotation.eulerAngles;
-            Debug.Log($"Inner Position Offset [x: {handShadowPosition.x}, y: {handShadowPosition.y}, z: {handShadowPosition.z}]");
-            Debug.Log($"Inner Rotation Offset [x: {eulerAngles.x}, y: {eulerAngles.y}, z: {eulerAngles.z}], {eulerAngles}");
+            // var eulerAngles = handShadowRotation.eulerAngles;
+            // Debug.Log($"Inner Position Offset [x: {handShadowPosition.x}, y: {handShadowPosition.y}, z: {handShadowPosition.z}]");
+            // Debug.Log($"Inner Rotation Offset [x: {eulerAngles.x}, y: {eulerAngles.y}, z: {eulerAngles.z}], {eulerAngles}");
 
             // var handShadow = new GameObject("HAND-SHADOW").transform;
             // handShadow.SetParent(handTransform);
@@ -307,12 +307,41 @@ namespace Cc83.HandPose
             // interactableShadow.localPosition = interactablePoseData.handLocalPosition;
             // interactableShadow.localRotation = interactablePoseData.handLocalRotation;
             
-            var handRotation = handTransform.localRotation;
-            var outerHandShadowPosition =  handShadowPosition;
-            var outerHandShadowRotation = Quaternion.Inverse(handShadowRotation);
-            eulerAngles = outerHandShadowRotation.eulerAngles;
-            Debug.Log($"Position Offset [x: {outerHandShadowPosition.x}, y: {outerHandShadowPosition.y}, z: {outerHandShadowPosition.z}]");
-            Debug.Log($"Rotation Offset [x: {eulerAngles.x}, y: {eulerAngles.y}, z: {eulerAngles.z}], {eulerAngles}");
+            var angles = handShadowRotation.eulerAngles;
+
+            #region 约束旋转角度
+
+            if (angles.x > 180)
+            {
+                angles.x -= 360;
+            } 
+            else if (angles.x < -180)
+            {
+                angles.x += 360;
+            }
+            
+            if (angles.y > 180)
+            {
+                angles.y -= 360;
+            }
+            else if (angles.y < -180)
+            {
+                angles.y += 360;
+            }
+            
+            if (angles.z > 180)
+            {
+                angles.z -= 360;
+            }
+            else if (angles.z < -180)
+            {
+                angles.z += 360;
+            }
+
+            #endregion
+            
+            Debug.Log($"Position Offset [x: {handShadowPosition.x}, y: {handShadowPosition.y}, z: {handShadowPosition.z}]");
+            Debug.Log($"Rotation Offset [x: {angles.x}, y: {angles.y}, z: {angles.z}], {angles}");
         }
 
         private Quaternion[] GetFingerNodes()

@@ -32,6 +32,8 @@ namespace Cc83.HandPose
 
         private HandPoseData selectPoseData;
         private HandPoseData activatePoseData;
+
+        private float actuallyAnimateSpeed;
         
         private float targetSelectValue;
         private float targetActiveValue;
@@ -41,10 +43,11 @@ namespace Cc83.HandPose
         private float currentActiveValue;
         private float currentThumbValue;
 
-        public void SetPoseData(HandPoseData sPoseData, HandPoseData aPoseData)
+        public void SetPoseData(HandPoseData sPoseData, HandPoseData aPoseData, float speed)
         {
             selectPoseData = sPoseData;
             activatePoseData = aPoseData;
+            actuallyAnimateSpeed = speed;
             
             SetFingerNodes(selectPoseData);
         }
@@ -53,8 +56,9 @@ namespace Cc83.HandPose
         {
             selectPoseData = defaultPoseData;
             activatePoseData = fistPoseData;
-            
-            SetFingerNodes(selectPoseData);
+            actuallyAnimateSpeed = animateSpeed;
+
+            currentThumbValue = currentSelectValue = currentActiveValue = -1;        // 导致 Update 检测被强制执行
         }
 
         private void Start()
@@ -80,21 +84,21 @@ namespace Cc83.HandPose
             
             if (Math.Abs(targetThumbValue - currentThumbValue) > animateThreshold)
             {
-                currentThumbValue = Mathf.MoveTowards(currentThumbValue, targetThumbValue, Time.deltaTime * animateSpeed);
+                currentThumbValue = Mathf.MoveTowards(currentThumbValue, targetThumbValue, Time.deltaTime * actuallyAnimateSpeed);
                 CalculateFingerNodes(ThumbFingers, currentThumbValue);
             }
             
             targetSelectValue = controller.selectAction.action.ReadValue<float>();
             if (Math.Abs(targetSelectValue - currentSelectValue) > animateThreshold)
             {
-                currentSelectValue = Mathf.MoveTowards(currentSelectValue, targetSelectValue, Time.deltaTime * animateSpeed);
+                currentSelectValue = Mathf.MoveTowards(currentSelectValue, targetSelectValue, Time.deltaTime * actuallyAnimateSpeed);
                 CalculateFingerNodes(SelectFingers, currentSelectValue);
             }
 
             targetActiveValue = controller.activateAction.action.ReadValue<float>();
             if (Math.Abs(targetActiveValue - currentActiveValue) > animateThreshold)
             {
-                currentActiveValue = Mathf.MoveTowards(currentActiveValue, targetActiveValue, Time.deltaTime * animateSpeed);
+                currentActiveValue = Mathf.MoveTowards(currentActiveValue, targetActiveValue, Time.deltaTime * actuallyAnimateSpeed);
                 CalculateFingerNodes(ActiveFingers, currentActiveValue);
             }
         }

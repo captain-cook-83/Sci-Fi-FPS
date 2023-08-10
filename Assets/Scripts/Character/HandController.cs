@@ -12,6 +12,8 @@ namespace Cc83.Character
 
         public HandSkeleton skeleton;
 
+        public float activateAnimateSpeed = 20;
+
         private void OnValidate()
         {
             if (skeleton != null)
@@ -32,7 +34,7 @@ namespace Cc83.Character
 
         public void SetPoseData(HandPoseData selectPoseData, HandPoseData activatePoseData)
         {
-            skeleton.SetPoseData(selectPoseData, activatePoseData);
+            skeleton.SetPoseData(selectPoseData, activatePoseData, activateAnimateSpeed);
         }
 
         public void ClearPoseData()

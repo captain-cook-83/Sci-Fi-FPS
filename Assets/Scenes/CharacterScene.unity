@@ -3798,6 +3798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   skeleton: {fileID: 1726842930}
+  activateAnimateSpeed: 20
 --- !u!1 &1352444202
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,6 +4189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   skeleton: {fileID: 1726842929}
+  activateAnimateSpeed: 20
 --- !u!1 &1449490906
 GameObject:
   m_ObjectHideFlags: 0

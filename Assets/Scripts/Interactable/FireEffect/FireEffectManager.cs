@@ -11,14 +11,14 @@ namespace Cc83.Interactable
         public GameObject ImpactEffect;
         public ImpactInfo[] ImpactElemets;
 
-        private readonly Dictionary<MaterialType.MaterialTypeEnum, GameObject> impactInfos = new ();
+        private readonly Dictionary<MaterialType.MaterialTypeEnum, ImpactInfo> impactInfos = new ();
         private ObjectPool<GameObject> effectPool;
 
         private void Awake()
         {
             foreach (var impactElement in ImpactElemets)
             {
-                impactInfos.Add(impactElement.MaterialType, impactElement.ImpactEffect);
+                impactInfos.Add(impactElement.MaterialType, impactElement);
             }
             
             effectPool = new ObjectPool<GameObject>(CreateEffectInstance, 
@@ -38,16 +38,23 @@ namespace Cc83.Interactable
             var ray = new Ray(position, t.forward);
             if (Physics.Raycast(ray, out var hit, BulletDistance))
             {
-                var target = hit.transform.gameObject;
-                var effect = GetImpactEffect(target);
-                if (effect)
+                var target = hit.transform;
+                var impactInfo = GetImpactEffect(target.gameObject);
+                if (impactInfo != null)
                 {
-                    var effectInstance = Instantiate(effect, hit.point, Quaternion.identity);
+                    var effectInstance = Instantiate(impactInfo.ImpactEffect, hit.point, Quaternion.identity);
                     effectInstance.transform.LookAt(hit.point + hit.normal);
-                    Destroy(effectInstance, 20);
+                    Destroy(effectInstance, 5);
+
+                    if (impactInfo.DecalEffect)
+                    {
+                        var effectTransform = effectInstance.transform;
+                        var decalInstance = Instantiate(impactInfo.DecalEffect, effectTransform.position + effectTransform.forward * -0.01f, effectTransform.rotation, target);
+                        Destroy(decalInstance, 15);
+                    }
                 }
 
-                if (target.isStatic == false)
+                if (target.gameObject.isStatic == false)
                 {
                     var targetRigidbody = target.GetComponent<Rigidbody>();
                     if (targetRigidbody)
@@ -58,7 +65,7 @@ namespace Cc83.Interactable
             }
         }
         
-        private GameObject GetImpactEffect(GameObject impactedGameObject)
+        private ImpactInfo GetImpactEffect(GameObject impactedGameObject)
         {
             var materialType = impactedGameObject.GetComponent<MaterialType>();
             if (materialType && impactInfos.TryGetValue(materialType.TypeOfMaterial, out var impactEffect))
@@ -87,6 +94,8 @@ namespace Cc83.Interactable
             public MaterialType.MaterialTypeEnum MaterialType;
             
             public GameObject ImpactEffect;
+
+            public GameObject DecalEffect;
         }
     }
 }

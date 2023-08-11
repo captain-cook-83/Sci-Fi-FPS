@@ -11,7 +11,13 @@ namespace Cc83.HandPose
         private const int FingerNodeCount = 3;
 
         private static readonly int[] SelectFingers = { 2, 3, 4 };
+        
+#if UNITY_EDITOR
         private static readonly int[] ActiveFingers = { 1 };
+#else
+        private static readonly int[] ActiveFingers = { 0, 1 };
+#endif
+        
         private static readonly int[] ThumbFingers = { 0 };
 
         [Range(0.001f, 0.1f)]

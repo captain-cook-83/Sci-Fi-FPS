@@ -241,11 +241,11 @@ namespace Cc83.HandPose
             }
             
             var interactableTransform = interactableReference.interactable;
-            var interactableParent = interactableTransform.parent;
+            // var interactableParent = interactableTransform.parent;
             interactableTransform.SetParent(handTransform);
             interactableTransform.localRotation = data.handLocalRotation;
             interactableTransform.localPosition = data.handLocalPosition;
-            interactableTransform.SetParent(interactableParent);
+            // interactableTransform.SetParent(interactableParent);
             
             SetFingerNodes(data);
             

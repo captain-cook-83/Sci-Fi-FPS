@@ -49,18 +49,16 @@ namespace Cc83.Interactable
                     if (impactInfo.DecalEffect)
                     {
                         var effectTransform = effectInstance.transform;
-                        var decalInstance = Instantiate(impactInfo.DecalEffect, effectTransform.position + effectTransform.forward * -0.01f, effectTransform.rotation, target);
-                        Destroy(decalInstance, 15);
+                        Instantiate(impactInfo.DecalEffect, effectTransform.position + effectTransform.forward * -0.01f, effectTransform.rotation, target);
                     }
                 }
 
-                if (target.gameObject.isStatic == false)
+                if (target.gameObject.isStatic) return;
+                
+                var targetRigidbody = target.GetComponent<Rigidbody>();
+                if (targetRigidbody)
                 {
-                    var targetRigidbody = target.GetComponent<Rigidbody>();
-                    if (targetRigidbody)
-                    {
-                        targetRigidbody.AddForceAtPosition(t.forward * 100, hit.point, ForceMode.Force);
-                    }
+                    targetRigidbody.AddForceAtPosition(t.forward * 100, hit.point, ForceMode.Force);
                 }
             }
         }

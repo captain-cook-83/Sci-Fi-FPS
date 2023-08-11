@@ -21,7 +21,9 @@ namespace Cc83.Interactable
         public Transform shootPoint;
 
         public GameObject trajectoryPrefab;
-
+        
+        public FireEffectManager fireEffectManager;
+        
         public AudioClip[] shellFallAudios;
         
         private Animator animator;
@@ -76,6 +78,8 @@ namespace Cc83.Interactable
             
             var handController = args.interactorObject.transform.GetComponentInParent<HandController>();
             handController.Shake();
+            
+            fireEffectManager.Shoot();
             
             if (delayedAudioHandler != null)
             {

@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Cc83.Interactable
 {
@@ -7,42 +10,75 @@ namespace Cc83.Interactable
         public float BulletDistance = 100;
         public GameObject ImpactEffect;
         public ImpactInfo[] ImpactElemets;
-    
+
+        private readonly Dictionary<MaterialType.MaterialTypeEnum, GameObject> impactInfos = new ();
+        private ObjectPool<GameObject> effectPool;
+
+        private void Awake()
+        {
+            foreach (var impactElement in ImpactElemets)
+            {
+                impactInfos.Add(impactElement.MaterialType, impactElement.ImpactEffect);
+            }
+            
+            effectPool = new ObjectPool<GameObject>(CreateEffectInstance, 
+                go => go.SetActive(true), go => go.SetActive(false), Destroy,
+                true, 8, 16);
+        }
+
         public void Shoot()
         {
             var t = transform;
             var position = t.position;
-            
-            Destroy(Instantiate(ImpactEffect, position, t.rotation), 4);
+
+            var impactEffect = effectPool.Get();
+            impactEffect.transform.SetPositionAndRotation(position, t.rotation);
+            StartCoroutine(ReleaseImpactEffect(impactEffect, 4));
             
             var ray = new Ray(position, t.forward);
             if (Physics.Raycast(ray, out var hit, BulletDistance))
             {
-                var effect = GetImpactEffect(hit.transform.gameObject);
+                var target = hit.transform.gameObject;
+                var effect = GetImpactEffect(target);
                 if (effect)
                 {
                     var effectInstance = Instantiate(effect, hit.point, Quaternion.identity);
                     effectInstance.transform.LookAt(hit.point + hit.normal);
                     Destroy(effectInstance, 20);
                 }
-            }
-        }
-    
-        private GameObject GetImpactEffect(GameObject impactedGameObject)
-        {
-            var materialType = impactedGameObject.GetComponent<MaterialType>();
-            if (materialType)
-            {
-                foreach (var impactInfo in ImpactElemets)           //TODO Use a K-V data structure
+
+                if (target.isStatic == false)
                 {
-                    if (impactInfo.MaterialType == materialType.TypeOfMaterial)
+                    var targetRigidbody = target.GetComponent<Rigidbody>();
+                    if (targetRigidbody)
                     {
-                        return impactInfo.ImpactEffect;
+                        targetRigidbody.AddForceAtPosition(t.forward * 100, hit.point, ForceMode.Force);
                     }
                 }
             }
-            
+        }
+        
+        private GameObject GetImpactEffect(GameObject impactedGameObject)
+        {
+            var materialType = impactedGameObject.GetComponent<MaterialType>();
+            if (materialType && impactInfos.TryGetValue(materialType.TypeOfMaterial, out var impactEffect))
+            {
+                return impactEffect;
+            }
+
             return null;
+        }
+        
+        private IEnumerator ReleaseImpactEffect(GameObject effectInstance, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            effectPool.Release(effectInstance);
+        }
+        
+        private GameObject CreateEffectInstance()
+        {
+            return Instantiate(ImpactEffect);
         }
         
         [System.Serializable]

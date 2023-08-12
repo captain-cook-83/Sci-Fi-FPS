@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 21168906}
   - component: {fileID: 21168905}
   - component: {fileID: 21168907}
+  - component: {fileID: 21168908}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -276,6 +277,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &21168908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21168904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba76fb961f12ce4d98dbccccbbc8681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &70331566
 GameObject:
   m_ObjectHideFlags: 0
@@ -6610,6 +6623,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1673876745}
     m_Modifications:
+    - target: {fileID: 2509061056291112848, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509061056291112848, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2902496825000839636, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
       propertyPath: solver.leftArm.target
       value: 

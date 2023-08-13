@@ -1,16 +1,31 @@
-using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Cc83
 {
     public class RandomLight : MonoBehaviour
     {
-        private void Start()
+        public InputActionReference menuAction;
+        
+        private void Awake()
         {
-            if (new DateTime().Millisecond % 2 == 0)
+            if (menuAction)
             {
-                gameObject.SetActive(false);
+                menuAction.action.performed += OnMenuAction;
             }
+        }
+
+        private void OnDestroy()
+        {
+            if (menuAction)
+            {
+                menuAction.action.performed -= OnMenuAction;
+            }
+        }
+
+        private void OnMenuAction(InputAction.CallbackContext context)
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
         }
     }
 }

@@ -65,6 +65,12 @@ namespace Cc83.Interactable
             }
 
             triggerTime = currentTime + cdTime;
+    
+            // 首先获取位置和旋转等数据，避免接下来的动画逻辑改变相关信息后计算出现偏差
+            var shootInfo = fireEffectManager.transform;
+            var shootPosition = shootInfo.position;
+            var shootRotation = shootInfo.rotation;
+            var shootDirection = shootInfo.forward;
             
             audioSource.clip = defaultAudio;
             audioSource.Play();
@@ -79,7 +85,7 @@ namespace Cc83.Interactable
             var handController = args.interactorObject.transform.GetComponentInParent<HandController>();
             handController.Shake();
             
-            fireEffectManager.Shoot();
+            fireEffectManager.Shoot(shootPosition, shootRotation, shootDirection);
             
             if (delayedAudioHandler != null)
             {

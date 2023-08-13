@@ -26,16 +26,13 @@ namespace Cc83.Interactable
                 true, 8, 16);
         }
 
-        public void Shoot()
+        public void Shoot(Vector3 position, Quaternion rotation, Vector3 direction)
         {
-            var t = transform;
-            var position = t.position;
-
             var impactEffect = effectPool.Get();
-            impactEffect.transform.SetPositionAndRotation(position, t.rotation);
+            impactEffect.transform.SetPositionAndRotation(position, rotation);
             StartCoroutine(ReleaseImpactEffect(impactEffect, 4));
             
-            var ray = new Ray(position, t.forward);
+            var ray = new Ray(position, direction);
             if (Physics.Raycast(ray, out var hit, BulletDistance))
             {
                 var target = hit.transform;
@@ -60,7 +57,7 @@ namespace Cc83.Interactable
                 var targetRigidbody = target.GetComponent<Rigidbody>();
                 if (targetRigidbody)
                 {
-                    StartCoroutine(AddForceToTarget(targetRigidbody, t.forward * 100, hit.point));
+                    StartCoroutine(AddForceToTarget(targetRigidbody, direction * 100, hit.point));
                 }
             }
         }

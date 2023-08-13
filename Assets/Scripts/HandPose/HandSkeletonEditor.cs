@@ -4,6 +4,8 @@ using Sirenix.OdinInspector;
 using Unity.XR.CoreUtils;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 namespace Cc83.HandPose
 {
@@ -32,6 +34,25 @@ namespace Cc83.HandPose
             if (interactableReference == null)
             {
                 interactableReference = GetComponent<InteractableReference>();
+            }
+
+            if (controller)
+            {
+                var baseHand = handSide == HandSide.Left ? "XRI LeftHand Interaction/" : "XRI RightHand Interaction/";
+                var inputActionManager = controller.GetComponentInParent<InputActionManager>();
+                foreach (var inputActionAsset in inputActionManager.actionAssets)
+                {
+                    var secondaryButton = inputActionAsset.FindAction($"{baseHand}Secondary Button", true);
+                    var secondaryTouched = inputActionAsset.FindAction($"{baseHand}Secondary Touched", true);
+                    thumbActionReference = InputActionReference.Create(secondaryButton);
+                    thumbTouchedActionReference = InputActionReference.Create(secondaryTouched);
+                    break;
+                }
+            }
+            else
+            {
+                thumbActionReference = null;
+                thumbTouchedActionReference = null;
             }
         }
 

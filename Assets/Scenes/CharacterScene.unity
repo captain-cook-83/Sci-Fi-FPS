@@ -506,6 +506,20 @@ Transform:
   - {fileID: 1118402695}
   m_Father: {fileID: 1418493143}
   m_LocalEulerAnglesHint: {x: -90, y: 15, z: -90}
+--- !u!114 &266621934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Button
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
 --- !u!1 &288454936
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +776,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1935087278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &439056828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: d5fedd2e-b1d5-49e6-9679-cdcdbf66efdf
 --- !u!1001 &473843652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1952,6 +1980,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400158, guid: 442d5b4503ed83c4897ef44659446587, type: 3}
   m_PrefabInstance: {fileID: 753719616}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &773493097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: d5fedd2e-b1d5-49e6-9679-cdcdbf66efdf
 --- !u!1 &797614491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,6 +2243,20 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &930947636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Button
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
 --- !u!1001 &976614219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4916,6 +4972,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 164632867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1614818564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI LeftHand Interaction/Secondary Button
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 4b3b5651-c754-430c-80d8-c204f796d1cf
 --- !u!1 &1658233995
 GameObject:
   m_ObjectHideFlags: 0
@@ -6372,6 +6442,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2022801423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI LeftHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 7f0fbddd-af22-40e9-88b6-68098c640144
 --- !u!1 &2024679477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6699,10 +6783,30 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 1418493148}
+    - target: {fileID: 8047714284462486746, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: thumbActionReference
+      value: 
+      objectReference: {fileID: 930947636}
+    - target: {fileID: 8047714284462486746, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: thumbTouchedActionReference
+      value: 
+      objectReference: {fileID: 439056828}
     - target: {fileID: 8905211248914582656, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 1341276587}
+    - target: {fileID: 8905211248914582656, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: thumbActionReference
+      value: 
+      objectReference: {fileID: 1614818564}
+    - target: {fileID: 8905211248914582656, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: thumbTouchActionReference
+      value: 
+      objectReference: {fileID: 6003206775724494390, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 8905211248914582656, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: thumbTouchedActionReference
+      value: 
+      objectReference: {fileID: 2022801423}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

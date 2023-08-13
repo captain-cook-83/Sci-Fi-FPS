@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using InputDevice = UnityEngine.XR.InputDevice;
 
 namespace Cc83.HandPose
 {
@@ -11,13 +13,9 @@ namespace Cc83.HandPose
         private const int FingerNodeCount = 3;
 
         private static readonly int[] SelectFingers = { 2, 3, 4 };
-        
-#if UNITY_EDITOR
+
         private static readonly int[] ActiveFingers = { 1 };
-#else
-        private static readonly int[] ActiveFingers = { 0, 1 };
-#endif
-        
+
         private static readonly int[] ThumbFingers = { 0 };
 
         [Range(0.001f, 0.1f)]
@@ -29,12 +27,18 @@ namespace Cc83.HandPose
         public HandSide handSide;
         public ActionBasedController controller;
         
-        public Transform[] fingerNodes;
-
+        [SerializeField]
+        private InputActionReference thumbActionReference;
+        
+        [SerializeField]
+        private InputActionReference thumbTouchedActionReference;
+        
         public HandPoseData defaultPoseData;
         public HandPoseData fistPoseData;
         
-        private InputDevice inputDevice;
+        public Transform[] fingerNodes;
+        
+        // private InputDevice inputDevice;
 
         private HandPoseData selectPoseData;
         private HandPoseData activatePoseData;
@@ -74,19 +78,20 @@ namespace Cc83.HandPose
 
         private void Update()
         {
-            targetThumbValue = 0;
-            
-            if (inputDevice != default)
-            {
-                if (inputDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out var secondaryButton) && secondaryButton)
-                {
-                    targetThumbValue = 1;
-                } 
-                else if (inputDevice.TryGetFeatureValue(CommonUsages.secondaryTouch, out var secondaryTouch) && secondaryTouch)
-                {
-                    targetThumbValue = 0.4f;
-                }
-            }
+            // targetThumbValue = 0;
+            //
+            // if (inputDevice != default)
+            // {
+            //     if (inputDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out var secondaryButton) && secondaryButton)
+            //     {
+            //         targetThumbValue = 1;
+            //     } 
+            //     else if (inputDevice.TryGetFeatureValue(CommonUsages.secondaryTouch, out var secondaryTouch) && secondaryTouch)
+            //     {
+            //         targetThumbValue = 0.4f;
+            //     }
+            // }
+            //
             
             if (Math.Abs(targetThumbValue - currentThumbValue) > animateThreshold)
             {
@@ -94,14 +99,14 @@ namespace Cc83.HandPose
                 CalculateFingerNodes(ThumbFingers, currentThumbValue);
             }
             
-            targetSelectValue = controller.selectAction.action.ReadValue<float>();
+            targetSelectValue = controller.selectActionValue.action.ReadValue<float>();
             if (Math.Abs(targetSelectValue - currentSelectValue) > animateThreshold)
             {
                 currentSelectValue = Mathf.MoveTowards(currentSelectValue, targetSelectValue, Time.deltaTime * actuallyAnimateSpeed);
                 CalculateFingerNodes(SelectFingers, currentSelectValue);
             }
 
-            targetActiveValue = controller.activateAction.action.ReadValue<float>();
+            targetActiveValue = controller.activateActionValue.action.ReadValue<float>();
             if (Math.Abs(targetActiveValue - currentActiveValue) > animateThreshold)
             {
                 currentActiveValue = Mathf.MoveTowards(currentActiveValue, targetActiveValue, Time.deltaTime * actuallyAnimateSpeed);
@@ -111,30 +116,66 @@ namespace Cc83.HandPose
 
         private void OnEnable()
         {
-            InputDevices.deviceConnected += OnDeviceConnected;
-            InputDevices.deviceDisconnected  += OnDeviceDisconnected;
+            // InputDevices.deviceConnected += OnDeviceConnected;
+            // InputDevices.deviceDisconnected  += OnDeviceDisconnected;
+
+            thumbActionReference.action.performed += OnThumbAction;
+            thumbActionReference.action.canceled += OnThumbAction;
+            thumbTouchedActionReference.action.performed += OnThumbTouchedAction;
+            thumbTouchedActionReference.action.canceled += OnThumbTouchedAction;
         }
 
         private void OnDisable()
         {
-            InputDevices.deviceConnected -= OnDeviceConnected;
-            InputDevices.deviceDisconnected -= OnDeviceDisconnected;
+            // InputDevices.deviceConnected -= OnDeviceConnected;
+            // InputDevices.deviceDisconnected -= OnDeviceDisconnected;
+
+            thumbActionReference.action.performed -= OnThumbAction;
+            thumbActionReference.action.canceled -= OnThumbAction;
+            thumbTouchedActionReference.action.performed -= OnThumbTouchedAction;
+            thumbTouchedActionReference.action.canceled -= OnThumbTouchedAction;
         }
 
-        private void OnDeviceConnected(InputDevice device)
-        {
-            var inputDevices = new List<InputDevice>();
-            var deviceSide = handSide == HandSide.Left
-                ? InputDeviceCharacteristics.Left
-                : InputDeviceCharacteristics.Right;
-            
-            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.HeldInHand | deviceSide, inputDevices);
-            inputDevice = inputDevices.Count > 0 ? inputDevices[0] : default;
-        }
+        // private void OnDeviceConnected(InputDevice device)
+        // {
+        //     var inputDevices = new List<InputDevice>();
+        //     var deviceSide = handSide == HandSide.Left
+        //         ? InputDeviceCharacteristics.Left
+        //         : InputDeviceCharacteristics.Right;
+        //     
+        //     InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.HeldInHand | deviceSide, inputDevices);
+        //     inputDevice = inputDevices.Count > 0 ? inputDevices[0] : default;
+        // }
+        //
+        // private void OnDeviceDisconnected(InputDevice device)
+        // {
+        //     inputDevice = default;
+        // }
 
-        private void OnDeviceDisconnected(InputDevice device)
+        private void OnThumbAction(InputAction.CallbackContext context)
         {
-            inputDevice = default;
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                    targetThumbValue = 1;
+                    break;
+                case InputActionPhase.Canceled:
+                    targetThumbValue = 0.5f;
+                    break;
+            }
+        }
+        
+        private void OnThumbTouchedAction(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                    targetThumbValue = 0.5f;
+                    break;
+                case InputActionPhase.Canceled:
+                    targetThumbValue = 0;
+                    break;
+            }
         }
 
         private void CalculateFingerNodes(IEnumerable<int> indexes, float value)

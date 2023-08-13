@@ -42,14 +42,16 @@ namespace Cc83.Interactable
                 var impactInfo = GetImpactEffect(target.gameObject);
                 if (impactInfo != null)
                 {
-                    var effectInstance = Instantiate(impactInfo.ImpactEffect, hit.point, Quaternion.identity);
-                    effectInstance.transform.LookAt(hit.point + hit.normal);
+                    var hitPoint = hit.point;
+                    var effectInstance = Instantiate(impactInfo.ImpactEffect, hitPoint, Quaternion.identity);
+                    effectInstance.transform.LookAt(hitPoint + hit.normal);
                     Destroy(effectInstance, 5);
 
                     if (impactInfo.DecalEffect)
                     {
                         var effectTransform = effectInstance.transform;
-                        Instantiate(impactInfo.DecalEffect, effectTransform.position + effectTransform.forward * -0.01f, effectTransform.rotation, target);
+                        var effectForward = effectTransform.forward;
+                        Instantiate(impactInfo.DecalEffect, effectTransform.position + effectForward * 0.01f, Quaternion.LookRotation(-effectForward), target);
                     }
                 }
 
@@ -58,7 +60,7 @@ namespace Cc83.Interactable
                 var targetRigidbody = target.GetComponent<Rigidbody>();
                 if (targetRigidbody)
                 {
-                    targetRigidbody.AddForceAtPosition(t.forward * 100, hit.point, ForceMode.Force);
+                    StartCoroutine(AddForceToTarget(targetRigidbody, t.forward * 100, hit.point));
                 }
             }
         }
@@ -79,6 +81,13 @@ namespace Cc83.Interactable
             yield return new WaitForSeconds(delay);
             
             effectPool.Release(effectInstance);
+        }
+
+        private static IEnumerator AddForceToTarget(Rigidbody target, Vector3 force, Vector3 position)
+        {
+            yield return null;
+
+            target.AddForceAtPosition(force, position, ForceMode.Force);
         }
         
         private GameObject CreateEffectInstance()

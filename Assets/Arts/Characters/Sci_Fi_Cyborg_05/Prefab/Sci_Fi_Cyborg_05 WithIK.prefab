@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 77678774003678909, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538581298385376196, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1586772316605897592, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
       propertyPath: m_Name
       value: Sci_Fi_Cyborg_05 WithIK
@@ -50,6 +58,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2111776661405401538, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745257699301520920, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618305491424349861, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212614606854080304, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

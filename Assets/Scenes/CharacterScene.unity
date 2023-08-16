@@ -412,6 +412,34 @@ Transform:
   - {fileID: 1824832545}
   m_Father: {fileID: 2056702346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &297001940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Button
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
+--- !u!114 &464288252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI LeftHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 7f0fbddd-af22-40e9-88b6-68098c640144
 --- !u!1001 &473843652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1291,6 +1319,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
+--- !u!114 &1178262258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI LeftHand Interaction/Secondary Button
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 4b3b5651-c754-430c-80d8-c204f796d1cf
 --- !u!1 &1202215670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2060,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActionId: 4b3b5651-c754-430c-80d8-c204f796d1cf
+--- !u!114 &1614193488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: d5fedd2e-b1d5-49e6-9679-cdcdbf66efdf
 --- !u!114 &1641108905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,6 +2511,86 @@ PrefabInstance:
     - target: {fileID: 3232196067269687439, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_Id
+      value: 08c86f9e-86dd-4dd4-84e4-f89b41d0538d
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_Id
+      value: 6a4f6956-9622-4237-9bf8-888171db3d61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_Name
+      value: Position
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_Name
+      value: Rotation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_ExpectedControlType
+      value: Vector3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_ExpectedControlType
+      value: Quaternion
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e52e928e-594c-47b7-9b6e-aa54f2b7f5e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 75483712-2b86-4f5e-afa1-0358be474acc
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 254d98e1-9da6-45d4-afd6-e41a6a29a82e
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 37f73dcf-1819-46fe-86c2-b6f458cf8557
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRHMD>/centerEyePosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <HandheldARInputDevice>/devicePosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRHMD>/centerEyeRotation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <HandheldARInputDevice>/deviceRotation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Position
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Position
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Rotation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510450386878070699, guid: 83c2df77edfe09b4ba6b1192e0da3111, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Rotation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

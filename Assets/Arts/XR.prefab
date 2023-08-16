@@ -2602,7 +2602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 8408960547207225352}
-  m_MoveSpeed: 2
+  m_MoveSpeed: 3
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -4174,7 +4174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 0
   m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
@@ -4470,6 +4470,10 @@ PrefabInstance:
     - target: {fileID: 5408093711791070168, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
       propertyPath: m_Name
       value: Sci_Fi_Cyborg_05 WithIK
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047714284462486746, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: handSide
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047714284462486746, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
       propertyPath: controller

@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &92428797
+--- !u!114 &26647441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,7 +381,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d637b3606ccbf940946c445768db2be, type: 3}
---- !u!114 &478245630
+--- !u!114 &405285355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,10 +391,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI LeftHand Interaction/Secondary Touched
+  m_Name: XRI RightHand Interaction/Secondary Button
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 7f0fbddd-af22-40e9-88b6-68098c640144
+  m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
 --- !u!1001 &660642130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -862,7 +862,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1487179879
+--- !u!114 &1483786403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -876,20 +876,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActionId: d5fedd2e-b1d5-49e6-9679-cdcdbf66efdf
---- !u!114 &1575724101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI RightHand Interaction/Secondary Button
-  m_EditorClassIdentifier: 
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
 --- !u!1001 &1586938549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1422,6 +1408,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
+--- !u!1001 &1975632930
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.546
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.783
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521591994677037551, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185960472853730133, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+      propertyPath: m_Name
+      value: MMG_Version03 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8928c2d55aa73c14ba7bfe54f07342ee, type: 3}
+--- !u!114 &2056106038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI LeftHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 7f0fbddd-af22-40e9-88b6-68098c640144
 --- !u!1001 &2072944912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1651,3 +1708,4 @@ SceneRoots:
   - {fileID: 2072944912}
   - {fileID: 363169819}
   - {fileID: 1899173863}
+  - {fileID: 1975632930}

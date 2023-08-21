@@ -7,6 +7,8 @@ namespace Cc83.Character.Behaviour
     {
         private readonly Dictionary<int, float> layerWeights = new();
 
+        private HoldWeaponIKController ikController;
+
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             var layerCount = animator.layerCount;
@@ -20,6 +22,13 @@ namespace Cc83.Character.Behaviour
                 layerWeights.Add(i, layerWeight);
                 animator.SetLayerWeight(i, 0);
             }
+
+            if (ikController == null)
+            {
+                ikController = animator.GetComponent<HoldWeaponIKController>();
+            }
+            
+            ikController.primaryIk = false;
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -33,6 +42,8 @@ namespace Cc83.Character.Behaviour
             }
 
             layerWeights.Clear();
+            
+            ikController.primaryIk = true;
         }
     }
 }

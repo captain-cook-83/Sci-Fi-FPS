@@ -93,6 +93,10 @@ namespace Cc83.HandPose
             // }
             //
             
+#if UNITY_EDITOR
+            if (controller == null) return;
+#endif
+            
             if (Math.Abs(targetThumbValue - currentThumbValue) > animateThreshold)
             {
                 currentThumbValue = Mathf.MoveTowards(currentThumbValue, targetThumbValue, Time.deltaTime * actuallyAnimateSpeed);
@@ -119,6 +123,10 @@ namespace Cc83.HandPose
             // InputDevices.deviceConnected += OnDeviceConnected;
             // InputDevices.deviceDisconnected  += OnDeviceDisconnected;
 
+#if UNITY_EDITOR
+            if (thumbActionReference == null || thumbTouchedActionReference == null) return;
+#endif
+
             thumbActionReference.action.performed += OnThumbAction;
             thumbActionReference.action.canceled += OnThumbAction;
             thumbTouchedActionReference.action.performed += OnThumbTouchedAction;
@@ -130,6 +138,10 @@ namespace Cc83.HandPose
             // InputDevices.deviceConnected -= OnDeviceConnected;
             // InputDevices.deviceDisconnected -= OnDeviceDisconnected;
 
+#if UNITY_EDITOR
+            if (thumbActionReference == null || thumbTouchedActionReference == null) return;
+#endif
+            
             thumbActionReference.action.performed -= OnThumbAction;
             thumbActionReference.action.canceled -= OnThumbAction;
             thumbTouchedActionReference.action.performed -= OnThumbTouchedAction;

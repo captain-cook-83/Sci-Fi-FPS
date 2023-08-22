@@ -79,6 +79,7 @@ Transform:
   - {fileID: 1980719261606475353}
   - {fileID: 543014371066662334}
   - {fileID: 2016597004857386240}
+  - {fileID: 5273920938976099034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2500091865446123082
@@ -282,7 +283,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AttachTransform: {fileID: 2016597004857386240}
-  m_SecondaryAttachTransform: {fileID: 0}
+  m_SecondaryAttachTransform: {fileID: 5273920938976099034}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
@@ -326,7 +327,7 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
-  m_AddDefaultGrabTransformers: 1
+  m_AddDefaultGrabTransformers: 0
 --- !u!114 &5040388558967652180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +357,7 @@ MonoBehaviour:
   primaryLeftActivatePose: {fileID: 0}
   primaryRightPose: {fileID: 11400000, guid: faf472618adf96042b5c9b35846007fa, type: 2}
   primaryRightActivatePose: {fileID: 11400000, guid: cee596fb94660d74ab229d085effe5d3, type: 2}
-  secondaryLeftPose: {fileID: 0}
+  secondaryLeftPose: {fileID: 11400000, guid: 72a13c1f103374348bfcf72ff9cca6aa, type: 2}
   secondaryRightPose: {fileID: 0}
 --- !u!114 &4346956484536782152
 MonoBehaviour:
@@ -795,6 +796,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8432531483766121408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5273920938976099034}
+  m_Layer: 0
+  m_Name: Secondary Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5273920938976099034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432531483766121408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0209, z: 0.2497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1521591994677037551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8582182784417679919
 GameObject:
   m_ObjectHideFlags: 0

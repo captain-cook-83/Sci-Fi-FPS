@@ -46,6 +46,23 @@ namespace Cc83.Interactable
             audioSource.Play();
         }
         
+        public override void OnGrabCountChanged(XRGrabInteractable grabInteractable, Pose targetPose, Vector3 localScale)
+        {
+            if (grabInteractable.interactorsSelecting.Count != 2) return;
+            
+            var interactor = grabInteractable.interactorsSelecting[1];
+            var handController = interactor.transform.GetComponentInParent<HandController>();
+            
+            var interactablePose = grabInteractable.GetComponent<InteractablePose>();
+            var secondaryPose = handController.side == HandSide.Left ? interactablePose.secondaryLeftPose : interactablePose.secondaryRightPose;
+            var attachTransform = grabInteractable.secondaryAttachTransform;
+            
+            handController.SetPoseData(secondaryPose, secondaryPose);
+            attachTransform.SetLocalPositionAndRotation(-secondaryPose.handLocalPosition, Quaternion.Inverse(secondaryPose.handLocalRotation));
+            
+            // TODO 切换震动动画
+        }
+        
         public override void Process(XRGrabInteractable grabInteractable, XRInteractionUpdateOrder.UpdatePhase updatePhase, ref Pose targetPose, ref Vector3 localScale)
         {
             switch (updatePhase)

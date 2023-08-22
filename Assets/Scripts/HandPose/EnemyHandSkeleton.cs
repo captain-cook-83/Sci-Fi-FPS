@@ -7,12 +7,12 @@ namespace Cc83.HandPose
     {
         public HandSide handSide;
         
+        public Transform[] fingerNodes;
+        
+        public WeaponRifle weaponRifle;
+        
         public InteractablePoseData defaultPoseData;
         
-        public Transform[] fingerNodes;
-
-        public WeaponRifle weaponRifle;
-
         private void Start()
         {
 #if UNITY_EDITOR

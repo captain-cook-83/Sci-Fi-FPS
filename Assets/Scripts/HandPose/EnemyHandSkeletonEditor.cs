@@ -47,7 +47,7 @@ namespace Cc83.HandPose
                 data.handLocalRotation = Quaternion.Inverse(interactableTransform.rotation) * handTransform.rotation;        // TODO 旋转存在问题，需要借助第二次（ Playing模式下的 IK ）生成校准
             }
             
-            var savePath = EditorUtility.SaveFilePanelInProject("Save Path", interactableTransform.name + handSide + "WeaponPose", "asset", "Select to Save WeaponPoseData.", DefaultPath);
+            var savePath = EditorUtility.SaveFilePanelInProject("Save Path", interactableTransform.name + "_" + gameObject.name + "_" + handSide + "WeaponPose", "asset", "Select to Save WeaponPoseData.", DefaultPath);
             if (string.IsNullOrEmpty(savePath))
             {
                 Debug.Log("GenerateWeaponPose Canceled.");

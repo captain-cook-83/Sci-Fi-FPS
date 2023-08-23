@@ -27,6 +27,8 @@ namespace Cc83.Interactable
         private InteractablePoseData primaryPoseData;
         
         private InteractablePoseData secondaryPoseData;
+
+        private Quaternion primaryRotationOffset;
         
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
@@ -90,28 +92,24 @@ namespace Cc83.Interactable
                 case 1:
                     var interactor = grabInteractable.interactorsSelecting[0];
                     var interactorAttachTransform = interactor.GetAttachTransform(grabInteractable);
-                    var interactableAttachTransform = grabInteractable.GetAttachTransform(interactor);
-                    
+
                     if (grabInteractable.trackRotation)
                     {
-                        var interactableTransform = grabInteractable.transform;
-                        var rotationOffset = Quaternion.Inverse(Quaternion.Inverse(interactableTransform.rotation) * interactableAttachTransform.rotation);
-                        targetPose.rotation = interactorAttachTransform.rotation * rotationOffset;
+                        targetPose.rotation = interactorAttachTransform.rotation * primaryRotationOffset;
                     }
                     
                     if (grabInteractable.trackPosition)
                     {
+                        var interactableAttachTransform = grabInteractable.GetAttachTransform(interactor);
                         targetPose.position = interactorAttachTransform.TransformPoint(-interactableAttachTransform.localPosition);
                     }
                     break;
                 case 2:         // TODO 此处假设 Primary Interactor 为数组中子一个元素，但尚未确认是否与底层 API 承诺一致
                     var primaryInteractor = grabInteractable.interactorsSelecting[0];
                     var primaryAttachTransform = primaryInteractor.GetAttachTransform(grabInteractable);
-                    var primaryInteractableAttachTransform = grabInteractable.GetAttachTransform(primaryInteractor);
                     
                     var secondaryInteractor = grabInteractable.interactorsSelecting[1];
                     var secondaryAttachTransform = secondaryInteractor.GetAttachTransform(grabInteractable);
-                    var secondaryInteractableAttachTransform = grabInteractable.GetAttachTransform(secondaryInteractor);
                     
                     var primaryProjection = primaryAttachTransform.TransformPoint(primaryPoseData.handProjection);
                     var secondaryProjection = secondaryAttachTransform.TransformPoint(secondaryPoseData.handProjection);
@@ -122,18 +120,9 @@ namespace Cc83.Interactable
                         var secondaryFixShell = secondaryHandController.interactableFixShell;
                         
                         targetPose.rotation = Quaternion.LookRotation(secondaryProjection - primaryProjection, 
-                            (secondaryFixShell.up /* TODO 辅助手掌手心上方向 */ + primaryFixShell.forward /* TODO 主要手掌虎口上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
+                            (primaryFixShell.forward /* TODO 主要手掌虎口上方向 */ + secondaryFixShell.up /* TODO 辅助手掌手心上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
 
-                        var interactableTransform = grabInteractable.transform;
-                        var interactableForward = interactableTransform.forward;
-                        // primaryHandController.interactableBindableShell.rotation = primaryFixShell.rotation * Quaternion.FromToRotation(grabInteractable.transform.forward, targetPose.forward);
-                        // primaryHandController.interactableBindableShell.rotation =
-                        //     Quaternion.LookRotation(Quaternion.Inverse(Quaternion.FromToRotation(primaryAttachTransform.forward, interactableForward)) * (targetPose.rotation * interactableForward));
-
-                        // var primaryAttachPoint = primaryAttachTransform.position;
-                        // var nextPrimaryAttachPoint = targetPose.rotation * (Quaternion.Inverse(interactableTransform.rotation) * primaryAttachPoint);
-                        // primaryHandController.interactableBindableShell.rotation =
-                        //     Quaternion.FromToRotation(primaryAttachPoint, nextPrimaryAttachPoint);
+                        primaryHandController.interactableBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(primaryRotationOffset);
                     }
 
                     if (grabInteractable.trackPosition)
@@ -156,6 +145,9 @@ namespace Cc83.Interactable
             var primaryActivatePose = primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
             primaryHandController.SetPoseData(primaryPoseData, primaryActivatePose);
             attachTransform.SetLocalPositionAndRotation(-primaryPoseData.handLocalPosition, Quaternion.Inverse(primaryPoseData.handLocalRotation));
+            
+            var interactableAttachTransform = grabInteractable.GetAttachTransform(interactor);
+            primaryRotationOffset = Quaternion.Inverse(Quaternion.Inverse(grabInteractable.transform.rotation) * interactableAttachTransform.rotation);
 
             if (firstGrab)
             {

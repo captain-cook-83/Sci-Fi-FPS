@@ -103,31 +103,33 @@ namespace Cc83.Interactable
                     var primaryInteractor = grabInteractable.interactorsSelecting[0];
                     var primaryAttachTransform = primaryInteractor.GetAttachTransform(grabInteractable);
                     var primaryProjection = primaryAttachTransform.TransformPoint(primaryPoseData.handProjection);
+                    
+                    var secondaryBindableShell = secondaryHandController.interactableBindableShell;
 
                     if (grabInteractable.trackRotation)         // 首先计算旋转
                     {
-                        var secondaryInteractor = grabInteractable.interactorsSelecting[1];
-                        var secondaryAttachTransform = secondaryInteractor.GetAttachTransform(grabInteractable);
-                        var secondaryProjection = secondaryAttachTransform.TransformPoint(secondaryPoseData.handProjection);
+                        var secondaryFixShell = secondaryHandController.interactableFixShell;
+                        var secondaryProjection = secondaryFixShell.TransformPoint(secondaryPoseData.handProjection);
                         
                         var primaryFixShell = primaryHandController.interactableFixShell;
-                        var secondaryFixShell = secondaryHandController.interactableFixShell;
-                        
                         targetPose.rotation = Quaternion.LookRotation(secondaryProjection - primaryProjection, 
                             (primaryFixShell.forward /* TODO 主要手掌虎口上方向 */ + secondaryFixShell.up /* TODO 辅助手掌手心上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
 
                         var primaryBindableShell = primaryHandController.interactableBindableShell;
-                        var secondaryBindableShell = secondaryHandController.interactableBindableShell;
-
                         primaryBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(primaryPoseData.handLocalRotation);
                         secondaryBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(secondaryPoseData.handLocalRotation);
-                        // secondaryBindableShell.position = grabInteractable.transform.TransformPoint(-secondaryPoseData.handLocalPosition);
                     }
 
                     if (grabInteractable.trackPosition)
                     {
                         targetPose.position = primaryProjection - primaryPoseData.handProjectionLength * targetPose.forward;
                     }
+                    else
+                    {
+                        targetPose.position = grabInteractable.transform.position;
+                    }
+                    
+                    secondaryBindableShell.position = targetPose.position - secondaryBindableShell.rotation * secondaryPoseData.handLocalPosition;
                     break;
             }
         }

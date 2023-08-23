@@ -29,6 +29,8 @@ namespace Cc83.Interactable
         private InteractablePoseData secondaryPoseData;
 
         private Quaternion primaryRotationOffset;
+
+        private Quaternion secondaryRotationOffset;
         
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
@@ -79,6 +81,9 @@ namespace Cc83.Interactable
                     secondaryPoseData = secondaryHandController.side == HandSide.Left ? interactablePose.secondaryLeftPose : interactablePose.secondaryRightPose;
                     secondaryHandController.SetPoseData(secondaryPoseData, secondaryPoseData);
                     secondaryAttachTransform.SetLocalPositionAndRotation(-secondaryPoseData.handLocalPosition, Quaternion.Inverse(secondaryPoseData.handLocalRotation));
+                    
+                    var interactableAttachTransform = grabInteractable.GetAttachTransform(secondaryInteractor);
+                    secondaryRotationOffset = Quaternion.Inverse(Quaternion.Inverse(grabInteractable.transform.rotation) * interactableAttachTransform.rotation);
                     break;
             }
         }
@@ -123,6 +128,7 @@ namespace Cc83.Interactable
                             (primaryFixShell.forward /* TODO 主要手掌虎口上方向 */ + secondaryFixShell.up /* TODO 辅助手掌手心上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
 
                         primaryHandController.interactableBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(primaryRotationOffset);
+                        secondaryHandController.interactableBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(secondaryRotationOffset);
                     }
 
                     if (grabInteractable.trackPosition)
@@ -137,7 +143,7 @@ namespace Cc83.Interactable
         {
             var interactor = grabInteractable.interactorsSelecting[0];
             var interactablePose = grabInteractable.GetComponent<InteractablePose>();
-            var attachTransform = grabInteractable.attachTransform;
+            var attachTransform = grabInteractable.GetAttachTransform(interactor);
 
             primaryHandController = interactor.transform.GetComponentInParent<HandController>();
             primaryPoseData = primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;

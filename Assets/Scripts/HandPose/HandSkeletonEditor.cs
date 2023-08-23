@@ -225,6 +225,12 @@ namespace Cc83.HandPose
             interactableTransform.SetParent(handTransform);
             data.handLocalRotation = interactableTransform.localRotation;
             interactableTransform.SetParent(interactableParent);
+
+            var handPosition = handTransform.position;
+            var interactablePosition = interactableTransform.position;
+            var interactableForward = interactableTransform.forward;
+            data.handProjectionLength = Vector3.Dot(handPosition - interactablePosition, interactableForward);
+            data.handProjection = handTransform.InverseTransformPoint(interactablePosition + interactableForward * data.handProjectionLength);
             
             var savePath = EditorUtility.SaveFilePanelInProject("Save Path", interactableTransform.name + handSide + "InteractablePose", "asset", "Select to Save InteractablePoseData.", DefaultPath);
             if (string.IsNullOrEmpty(savePath))

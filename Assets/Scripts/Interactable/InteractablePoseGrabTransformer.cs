@@ -1,7 +1,6 @@
 using System.Collections;
 using Cc83.Character;
 using Cc83.HandPose;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Transformers;
@@ -24,6 +23,10 @@ namespace Cc83.Interactable
         private HandController primaryHandController;
 
         private HandController secondaryHandController;
+
+        private InteractablePoseData primaryPoseData;
+        
+        private InteractablePoseData secondaryPoseData;
         
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
@@ -53,26 +56,27 @@ namespace Cc83.Interactable
                     {
                         primaryHandController.ResetBindableShell();
                         primaryHandController = null;
+                        primaryPoseData = default;
                     }
                     
                     if (secondaryHandController)                // means from 2 to 1
                     {
                         secondaryHandController.ResetBindableShell();
                         secondaryHandController = null;
+                        secondaryPoseData = default;
                         
                         SetPrimaryInteractor(grabInteractable, false);
                     }
                     break;
                 case 2:
                     var secondaryInteractor = grabInteractable.interactorsSelecting[1];
-                    secondaryHandController = secondaryInteractor.transform.GetComponentInParent<HandController>();
-            
                     var interactablePose = grabInteractable.GetComponent<InteractablePose>();
-                    var secondaryPose = secondaryHandController.side == HandSide.Left ? interactablePose.secondaryLeftPose : interactablePose.secondaryRightPose;
                     var secondaryAttachTransform = grabInteractable.secondaryAttachTransform;
-            
-                    secondaryHandController.SetPoseData(secondaryPose, secondaryPose);
-                    secondaryAttachTransform.SetLocalPositionAndRotation(-secondaryPose.handLocalPosition, Quaternion.Inverse(secondaryPose.handLocalRotation));
+                    
+                    secondaryHandController = secondaryInteractor.transform.GetComponentInParent<HandController>();
+                    secondaryPoseData = secondaryHandController.side == HandSide.Left ? interactablePose.secondaryLeftPose : interactablePose.secondaryRightPose;
+                    secondaryHandController.SetPoseData(secondaryPoseData, secondaryPoseData);
+                    secondaryAttachTransform.SetLocalPositionAndRotation(-secondaryPoseData.handLocalPosition, Quaternion.Inverse(secondaryPoseData.handLocalRotation));
                     break;
             }
         }
@@ -104,23 +108,37 @@ namespace Cc83.Interactable
                     var primaryInteractor = grabInteractable.interactorsSelecting[0];
                     var primaryAttachTransform = primaryInteractor.GetAttachTransform(grabInteractable);
                     var primaryInteractableAttachTransform = grabInteractable.GetAttachTransform(primaryInteractor);
-                    var primaryHandTransform = primaryHandController.interactableBindableShell;
                     
                     var secondaryInteractor = grabInteractable.interactorsSelecting[1];
                     var secondaryAttachTransform = secondaryInteractor.GetAttachTransform(grabInteractable);
                     var secondaryInteractableAttachTransform = grabInteractable.GetAttachTransform(secondaryInteractor);
-                    var secondaryHandTransform = secondaryHandController.interactableBindableShell;
-
+                    
+                    var primaryProjection = primaryAttachTransform.TransformPoint(primaryPoseData.handProjection);
+                    var secondaryProjection = secondaryAttachTransform.TransformPoint(secondaryPoseData.handProjection);
+                    
                     if (grabInteractable.trackRotation)         // 首先计算旋转
                     {
-                        var direction = secondaryAttachTransform.TransformPoint(new Vector3(-0.08f, 0.06f, 0)) - primaryAttachTransform.position;
-                        targetPose.rotation = Quaternion.LookRotation(direction, (secondaryAttachTransform.up /* TODO 辅助手掌手心上方向 */ + primaryAttachTransform.forward /* TODO 主要手掌虎口上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
+                        var primaryFixShell = primaryHandController.interactableFixShell;
+                        var secondaryFixShell = secondaryHandController.interactableFixShell;
+                        
+                        targetPose.rotation = Quaternion.LookRotation(secondaryProjection - primaryProjection, 
+                            (secondaryFixShell.up /* TODO 辅助手掌手心上方向 */ + primaryFixShell.forward /* TODO 主要手掌虎口上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
+
+                        var interactableTransform = grabInteractable.transform;
+                        var interactableForward = interactableTransform.forward;
+                        // primaryHandController.interactableBindableShell.rotation = primaryFixShell.rotation * Quaternion.FromToRotation(grabInteractable.transform.forward, targetPose.forward);
+                        // primaryHandController.interactableBindableShell.rotation =
+                        //     Quaternion.LookRotation(Quaternion.Inverse(Quaternion.FromToRotation(primaryAttachTransform.forward, interactableForward)) * (targetPose.rotation * interactableForward));
+
+                        // var primaryAttachPoint = primaryAttachTransform.position;
+                        // var nextPrimaryAttachPoint = targetPose.rotation * (Quaternion.Inverse(interactableTransform.rotation) * primaryAttachPoint);
+                        // primaryHandController.interactableBindableShell.rotation =
+                        //     Quaternion.FromToRotation(primaryAttachPoint, nextPrimaryAttachPoint);
                     }
 
                     if (grabInteractable.trackPosition)
                     {
-                        targetPose.position = primaryAttachTransform.position +
-                                              primaryInteractableAttachTransform.localPosition.magnitude * targetPose.forward;
+                        targetPose.position = primaryProjection - primaryPoseData.handProjectionLength * targetPose.forward;
                     }
                     break;
             }
@@ -129,15 +147,15 @@ namespace Cc83.Interactable
         private void SetPrimaryInteractor(XRGrabInteractable grabInteractable, bool firstGrab = true)
         {
             var interactor = grabInteractable.interactorsSelecting[0];
-            primaryHandController = interactor.transform.GetComponentInParent<HandController>();
-            
             var interactablePose = grabInteractable.GetComponent<InteractablePose>();
-            var primaryPose = primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
-            var primaryActivatePose = primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
             var attachTransform = grabInteractable.attachTransform;
+
+            primaryHandController = interactor.transform.GetComponentInParent<HandController>();
+            primaryPoseData = primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
             
-            primaryHandController.SetPoseData(primaryPose, primaryActivatePose);
-            attachTransform.SetLocalPositionAndRotation(-primaryPose.handLocalPosition, Quaternion.Inverse(primaryPose.handLocalRotation));
+            var primaryActivatePose = primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
+            primaryHandController.SetPoseData(primaryPoseData, primaryActivatePose);
+            attachTransform.SetLocalPositionAndRotation(-primaryPoseData.handLocalPosition, Quaternion.Inverse(primaryPoseData.handLocalRotation));
 
             if (firstGrab)
             {

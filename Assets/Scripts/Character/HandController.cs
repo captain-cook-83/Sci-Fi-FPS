@@ -21,6 +21,8 @@ namespace Cc83.Character
 
         public Transform interactableBindableShell;
 
+        public Transform interactableFixShell;
+
         private void OnValidate()
         {
             if (skeleton != null)
@@ -42,11 +44,15 @@ namespace Cc83.Character
         public void SetPoseData(HandPoseData selectPoseData, HandPoseData activatePoseData)
         {
             skeleton.SetPoseData(selectPoseData, activatePoseData, activateAnimateSpeed);
+            
+            ResetBindableShell();
         }
 
         public void ClearPoseData()
         {
             skeleton.ClearPoseData();
+            
+            ResetBindableShell();
         }
 
         public void Shake()

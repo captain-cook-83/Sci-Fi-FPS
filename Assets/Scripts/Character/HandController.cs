@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Cc83.HandPose;
 using RootMotion.FinalIK;
 using Sirenix.OdinInspector;
@@ -66,15 +65,10 @@ namespace Cc83.Character
             }
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void RotateBindableShell(ref Quaternion rotation)
-        {
-            interactableBindableShell.rotation = rotation;
-        }
-
         public void ResetBindableShell()
         {
             interactableBindableShell.localRotation = Quaternion.identity;
+            interactableBindableShell.localPosition = Vector3.zero;
         }
 
 #if UNITY_EDITOR

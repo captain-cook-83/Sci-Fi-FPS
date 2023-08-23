@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Cc83.HandPose;
 using RootMotion.FinalIK;
 using Sirenix.OdinInspector;
@@ -17,6 +18,8 @@ namespace Cc83.Character
         public float activateAnimateSpeed = 20;
 
         public Animator shootingShakeAnimator;
+
+        public Transform interactableBindableShell;
 
         private void OnValidate()
         {
@@ -55,6 +58,17 @@ namespace Cc83.Character
             {
                 Debug.LogWarning($"Missing hand shaking animation for {name}");
             }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void RotateBindableShell(ref Quaternion rotation)
+        {
+            interactableBindableShell.rotation = rotation;
+        }
+
+        public void ResetBindableShell()
+        {
+            interactableBindableShell.localRotation = Quaternion.identity;
         }
 
 #if UNITY_EDITOR

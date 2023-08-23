@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Cc83.Interactable;
 using UnityEngine;
 
@@ -39,6 +40,7 @@ namespace Cc83.HandPose
             SetFingerNodes(defaultPoseData);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void SetFingerNodes(HandPoseData data)
         {
             for (var i = 0; i < fingerNodes.Length; i++)

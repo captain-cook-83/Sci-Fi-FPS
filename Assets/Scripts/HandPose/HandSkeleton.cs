@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
@@ -190,6 +191,7 @@ namespace Cc83.HandPose
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void CalculateFingerNodes(IEnumerable<int> indexes, float value)
         {
             foreach (var index in indexes)
@@ -207,6 +209,7 @@ namespace Cc83.HandPose
             }
         }
         
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void SetFingerNodes(HandPoseData data)
         {
             for (var i = 0; i < fingerNodes.Length; i++)

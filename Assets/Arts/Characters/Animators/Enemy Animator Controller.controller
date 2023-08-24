@@ -1081,61 +1081,61 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Speed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Direction
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Moving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Crouching
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Death
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Headshot Death
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Shooting@Single
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Shooting@Reload
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Toss
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1150,13 +1150,40 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: IK Layer
+    m_Name: Weapon & IK Layer
     m_StateMachine: {fileID: 3132171942606616351}
     m_Mask: {fileID: 0}
-    m_Motions: []
+    m_Motions:
+    - serializedVersion: 2
+      m_State: {fileID: 6253594672544483668}
+      m_Motion: {fileID: 1939822377506209900}
+    - serializedVersion: 2
+      m_State: {fileID: -3359360232160563664}
+      m_Motion: {fileID: 7400000, guid: 44f53afb725883246a43d2feb55f0c19, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -797112569715058981}
+      m_Motion: {fileID: 7400000, guid: b3ffde8016d654347a44a6a93672cbe9, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -5007411362672848551}
+      m_Motion: {fileID: 7400000, guid: 44f53afb725883246a43d2feb55f0c19, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -4298004036327688350}
+      m_Motion: {fileID: 7400000, guid: 4e755801e786ea64c83549413961f012, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -3925801420830906378}
+      m_Motion: {fileID: 7400000, guid: 44f53afb725883246a43d2feb55f0c19, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 3769544500499360146}
+      m_Motion: {fileID: 7400000, guid: 44f53afb725883246a43d2feb55f0c19, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -2806465977724890086}
+      m_Motion: {fileID: 7400000, guid: cdb2b3fe075a9294eb2a5a37bf27cded, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -793390089017850510}
+      m_Motion: {fileID: 3129065552584986910}
     m_Behaviours: []
     m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
+    m_SyncedLayerIndex: 0
     m_DefaultWeight: 1
     m_IKPass: 1
     m_SyncedLayerAffectsTiming: 0
@@ -1377,6 +1404,45 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!206 &1939822377506209900
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blend Tree
+  m_Childs:
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: a2e2f5ad8a0552c48871086481f83048, type: 2}
+    m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Tensity
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 44f53afb725883246a43d2feb55f0c19, type: 2}
+    m_Threshold: 0.5
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Tensity
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 37a23d168743a0f4fb07e17209b10514, type: 2}
+    m_Threshold: 1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Tensity
+    m_Mirror: 0
+  m_BlendParameter: Tensity
+  m_BlendParameterY: Tensity
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 1
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
 --- !u!1107 &2008141132994394796
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1612,6 +1678,37 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!206 &3129065552584986910
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blend Tree
+  m_Childs:
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 11feed66c72059044adcd0c3213445af, type: 2}
+    m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Tensity
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: f803bef60ab5a0a419e6a865039a3d93, type: 2}
+    m_Threshold: 1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Tensity
+    m_Mirror: 0
+  m_BlendParameter: Tensity
+  m_BlendParameterY: Tensity
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 1
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
 --- !u!1107 &3132171942606616351
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1619,7 +1716,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IK Layer
+  m_Name: Weapon & IK Layer
   m_ChildStates: []
   m_ChildStateMachines: []
   m_AnyStateTransitions: []

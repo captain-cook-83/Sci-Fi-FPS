@@ -116,8 +116,7 @@ namespace Cc83.Interactable
                         var secondaryProjection = secondaryFixShell.TransformPoint(secondaryPoseData.handProjection);
                         var secondaryRotationAxis = secondaryFixShell.TransformVector(secondaryHandController.secondaryRotationAxis);
                         
-                        targetPose.rotation = Quaternion.LookRotation(secondaryProjection - primaryProjection, 
-                            (primaryRotationAxis /* 主要手掌虎口上方向 */ + secondaryRotationAxis /* 辅助手掌手心上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
+                        targetPose.rotation = Quaternion.LookRotation(secondaryProjection - primaryProjection, (primaryRotationAxis + secondaryRotationAxis) * 0.5f);   // 双手同时控制物体翻转方向
                         
                         primaryBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(primaryPoseData.handLocalRotation);
                         secondaryBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(secondaryPoseData.handLocalRotation);

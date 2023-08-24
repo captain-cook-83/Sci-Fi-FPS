@@ -22,8 +22,10 @@ namespace Cc83.Character
 
         public Transform interactableFixShell;
 
+        [Tooltip("主要手掌虎口上方向")]
         public Vector3 primaryRotationAxis;
         
+        [Tooltip("辅助手掌手心上方向")]
         public Vector3 secondaryRotationAxis;
 
         private void OnValidate()

@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.07
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3134109024764984997
 MonoBehaviour:
@@ -1352,6 +1352,8 @@ MonoBehaviour:
   shootingShakeAnimator: {fileID: 3091119494086394390}
   interactableBindableShell: {fileID: 5609340519421086449}
   interactableFixShell: {fileID: 7792208693335709475}
+  primaryRotationAxis: {x: 0, y: 0, z: 1}
+  secondaryRotationAxis: {x: 0, y: -1, z: 0}
 --- !u!1 &3783514437745859332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,6 +1687,8 @@ MonoBehaviour:
   shootingShakeAnimator: {fileID: 8313322746683536187}
   interactableBindableShell: {fileID: 4429344691239609784}
   interactableFixShell: {fileID: 2007415224202492889}
+  primaryRotationAxis: {x: 0, y: 0, z: -1}
+  secondaryRotationAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &4694021074204504026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1774,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.07
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6348433113851310488
 MonoBehaviour:
@@ -4229,10 +4233,10 @@ MonoBehaviour:
   m_PositionInput:
     m_UseReference: 0
     m_Action:
-      m_Name: Position Input
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: c0f7aefd-5e62-4bc8-b36e-2be35d7db44a
+      m_Id: 
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -4241,10 +4245,10 @@ MonoBehaviour:
   m_RotationInput:
     m_UseReference: 0
     m_Action:
-      m_Name: Rotation Input
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 7bd6b7aa-a1ca-401d-9b7d-5df84b2c121d
+      m_Id: 
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []

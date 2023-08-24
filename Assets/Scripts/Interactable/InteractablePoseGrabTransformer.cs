@@ -108,14 +108,17 @@ namespace Cc83.Interactable
 
                     if (grabInteractable.trackRotation)         // 首先计算旋转
                     {
+                        var primaryFixShell = primaryHandController.interactableFixShell;
+                        var primaryBindableShell = primaryHandController.interactableBindableShell;
+                        var primaryRotationAxis = primaryFixShell.TransformVector(primaryHandController.primaryRotationAxis);
+                        
                         var secondaryFixShell = secondaryHandController.interactableFixShell;
                         var secondaryProjection = secondaryFixShell.TransformPoint(secondaryPoseData.handProjection);
+                        var secondaryRotationAxis = secondaryFixShell.TransformVector(secondaryHandController.secondaryRotationAxis);
                         
-                        var primaryFixShell = primaryHandController.interactableFixShell;
                         targetPose.rotation = Quaternion.LookRotation(secondaryProjection - primaryProjection, 
-                            (primaryFixShell.forward /* TODO 主要手掌虎口上方向 */ + secondaryFixShell.up /* TODO 辅助手掌手心上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
-
-                        var primaryBindableShell = primaryHandController.interactableBindableShell;
+                            (primaryRotationAxis /* 主要手掌虎口上方向 */ + secondaryRotationAxis /* 辅助手掌手心上方向 */) * 0.5f);      // 双手同时控制物体翻转方向
+                        
                         primaryBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(primaryPoseData.handLocalRotation);
                         secondaryBindableShell.rotation = targetPose.rotation * Quaternion.Inverse(secondaryPoseData.handLocalRotation);
                     }

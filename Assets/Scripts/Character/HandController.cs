@@ -22,6 +22,10 @@ namespace Cc83.Character
 
         public Transform interactableFixShell;
 
+        public Vector3 primaryRotationAxis;
+        
+        public Vector3 secondaryRotationAxis;
+
         private void OnValidate()
         {
             if (skeleton != null)

@@ -353,12 +353,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392a139b49d63bf46b36567dc220bee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryLeftPose: {fileID: 0}
-  primaryLeftActivatePose: {fileID: 0}
+  primaryLeftPose: {fileID: 11400000, guid: 210faa7b681a81b4d88795beeda70f30, type: 2}
+  primaryLeftActivatePose: {fileID: 11400000, guid: d93eb965e8507bb4482db70e2a2340db, type: 2}
   primaryRightPose: {fileID: 11400000, guid: faf472618adf96042b5c9b35846007fa, type: 2}
   primaryRightActivatePose: {fileID: 11400000, guid: cee596fb94660d74ab229d085effe5d3, type: 2}
   secondaryLeftPose: {fileID: 11400000, guid: 72a13c1f103374348bfcf72ff9cca6aa, type: 2}
-  secondaryRightPose: {fileID: 0}
+  secondaryRightPose: {fileID: 11400000, guid: 5ce084c34cd9e00408ea492e1016f8fd, type: 2}
 --- !u!114 &4346956484536782152
 MonoBehaviour:
   m_ObjectHideFlags: 0

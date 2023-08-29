@@ -123,6 +123,20 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &175999693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI LeftHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 7f0fbddd-af22-40e9-88b6-68098c640144
 --- !u!43 &194176570
 Mesh:
   m_ObjectHideFlags: 0
@@ -288,6 +302,20 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &211879319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Touched
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: d5fedd2e-b1d5-49e6-9679-cdcdbf66efdf
 --- !u!1001 &411629711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 1040640915}
     - target: {fileID: 4027807884105854454, guid: c333bd8224501c346a46482a32181816, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4027807884105854454, guid: c333bd8224501c346a46482a32181816, type: 3}
       propertyPath: m_LocalPosition.y
@@ -734,34 +762,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b16909f3f530c343a40b2353a54bddb, type: 3}
---- !u!114 &671330560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI LeftHand Interaction/Secondary Touched
-  m_EditorClassIdentifier: 
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 7f0fbddd-af22-40e9-88b6-68098c640144
---- !u!114 &725258368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI RightHand Interaction/Secondary Touched
-  m_EditorClassIdentifier: 
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: d5fedd2e-b1d5-49e6-9679-cdcdbf66efdf
 --- !u!114 &897663435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,20 +781,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 767094428698567394, guid: b4bdb3fe91ef0ec4da2f1ee14bf0ac1f, type: 3}
   m_PrefabInstance: {fileID: 656514334}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1012619760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI LeftHand Interaction/Secondary Button
-  m_EditorClassIdentifier: 
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 4b3b5651-c754-430c-80d8-c204f796d1cf
 --- !u!1001 &1040640911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1062,6 +1048,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActionId: 4b3b5651-c754-430c-80d8-c204f796d1cf
+--- !u!114 &1162150706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI LeftHand Interaction/Secondary Button
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 4b3b5651-c754-430c-80d8-c204f796d1cf
 --- !u!114 &1263145073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,6 +1274,20 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1302358829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI RightHand Interaction/Secondary Button
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
 --- !u!4 &1360777728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8156330331801970630, guid: c333bd8224501c346a46482a32181816, type: 3}
@@ -1590,20 +1604,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &1739764566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI RightHand Interaction/Secondary Button
-  m_EditorClassIdentifier: 
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 8dcbc738-32ee-4504-aec9-5625d23365dd
 --- !u!43 &1859584185
 Mesh:
   m_ObjectHideFlags: 0

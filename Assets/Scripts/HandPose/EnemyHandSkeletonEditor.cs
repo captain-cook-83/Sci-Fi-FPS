@@ -19,8 +19,8 @@ namespace Cc83.HandPose
         {
             return handSide switch
             {
-                HandSide.Left => weaponRifle.secondaryAnchor,
-                HandSide.Right => weaponRifle.primaryAnchor,
+                HandSide.Left => weaponReference.weapon.secondaryAnchor,
+                HandSide.Right => weaponReference.weapon.primaryAnchor,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
@@ -30,7 +30,7 @@ namespace Cc83.HandPose
         public void GenerateWeaponPose()
         {
             
-            var interactableTransform = weaponRifle.transform;
+            var interactableTransform = weaponReference.weapon.transform;
             var data = ScriptableObject.CreateInstance<InteractablePoseData>();
             data.side = handSide;
             data.rotations = GetFingerNodes();
@@ -83,7 +83,7 @@ namespace Cc83.HandPose
                 return;
             }
             
-            var interactableTransform = weaponRifle.transform;
+            var interactableTransform = weaponReference.weapon.transform;
             handTransform.localRotation = Quaternion.Inverse(handTransform.parent.rotation) * (interactableTransform.rotation * data.handLocalRotation);
             handTransform.position = interactableTransform.TransformPoint(data.handLocalPosition);
             

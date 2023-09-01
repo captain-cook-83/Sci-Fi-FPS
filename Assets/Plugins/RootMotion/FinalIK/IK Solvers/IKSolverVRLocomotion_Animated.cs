@@ -192,7 +192,7 @@ namespace RootMotion.FinalIK
             {
                 if (animator == null)
                 {
-                    Debug.LogError("VRIK cannot find Animator on the VRIK root gameobject.", solver.root);
+                    // Debug.LogError("VRIK cannot find Animator on the VRIK root gameobject.", solver.root);
                     return;
                 }
 
@@ -200,7 +200,7 @@ namespace RootMotion.FinalIK
 
                 if (!animator.enabled)
                 {
-                    Debug.LogWarning("Trying to use VRIK animated locomotion with a disabled animator!", solver.root);
+                    // Debug.LogWarning("Trying to use VRIK animated locomotion with a disabled animator!", solver.root);
                     return;
                 }
 

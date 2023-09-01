@@ -2,12 +2,18 @@ using UnityEngine;
 
 namespace Cc83.Character
 {
+    [RequireComponent(typeof(WeaponReference))]
     public class HoldWeaponIKController : MonoBehaviour
     {
         private const float StopFactor = 0.1f;
         
-        public Transform rAnchor;
-        public Transform lAnchor;
+        public Transform aimingAxis;
+
+        public Transform aimTowards;
+        
+        public bool aimingActive;
+
+        private WeaponReference weaponReference;
         
         public bool primaryIk
         {
@@ -46,7 +52,7 @@ namespace Cc83.Character
         private bool primaryIkValue = true;
         [SerializeField]
         private bool secondaryIkValue = true;
-        
+
         private float primaryLerpWeight;
         private float secondaryLerpWeight;
         
@@ -55,6 +61,7 @@ namespace Cc83.Character
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            weaponReference = GetComponent<WeaponReference>();
             
             primaryLerpWeight = primaryIkValue ? 1 : 0;
             secondaryLerpWeight = secondaryIkValue ? 1 : 0;
@@ -62,6 +69,11 @@ namespace Cc83.Character
 
         private void OnAnimatorIK(int layerIndex)
         {
+            if (aimingActive)
+            {
+                aimingAxis.LookAt(aimTowards.position);
+            }
+            
             if (layerIndex == activeLayerIndex)
             {
                 var weight = animator.GetLayerWeight(layerIndex);
@@ -75,7 +87,7 @@ namespace Cc83.Character
                             weight = primaryLerpWeight;
                         }
                         
-                        SetHandIK(AvatarIKGoal.RightHand, rAnchor, weight);
+                        SetHandIK(AvatarIKGoal.RightHand, weaponReference.weapon.primaryAnchor, weight);
                     }
 
                     if (secondaryIkValue)
@@ -86,7 +98,7 @@ namespace Cc83.Character
                             weight = secondaryLerpWeight;
                         }
                         
-                        SetHandIK(AvatarIKGoal.LeftHand, lAnchor, weight);
+                        SetHandIK(AvatarIKGoal.LeftHand, weaponReference.weapon.secondaryAnchor, weight);
                     }
                 }
             }

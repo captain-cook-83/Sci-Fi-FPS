@@ -1,19 +1,25 @@
 using System.Runtime.CompilerServices;
-using Cc83.Interactable;
+using Cc83.Character;
 using UnityEngine;
 
 namespace Cc83.HandPose
 {
+    [RequireComponent(typeof(WeaponReference))]
     public partial class EnemyHandSkeleton : MonoBehaviour
     {
         public HandSide handSide;
         
         public Transform[] fingerNodes;
-        
-        public WeaponRifle weaponRifle;
-        
+
         public InteractablePoseData defaultPoseData;
         
+        private WeaponReference weaponReference;
+
+        private void Awake()
+        {
+            weaponReference = GetComponent<WeaponReference>();
+        }
+
         private void Start()
         {
 #if UNITY_EDITOR
@@ -23,10 +29,10 @@ namespace Cc83.HandPose
             switch (handSide)
             {
                 case HandSide.Left:
-                    weaponRifle.RefreshSecondaryAnchor(defaultPoseData.handLocalPosition, defaultPoseData.handLocalRotation);
+                    weaponReference.weapon.RefreshSecondaryAnchor(defaultPoseData.handLocalPosition, defaultPoseData.handLocalRotation);
                     break;
                 case HandSide.Right:
-                    weaponRifle.RefreshPrimaryAnchor(defaultPoseData.handLocalPosition, defaultPoseData.handLocalRotation);
+                    weaponReference.weapon.RefreshPrimaryAnchor(defaultPoseData.handLocalPosition, defaultPoseData.handLocalRotation);
                     break;
             }
         }

@@ -75,5 +75,5 @@ MonoBehaviour:
     ImpactEffect: {fileID: 168394, guid: 93983eaa39ee5d4408c0b10200e234b4, type: 3}
     DecalEffect: {fileID: 0}
   - MaterialType: 9
-    ImpactEffect: {fileID: 149956, guid: 3dc518bed1b2ee14481a2a155c19da18, type: 3}
+    ImpactEffect: {fileID: 100010, guid: 6e63997523a2e4644b00bb5cbd767389, type: 3}
     DecalEffect: {fileID: 0}

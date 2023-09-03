@@ -28,6 +28,7 @@
 								<Bus Name="Enemies" ID="{785056AB-B53E-4B1F-9B3D-F29B9480FDB6}"/>
 							</ChildrenList>
 						</Bus>
+						<Bus Name="Environments" ID="{FD7DB995-CEB2-4402-96C5-84A867173FAA}"/>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

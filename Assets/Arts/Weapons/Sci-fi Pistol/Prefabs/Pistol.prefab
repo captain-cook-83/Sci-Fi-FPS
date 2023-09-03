@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 3936229787917516462}
   - component: {fileID: 8353974294283248308}
   - component: {fileID: 8619524096512874723}
-  - component: {fileID: 7314451884019509861}
+  - component: {fileID: 2732221021826238351}
   m_Layer: 8
   m_Name: Pistol
   m_TagString: Untagged
@@ -1112,7 +1112,7 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &7314451884019509861
+--- !u!114 &2732221021826238351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

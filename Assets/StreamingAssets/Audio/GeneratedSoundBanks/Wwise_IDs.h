@@ -13,9 +13,12 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID AMBIENCE_BATTLE = 56249730U;
         static const AkUniqueID CATCH_PISTOL_PLAYER = 2910980232U;
         static const AkUniqueID FIRE_PISTOL_PLAYER = 1828056235U;
         static const AkUniqueID FIRE_RIFLE_ENEMY = 2154019335U;
+        static const AkUniqueID FIRE_RIFLE_PLAYER = 2148509378U;
+        static const AkUniqueID MUSIC_BATTLE = 3782024871U;
     } // namespace EVENTS
 
     namespace BANKS
@@ -28,6 +31,7 @@ namespace AK
     {
         static const AkUniqueID CHARACTERS = 1557941045U;
         static const AkUniqueID ENEMIES = 2242381963U;
+        static const AkUniqueID ENVIRONMENTS = 3761286811U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID PLAYER = 1069431850U;
     } // namespace BUSSES

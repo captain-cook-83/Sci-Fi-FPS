@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{FD9F5B85-EDA7-B37D-E256-FDA66EDCD6BD}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{A339580E-C39A-7165-71D8-09E69668D6C7}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -22,10 +22,11 @@
 				<Bus Id="1069431850" Name="Player"/>
 				<Bus Id="1557941045" Name="Characters"/>
 				<Bus Id="2242381963" Name="Enemies"/>
+				<Bus Id="3761286811" Name="Environments"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{E6CC2526-72E0-7569-0127-D30C95737B02}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{B511B060-C4CF-A36E-1BD4-0BFA104DD7C0}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -33,9 +34,23 @@
 					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
 					<CachePath>SFX/Pistol_01_Fire_05_SFX_10C4C929.wem</CachePath>
 				</File>
+				<File Id="423818807" Language="SFX" Streaming="true" Location="Loose">
+					<ShortName>weapon-ambience-world-war-ii-battlefield-01-153373.wav</ShortName>
+					<Path>Media/423818807.wem</Path>
+					<CachePath>SFX/weapon-ambience-world-war-ii-battlefield-01-153373_D79FB2B7.wem</CachePath>
+				</File>
 				<File Id="611201981" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Handling_Gun_01_Arming_SFX.wav</ShortName>
 					<CachePath>SFX/Handling_Gun_01_Arming_SFX_10C4C929.wem</CachePath>
+				</File>
+				<File Id="856362830" Language="SFX" Streaming="true" Location="Loose">
+					<ShortName>anko-uehara-122618.wav</ShortName>
+					<Path>Media/856362830.wem</Path>
+					<CachePath>SFX/anko-uehara-122618_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="983696497" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>9mm-pistol-shot-6349.wav</ShortName>
+					<CachePath>SFX/9mm-pistol-shot-6349_C99AA468.wem</CachePath>
 				</File>
 				<File Id="1066519671" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Shell\Shell_Short_02_SFX.wav</ShortName>
@@ -47,6 +62,11 @@
 				</File>
 			</Media>
 			<Events>
+				<Event Id="56249730" Name="Ambience_Battle" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="423818807"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2910980232" Name="Catch_Pistol_Player" DurationType="OneShot" DurationMin="0.29165533" DurationMax="0.29165533">
 					<MediaRefs>
 						<MediaRef Id="611201981"/>
@@ -54,18 +74,28 @@
 				</Event>
 				<Event Id="1828056235" Name="Fire_Pistol_Player" DurationType="OneShot" DurationMin="1.5263584" DurationMax="1.9430557">
 					<MediaRefs>
-						<MediaRef Id="240584343"/>
+						<MediaRef Id="983696497"/>
 						<MediaRef Id="1066519671"/>
 						<MediaRef Id="1071995294"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2154019335" Name="Fire_Rifle_Enemy" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.379297" DurationMax="1.379297">
+				<Event Id="2154019335" Name="Fire_Rifle_Enemy" MaxAttenuation="60" DurationType="OneShot" DurationMin="1.379297" DurationMax="1.379297">
 					<MediaRefs>
 						<MediaRef Id="240584343"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="1.379297" DurationMax="1.379297">
+					<MediaRefs>
+						<MediaRef Id="240584343"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3782024871" Name="Music_Battle" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="856362830"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{BBEDD6F9-7E33-A460-418D-F6665D8C5409}</FileHash>
+	<FileHash>{7D4C8930-5B2E-6859-8936-1A58615A5D30}</FileHash>
 </SoundBanksInfo>

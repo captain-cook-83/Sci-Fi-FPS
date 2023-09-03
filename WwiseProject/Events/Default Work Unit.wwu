@@ -18,7 +18,7 @@
 						<Action Name="" ID="{2CEB502B-F523-4CAD-BFF4-E706856ACF0A}" ShortID="56170088">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Pistol_Fire" ID="{1E890500-5219-4C9B-BE53-24BE72B914DD}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+									<ObjectRef Name="Pistol_Fire" ID="{6F6E9F78-A7B5-4D22-9458-9CECD372BA13}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -51,6 +51,42 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Rifle_Fire" ID="{50454BF8-2DCA-4476-8746-586337BF09D1}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Fire_Rifle_Player" ID="{435223F0-8D72-42F6-A3FE-19EA3B7212BD}">
+					<ChildrenList>
+						<Action Name="" ID="{51F9D314-C13C-4904-B5E4-50DC964264E5}" ShortID="222236356">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Rifle_Fire" ID="{1E890500-5219-4C9B-BE53-24BE72B914DD}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Music_Battle" ID="{53DB8851-1D53-49F6-BCFF-F5747D7B0E7B}">
+					<ChildrenList>
+						<Action Name="" ID="{29A70FA7-EA48-49D8-9CCF-E04AF7F77D78}" ShortID="320241353">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM_Anko_Uehara" ID="{6EEBF153-34D9-487B-BFEA-B071828749A7}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Ambience_Battle" ID="{117AF570-2F86-4B19-9956-7E14AFD36CDD}">
+					<ChildrenList>
+						<Action Name="" ID="{A28C8125-DF58-4F72-A7BC-BF82DDE9969F}" ShortID="384913506">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_Ambience" ID="{8659F741-7286-4B25-B404-82F3489EADB3}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

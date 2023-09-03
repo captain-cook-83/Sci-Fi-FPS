@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 7acecc0c93ad324bafaf76b395e165ce
     GuidInternal: 
-    m_lastTime: -8585079796177210642
+    m_lastTime: -8585078491361648174
     List:
     - name: Characters
       guid: 4a2e719a1127324c8071cbab34335cc4
@@ -77,6 +77,23 @@ MonoBehaviour:
         ObjectType: 2
         guid: ab5650783eb51f4b9b3df29b9480fdb6
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Characters\Enemies
+    - name: Environments
+      guid: 95b97dfdb2ce024496c584a867173faa
+      id: 3761286811
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7acecc0c93ad324bafaf76b395e165ce
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Environments
+        ObjectType: 2
+        guid: 95b97dfdb2ce024496c584a867173faa
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Environments
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -123,7 +140,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 6b4aa5950f07a1448da1b40204b11218
     GuidInternal: 
-    m_lastTime: -8585079648091790035
+    m_lastTime: -8585078508525410803
     List:
     - name: Main
       guid: 892e7314a7614943813e7dbd5f79302f
@@ -151,8 +168,25 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b79e18b1fbe3f84191af14964969cb0e
     GuidInternal: 
-    m_lastTime: -8585079636444463543
+    m_lastTime: -8585078507843735119
     List:
+    - name: Ambience_Battle
+      guid: 70f57a11862f194b99567e14afd36cdd
+      id: 56249730
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Ambience_Battle
+        ObjectType: 3
+        guid: 70f57a11862f194b99567e14afd36cdd
+      Path: Events\Default Work Unit\Ambience_Battle
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Catch_Pistol_Player
       guid: 5927353379f61146ad7caeb175293e6a
       id: 2910980232
@@ -167,7 +201,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 5927353379f61146ad7caeb175293e6a
       Path: Events\Default Work Unit\Catch_Pistol_Player
-      maxAttenuation: 100
+      maxAttenuation: 0
       maxDuration: 0.29165533
       minDuration: 0.29165533
     - name: Fire_Pistol_Player
@@ -201,9 +235,43 @@ MonoBehaviour:
         ObjectType: 3
         guid: 335a1d01451cc94c8f6b945fdb8666ba
       Path: Events\Default Work Unit\Fire_Rifle_Enemy
-      maxAttenuation: 100
+      maxAttenuation: 60
       maxDuration: 1.379297
       minDuration: 1.379297
+    - name: Fire_Rifle_Player
+      guid: f0235243728df642a3fe19ea3b7212bd
+      id: 2148509378
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Fire_Rifle_Player
+        ObjectType: 3
+        guid: f0235243728df642a3fe19ea3b7212bd
+      Path: Events\Default Work Unit\Fire_Rifle_Player
+      maxAttenuation: 0
+      maxDuration: 1.379297
+      minDuration: 1.379297
+    - name: Music_Battle
+      guid: 5188db53531df649bcfff5747d7b0e7b
+      id: 3782024871
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Music_Battle
+        ObjectType: 3
+        guid: 5188db53531df649bcfff5747d7b0e7b
+      Path: Events\Default Work Unit\Music_Battle
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -261,7 +329,7 @@ MonoBehaviour:
     m_lastTime: -8585080341240599066
     List: []
   ExpandedFileSystemItemIds: 010000000200000003000000040000000500000006000000070000000b0000000c0000000d000000100000001100000020000000
-  ExpandedWaapiItemIds: 0100000002000000040000000500000006000000070000000c0000000d00000020000000
+  ExpandedWaapiItemIds: 0100000002000000040000000500000006000000070000000c0000000d0000000e0000000f000000100000001100000020000000
   AutoSyncSelection: 1
   autoPopulateEnabled: 0
   currentDataSource: 0

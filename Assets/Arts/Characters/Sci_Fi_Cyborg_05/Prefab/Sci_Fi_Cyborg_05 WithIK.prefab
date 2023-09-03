@@ -552,7 +552,7 @@ MonoBehaviour:
       useAnimatedBendNormal: 0
     locomotion:
       mode: 1
-      weight: 0
+      weight: 1
       moveThreshold: 0.3
       animationHeader: 0
       minAnimationSpeed: 0.2

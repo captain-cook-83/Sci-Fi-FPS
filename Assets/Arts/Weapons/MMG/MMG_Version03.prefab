@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 1061886637313923920}
   - component: {fileID: 5416359955441703552}
   - component: {fileID: 7109190199589014328}
-  - component: {fileID: 7279712438690204251}
+  - component: {fileID: 5454113253708045929}
   m_Layer: 8
   m_Name: MMG_Version03
   m_TagString: Untagged
@@ -469,7 +469,7 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &7279712438690204251
+--- !u!114 &5454113253708045929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -489,7 +489,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 11b8f72b964da864989ebfd1e16714f6, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 43506d5fed7821f44b7ad69d87c46339, type: 2}
   useCallbacks: 0
   Callbacks: []
   playingId: 0

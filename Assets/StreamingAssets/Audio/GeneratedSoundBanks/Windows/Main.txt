@@ -1,11 +1,19 @@
 Event	ID	Name			Wwise Object Path	Notes
+	56249730	Ambience_Battle			\Default Work Unit\Ambience_Battle	
 	1828056235	Fire_Pistol_Player			\Default Work Unit\Fire_Pistol_Player	
+	2148509378	Fire_Rifle_Player			\Default Work Unit\Fire_Rifle_Player	
 	2154019335	Fire_Rifle_Enemy			\Default Work Unit\Fire_Rifle_Enemy	
 	2910980232	Catch_Pistol_Player			\Default Work Unit\Catch_Pistol_Player	
+	3782024871	Music_Battle			\Default Work Unit\Music_Battle	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	240584343	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Pistol_01_Fire_05_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		243468
+	240584343	Rifle_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Pistol_01_Fire_05_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Rifle_Fire		243468
 	611201981	Pistol_Catch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Handling_Gun_01_Arming_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Catch		51608
+	983696497	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\9mm-pistol-shot-6349_C99AA468.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		84408
 	1066519671	Shell_Short_02_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Shell\Shell_Short_02_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_02_SFX		197596
 	1071995294	Shell_Short_01_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Shell\Shell_Short_01_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_01_SFX		233588
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	423818807	Weapon_Ambience	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\weapon-ambience-world-war-ii-battlefield-01-153373_D79FB2B7.wem	423818807.wem	\Actor-Mixer Hierarchy\Default Work Unit\Environments\Ambience\Weapon_Ambience	
+	856362830	BGM_Anko_Uehara	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\anko-uehara-122618_D79FB2B7.wem	856362830.wem	\Actor-Mixer Hierarchy\Default Work Unit\Environments\BGM\BGM_Anko_Uehara	
 

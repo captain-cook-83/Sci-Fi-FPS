@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}" SchemaVersion="110">
+	<Busses>
+		<WorkUnit Name="Default Work Unit" ID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}" PersistMode="Standalone">
+			<ChildrenList>
+				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{D39E9F90-DC01-42E7-906A-E0C3F10AA3E1}" WorkUnitID="{65DD286D-4638-4CC8-A306-FD010A0DCD74}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="Characters" ID="{9A712E4A-2711-4C32-8071-CBAB34335CC4}">
+							<ChildrenList>
+								<Bus Name="Player" ID="{91AF4093-8468-474A-8E33-03EC81E75DAF}">
+									<DuckingList>
+										<DuckItem>
+											<BusRef Name="Enemies" ID="{785056AB-B53E-4B1F-9B3D-F29B9480FDB6}"/>
+											<DuckingParam>
+												<Volume>-6</Volume>
+												<FadeInTime>1</FadeInTime>
+												<FadeOutTime>1</FadeOutTime>
+												<FadeCurve>FadeLinear</FadeCurve>
+											</DuckingParam>
+										</DuckItem>
+									</DuckingList>
+								</Bus>
+								<Bus Name="Enemies" ID="{785056AB-B53E-4B1F-9B3D-F29B9480FDB6}"/>
+							</ChildrenList>
+						</Bus>
+					</ChildrenList>
+				</Bus>
+			</ChildrenList>
+		</WorkUnit>
+	</Busses>
+</WwiseDocument>

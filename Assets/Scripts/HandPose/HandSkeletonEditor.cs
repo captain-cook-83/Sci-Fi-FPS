@@ -3,6 +3,7 @@ using Cc83.Utils;
 using Sirenix.OdinInspector;
 using Unity.XR.CoreUtils;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
@@ -14,12 +15,11 @@ namespace Cc83.HandPose
 #if UNITY_EDITOR
         private static readonly string DefaultPath = Path.Combine("Assets", "Generated", "HandPose");
         
-        [TitleGroup("Interactable Pose Generator")]
-        public Transform handTransform;
-        
-        private InteractableReference interactableReference;
+        private InteractableReference InteractableReference => GetComponent<InteractableReference>();
 
-        private void OnValidate()
+        [TitleGroup("Important !!!")]
+        [Button("Set InputActionReferences After Mounted", ButtonSizes.Large)]
+        public void SetInputActionReferencesAfterMounted()
         {
             if (defaultPoseData != null && defaultPoseData.side != handSide)
             {
@@ -29,11 +29,6 @@ namespace Cc83.HandPose
             if (fistPoseData != null && fistPoseData.side != handSide)
             {
                 Debug.LogError($"Mismatch for handSide({handSide}) and fistPoseData.side({fistPoseData.side})");
-            }
-
-            if (interactableReference == null)
-            {
-                interactableReference = GetComponent<InteractableReference>();
             }
 
             if (controller)
@@ -61,6 +56,8 @@ namespace Cc83.HandPose
                 thumbActionReference = null;
                 thumbTouchedActionReference = null;
             }
+            
+            EditorUtility.SetDirty(gameObject);
         }
 
         [TitleGroup("Default Pose Operations")]
@@ -204,18 +201,21 @@ namespace Cc83.HandPose
             SetFingerNodes(data);
             Debug.Log("LoadOtherHandPose Completed.");
         }
+        
+        [TitleGroup("Interactable Pose Generator")]
+        public Transform handTransform;
 
         [TitleGroup("Interactable Pose Generator")]
         [Button("GenerateInteractablePose", ButtonSizes.Large)]
         public void GenerateInteractablePose()
         {
-            if (interactableReference == null)
+            if (InteractableReference == null)
             {
                 EditorUtility.DisplayDialog("Missing Component", "Add InteractableReference component and refer to a Interactable Transform.", "Close");
                 return;
             }
             
-            var interactableTransform = interactableReference.interactable;
+            var interactableTransform = InteractableReference.interactable;
             var data = ScriptableObject.CreateInstance<InteractablePoseData>();
             data.side = handSide;
             data.rotations = GetFingerNodes();
@@ -249,7 +249,7 @@ namespace Cc83.HandPose
         [Button("LoadInteractablePose", ButtonSizes.Large)]
         public void LoadInteractablePose()
         {
-            if (interactableReference == null)
+            if (InteractableReference == null)
             {
                 EditorUtility.DisplayDialog("Missing Component", "Add InteractableReference component and refer to a Interactable Transform.", "Close");
                 return;
@@ -274,7 +274,7 @@ namespace Cc83.HandPose
                 return;
             }
             
-            var interactableTransform = interactableReference.interactable;
+            var interactableTransform = InteractableReference.interactable;
             // var interactableParent = interactableTransform.parent;
             interactableTransform.SetParent(handTransform);
             interactableTransform.localRotation = data.handLocalRotation;
@@ -290,13 +290,13 @@ namespace Cc83.HandPose
         [Button("Calculate Hand Shake Animation", ButtonSizes.Large)]
         public void CalculateHandShakeAnimation()
         {
-            if (interactableReference == null)
+            if (InteractableReference == null)
             {
                 EditorUtility.DisplayDialog("Missing Component", "Add InteractableReference component and refer to a Interactable Transform.", "Close");
                 return;
             }
             
-            var interactable = interactableReference.interactable;
+            var interactable = InteractableReference.interactable;
             if (!ReferenceEquals(interactable.parent, handTransform))
             {
                 interactable.SetParent(handTransform);
@@ -310,7 +310,7 @@ namespace Cc83.HandPose
 
             var interactableLocalPr = interactable.GetLocalPose();
             
-            var interactableShakeShadow = interactableReference.interactableShakeShadow;
+            var interactableShakeShadow = InteractableReference.interactableShakeShadow;
             if (!ReferenceEquals(interactableShakeShadow.parent, interactable))
             {
                 interactableShakeShadow.SetParent(interactable);

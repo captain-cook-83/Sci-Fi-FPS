@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}" SchemaVersion="110">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Player" ID="{35F44FA9-B012-422F-88C2-BD752DC99D90}" ShortID="896548446">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="Color" Type="int16" Value="1"/>
+						<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>8</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+						<Property Name="Priority" Type="int16">
+							<ValueList>
+								<Value>80</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<Custom>
+								<Attenuation Name="Attenuation (Custom)" ID="{6918A59C-D92C-4A44-BC31-B955169D5DC3}" ShortID="470733806">
+									<CurveUsageInfoList>
+										<VolumeDryUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+												<Curve Name="VolumeDry" ID="{D9D50626-D170-4702-BBBC-42FA12FD785E}">
+													<PropertyList>
+														<Property Name="Flags" Type="int32" Value="3"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>5</Flags>
+														</Point>
+														<Point>
+															<XPos>100</XPos>
+															<YPos>-200</YPos>
+															<Flags>37</Flags>
+														</Point>
+													</PointList>
+												</Curve>
+											</CurveUsageInfo>
+										</VolumeDryUsage>
+										<VolumeWetGameUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetGameUsage>
+										<VolumeWetUserUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetUserUsage>
+										<LowPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</LowPassFilterUsage>
+										<HighPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</HighPassFilterUsage>
+										<SpreadUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</SpreadUsage>
+										<FocusUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</FocusUsage>
+										<ObstructionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionVolumeUsage>
+										<ObstructionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionLPFUsage>
+										<ObstructionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionHPFUsage>
+										<OcclusionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionVolumeUsage>
+										<OcclusionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionLPFUsage>
+										<OcclusionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionHPFUsage>
+										<DiffractionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionVolumeUsage>
+										<DiffractionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionLPFUsage>
+										<DiffractionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionHPFUsage>
+										<TransmissionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionVolumeUsage>
+										<TransmissionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionLPFUsage>
+										<TransmissionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionHPFUsage>
+									</CurveUsageInfoList>
+								</Attenuation>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Player" ID="{91AF4093-8468-474A-8E33-03EC81E75DAF}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="Bullet_Fall" ID="{23978847-53D5-499E-959D-7C74D563DA32}" ShortID="111057199">
+							<PropertyList>
+								<Property Name="3DPosition" Type="int16" Value="2"/>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="OverridePriority" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{AE138DBD-941C-4D0B-A1BD-43EB33E23646}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="150"/>
+													<Property Name="Min" Type="Real64" Value="-150"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Priority" Type="int16">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Shell_Short_01_SFX" ID="{A7619DDF-B409-415B-9381-88B5ADFCC791}" ShortID="840914812">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Shell_Short_01_SFX" ID="{D357CA46-C3FA-48D1-9FA3-053C57A36F3D}">
+											<Language>SFX</Language>
+											<AudioFile>Shell\Shell_Short_01_SFX.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1071995294"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Shell_Short_01_SFX" ID="{D357CA46-C3FA-48D1-9FA3-053C57A36F3D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Shell_Short_02_SFX" ID="{51E7632E-117A-467A-9611-D43BDB2B1032}" ShortID="713635627">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Shell_Short_02_SFX" ID="{26C88AC5-F0B6-4C8F-A147-330E2BFD316E}">
+											<Language>SFX</Language>
+											<AudioFile>Shell\Shell_Short_02_SFX.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1066519671"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Shell_Short_02_SFX" ID="{26C88AC5-F0B6-4C8F-A147-330E2BFD316E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<PositioningInfo>
+								<Position Name="" ID="{8BF8F902-345D-45BD-89B2-F72B8C5FB12F}">
+									<PropertyList>
+										<Property Name="PlayMechanismRandomOrSequence" Type="int16" Value="1"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<Path2D Name="Bullet_Fall_Path" ID="{C04E93CC-1322-43A2-8D0E-668585A24A68}">
+											<PointList>
+												<Point>
+													<XPos>7.36842</XPos>
+													<YPos>6.95447</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+										<Path2D Name="Bullet_Fall_Path_01" ID="{B493D187-B003-4B29-BEDE-D9730E5FA8E9}">
+											<PointList>
+												<Point>
+													<XPos>-5.96492</XPos>
+													<YPos>7.30473</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+										<Path2D Name="Bullet_Fall_Path_02" ID="{0F1BBFEA-7CD2-40F2-8DB7-F405C42DF3B2}">
+											<PointList>
+												<Point>
+													<XPos>6.31578</XPos>
+													<YPos>5.55342</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+										<Path2D Name="Bullet_Fall_Path_03" ID="{9A82797A-E300-42A9-A870-A6A41048C223}">
+											<PointList>
+												<Point>
+													<XPos>-5.61404</XPos>
+													<YPos>4.50263</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+										<Path2D Name="Bullet_Fall_Path_04" ID="{65B1E8E3-F69C-41E0-A13F-4ACDCD69619C}">
+											<PointList>
+												<Point>
+													<XPos>1.05263</XPos>
+													<YPos>8.70579</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+									</ChildrenList>
+								</Position>
+							</PositioningInfo>
+						</RandomSequenceContainer>
+						<Sound Name="Pistol_Catch" ID="{B1BD9ACE-9F35-41BE-8293-671C02A00DC7}" ShortID="283324872">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Handling_Gun_01_Arming_SFX" ID="{DD7599C3-31F1-4455-AB2F-4B808AEC256B}">
+									<Language>SFX</Language>
+									<AudioFile>Handling_Gun_01_Arming_SFX.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="611201981"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Handling_Gun_01_Arming_SFX" ID="{DD7599C3-31F1-4455-AB2F-4B808AEC256B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Pistol_Fire" ID="{1E890500-5219-4C9B-BE53-24BE72B914DD}" ShortID="417443276">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Object_Attenuations" ID="{29F30549-E014-43F6-B326-E7399B0AA6AE}" WorkUnitID="{89314076-E1F0-4B91-B093-FFAEA3588509}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Pistol_01_Fire_05_SFX" ID="{AA44D06A-3C62-4243-8747-AF9FD9123870}">
+									<Language>SFX</Language>
+									<AudioFile>Pistol_01_Fire_05_SFX.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="240584343"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Pistol_01_Fire_05_SFX" ID="{AA44D06A-3C62-4243-8747-AF9FD9123870}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<PositioningInfo>
+						<Position Name="" ID="{6E2FAEA3-FE81-4B5A-8C2C-99C479124BBB}"/>
+					</PositioningInfo>
+				</ActorMixer>
+				<ActorMixer Name="Enemies" ID="{DCF42B25-98F1-4309-85F0-7A31888F7BE8}" ShortID="355379081">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="Color" Type="int16" Value="8"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Object_Attenuations" ID="{29F30549-E014-43F6-B326-E7399B0AA6AE}" WorkUnitID="{89314076-E1F0-4B91-B093-FFAEA3588509}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Enemies" ID="{785056AB-B53E-4B1F-9B3D-F29B9480FDB6}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Rifle_Fire" ID="{50454BF8-2DCA-4476-8746-586337BF09D1}" ShortID="563420304">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Object_Attenuations" ID="{29F30549-E014-43F6-B326-E7399B0AA6AE}" WorkUnitID="{89314076-E1F0-4B91-B093-FFAEA3588509}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Pistol_01_Fire_05_SFX" ID="{FEE436E1-E259-4600-BFF6-3DFD57DFF8B0}">
+									<Language>SFX</Language>
+									<AudioFile>Pistol_01_Fire_05_SFX.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="240584343"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Pistol_01_Fire_05_SFX" ID="{FEE436E1-E259-4600-BFF6-3DFD57DFF8B0}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

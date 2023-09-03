@@ -1,4 +1,3 @@
-using System.Collections;
 using Cc83.Character;
 using Cc83.HandPose;
 using UnityEngine;
@@ -18,8 +17,6 @@ namespace Cc83.Interactable
     {
         public AudioClip readyAudio;
 
-        private AudioSource audioSource;
-
         private HandController primaryHandController;
 
         private HandController secondaryHandController;
@@ -35,8 +32,6 @@ namespace Cc83.Interactable
             {
                 Debug.LogError($"AttachTransform({attachTransform.name}) must be a direct child of the grabInteractable({grabInteractable.name})");
             }
-
-            audioSource = GetComponent<AudioSource>();
         }
         
         public override void OnGrab(XRGrabInteractable grabInteractable)
@@ -146,20 +141,7 @@ namespace Cc83.Interactable
             
             var primaryActivatePose = primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
             primaryHandController.SetPoseData(primaryPoseData, primaryActivatePose);
-            
-            if (firstGrab)
-            {
-                StartCoroutine(ResetAudioSource(audioSource.clip, readyAudio.length));
-                audioSource.clip = readyAudio;
-                audioSource.Play();
-            }
-        }
-
-        private IEnumerator ResetAudioSource(AudioClip clip, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-
-            audioSource.clip = clip;
+            primaryHandController.PlayCatchSound();
         }
     }
 }

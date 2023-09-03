@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Fire_Pistol_Player" ID="{5D0B5D86-FA89-481E-BE68-7CE21C914F71}">
+					<ChildrenList>
+						<Action Name="" ID="{62ACE68F-0245-4BAC-A43D-37DE2763CE24}" ShortID="767058262">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bullet_Fall" ID="{23978847-53D5-499E-959D-7C74D563DA32}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{2CEB502B-F523-4CAD-BFF4-E706856ACF0A}" ShortID="56170088">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Pistol_Fire" ID="{1E890500-5219-4C9B-BE53-24BE72B914DD}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{C69A14E9-EC7D-4750-A680-7DC0B5E5042A}" ShortID="706913414">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bullet_Fall" ID="{23978847-53D5-499E-959D-7C74D563DA32}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Catch_Pistol_Player" ID="{33352759-F679-4611-AD7C-AEB175293E6A}">
+					<ChildrenList>
+						<Action Name="" ID="{973F3CA7-6E6D-4744-9BD2-225C3B5966C3}" ShortID="126637818">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Pistol_Catch" ID="{B1BD9ACE-9F35-41BE-8293-671C02A00DC7}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Fire_Rifle_Enemy" ID="{011D5A33-1C45-4CC9-8F6B-945FDB8666BA}">
+					<ChildrenList>
+						<Action Name="" ID="{CC5E6E81-46DC-4824-B3B9-26AFDF4328A8}" ShortID="969144446">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Rifle_Fire" ID="{50454BF8-2DCA-4476-8746-586337BF09D1}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletDistance: 100
   ImpactEffect: {fileID: 4877691047503449448, guid: 7304af4fdfbb934429318b9833ce0394, type: 3}
+  effectDuration: 4
   ImpactElemets:
   - MaterialType: 0
     ImpactEffect: {fileID: 178032, guid: ea6cf4c5efb69b94db988e2fbfd72698, type: 3}

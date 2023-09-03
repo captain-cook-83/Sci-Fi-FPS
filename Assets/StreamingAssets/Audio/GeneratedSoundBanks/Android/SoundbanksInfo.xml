@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Android" BasePlatform="Android" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../../../../../WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../../../WwiseProject/.cache/Android</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>../../../../../WwiseProject/GeneratedSoundBanks/Android</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{FD9F5B85-EDA7-B37D-E256-FDA66EDCD6BD}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="1069431850" Name="Player"/>
+				<Bus Id="1557941045" Name="Characters"/>
+				<Bus Id="2242381963" Name="Enemies"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{E6CC2526-72E0-7569-0127-D30C95737B02}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="240584343" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
+					<CachePath>SFX/Pistol_01_Fire_05_SFX_10C4C929.wem</CachePath>
+				</File>
+				<File Id="611201981" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Handling_Gun_01_Arming_SFX.wav</ShortName>
+					<CachePath>SFX/Handling_Gun_01_Arming_SFX_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1066519671" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shell\Shell_Short_02_SFX.wav</ShortName>
+					<CachePath>SFX/Shell/Shell_Short_02_SFX_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1071995294" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shell\Shell_Short_01_SFX.wav</ShortName>
+					<CachePath>SFX/Shell/Shell_Short_01_SFX_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2910980232" Name="Catch_Pistol_Player" DurationType="OneShot" DurationMin="0.29165533" DurationMax="0.29165533">
+					<MediaRefs>
+						<MediaRef Id="611201981"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1828056235" Name="Fire_Pistol_Player" DurationType="OneShot" DurationMin="1.5263584" DurationMax="1.9430557">
+					<MediaRefs>
+						<MediaRef Id="240584343"/>
+						<MediaRef Id="1066519671"/>
+						<MediaRef Id="1071995294"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2154019335" Name="Fire_Rifle_Enemy" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.379297" DurationMax="1.379297">
+					<MediaRefs>
+						<MediaRef Id="240584343"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{BBEDD6F9-7E33-A460-418D-F6665D8C5409}</FileHash>
+</SoundBanksInfo>

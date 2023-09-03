@@ -1,9 +1,9 @@
+using System.Collections;
 using Cc83.Interactable;
 using UnityEngine;
 
 namespace Cc83.Character
 {
-    [RequireComponent(typeof(AudioSource))]
     public class EnemyShootController : MonoBehaviour
     {
         private static readonly int TriggerShoot = Animator.StringToHash("Shoot");
@@ -17,19 +17,19 @@ namespace Cc83.Character
         
         public FireEffectManager fireEffectManager;
         
-        private AudioSource audioSource;
-        
         private Animator animator;
+
+        private AkAmbient akAmbient;
         
         private float triggerTime;
 
         private void Awake()
         {
-            audioSource = GetComponent<AudioSource>();
             animator = GetComponent<Animator>();
+            akAmbient = GetComponent<AkAmbient>();
         }
 
-        public void Shoot()
+        public void Shoot(int times = 1)
         {
             var currentTime = Time.time;
             if (currentTime < triggerTime)
@@ -38,7 +38,29 @@ namespace Cc83.Character
             }
 
             triggerTime = currentTime + cdTime;
-            
+
+            if (times == 1)
+            {
+                ActShoot();
+            }
+            else
+            {
+                StartCoroutine(AsyncShoot(times));
+            }
+        }
+
+        private IEnumerator AsyncShoot(int times)
+        {
+            for (var i = 0; i < times && enabled; i++)
+            {
+                ActShoot();
+                
+                yield return new WaitForSeconds(cdTime);
+            }
+        }
+        
+        private void ActShoot()
+        {
             // 首先获取位置和旋转等数据，避免接下来的动画逻辑改变相关信息后计算出现偏差
             var shootInfo = fireEffectManager.transform;
             var shootPosition = shootInfo.position;
@@ -49,8 +71,8 @@ namespace Cc83.Character
             {
                 animator.SetTrigger(TriggerShoot);
             }
-            
-            audioSource.Play();
+
+            akAmbient.data?.Post(gameObject);
             fireEffectManager.Shoot(shootPosition, shootRotation, shootDirection);
             
             Instantiate(trajectoryPrefab, shootPoint.position, shootPoint.rotation);

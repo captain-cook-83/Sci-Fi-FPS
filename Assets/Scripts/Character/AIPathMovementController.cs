@@ -19,8 +19,8 @@ namespace Cc83.Character
         [Range(0.05f, 1)]
         public float stopDistance = 0.1f;
 
-        [Range(1, 10)]
-        public float shootFrequency = 5;
+        [Range(0.5f, 5)]
+        public float maxRepeatShootDelay = 5;
 
         private Seeker seeker;
         
@@ -104,10 +104,13 @@ namespace Cc83.Character
 
             if (shootController)
             {
+                yield return new WaitForSeconds(Random.Range(0.5f, 1));
+                
                 while (true)
                 {
-                    yield return new WaitForSeconds(shootController.cdTime * Random.Range(1, shootFrequency));
-                    shootController.Shoot();
+                    shootController.Shoot(Random.Range(1, 6));
+                    
+                    yield return new WaitForSeconds(Random.Range(0.5f, maxRepeatShootDelay));
                 }
             }
         }

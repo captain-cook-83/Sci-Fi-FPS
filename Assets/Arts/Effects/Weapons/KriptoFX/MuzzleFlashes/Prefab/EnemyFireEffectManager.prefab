@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1727673943844724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4656417286879920}
+  - component: {fileID: 114341428421554146}
+  m_Layer: 0
+  m_Name: EnemyFireEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4656417286879920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727673943844724}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35499877, y: -0.22300017, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114341428421554146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727673943844724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabaea637d046b649916223ab9952a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletDistance: 100
+  ImpactEffect: {fileID: 4877691047503449448, guid: 58ca1c5277a4b03469dd4faa2a9e28fb, type: 3}
+  effectDuration: 0.2
+  ImpactElemets:
+  - MaterialType: 0
+    ImpactEffect: {fileID: 178032, guid: ea6cf4c5efb69b94db988e2fbfd72698, type: 3}
+    DecalEffect: {fileID: 9155183395784354696, guid: 92229640853caa54ea58dbc8ff102ffb, type: 3}
+  - MaterialType: 1
+    ImpactEffect: {fileID: 180772, guid: 697d9a1e52bb99d468a5d727e5a4b435, type: 3}
+    DecalEffect: {fileID: 9155183395784354696, guid: f48aafb1b3ea9334ca89908de7ad080a, type: 3}
+  - MaterialType: 2
+    ImpactEffect: {fileID: 196912, guid: 881329b761025854294ebdddc9a44083, type: 3}
+    DecalEffect: {fileID: 0}
+  - MaterialType: 3
+    ImpactEffect: {fileID: 142740, guid: ce4fb833f44504e48b46c3474bc747fc, type: 3}
+    DecalEffect: {fileID: 0}
+  - MaterialType: 4
+    ImpactEffect: {fileID: 138412, guid: c75e5a4fa5c842546a553399e24eb22d, type: 3}
+    DecalEffect: {fileID: 9155183395784354696, guid: 4bcbff34c108db64c9ea3bbc280084ef, type: 3}
+  - MaterialType: 5
+    ImpactEffect: {fileID: 151174, guid: e3c9439885f011549a6460a1f4da82dc, type: 3}
+    DecalEffect: {fileID: 9155183395784354696, guid: 5824a74cf4e81b04f88cc70527c7de8a, type: 3}
+  - MaterialType: 6
+    ImpactEffect: {fileID: 108086, guid: 547c2e12da8d4214098216299e70a3ba, type: 3}
+    DecalEffect: {fileID: 9155183395784354696, guid: 92229640853caa54ea58dbc8ff102ffb, type: 3}
+  - MaterialType: 7
+    ImpactEffect: {fileID: 186004, guid: df6885b13dec8be4582be8c2c2219da2, type: 3}
+    DecalEffect: {fileID: 9155183395784354696, guid: 7e994ecc65c76224eb7356966ecac72d, type: 3}
+  - MaterialType: 8
+    ImpactEffect: {fileID: 168394, guid: 93983eaa39ee5d4408c0b10200e234b4, type: 3}
+    DecalEffect: {fileID: 0}
+  - MaterialType: 9
+    ImpactEffect: {fileID: 100010, guid: 6e63997523a2e4644b00bb5cbd767389, type: 3}
+    DecalEffect: {fileID: 0}

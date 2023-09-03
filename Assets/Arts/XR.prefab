@@ -1064,6 +1064,7 @@ GameObject:
   - component: {fileID: 7756388242123632630}
   - component: {fileID: 4437867504953630683}
   - component: {fileID: 7727286164503290717}
+  - component: {fileID: 1461945884869691178}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
@@ -1354,6 +1355,28 @@ MonoBehaviour:
   interactableFixShell: {fileID: 7792208693335709475}
   primaryRotationAxis: {x: 0, y: 0, z: 1}
   secondaryRotationAxis: {x: 0, y: -1, z: 0}
+--- !u!114 &1461945884869691178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680200963714706331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b0d817695143d141a49de39429f2c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &3783514437745859332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1422,7 @@ GameObject:
   - component: {fileID: 3494776712274904542}
   - component: {fileID: 164599468506708307}
   - component: {fileID: 9059077705233530801}
+  - component: {fileID: 5707571377523776857}
   m_Layer: 0
   m_Name: Left Controller
   m_TagString: Untagged
@@ -1689,6 +1713,28 @@ MonoBehaviour:
   interactableFixShell: {fileID: 2007415224202492889}
   primaryRotationAxis: {x: 0, y: 0, z: -1}
   secondaryRotationAxis: {x: 0, y: 1, z: 0}
+--- !u!114 &5707571377523776857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4355235184256943274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b0d817695143d141a49de39429f2c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &4694021074204504026
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,9 +4175,10 @@ GameObject:
   m_Component:
   - component: {fileID: 483204726407782564}
   - component: {fileID: 5870415522517220615}
-  - component: {fileID: 4361018800527602186}
   - component: {fileID: 4510450386878070699}
   - component: {fileID: 2984326940840623503}
+  - component: {fileID: 1929894205906595622}
+  - component: {fileID: 4337284705791366037}
   - component: {fileID: 9097067830649610293}
   m_Layer: 0
   m_Name: Main Camera
@@ -4207,14 +4254,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4361018800527602186
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8582210613801657027}
-  m_Enabled: 1
 --- !u!114 &4510450386878070699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4233,10 +4272,10 @@ MonoBehaviour:
   m_PositionInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Position Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 60f1895a-0afe-4133-a744-1bf086d3909e
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -4245,10 +4284,10 @@ MonoBehaviour:
   m_RotationInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Rotation Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 5868167a-62f6-4804-a7c3-24704fc9568c
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -4302,6 +4341,42 @@ StreamingController:
   m_GameObject: {fileID: 8582210613801657027}
   m_Enabled: 1
   m_StreamingMipmapBias: 0
+--- !u!114 &1929894205906595622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582210613801657027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b0d817695143d141a49de39429f2c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &4337284705791366037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582210613801657027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a48521292bcb64cbfe31ca8d35586d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!114 &9097067830649610293
 MonoBehaviour:
   m_ObjectHideFlags: 0

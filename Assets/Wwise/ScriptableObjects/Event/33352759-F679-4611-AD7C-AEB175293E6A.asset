@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde82c4ee3a00a24d9d81394dddbf57d, type: 3}
+  m_Name: 33352759-F679-4611-AD7C-AEB175293E6A
+  m_EditorClassIdentifier: 
+  objectName: Catch_Pistol_Player
+  id: 2910980232
+  guid: 33352759-F679-4611-AD7C-AEB175293E6A

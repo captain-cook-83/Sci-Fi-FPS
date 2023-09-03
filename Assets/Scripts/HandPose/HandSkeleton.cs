@@ -28,11 +28,9 @@ namespace Cc83.HandPose
         public HandSide handSide;
         public ActionBasedController controller;
         
-        [SerializeField]
-        private InputActionReference thumbActionReference;
+        public InputActionReference thumbActionReference;
         
-        [SerializeField]
-        private InputActionReference thumbTouchedActionReference;
+        public InputActionReference thumbTouchedActionReference;
         
         public HandPoseData defaultPoseData;
         public HandPoseData fistPoseData;

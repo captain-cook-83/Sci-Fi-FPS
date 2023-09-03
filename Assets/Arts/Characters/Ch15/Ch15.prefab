@@ -2607,7 +2607,7 @@ MonoBehaviour:
   target: {fileID: 0}
   lookTarget: {fileID: 0}
   stopDistance: 0.1
-  shootFrequency: 5
+  maxRepeatShootDelay: 3
 --- !u!1 &4427621919320782925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 944927156297921104, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}

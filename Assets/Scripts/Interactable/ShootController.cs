@@ -1,4 +1,3 @@
-using System.Collections;
 using Cc83.Character;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -6,7 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 namespace Cc83.Interactable
 {
     [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(XRGrabInteractable))]
     public class ShootController : MonoBehaviour
     {
@@ -24,30 +22,22 @@ namespace Cc83.Interactable
         
         public FireEffectManager fireEffectManager;
         
-        public AudioClip[] shellFallAudios;
-        
         private Animator animator;
         
-        private AudioSource audioSource;
-
-        private AudioClip defaultAudio;
+        private AkAmbient akAmbient;
         
         private XRGrabInteractable interactable;
 
         private float triggerTime;
 
-        private Coroutine delayedAudioHandler;
-
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            audioSource = GetComponent<AudioSource>();
+            akAmbient = GetComponent<AkAmbient>();
             interactable = GetComponent<XRGrabInteractable>();
             
             interactable.activated.AddListener(OnShootActive);
             interactable.deactivated.AddListener(OnShootDeactivate);
-
-            defaultAudio = audioSource.clip;
         }
 
         private void OnDestroy()
@@ -71,9 +61,8 @@ namespace Cc83.Interactable
             var shootPosition = shootInfo.position;
             var shootRotation = shootInfo.rotation;
             var shootDirection = shootInfo.forward;
-            
-            audioSource.clip = defaultAudio;
-            audioSource.Play();
+
+            akAmbient.data?.Post(gameObject);
             animator.SetTrigger(Shoot);
             if (triggerAnimator)
             {
@@ -86,18 +75,6 @@ namespace Cc83.Interactable
             handController.Shake();
             
             fireEffectManager.Shoot(shootPosition, shootRotation, shootDirection);
-            
-            if (delayedAudioHandler != null)
-            {
-                StopCoroutine(delayedAudioHandler);
-                delayedAudioHandler = null;
-            }
-            
-            if (shellFallAudios.Length > 0)
-            {
-                var audioClip = shellFallAudios[Random.Range(0, shellFallAudios.Length)];
-                delayedAudioHandler = StartCoroutine(PlayShellFallAudio(audioClip, 1));
-            }
         }
 
         private void OnShootDeactivate(DeactivateEventArgs args)
@@ -106,16 +83,6 @@ namespace Cc83.Interactable
             {
                 triggerAnimator.SetBool(TriggerHold, false);
             }
-        }
-
-        private IEnumerator PlayShellFallAudio(AudioClip clip, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            
-            delayedAudioHandler = null;
-
-            audioSource.clip = clip;
-            audioSource.Play();
         }
     }
 }

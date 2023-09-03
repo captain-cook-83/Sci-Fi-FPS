@@ -46,6 +46,11 @@ namespace Cc83.Character
             }
         }
 
+        public void PlayCatchSound()
+        {
+            AkSoundEngine.PostEvent(AK.EVENTS.CATCH_PISTOL_PLAYER, gameObject);
+        }
+
         public void SetPoseData(HandPoseData selectPoseData, HandPoseData activatePoseData)
         {
             skeleton.SetPoseData(selectPoseData, activatePoseData, activateAnimateSpeed);

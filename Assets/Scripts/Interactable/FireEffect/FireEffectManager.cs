@@ -8,7 +8,12 @@ namespace Cc83.Interactable
     public class FireEffectManager : MonoBehaviour
     {
         public float BulletDistance = 100;
+        
         public GameObject ImpactEffect;
+        
+        [Range(0.1f, 5f)]
+        public float effectDuration = 1f;
+        
         public ImpactInfo[] ImpactElemets;
 
         private readonly Dictionary<MaterialType.MaterialTypeEnum, ImpactInfo> impactInfos = new ();
@@ -30,7 +35,7 @@ namespace Cc83.Interactable
         {
             var impactEffect = effectPool.Get();
             impactEffect.transform.SetPositionAndRotation(position, rotation);
-            StartCoroutine(ReleaseImpactEffect(impactEffect, 4));
+            StartCoroutine(ReleaseImpactEffect(impactEffect, effectDuration));
             
             var ray = new Ray(position, direction);
             if (Physics.Raycast(ray, out var hit, BulletDistance))

@@ -1,0 +1,11 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1828056235	Fire_Pistol_Player			\Default Work Unit\Fire_Pistol_Player	
+	2154019335	Fire_Rifle_Enemy			\Default Work Unit\Fire_Rifle_Enemy	
+	2910980232	Catch_Pistol_Player			\Default Work Unit\Catch_Pistol_Player	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	240584343	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Pistol_01_Fire_05_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		243468
+	611201981	Pistol_Catch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Handling_Gun_01_Arming_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Catch		51608
+	1066519671	Shell_Short_02_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_02_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_02_SFX		197596
+	1071995294	Shell_Short_01_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_01_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_01_SFX		233588
+

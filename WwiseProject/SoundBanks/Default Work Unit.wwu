@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{95A54A6B-070F-44A1-8DA1-B40204B11218}" SchemaVersion="110">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{95A54A6B-070F-44A1-8DA1-B40204B11218}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{14732E89-61A7-4349-813E-7DBD5F79302F}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Catch_Pistol_Player" ID="{33352759-F679-4611-AD7C-AEB175293E6A}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Fire_Pistol_Player" ID="{5D0B5D86-FA89-481E-BE68-7CE21C914F71}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Fire_Rifle_Enemy" ID="{011D5A33-1C45-4CC9-8F6B-945FDB8666BA}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

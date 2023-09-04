@@ -738,7 +738,6 @@ GameObject:
   - component: {fileID: 3936229787917516462}
   - component: {fileID: 8353974294283248308}
   - component: {fileID: 8619524096512874723}
-  - component: {fileID: 2732221021826238351}
   m_Layer: 8
   m_Name: Pistol
   m_TagString: Untagged
@@ -1069,6 +1068,10 @@ MonoBehaviour:
   shootPoint: {fileID: 6781390521297635405}
   trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}
   fireEffectManager: {fileID: 2417264115582317044}
+  akEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 11b8f72b964da864989ebfd1e16714f6, type: 2}
 --- !u!95 &8353974294283248308
 Animator:
   serializedVersion: 5
@@ -1112,40 +1115,6 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &2732221021826238351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4043241439066821443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de06f04083fa687459cb574796259b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: 
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 11b8f72b964da864989ebfd1e16714f6, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
-  multiPositionArray: []
 --- !u!1 &4562552105092029558
 GameObject:
   m_ObjectHideFlags: 0

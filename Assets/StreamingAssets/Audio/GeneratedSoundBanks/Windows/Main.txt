@@ -6,10 +6,21 @@ Event	ID	Name			Wwise Object Path	Notes
 	2910980232	Catch_Pistol_Player			\Default Work Unit\Catch_Pistol_Player	
 	3782024871	Music_Battle			\Default Work Unit\Music_Battle	
 
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1413087445	Weapon_Fire_Loop			\Default Work Unit\Weapon_Fire_Loop	
+
+Switch	ID	Name	Switch Group			Notes
+	3987970506	Loop_4	Weapon_Fire_Loop			
+	3987970507	Loop_5	Weapon_Fire_Loop			
+	3987970508	Loop_2	Weapon_Fire_Loop			
+	3987970509	Loop_3	Weapon_Fire_Loop			
+	3987970511	Loop_1	Weapon_Fire_Loop			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	240584343	Rifle_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Pistol_01_Fire_05_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Rifle_Fire		243468
+	462652134	Rifle_Fire_Loop_5	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Pistol_01_Fire_05_SFX_2D1DC26D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Rifle_Fire_Loop\Rifle_Fire_Loop_5		124128
+	590472926	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\072777_semi-auto-pistol-27633_7E1FD5E4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		76128
 	611201981	Pistol_Catch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Handling_Gun_01_Arming_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Catch		51608
-	983696497	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\9mm-pistol-shot-6349_C99AA468.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		84408
+	1002607041	Rifle_Fire_loop_1	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Pistol_01_Fire_05_SFX_89025B52.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Rifle_Fire_Loop\Rifle_Fire_loop_1		124048
 	1066519671	Shell_Short_02_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Shell\Shell_Short_02_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_02_SFX		197596
 	1071995294	Shell_Short_01_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Windows\SFX\Shell\Shell_Short_01_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_01_SFX		233588
 

@@ -25,19 +25,34 @@
 				<Bus Id="3761286811" Name="Environments"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
+			<SwitchGroups>
+				<SwitchGroup Id="1413087445" Name="Weapon_Fire_Loop">
+					<Switches>
+						<Switch Id="3987970506" Name="Loop_4"/>
+						<Switch Id="3987970507" Name="Loop_5"/>
+						<Switch Id="3987970508" Name="Loop_2"/>
+						<Switch Id="3987970509" Name="Loop_3"/>
+						<Switch Id="3987970511" Name="Loop_1"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{B511B060-C4CF-A36E-1BD4-0BFA104DD7C0}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{B59569B2-3CC0-D7C6-854F-10E9F3B12430}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
-				<File Id="240584343" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
-					<CachePath>SFX/Pistol_01_Fire_05_SFX_10C4C929.wem</CachePath>
-				</File>
 				<File Id="423818807" Language="SFX" Streaming="true" Location="Loose">
 					<ShortName>weapon-ambience-world-war-ii-battlefield-01-153373.wav</ShortName>
 					<Path>Media/423818807.wem</Path>
 					<CachePath>SFX/weapon-ambience-world-war-ii-battlefield-01-153373_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="462652134" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
+					<CachePath>SFX/Pistol_01_Fire_05_SFX_2D1DC26D.wem</CachePath>
+				</File>
+				<File Id="590472926" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>072777_semi-auto-pistol-27633.wav</ShortName>
+					<CachePath>SFX/072777_semi-auto-pistol-27633_7E1FD5E4.wem</CachePath>
 				</File>
 				<File Id="611201981" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Handling_Gun_01_Arming_SFX.wav</ShortName>
@@ -48,9 +63,9 @@
 					<Path>Media/856362830.wem</Path>
 					<CachePath>SFX/anko-uehara-122618_D79FB2B7.wem</CachePath>
 				</File>
-				<File Id="983696497" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>9mm-pistol-shot-6349.wav</ShortName>
-					<CachePath>SFX/9mm-pistol-shot-6349_C99AA468.wem</CachePath>
+				<File Id="1002607041" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
+					<CachePath>SFX/Pistol_01_Fire_05_SFX_89025B52.wem</CachePath>
 				</File>
 				<File Id="1066519671" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Shell\Shell_Short_02_SFX.wav</ShortName>
@@ -74,20 +89,78 @@
 				</Event>
 				<Event Id="1828056235" Name="Fire_Pistol_Player" DurationType="OneShot" DurationMin="1.5263584" DurationMax="1.9430557">
 					<MediaRefs>
-						<MediaRef Id="983696497"/>
+						<MediaRef Id="590472926"/>
 						<MediaRef Id="1066519671"/>
 						<MediaRef Id="1071995294"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2154019335" Name="Fire_Rifle_Enemy" MaxAttenuation="60" DurationType="OneShot" DurationMin="1.379297" DurationMax="1.379297">
-					<MediaRefs>
-						<MediaRef Id="240584343"/>
-					</MediaRefs>
+				<Event Id="2154019335" Name="Fire_Rifle_Enemy" MaxAttenuation="50" DurationType="OneShot" DurationMin="0.7023087" DurationMax="1.1023088">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970507"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970506"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970508"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970511" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="1002607041"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970509"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
-				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="1.379297" DurationMax="1.379297">
-					<MediaRefs>
-						<MediaRef Id="240584343"/>
-					</MediaRefs>
+				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="0.7023087" DurationMax="1.1023088">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970507"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970506"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970508"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970511" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="1002607041"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970509"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 				<Event Id="3782024871" Name="Music_Battle" DurationType="Infinite">
 					<MediaRefs>
@@ -95,7 +168,18 @@
 					</MediaRefs>
 				</Event>
 			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="1413087445" Name="Weapon_Fire_Loop">
+					<Switches>
+						<Switch Id="3987970506" Name="Loop_4"/>
+						<Switch Id="3987970507" Name="Loop_5"/>
+						<Switch Id="3987970508" Name="Loop_2"/>
+						<Switch Id="3987970509" Name="Loop_3"/>
+						<Switch Id="3987970511" Name="Loop_1"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7D4C8930-5B2E-6859-8936-1A58615A5D30}</FileHash>
+	<FileHash>{D6E3538E-2F3A-3F8A-FDFC-8E6076422610}</FileHash>
 </SoundBanksInfo>

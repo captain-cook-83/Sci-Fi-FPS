@@ -3,7 +3,7 @@
 	<Attenuations>
 		<WorkUnit Name="Default Work Unit" ID="{89314076-E1F0-4B91-B093-FFAEA3588509}" PersistMode="Standalone">
 			<ChildrenList>
-				<Attenuation Name="Object_Attenuations" ID="{29F30549-E014-43F6-B326-E7399B0AA6AE}" ShortID="699507259">
+				<Attenuation Name="Weapon_Attenuations" ID="{29F30549-E014-43F6-B326-E7399B0AA6AE}" ShortID="699507259">
 					<PropertyList>
 						<Property Name="ConeInnerAngle" Type="int32" Value="120"/>
 						<Property Name="ConeLowPassFilterValue" Type="int32">
@@ -17,7 +17,7 @@
 								<Value>True</Value>
 							</ValueList>
 						</Property>
-						<Property Name="RadiusMax" Type="Real64" Value="60"/>
+						<Property Name="RadiusMax" Type="Real64" Value="50"/>
 					</PropertyList>
 					<CurveUsageInfoList>
 						<VolumeDryUsage>
@@ -33,12 +33,12 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>39</XPos>
-											<YPos>-16.7</YPos>
+											<XPos>25.0599</XPos>
+											<YPos>-10.63493</YPos>
 											<Flags>0</Flags>
 										</Point>
 										<Point>
-											<XPos>60</XPos>
+											<XPos>50</XPos>
 											<YPos>-200</YPos>
 											<Flags>37</Flags>
 										</Point>
@@ -63,11 +63,11 @@
 											<XPos>0</XPos>
 											<YPos>0</YPos>
 											<Flags>5</Flags>
-											<SegmentShape>Exp3</SegmentShape>
+											<SegmentShape>Exp2</SegmentShape>
 										</Point>
 										<Point>
-											<XPos>60</XPos>
-											<YPos>53</YPos>
+											<XPos>50</XPos>
+											<YPos>100</YPos>
 											<Flags>37</Flags>
 										</Point>
 									</PointList>

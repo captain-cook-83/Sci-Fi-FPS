@@ -50,7 +50,7 @@
 						<Action Name="" ID="{CC5E6E81-46DC-4824-B3B9-26AFDF4328A8}" ShortID="969144446">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Rifle_Fire" ID="{50454BF8-2DCA-4476-8746-586337BF09D1}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+									<ObjectRef Name="Rifle_Fire_Loop" ID="{27246189-A3E2-4036-BD5A-A754DE788728}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -61,7 +61,7 @@
 						<Action Name="" ID="{51F9D314-C13C-4904-B5E4-50DC964264E5}" ShortID="222236356">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Rifle_Fire" ID="{1E890500-5219-4C9B-BE53-24BE72B914DD}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+									<ObjectRef Name="Rifle_Fire_Loop" ID="{B630AF8E-92B3-46C9-BBB1-255612D298F7}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

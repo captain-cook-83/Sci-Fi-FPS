@@ -52,7 +52,6 @@ GameObject:
   - component: {fileID: 1061886637313923920}
   - component: {fileID: 5416359955441703552}
   - component: {fileID: 7109190199589014328}
-  - component: {fileID: 5454113253708045929}
   m_Layer: 8
   m_Name: MMG_Version03
   m_TagString: Untagged
@@ -442,11 +441,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26ecaf0de48464f9b11380a24a08c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cdTime: 0.2
+  cdTime: 0.1
   triggerAnimator: {fileID: 3030526696878961199}
   shootPoint: {fileID: 1980719261606475353}
   trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}
   fireEffectManager: {fileID: 1813568146821075319}
+  akEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 43506d5fed7821f44b7ad69d87c46339, type: 2}
 --- !u!114 &7109190199589014328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,40 +472,6 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &5454113253708045929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2185960472853730133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de06f04083fa687459cb574796259b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: 
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 43506d5fed7821f44b7ad69d87c46339, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
-  multiPositionArray: []
 --- !u!1 &5657641587496049218
 GameObject:
   m_ObjectHideFlags: 0

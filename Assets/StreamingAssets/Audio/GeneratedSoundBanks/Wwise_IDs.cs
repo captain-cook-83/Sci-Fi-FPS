@@ -10,6 +10,24 @@ namespace AK
         public static uint MUSIC_BATTLE = 3782024871U;
     } // public class EVENTS
 
+    public class SWITCHES
+    {
+        public class WEAPON_FIRE_LOOP
+        {
+            public static uint GROUP = 1413087445U;
+
+            public class SWITCH
+            {
+                public static uint LOOP_1 = 3987970511U;
+                public static uint LOOP_2 = 3987970508U;
+                public static uint LOOP_3 = 3987970509U;
+                public static uint LOOP_4 = 3987970506U;
+                public static uint LOOP_5 = 3987970507U;
+            } // public class SWITCH
+        } // public class WEAPON_FIRE_LOOP
+
+    } // public class SWITCHES
+
     public class BANKS
     {
         public static uint INIT = 1355168291U;

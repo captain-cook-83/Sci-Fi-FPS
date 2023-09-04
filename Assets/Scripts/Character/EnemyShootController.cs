@@ -1,12 +1,22 @@
 using System.Collections;
 using Cc83.Interactable;
 using UnityEngine;
+using Event = AK.Wwise.Event;
 
 namespace Cc83.Character
 {
     public class EnemyShootController : MonoBehaviour
     {
         private static readonly int TriggerShoot = Animator.StringToHash("Shoot");
+        
+        private static readonly uint[] LoopSwitches =
+        {
+            AK.SWITCHES.WEAPON_FIRE_LOOP.SWITCH.LOOP_1,
+            AK.SWITCHES.WEAPON_FIRE_LOOP.SWITCH.LOOP_2,
+            AK.SWITCHES.WEAPON_FIRE_LOOP.SWITCH.LOOP_3,
+            AK.SWITCHES.WEAPON_FIRE_LOOP.SWITCH.LOOP_4,
+            AK.SWITCHES.WEAPON_FIRE_LOOP.SWITCH.LOOP_5
+        };
         
         [Range(0.01f, 0.5f)]
         public float cdTime = 0.17f;
@@ -17,16 +27,15 @@ namespace Cc83.Character
         
         public FireEffectManager fireEffectManager;
         
+        public Event akEvent;
+        
         private Animator animator;
-
-        private AkAmbient akAmbient;
         
         private float triggerTime;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            akAmbient = GetComponent<AkAmbient>();
         }
 
         public void Shoot(int times = 1)
@@ -39,23 +48,32 @@ namespace Cc83.Character
 
             triggerTime = currentTime + cdTime;
 
-            if (times == 1)
-            {
-                ActShoot();
-            }
-            else
-            {
-                StartCoroutine(AsyncShoot(times));
-            }
+            StartCoroutine(AsyncShoot(times));
         }
 
         private IEnumerator AsyncShoot(int times)
         {
-            for (var i = 0; i < times && enabled; i++)
+            while (times > 0 && enabled)
             {
-                ActShoot();
+                var loopTimes = Mathf.Min(LoopSwitches.Length, times);
+                times -= LoopSwitches.Length;             // 无限循环控制变量必须首先处理，避免循环内异常导致进入死循环
                 
-                yield return new WaitForSeconds(cdTime);
+                AkSoundEngine.SetSwitch(AK.SWITCHES.WEAPON_FIRE_LOOP.GROUP, LoopSwitches[loopTimes - 1], gameObject);
+                var playingId = akEvent?.Post(gameObject);
+                
+                for (var i = 0; i < loopTimes; i++)
+                {
+                    if (enabled)
+                    {
+                        ActShoot();
+                
+                        yield return new WaitForSeconds(cdTime);
+                    }
+                    else if (playingId != null)
+                    {
+                        AkSoundEngine.StopPlayingID((uint)playingId);
+                    }
+                }
             }
         }
         
@@ -71,8 +89,7 @@ namespace Cc83.Character
             {
                 animator.SetTrigger(TriggerShoot);
             }
-
-            akAmbient.data?.Post(gameObject);
+            
             fireEffectManager.Shoot(shootPosition, shootRotation, shootDirection);
             
             Instantiate(trajectoryPrefab, shootPoint.position, shootPoint.rotation);

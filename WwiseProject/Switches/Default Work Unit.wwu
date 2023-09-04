@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{9CCEBAE1-AC25-48F5-B70B-66B25E0AE9E4}" SchemaVersion="110">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{9CCEBAE1-AC25-48F5-B70B-66B25E0AE9E4}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{9CCEBAE1-AC25-48F5-B70B-66B25E0AE9E4}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Weapon_Fire_Loop" ID="{4B284879-5676-4DCB-BDC2-76AC4E30F2CC}">
+					<ChildrenList>
+						<Switch Name="Loop_1" ID="{7FFD1EAD-CD5E-43A1-A0DA-1D8FF6CC214F}"/>
+						<Switch Name="Loop_2" ID="{74CE6038-72AD-48C9-8F69-6149ABE6D63A}"/>
+						<Switch Name="Loop_3" ID="{0DCA28E4-8249-4AB3-BE9D-FEBEF9F17BD4}"/>
+						<Switch Name="Loop_4" ID="{4C02152E-6A0C-4178-AFF4-50906236B958}"/>
+						<Switch Name="Loop_5" ID="{6B6DE616-3088-47CE-91F2-F0058474FC51}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>

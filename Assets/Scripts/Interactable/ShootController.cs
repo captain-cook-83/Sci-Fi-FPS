@@ -1,6 +1,7 @@
 using Cc83.Character;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Event = AK.Wwise.Event;
 
 namespace Cc83.Interactable
 {
@@ -22,9 +23,9 @@ namespace Cc83.Interactable
         
         public FireEffectManager fireEffectManager;
         
-        private Animator animator;
+        public Event akEvent;
         
-        private AkAmbient akAmbient;
+        private Animator animator;
         
         private XRGrabInteractable interactable;
 
@@ -33,7 +34,6 @@ namespace Cc83.Interactable
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            akAmbient = GetComponent<AkAmbient>();
             interactable = GetComponent<XRGrabInteractable>();
             
             interactable.activated.AddListener(OnShootActive);
@@ -62,7 +62,7 @@ namespace Cc83.Interactable
             var shootRotation = shootInfo.rotation;
             var shootDirection = shootInfo.forward;
 
-            akAmbient.data?.Post(gameObject);
+            akEvent?.Post(gameObject);
             animator.SetTrigger(Shoot);
             if (triggerAnimator)
             {

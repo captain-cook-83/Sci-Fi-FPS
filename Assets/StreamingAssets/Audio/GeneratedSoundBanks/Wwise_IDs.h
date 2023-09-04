@@ -21,6 +21,24 @@ namespace AK
         static const AkUniqueID MUSIC_BATTLE = 3782024871U;
     } // namespace EVENTS
 
+    namespace SWITCHES
+    {
+        namespace WEAPON_FIRE_LOOP
+        {
+            static const AkUniqueID GROUP = 1413087445U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID LOOP_1 = 3987970511U;
+                static const AkUniqueID LOOP_2 = 3987970508U;
+                static const AkUniqueID LOOP_3 = 3987970509U;
+                static const AkUniqueID LOOP_4 = 3987970506U;
+                static const AkUniqueID LOOP_5 = 3987970507U;
+            } // namespace SWITCH
+        } // namespace WEAPON_FIRE_LOOP
+
+    } // namespace SWITCHES
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;

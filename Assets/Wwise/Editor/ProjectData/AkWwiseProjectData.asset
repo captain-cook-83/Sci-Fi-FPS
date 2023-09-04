@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b79e18b1fbe3f84191af14964969cb0e
     GuidInternal: 
-    m_lastTime: -8585078507843735119
+    m_lastTime: -8585078100458637020
     List:
     - name: Ambience_Battle
       guid: 70f57a11862f194b99567e14afd36cdd
@@ -235,9 +235,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 335a1d01451cc94c8f6b945fdb8666ba
       Path: Events\Default Work Unit\Fire_Rifle_Enemy
-      maxAttenuation: 60
-      maxDuration: 1.379297
-      minDuration: 1.379297
+      maxAttenuation: 50
+      maxDuration: 1.1023088
+      minDuration: 0.7023087
     - name: Fire_Rifle_Player
       guid: f0235243728df642a3fe19ea3b7212bd
       id: 2148509378
@@ -253,8 +253,8 @@ MonoBehaviour:
         guid: f0235243728df642a3fe19ea3b7212bd
       Path: Events\Default Work Unit\Fire_Rifle_Player
       maxAttenuation: 0
-      maxDuration: 1.379297
-      minDuration: 1.379297
+      maxDuration: 1.1023088
+      minDuration: 0.7023087
     - name: Music_Battle
       guid: 5188db53531df649bcfff5747d7b0e7b
       id: 3782024871
@@ -284,7 +284,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 5220235a6a94a845b8b63cbd069f9478
     GuidInternal: 
-    m_lastTime: -8585080341240453181
+    m_lastTime: -8585078087472352087
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -312,8 +312,106 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: e1bace9c25acf548b70b66b25e0ae9e4
     GuidInternal: 
-    m_lastTime: -8585080341240493064
-    List: []
+    m_lastTime: -8585078087472362058
+    List:
+    - name: Weapon_Fire_Loop
+      guid: 7948284b7656cb4dbdc276ac4e30f2cc
+      id: 1413087445
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e1bace9c25acf548b70b66b25e0ae9e4
+      - ElementName: Weapon_Fire_Loop
+        ObjectType: 11
+        guid: 7948284b7656cb4dbdc276ac4e30f2cc
+      Path: Switches\Default Work Unit\Weapon_Fire_Loop
+      values:
+      - name: Loop_1
+        guid: ad1efd7f5ecda143a0da1d8ff6cc214f
+        id: 3987970511
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e1bace9c25acf548b70b66b25e0ae9e4
+        - ElementName: Weapon_Fire_Loop
+          ObjectType: 11
+          guid: 7948284b7656cb4dbdc276ac4e30f2cc
+        - ElementName: Loop_1
+          ObjectType: 10
+          guid: ad1efd7f5ecda143a0da1d8ff6cc214f
+      - name: Loop_2
+        guid: 3860ce74ad72c9488f696149abe6d63a
+        id: 3987970508
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e1bace9c25acf548b70b66b25e0ae9e4
+        - ElementName: Weapon_Fire_Loop
+          ObjectType: 11
+          guid: 7948284b7656cb4dbdc276ac4e30f2cc
+        - ElementName: Loop_2
+          ObjectType: 10
+          guid: 3860ce74ad72c9488f696149abe6d63a
+      - name: Loop_3
+        guid: e428ca0d4982b34abe9dfebef9f17bd4
+        id: 3987970509
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e1bace9c25acf548b70b66b25e0ae9e4
+        - ElementName: Weapon_Fire_Loop
+          ObjectType: 11
+          guid: 7948284b7656cb4dbdc276ac4e30f2cc
+        - ElementName: Loop_3
+          ObjectType: 10
+          guid: e428ca0d4982b34abe9dfebef9f17bd4
+      - name: Loop_4
+        guid: 2e15024c0c6a7841aff450906236b958
+        id: 3987970506
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e1bace9c25acf548b70b66b25e0ae9e4
+        - ElementName: Weapon_Fire_Loop
+          ObjectType: 11
+          guid: 7948284b7656cb4dbdc276ac4e30f2cc
+        - ElementName: Loop_4
+          ObjectType: 10
+          guid: 2e15024c0c6a7841aff450906236b958
+      - name: Loop_5
+        guid: 16e66d6b8830ce4791f2f0058474fc51
+        id: 3987970507
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e1bace9c25acf548b70b66b25e0ae9e4
+        - ElementName: Weapon_Fire_Loop
+          ObjectType: 11
+          guid: 7948284b7656cb4dbdc276ac4e30f2cc
+        - ElementName: Loop_5
+          ObjectType: 10
+          guid: 16e66d6b8830ce4791f2f0058474fc51
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:

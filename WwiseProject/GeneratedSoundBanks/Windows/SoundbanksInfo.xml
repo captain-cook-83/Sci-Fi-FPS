@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Android" BasePlatform="Android" SchemaVersion="16" SoundBankVersion="145">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
 	<RootPaths>
-		<ProjectRoot>../../../../../WwiseProject</ProjectRoot>
-		<SourceFilesRoot>../../../../../WwiseProject/.cache/Android</SourceFilesRoot>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../../../WwiseProject/GeneratedSoundBanks/Android</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{A339580E-C39A-7165-71D8-09E69668D6C7}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{EB440BD0-1D5E-AEBC-F607-E43A5018B5FD}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -181,5 +181,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{C70C817A-686B-E603-23B8-8A2DC0D1CB3C}</FileHash>
+	<FileHash>{9D628C5F-7CC2-DC07-556C-36B77173BC7A}</FileHash>
 </SoundBanksInfo>

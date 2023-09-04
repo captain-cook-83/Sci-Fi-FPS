@@ -70,3 +70,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Android/
+/[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Android.meta
+/[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Windows/
+/[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Windows.meta
+/[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Mac/
+/[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Mac.meta

@@ -2,11 +2,11 @@
 <PlatformInfo>
 	<Platform Name="Android" BasePlatform="Android" Generator="2022.1.7.8290"/>
 	<RootPaths>
-		<ProjectRoot>../../../../../WwiseProject</ProjectRoot>
-		<SourceFilesRoot>../../../../../WwiseProject/.cache/Android</SourceFilesRoot>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Android</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../../../WwiseProject/GeneratedSoundBanks/Android</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DefaultAlign>16</DefaultAlign>
 	<Settings>
@@ -28,5 +28,5 @@
 		<PrintObjectGuid>false</PrintObjectGuid>
 		<PrintObjectPath>false</PrintObjectPath>
 	</Settings>
-	<FileHash>{92C05D6D-963B-4292-A6B2-9EE51A102737}</FileHash>
+	<FileHash>{2353F859-AA94-0FD5-F840-F7941A8F4D41}</FileHash>
 </PlatformInfo>

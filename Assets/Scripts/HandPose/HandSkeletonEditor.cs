@@ -3,7 +3,6 @@ using Cc83.Utils;
 using Sirenix.OdinInspector;
 using Unity.XR.CoreUtils;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;

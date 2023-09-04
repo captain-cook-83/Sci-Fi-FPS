@@ -3,11 +3,11 @@
 	<Project Name="Sci-Fi-FPS" GUID="{BC9B82E7-E952-4A42-82E3-2BB1927E13ED}" Generator="2022.1.7.8290"/>
 	<CacheRoot>../../../../WwiseProject/.cache</CacheRoot>
 	<Platforms>
-		<Platform Name="Android" GUID="{B56BB9D1-4026-46EF-A0FC-01CC3E6F4CB6}" BasePlatform="Android" BasePlatformGUID="{A2D401DE-B8B6-4FEB-8142-137C34D507CA}" Path="Android"/>
-		<Platform Name="Windows" GUID="{6BEA05A6-4592-408C-90C2-B6CB579C79A8}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
+		<Platform Name="Android" GUID="{B56BB9D1-4026-46EF-A0FC-01CC3E6F4CB6}" BasePlatform="Android" BasePlatformGUID="{A2D401DE-B8B6-4FEB-8142-137C34D507CA}" Path="../../../../WwiseProject/GeneratedSoundBanks/Android"/>
+		<Platform Name="Windows" GUID="{6BEA05A6-4592-408C-90C2-B6CB579C79A8}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../WwiseProject/GeneratedSoundBanks/Windows"/>
 	</Platforms>
 	<Languages>
 		<Language Name="English(US)" Id="684519430" GUID="{03D3C091-EFE7-4027-8A67-BD87F24BF387}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{1148D5C2-10AD-BD1E-080A-F8146A329167}</FileHash>
+	<FileHash>{D3BA0BDE-C8F9-9D8C-9C1C-BBC885346124}</FileHash>
 </ProjectInfo>

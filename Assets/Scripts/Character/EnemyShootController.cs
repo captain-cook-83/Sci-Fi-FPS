@@ -28,6 +28,8 @@ namespace Cc83.Character
         public FireEffectManager fireEffectManager;
         
         public Event akEvent;
+
+        public bool IsEnabled => isActiveAndEnabled;
         
         private Animator animator;
         
@@ -41,19 +43,15 @@ namespace Cc83.Character
         public void Shoot(int times = 1)
         {
             var currentTime = Time.time;
-            if (currentTime < triggerTime)
-            {
-                return;
-            }
+            if (currentTime < triggerTime) return;
 
             triggerTime = currentTime + cdTime;
-
             StartCoroutine(AsyncShoot(times));
         }
 
         private IEnumerator AsyncShoot(int times)
         {
-            while (times > 0 && enabled)
+            while (times > 0 && IsEnabled)
             {
                 var loopTimes = Mathf.Min(LoopSwitches.Length, times);
                 times -= LoopSwitches.Length;             // 无限循环控制变量必须首先处理，避免循环内异常导致进入死循环

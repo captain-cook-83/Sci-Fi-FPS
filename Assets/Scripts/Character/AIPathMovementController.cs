@@ -106,7 +106,7 @@ namespace Cc83.Character
             {
                 yield return new WaitForSeconds(Random.Range(0.5f, 1));
                 
-                while (true)
+                while (shootController.IsEnabled)
                 {
                     shootController.Shoot(Random.Range(1, 6));
                     

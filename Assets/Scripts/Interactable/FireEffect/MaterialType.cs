@@ -5,8 +5,7 @@ namespace Cc83.Interactable
 {
     public class MaterialType : MonoBehaviour
     {
-
-        public MaterialTypeEnum TypeOfMaterial = MaterialTypeEnum.Plaster;
+        public MaterialTypeEnum typeOfMaterial = MaterialTypeEnum.Plaster;
 
         [Serializable]
         public enum MaterialTypeEnum

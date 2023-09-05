@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cc83.Character;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -64,13 +65,22 @@ namespace Cc83.Interactable
                 {
                     StartCoroutine(AddForceToTarget(targetRigidbody, direction * 100, hit.point));
                 }
+
+                if (target.gameObject.layer == Definitions.CharacterLayer.value)
+                {
+                    var healthListener = target.GetComponent<HealthListener>();
+                    if (healthListener)
+                    {
+                        healthListener.TakeDamage(direction);
+                    }
+                }
             }
         }
         
         private ImpactInfo GetImpactEffect(GameObject impactedGameObject)
         {
             var materialType = impactedGameObject.GetComponent<MaterialType>();
-            if (materialType && impactInfos.TryGetValue(materialType.TypeOfMaterial, out var impactEffect))
+            if (materialType && impactInfos.TryGetValue(materialType.typeOfMaterial, out var impactEffect))
             {
                 return impactEffect;
             }

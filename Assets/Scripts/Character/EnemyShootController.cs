@@ -21,31 +21,38 @@ namespace Cc83.Character
         [Range(0.01f, 0.5f)]
         public float cdTime = 0.17f;
         
-        public Transform shootPoint;
-        
-        public GameObject trajectoryPrefab;
-        
         public FireEffectManager fireEffectManager;
         
         public Event akEvent;
 
         public bool IsEnabled => isActiveAndEnabled;
         
-        private Animator animator;
+        private Animator _animator;
         
-        private float triggerTime;
+        private float _triggerTime;
+
+        private bool _triggerShoot;
 
         private void Awake()
         {
-            animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
+        }
+
+        private void LateUpdate()
+        {
+            if (_triggerShoot)
+            {
+                _triggerShoot = false;
+                ActShoot();
+            }
         }
 
         public void Shoot(int times = 1)
         {
             var currentTime = Time.time;
-            if (currentTime < triggerTime) return;
+            if (currentTime < _triggerTime) return;
 
-            triggerTime = currentTime + cdTime;
+            _triggerTime = currentTime + cdTime;
             StartCoroutine(AsyncShoot(times));
         }
 
@@ -61,15 +68,18 @@ namespace Cc83.Character
                 
                 for (var i = 0; i < loopTimes; i++)
                 {
-                    if (enabled)
+                    if (IsEnabled)
                     {
-                        ActShoot();
-                
+                        _triggerShoot = true;
                         yield return new WaitForSeconds(cdTime);
                     }
-                    else if (playingId != null)
+                    else
                     {
-                        AkSoundEngine.StopPlayingID((uint)playingId);
+                        if (playingId != null)
+                        {
+                            AkSoundEngine.StopPlayingID((uint)playingId);
+                        }
+                        break;
                     }
                 }
             }
@@ -83,14 +93,12 @@ namespace Cc83.Character
             var shootRotation = shootInfo.rotation;
             var shootDirection = shootInfo.forward;
 
-            if (animator)
+            if (_animator)
             {
-                animator.SetTrigger(TriggerShoot);
+                _animator.SetTrigger(TriggerShoot);
             }
             
             fireEffectManager.Shoot(shootPosition, shootRotation, shootDirection);
-            
-            Instantiate(trajectoryPrefab, shootPoint.position, shootPoint.rotation);
         }
     }
 }

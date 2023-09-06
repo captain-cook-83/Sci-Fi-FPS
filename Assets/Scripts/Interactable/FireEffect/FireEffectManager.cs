@@ -8,44 +8,68 @@ namespace Cc83.Interactable
 {
     public class FireEffectManager : MonoBehaviour
     {
-        public float BulletDistance = 100;
+        [Range(50, 300)]
+        public float bulletDistance = 100;
         
-        public GameObject ImpactEffect;
+        public GameObject trajectoryPrefab;
+
+        [Range(0.1f, 1)]
+        public float trajectoryDuration = 0.5f;
+        
+        public GameObject impactEffect;
         
         [Range(0.1f, 5f)]
         public float effectDuration = 1f;
         
-        public ImpactInfo[] ImpactElemets;
+        public ImpactInfo[] impactElements;
 
-        private readonly Dictionary<MaterialType.MaterialTypeEnum, ImpactInfo> impactInfos = new ();
-        private ObjectPool<GameObject> effectPool;
+        private readonly Dictionary<MaterialType.MaterialTypeEnum, ImpactInfo> _impactInfos = new ();
+        
+        private ObjectPool<GameObject> _effectPool;
+
+        private ObjectPool<GameObject> _trajectoryPool;
 
         private void Awake()
         {
-            foreach (var impactElement in ImpactElemets)
+            foreach (var impactElement in impactElements)
             {
-                impactInfos.Add(impactElement.MaterialType, impactElement);
+                _impactInfos.Add(impactElement.MaterialType, impactElement);
             }
             
-            effectPool = new ObjectPool<GameObject>(CreateEffectInstance, 
+            _effectPool = new ObjectPool<GameObject>(() => Instantiate(impactEffect), 
                 go => go.SetActive(true), go => go.SetActive(false), Destroy,
                 true, 8, 16);
+            
+            _trajectoryPool = new ObjectPool<GameObject>(() => Instantiate(trajectoryPrefab), 
+                go => go.SetActive(true), go => go.SetActive(false), Destroy,
+                true, 2, 4);
+        }
+
+        private void OnDestroy()
+        {
+            _effectPool.Dispose();
+            _trajectoryPool.Dispose();
         }
 
         public void Shoot(Vector3 position, Quaternion rotation, Vector3 direction)
         {
-            var impactEffect = effectPool.Get();
-            impactEffect.transform.SetPositionAndRotation(position, rotation);
-            StartCoroutine(ReleaseImpactEffect(impactEffect, effectDuration));
+            var effect = _effectPool.Get();
+            effect.transform.SetPositionAndRotation(position, rotation);
+            StartCoroutine(ReleasePoolElement(effect, _effectPool, effectDuration));
+
+            var trajectory = _trajectoryPool.Get();
+            trajectory.transform.SetPositionAndRotation(position, rotation);
+            StartCoroutine(ReleasePoolElement(trajectory, _trajectoryPool, trajectoryDuration));
             
             var ray = new Ray(position, direction);
-            if (Physics.Raycast(ray, out var hit, BulletDistance))
+            if (Physics.Raycast(ray, out var hit, bulletDistance))
             {
                 var target = hit.transform;
-                var impactInfo = GetImpactEffect(target.gameObject);
+                var targetGameObject = target.gameObject;
+                var hitPoint = hit.point;
+                var impactInfo = GetImpactEffect(targetGameObject);
                 if (impactInfo != null)
                 {
-                    var hitPoint = hit.point;
                     var effectInstance = Instantiate(impactInfo.ImpactEffect, hitPoint, Quaternion.identity);
                     effectInstance.transform.LookAt(hitPoint + hit.normal);
                     Destroy(effectInstance, 5);
@@ -58,20 +82,22 @@ namespace Cc83.Interactable
                     }
                 }
 
-                if (target.gameObject.isStatic) return;
+                if (targetGameObject.isStatic) return;
                 
-                var targetRigidbody = target.GetComponent<Rigidbody>();
-                if (targetRigidbody)
-                {
-                    StartCoroutine(AddForceToTarget(targetRigidbody, direction * 100, hit.point));
-                }
-
-                if (target.gameObject.layer == Definitions.CharacterLayer.value)
+                if (targetGameObject.layer == Definitions.CharacterLayer.value)
                 {
                     var healthListener = target.GetComponent<HealthListener>();
                     if (healthListener)
                     {
-                        healthListener.TakeDamage(direction);
+                        healthListener.TakeDamage(hitPoint, direction);
+                    }
+                }
+                else
+                {
+                    var targetRigidbody = target.GetComponent<Rigidbody>();
+                    if (targetRigidbody)
+                    {
+                        StartCoroutine(AddForceToTarget(targetRigidbody, direction * 100, hit.point));
                     }
                 }
             }
@@ -80,7 +106,7 @@ namespace Cc83.Interactable
         private ImpactInfo GetImpactEffect(GameObject impactedGameObject)
         {
             var materialType = impactedGameObject.GetComponent<MaterialType>();
-            if (materialType && impactInfos.TryGetValue(materialType.typeOfMaterial, out var impactEffect))
+            if (materialType && _impactInfos.TryGetValue(materialType.typeOfMaterial, out var impactEffect))
             {
                 return impactEffect;
             }
@@ -88,11 +114,11 @@ namespace Cc83.Interactable
             return null;
         }
         
-        private IEnumerator ReleaseImpactEffect(GameObject effectInstance, float delay)
+        private static IEnumerator ReleasePoolElement(GameObject element, IObjectPool<GameObject> pool, float delay)
         {
             yield return new WaitForSeconds(delay);
             
-            effectPool.Release(effectInstance);
+            pool.Release(element);
         }
 
         private static IEnumerator AddForceToTarget(Rigidbody target, Vector3 force, Vector3 position)
@@ -100,11 +126,6 @@ namespace Cc83.Interactable
             yield return null;
 
             target.AddForceAtPosition(force, position, ForceMode.Force);
-        }
-        
-        private GameObject CreateEffectInstance()
-        {
-            return Instantiate(ImpactEffect);
         }
         
         [System.Serializable]

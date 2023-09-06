@@ -4,20 +4,19 @@ namespace Cc83.Interactable
 {
     public class TrajectoryController : MonoBehaviour
     {
+        [Range(1, 10)]
         public float speed = 5;
 
-        private Transform t;
+        private Transform _t;
 
         private void Awake()
         {
-            t = transform;
-            
-            Destroy(gameObject, 0.6f);
+            _t = transform;
         }
 
         private void Update()
         {
-            t.position += t.forward * speed;
+            _t.position += _t.forward * speed;
         }
     }
 }

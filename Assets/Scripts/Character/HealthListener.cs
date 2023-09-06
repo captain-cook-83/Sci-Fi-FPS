@@ -11,9 +11,9 @@ namespace Cc83.Character
 
         public bool headShoot;
 
-        public void TakeDamage(Vector3 direction)
+        public void TakeDamage(Vector3 hitPoint, Vector3 direction)
         {
-            healthController.TakeDamage(damage, ref direction, headShoot);
+            healthController.TakeDamage(damage, transform, ref hitPoint, ref direction, headShoot);
         }
     }
 }

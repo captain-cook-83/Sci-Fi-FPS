@@ -18,15 +18,13 @@ namespace Cc83.Interactable
             secondaryAnchor.SetLocalPositionAndRotation(localPosition, localRotation);
         }
 
-        public void DropDown(ref Vector3 direction)
+        public void DropDown()
         {
-            var normalizedDirection = direction.normalized;
-            
             transform.SetParent(null);
             
             gameObject.GetComponent<EnemyShootController>().enabled = false;
             gameObject.GetComponent<Collider>().enabled = true;
-            gameObject.AddComponent<Rigidbody>().AddForceAtPosition(normalizedDirection * 100, transform.position + Vector3.up * 0.1f, ForceMode.Force);
+            gameObject.AddComponent<Rigidbody>();
         }
     }
 }

@@ -1,4 +1,3 @@
-using System.Linq;
 using Cc83.Interactable;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
@@ -13,8 +12,7 @@ namespace Cc83.Character
         [Button("Batch Link Colliders", ButtonSizes.Large)]
         public void BatchLinkColliders()
         {
-            var colliders = GetComponentsInChildren<Collider>().Where(c => c.isTrigger);
-            foreach (var c in colliders)
+            foreach (var c in GetComponentsInChildren<Collider>())
             {
                 c.GetOrAddComponent<MaterialType>().typeOfMaterial = materialTypeEnum;
                 c.GetOrAddComponent<HealthListener>().healthController = this;

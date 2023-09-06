@@ -16,10 +16,6 @@ namespace Cc83.Interactable
         public float cdTime = 0.17f;
 
         public Animator triggerAnimator;
-
-        public Transform shootPoint;
-
-        public GameObject trajectoryPrefab;
         
         public FireEffectManager fireEffectManager;
         
@@ -68,8 +64,6 @@ namespace Cc83.Interactable
             {
                 triggerAnimator.SetBool(TriggerHold, true);
             }
-            
-            Instantiate(trajectoryPrefab, shootPoint.position, shootPoint.rotation);
             
             var handController = args.interactorObject.transform.GetComponentInParent<HandController>();
             handController.Shake();

@@ -7,9 +7,9 @@ namespace Cc83.Character
     {
         public WeaponRifle weapon;
 
-        public void DropDown(ref Vector3 direction)
+        public void DropDown()
         {
-            weapon.DropDown(ref direction);
+            weapon.DropDown();
         }
     }
 }

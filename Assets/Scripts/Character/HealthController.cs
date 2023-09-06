@@ -17,19 +17,19 @@ namespace Cc83.Character
             _animator = GetComponent<Animator>();
         }
 
-        public void TakeDamage(float damage, ref Vector3 direction, bool headShoot = false)
+        public void TakeDamage(float damage, Transform part, ref Vector3 hitPoint, ref Vector3 direction, bool headShoot = false)
         {
             hp -= damage;
+            if (hp > 0) return;
             
-            if (headShoot)
+            _animator.SetTrigger(TriggerDeath);
+            
+            GetComponent<WeaponReference>().DropDown();
+            
+            var partRigidbody = part.GetComponent<Rigidbody>();
+            if (partRigidbody)
             {
-                _animator.SetTrigger(TriggerHeadShootDeath);
-                GetComponent<WeaponReference>().DropDown(ref direction);
-            }
-            else if (hp <= 0)
-            {
-                _animator.SetTrigger(TriggerDeath);
-                GetComponent<WeaponReference>().DropDown(ref direction);
+                partRigidbody.AddForceAtPosition(direction.normalized * 100, hitPoint, ForceMode.Force);
             }
         }
     }

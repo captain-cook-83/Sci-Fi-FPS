@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabaea637d046b649916223ab9952a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletDistance: 100
-  ImpactEffect: {fileID: 4877691047503449448, guid: 7304af4fdfbb934429318b9833ce0394, type: 3}
+  bulletDistance: 100
+  trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}
+  trajectoryDuration: 0.2
+  impactEffect: {fileID: 4877691047503449448, guid: 7304af4fdfbb934429318b9833ce0394, type: 3}
   effectDuration: 4
-  ImpactElemets:
+  impactElements:
   - MaterialType: 0
     ImpactEffect: {fileID: 178032, guid: ea6cf4c5efb69b94db988e2fbfd72698, type: 3}
     DecalEffect: {fileID: 9155183395784354696, guid: 92229640853caa54ea58dbc8ff102ffb, type: 3}

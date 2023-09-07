@@ -97,7 +97,7 @@ namespace Cc83.Interactable
                     var targetRigidbody = target.GetComponent<Rigidbody>();
                     if (targetRigidbody)
                     {
-                        StartCoroutine(AddForceToTarget(targetRigidbody, direction * 100, hit.point));
+                        StartCoroutine(AddForceToTarget(targetRigidbody, direction.normalized * 10, hit.point));            //TODO 力量随距离衰减
                     }
                 }
             }
@@ -125,7 +125,7 @@ namespace Cc83.Interactable
         {
             yield return null;
 
-            target.AddForceAtPosition(force, position, ForceMode.Force);
+            target.AddForceAtPosition(force, position, ForceMode.Impulse);
         }
         
         [System.Serializable]

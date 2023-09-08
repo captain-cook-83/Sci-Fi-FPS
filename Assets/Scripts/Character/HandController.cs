@@ -1,6 +1,7 @@
 using Cc83.HandPose;
 using RootMotion.FinalIK;
 using Sirenix.OdinInspector;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -9,6 +10,7 @@ namespace Cc83.Character
     public class HandController : MonoBehaviour
     {
         private static readonly int ShootingShake = Animator.StringToHash("ShootingShake");
+        private static readonly int StopShaking = Animator.StringToHash("StopShake");
         
         public HandSide side;
 
@@ -63,6 +65,19 @@ namespace Cc83.Character
             skeleton.ClearPoseData();
             
             ResetBindableShell();
+            
+            if (shootingShakeAnimator)
+            {
+                shootingShakeAnimator.runtimeAnimatorController = null;
+            }
+        }
+
+        public void SetAnimatorController(AnimatorController animatorController)
+        {
+            if (shootingShakeAnimator)
+            {
+                shootingShakeAnimator.runtimeAnimatorController = animatorController;
+            }
         }
 
         public void Shake()
@@ -70,6 +85,17 @@ namespace Cc83.Character
             if (shootingShakeAnimator)
             {
                 shootingShakeAnimator.SetTrigger(ShootingShake);
+            } else
+            {
+                Debug.LogWarning($"Missing hand shaking animation for {name}");
+            }
+        }
+
+        public void StopShake()
+        {
+            if (shootingShakeAnimator)
+            {
+                shootingShakeAnimator.SetTrigger(StopShaking);
             } else
             {
                 Debug.LogWarning($"Missing hand shaking animation for {name}");

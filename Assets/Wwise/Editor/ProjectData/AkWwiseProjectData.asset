@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b79e18b1fbe3f84191af14964969cb0e
     GuidInternal: 
-    m_lastTime: -8585077835442554047
+    m_lastTime: -8585074402381209397
     List:
     - name: Ambience_Battle
       guid: 70f57a11862f194b99567e14afd36cdd
@@ -253,8 +253,8 @@ MonoBehaviour:
         guid: f0235243728df642a3fe19ea3b7212bd
       Path: Events\Default Work Unit\Fire_Rifle_Player
       maxAttenuation: 0
-      maxDuration: 1.1023088
-      minDuration: 0.7023087
+      maxDuration: 4.6023088
+      minDuration: 4.6023088
     - name: Music_Battle
       guid: 5188db53531df649bcfff5747d7b0e7b
       id: 3782024871

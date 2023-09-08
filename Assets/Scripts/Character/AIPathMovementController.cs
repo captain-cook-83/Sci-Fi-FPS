@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cc83.Interactable;
 using Pathfinding;
 using UnityEngine;
 
@@ -22,34 +23,34 @@ namespace Cc83.Character
         [Range(0.5f, 5)]
         public float maxRepeatShootDelay = 5;
 
-        private Seeker seeker;
+        private Seeker _seeker;
         
-        private Animator animator;
+        private Animator _animator;
         
-        private EnemyShootController shootController;
+        private EnemyShootController _shootController;
 
         private void Awake()
         {
             var weaponReference = GetComponent<WeaponReference>();
             if (weaponReference)
             {
-                shootController = weaponReference.weapon.GetComponent<EnemyShootController>();
+                _shootController = weaponReference.weapon.GetComponent<EnemyShootController>();
             }
             
-            seeker = GetComponent<Seeker>();
-            animator = GetComponent<Animator>();
+            _seeker = GetComponent<Seeker>();
+            _animator = GetComponent<Animator>();
             
-            seeker.pathCallback += OnPathCallback;
+            _seeker.pathCallback += OnPathCallback;
         }
 
         private void Start()
         {
-            seeker.StartPath(transform.position, target.position);
+            _seeker.StartPath(transform.position, target.position);
         }
 
         private void OnDestroy()
         {
-            seeker.pathCallback -= OnPathCallback;
+            _seeker.pathCallback -= OnPathCallback;
         }
 
         private void OnPathCallback(Path path)
@@ -69,9 +70,9 @@ namespace Cc83.Character
 
         private IEnumerator MoveToTarget(List<Vector3> pathPoints)
         {
-            animator.SetFloat(AnimatorTensity, 1);
-            animator.SetFloat(AnimatorSpeed, 5);
-            animator.SetBool(AnimatorMoving, true);
+            _animator.SetFloat(AnimatorTensity, 1);
+            _animator.SetFloat(AnimatorSpeed, 5);
+            _animator.SetBool(AnimatorMoving, true);
             
             foreach (var pathPoint in pathPoints)
             {
@@ -98,17 +99,17 @@ namespace Cc83.Character
             aimTarget.y = transform.position.y;
             transform.LookAt(aimTarget);
             
-            animator.SetBool(AnimatorCrouching, true);
-            animator.SetBool(AnimatorMoving, false);
-            animator.SetFloat(AnimatorSpeed, 0);
+            _animator.SetBool(AnimatorCrouching, true);
+            _animator.SetBool(AnimatorMoving, false);
+            _animator.SetFloat(AnimatorSpeed, 0);
 
-            if (shootController)
+            if (_shootController)
             {
                 yield return new WaitForSeconds(Random.Range(0.5f, 1));
                 
-                while (shootController.IsEnabled)
+                while (_shootController.IsEnabled)
                 {
-                    shootController.Shoot(Random.Range(1, 6));
+                    _shootController.Shoot(Random.Range(1, 6));
                     
                     yield return new WaitForSeconds(Random.Range(0.5f, maxRepeatShootDelay));
                 }

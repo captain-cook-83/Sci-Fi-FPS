@@ -734,6 +734,7 @@ GameObject:
   - component: {fileID: 2337629006672255038}
   - component: {fileID: 6973769763954309739}
   - component: {fileID: 2507936612174241020}
+  - component: {fileID: 7577657498083663495}
   - component: {fileID: 9089565217155297338}
   - component: {fileID: 3936229787917516462}
   - component: {fileID: 8353974294283248308}
@@ -983,7 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7177a3a23cd0da41998c12415621c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  readyAudio: {fileID: 8300000, guid: 9158afb6966d445db9caf1dccf7acbcc, type: 3}
+  stableMode: 1
 --- !u!114 &2507936612174241020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,6 +1003,20 @@ MonoBehaviour:
   primaryRightActivatePose: {fileID: 11400000, guid: 235491a9beb6b1f4b94355432632efa8, type: 2}
   secondaryLeftPose: {fileID: 0}
   secondaryRightPose: {fileID: 0}
+--- !u!114 &7577657498083663495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043241439066821443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a4fe60e0706424890fc55ac4b35c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftController: {fileID: 9100000, guid: 8a6731a97dcc4ab4da2f362bcb86005f, type: 2}
+  rightController: {fileID: 9100000, guid: b6788dd03dfffca4881020f4f9efc37d, type: 2}
 --- !u!114 &9089565217155297338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,15 +1078,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26ecaf0de48464f9b11380a24a08c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cdTime: 0.2
-  triggerAnimator: {fileID: 2092333914770915034}
-  shootPoint: {fileID: 6781390521297635405}
-  trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}
+  cdTime: 0.16
   fireEffectManager: {fileID: 2417264115582317044}
   akEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 11b8f72b964da864989ebfd1e16714f6, type: 2}
+  maxAmmunitionCapacity: 15
+  triggerAnimator: {fileID: 2092333914770915034}
+  continuousShoot: 0
 --- !u!95 &8353974294283248308
 Animator:
   serializedVersion: 5

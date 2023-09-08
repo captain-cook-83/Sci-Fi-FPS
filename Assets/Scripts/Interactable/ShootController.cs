@@ -1,74 +1,111 @@
+using System.Collections;
 using Cc83.Character;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using Event = AK.Wwise.Event;
 
 namespace Cc83.Interactable
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(XRGrabInteractable))]
-    public class ShootController : MonoBehaviour
+    public class ShootController : BaseShootController
     {
-        private static readonly int Shoot = Animator.StringToHash("Shoot");
         private static readonly int TriggerHold = Animator.StringToHash("TriggerHold");
-
-        [Range(0.01f, 0.5f)]
-        public float cdTime = 0.17f;
+        private static readonly int TriggerShoot = Animator.StringToHash("Shoot");
+        private static readonly int TriggerStop = Animator.StringToHash("Stop");            // 停止循环播放的动画（ continuousShoot = true 的连续发射的武器才需要）
 
         public Animator triggerAnimator;
-        
-        public FireEffectManager fireEffectManager;
-        
-        public Event akEvent;
-        
-        private Animator animator;
-        
-        private XRGrabInteractable interactable;
 
-        private float triggerTime;
+        public bool continuousShoot;
+        
+        public override bool IsEnabled => isActiveAndEnabled && _handController;
+        
+        private XRGrabInteractable _interactable;
 
-        private void Awake()
+        private HandController _handController;
+        
+        private uint? _akPlayingId;
+
+        private uint _activeId;
+
+        protected override void Awake()
         {
-            animator = GetComponent<Animator>();
-            interactable = GetComponent<XRGrabInteractable>();
+            base.Awake();
             
-            interactable.activated.AddListener(OnShootActive);
-            interactable.deactivated.AddListener(OnShootDeactivate);
+            _interactable = GetComponent<XRGrabInteractable>();
+            
+            _interactable.activated.AddListener(OnShootActive);
+            _interactable.deactivated.AddListener(OnShootDeactivate);
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
-            interactable.activated.RemoveListener(OnShootActive);
-            interactable.deactivated.RemoveListener(OnShootDeactivate);
+            base.OnDestroy();
+            
+            _interactable.activated.RemoveListener(OnShootActive);
+            _interactable.deactivated.RemoveListener(OnShootDeactivate);
+        }
+
+        protected override IEnumerator AsyncShoot(int times)
+        {
+            if (continuousShoot)
+            {
+                PendingShoot = true;
+                
+                var activeId = _activeId;           // 防止 WaitForSeconds 期间扳机连续切换
+                while (--times > 0)
+                {
+                    yield return new WaitForSeconds(cdTime);
+                    if (!(activeId == _activeId && IsEnabled)) break;
+                    
+                    PendingShoot = true;
+                }
+
+                if (activeId == _activeId)
+                {
+                    StopShooting();
+                }
+            }
+            else
+            {
+                PendingShoot = true;
+                _akPlayingId = akEvent?.Post(gameObject);
+            }
+        }
+
+        protected override void OnShootAnimation()
+        {
+            if (!continuousShoot)
+            {
+                _handController.Shake();
+            }
         }
 
         private void OnShootActive(ActivateEventArgs args)
         {
-            var currentTime = Time.time;
-            if (currentTime < triggerTime)
-            {
-                return;
-            }
-
-            triggerTime = currentTime + cdTime;
-    
-            // 首先获取位置和旋转等数据，避免接下来的动画逻辑改变相关信息后计算出现偏差
-            var shootInfo = fireEffectManager.transform;
-            var shootPosition = shootInfo.position;
-            var shootRotation = shootInfo.rotation;
-            var shootDirection = shootInfo.forward;
-
-            akEvent?.Post(gameObject);
-            animator.SetTrigger(Shoot);
             if (triggerAnimator)
             {
                 triggerAnimator.SetBool(TriggerHold, true);
             }
             
-            var handController = args.interactorObject.transform.GetComponentInParent<HandController>();
-            handController.Shake();
+            if (AmmunitionQuantity <= 0) return;
             
-            fireEffectManager.Shoot(shootPosition, shootRotation, shootDirection);
+            _handController = args.interactorObject.transform.GetComponentInParent<HandController>();
+            _activeId++;
+            
+            if (Shoot(continuousShoot ? AmmunitionQuantity : 1))
+            {
+                _akPlayingId = akEvent?.Post(gameObject);
+                
+                if (Animator)
+                {
+                    Animator.SetTrigger(TriggerShoot);
+                }
+                
+                if (continuousShoot)
+                {
+                    _handController.Shake();
+                }
+            }
         }
 
         private void OnShootDeactivate(DeactivateEventArgs args)
@@ -77,6 +114,32 @@ namespace Cc83.Interactable
             {
                 triggerAnimator.SetBool(TriggerHold, false);
             }
+            
+            if (_handController == null) return;
+            
+            if (continuousShoot)
+            {
+                StopShooting();
+            }
+            
+            _handController = null;
+            _activeId++;
+        }
+
+        private void StopShooting()
+        {
+            if (_akPlayingId != null)
+            {
+                AkSoundEngine.ExecuteActionOnPlayingID(AkActionOnEventType.AkActionOnEventType_Break, (uint) _akPlayingId);
+                _akPlayingId = null;
+            }
+                
+            if (Animator)
+            {
+                Animator.SetTrigger(TriggerStop);
+            }
+            
+            _handController.StopShake();
         }
     }
 }

@@ -72,10 +72,12 @@ namespace Cc83.Interactable
                 case 2:
                     var secondaryInteractor = grabInteractable.interactorsSelecting[1];
                     var interactablePose = grabInteractable.GetComponent<InteractablePose>();
+                    var interactableAnimatorControllers = grabInteractable.GetComponent<InteractableAnimatorController>();
                     
                     _secondaryHandController = secondaryInteractor.transform.GetComponentInParent<HandController>();
                     _secondaryPoseData = _secondaryHandController.side == HandSide.Left ? interactablePose.secondaryLeftPose : interactablePose.secondaryRightPose;
                     _secondaryHandController.SetPoseData(_secondaryPoseData, _secondaryPoseData);
+                    _secondaryHandController.SetAnimatorController(_secondaryHandController.side == HandSide.Left ? interactableAnimatorControllers.leftController : interactableAnimatorControllers.rightController);
                     break;
             }
         }
@@ -149,12 +151,14 @@ namespace Cc83.Interactable
         {
             var interactor = grabInteractable.interactorsSelecting[0];
             var interactablePose = grabInteractable.GetComponent<InteractablePose>();
+            var interactableAnimatorControllers = grabInteractable.GetComponent<InteractableAnimatorController>();
 
             _primaryHandController = interactor.transform.GetComponentInParent<HandController>();
             _primaryPoseData = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
             
             var primaryActivatePose = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
             _primaryHandController.SetPoseData(_primaryPoseData, primaryActivatePose);
+            _primaryHandController.SetAnimatorController(_primaryHandController.side == HandSide.Left ? interactableAnimatorControllers.leftController : interactableAnimatorControllers.rightController);
             _primaryHandController.PlayCatchSound();
         }
     }

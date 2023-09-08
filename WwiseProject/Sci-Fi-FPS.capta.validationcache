@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="110">
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Switches\Default Work Unit.wwu" DateLow="1693798138" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\States\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1693756032" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Sci-Fi-FPS.wproj" DateLow="1693645151" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Sci-Fi-FPS.capta.wsettings" DateLow="1693815800" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Queries\Factory Queries.wwu" DateLow="1693569933" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Queries\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Presets\Factory Spatial Audio.wwu" DateLow="1693569933" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Presets\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Metadata\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1693757749" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1693798138" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Events\Default Work Unit.wwu" DateLow="1693796839" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Effects\Factory Effects.wwu" DateLow="1693569933" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Effects\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1693569933" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1693803141" DateHigh="0"/>
-	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1693802863" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Switches\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\States\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Sci-Fi-FPS.wproj" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Sci-Fi-FPS.capta.wsettings" DateLow="1694175165" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Queries\Factory Queries.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Queries\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Presets\Factory Spatial Audio.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Presets\Default Work Unit.wwu" DateLow="1693823342" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Metadata\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Events\Default Work Unit.wwu" DateLow="1694166647" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Effects\Factory Effects.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Effects\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1693823341" DateHigh="0"/>
+	<ValidationCacheItem File="E:\UnityProjects\Sci-Fi-FPS\WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1694175164" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\capta\Documents\WwiseProjects\Sci-Fi-FPS\Virtual Acoustics\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\capta\Documents\WwiseProjects\Sci-Fi-FPS\Triggers\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\capta\Documents\WwiseProjects\Sci-Fi-FPS\Switches\Default Work Unit.wwu" DateLow="1693572761" DateHigh="0"/>

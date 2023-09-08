@@ -61,7 +61,7 @@
 						<Action Name="" ID="{51F9D314-C13C-4904-B5E4-50DC964264E5}" ShortID="222236356">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Rifle_Fire_Loop" ID="{B630AF8E-92B3-46C9-BBB1-255612D298F7}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+									<ObjectRef Name="Rifle_Fire_Loop" ID="{37999263-1ACF-4C01-99AC-0600E39C6D59}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

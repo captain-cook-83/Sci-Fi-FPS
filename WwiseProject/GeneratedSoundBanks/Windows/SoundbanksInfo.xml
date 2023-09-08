@@ -37,7 +37,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{544B49CD-DC4C-87C0-8EA4-224FE16977DA}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{E5A36F71-7151-9C09-155E-A7F236303FDB}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -128,39 +128,10 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="0.7023087" DurationMax="1.1023088">
-					<SwitchContainers>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970507"/>
-							<MediaRefs>
-								<MediaRef Id="462652134"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970506"/>
-							<MediaRefs>
-								<MediaRef Id="462652134"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970508"/>
-							<MediaRefs>
-								<MediaRef Id="462652134"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970511" Default="true"/>
-							<MediaRefs>
-								<MediaRef Id="1002607041"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970509"/>
-							<MediaRefs>
-								<MediaRef Id="462652134"/>
-							</MediaRefs>
-						</SwitchContainer>
-					</SwitchContainers>
+				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="4.6023088" DurationMax="4.6023088">
+					<MediaRefs>
+						<MediaRef Id="462652134"/>
+					</MediaRefs>
 				</Event>
 				<Event Id="3782024871" Name="Music_Battle" DurationType="Infinite">
 					<MediaRefs>
@@ -181,5 +152,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9D628C5F-7CC2-DC07-556C-36B77173BC7A}</FileHash>
+	<FileHash>{8C935231-79AC-D44A-D831-76A52082B1BB}</FileHash>
 </SoundBanksInfo>

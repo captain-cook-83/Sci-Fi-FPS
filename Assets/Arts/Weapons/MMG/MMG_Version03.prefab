@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 5802780075383635582}
   - component: {fileID: 5040388558967652180}
   - component: {fileID: 707094910376828236}
+  - component: {fileID: 8421626442938582177}
   - component: {fileID: 4346956484536782152}
   - component: {fileID: 1061886637313923920}
   - component: {fileID: 5416359955441703552}
@@ -340,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7177a3a23cd0da41998c12415621c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  readyAudio: {fileID: 8300000, guid: 9158afb6966d445db9caf1dccf7acbcc, type: 3}
+  stableMode: 1
 --- !u!114 &707094910376828236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +360,20 @@ MonoBehaviour:
   primaryRightActivatePose: {fileID: 11400000, guid: cee596fb94660d74ab229d085effe5d3, type: 2}
   secondaryLeftPose: {fileID: 11400000, guid: 72a13c1f103374348bfcf72ff9cca6aa, type: 2}
   secondaryRightPose: {fileID: 11400000, guid: 5ce084c34cd9e00408ea492e1016f8fd, type: 2}
+--- !u!114 &8421626442938582177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185960472853730133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a4fe60e0706424890fc55ac4b35c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftController: {fileID: 9100000, guid: 9b89b3bb07d701740b8b0629f498c7fb, type: 2}
+  rightController: {fileID: 9100000, guid: bcdf176316614534d8fa9ee0ed8491df, type: 2}
 --- !u!114 &4346956484536782152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,7 +433,7 @@ Animator:
   m_GameObject: {fileID: 2185960472853730133}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c6cda174516c084988c184ac0ceb9ca, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -442,14 +457,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cdTime: 0.1
-  triggerAnimator: {fileID: 3030526696878961199}
-  shootPoint: {fileID: 1980719261606475353}
-  trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}
   fireEffectManager: {fileID: 1813568146821075319}
   akEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 43506d5fed7821f44b7ad69d87c46339, type: 2}
+  maxAmmunitionCapacity: 40
+  triggerAnimator: {fileID: 3030526696878961199}
+  continuousShoot: 1
 --- !u!114 &7109190199589014328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,7 +797,7 @@ Transform:
   m_GameObject: {fileID: 8582182784417679919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02429043, y: 0.085799985, z: 0.109042525}
+  m_LocalPosition: {x: -0.02429043, y: 0.085799985, z: 0.10904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -864,7 +879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4656417286879920, guid: a5c7dec046c133a48aae86d411ead237, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0147
       objectReference: {fileID: 0}
     - target: {fileID: 4656417286879920, guid: a5c7dec046c133a48aae86d411ead237, type: 3}
       propertyPath: m_LocalRotation.w

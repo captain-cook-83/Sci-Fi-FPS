@@ -169,7 +169,7 @@ namespace Cc83.Interactable
             var dot = math.dot(weaponForward, cameraForward) - 0.5f;        // 左右 60° 角范围内生效
             if (dot > 0)
             {
-                return -weaponForward * (math.sqrt(dot) * recoil);
+                return weaponForward * (-math.sqrt(dot) * recoil);
             }
 
             return float3.zero;

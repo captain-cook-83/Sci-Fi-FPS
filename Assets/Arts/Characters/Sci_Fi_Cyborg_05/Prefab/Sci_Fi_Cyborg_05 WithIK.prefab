@@ -132,6 +132,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2782551543520332832, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: thumbActionReference
+      value: 
+      objectReference: {fileID: -5834260853668572521, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 2782551543520332832, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: thumbTouchedActionReference
+      value: 
+      objectReference: {fileID: 1716607616188771857, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 3168344488936855952, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -148,6 +156,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3649894891558433914, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: thumbActionReference
+      value: 
+      objectReference: {fileID: -1465996033966082241, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 3649894891558433914, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
+      propertyPath: thumbTouchedActionReference
+      value: 
+      objectReference: {fileID: -7308611400151777493, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 3762363701040089430, guid: 61e0cbdd42788c74fbc1d8e06c7b6c11, type: 3}
       propertyPath: m_Layer
       value: 7

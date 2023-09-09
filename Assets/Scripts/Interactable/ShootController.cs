@@ -1,10 +1,14 @@
 using System.Collections;
 using Cc83.Character;
+using Cinemachine;
+using Unity.Burst;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Cc83.Interactable
 {
+    [BurstCompile]
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(XRGrabInteractable))]
     public class ShootController : BaseShootController
@@ -16,6 +20,11 @@ namespace Cc83.Interactable
         public Animator triggerAnimator;
 
         public bool continuousShoot;
+
+        public CinemachineImpulseSource impulseSource;
+
+        [Range(0, 1)]
+        public float recoil = 0.01f;
         
         public override bool IsEnabled => isActiveAndEnabled && _handController;
         
@@ -27,6 +36,8 @@ namespace Cc83.Interactable
 
         private uint _activeId;
 
+        private Transform _cameraTransform;
+
         protected override void Awake()
         {
             base.Awake();
@@ -35,6 +46,8 @@ namespace Cc83.Interactable
             
             _interactable.activated.AddListener(OnShootActive);
             _interactable.deactivated.AddListener(OnShootDeactivate);
+            
+            _cameraTransform = Camera.main.transform;
         }
 
         protected override void OnDestroy()
@@ -74,6 +87,15 @@ namespace Cc83.Interactable
 
         protected override void OnShootAnimation()
         {
+            if (impulseSource && recoil > 0)
+            {
+                var velocity = CalculateRecoilVelocity(recoil, transform.forward, _cameraTransform.forward);
+                if (velocity.x != 0 || velocity.y != 0 || velocity.z != 0)
+                {
+                    impulseSource.GenerateImpulseAtPositionWithVelocity(transform.position, velocity);
+                }
+            }
+            
             if (!continuousShoot)
             {
                 _handController.Shake();
@@ -128,18 +150,29 @@ namespace Cc83.Interactable
 
         private void StopShooting()
         {
-            if (_akPlayingId != null)
-            {
-                AkSoundEngine.ExecuteActionOnPlayingID(AkActionOnEventType.AkActionOnEventType_Break, (uint) _akPlayingId);
-                _akPlayingId = null;
-            }
+            if (_akPlayingId == null) return;                   // 防止重复执行（尤其是 Animator 的 Trigger 重复设置）
+            
+            AkSoundEngine.ExecuteActionOnPlayingID(AkActionOnEventType.AkActionOnEventType_Break, (uint) _akPlayingId);
+            
+            _akPlayingId = null;
+            _handController.StopShake();
                 
             if (Animator)
             {
                 Animator.SetTrigger(TriggerStop);
             }
-            
-            _handController.StopShake();
+        }
+        
+        [BurstCompile]
+        private static float3 CalculateRecoilVelocity(float recoil, float3 weaponForward, float3 cameraForward)
+        {
+            var dot = math.dot(weaponForward, cameraForward) - 0.5f;        // 左右 60° 角范围内生效
+            if (dot > 0)
+            {
+                return -weaponForward * (math.sqrt(dot) * recoil);
+            }
+
+            return float3.zero;
         }
     }
 }

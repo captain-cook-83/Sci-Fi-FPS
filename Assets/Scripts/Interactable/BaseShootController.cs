@@ -39,7 +39,9 @@ namespace Cc83.Interactable
             if (PendingShoot)
             {
                 PendingShoot = false;
+#if !UNITY_EDITOR
                 AmmunitionQuantity--;
+#endif
                 
                 // 首先获取位置和旋转等数据，避免接下来的动画逻辑改变相关信息后计算出现偏差
                 var shootInfo = fireEffectManager.transform;

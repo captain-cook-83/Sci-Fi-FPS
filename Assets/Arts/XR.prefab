@@ -261,10 +261,10 @@ MonoBehaviour:
   m_PositionInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Position Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: eda9acb8-458e-495f-bad6-896f49cf13ba
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -273,10 +273,10 @@ MonoBehaviour:
   m_RotationInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Rotation Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 856e1ee2-5ec8-4642-8f43-add6b5481997
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -320,7 +320,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  m_HasMigratedActions: 1
 --- !u!1 &1275454133664543886
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6487772305343049573}
   m_Layer: 0
-  m_Name: Smooth Anchor
+  m_Name: LeftHand Stabilized Attach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,6 +563,7 @@ MonoBehaviour:
   m_SampleFrequency: 20
   m_HitDetectionType: 0
   m_SphereCastRadius: 0.1
+  m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
     m_Bits: 288
@@ -590,6 +590,7 @@ MonoBehaviour:
   m_EnableARRaycasting: 0
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
+  m_ScaleMode: 0
 --- !u!120 &6595143356624664340
 LineRenderer:
   serializedVersion: 2
@@ -903,9 +904,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7742743215040796706}
-  - component: {fileID: 3572501557725595594}
+  - component: {fileID: 7008446841294621793}
   m_Layer: 0
-  m_Name: RightHand Ray Origin
+  m_Name: RightHand Stabilized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +928,7 @@ Transform:
   - {fileID: 4000871624600964966}
   m_Father: {fileID: 3096285726223893075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3572501557725595594
+--- !u!114 &7008446841294621793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -936,15 +937,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2191290643550914322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a25946893f55a43bb80abdd9d8b53f, type: 3}
+  m_Script: {fileID: 11500000, guid: 64d299502104b064388841ec2adf6def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TargetTransform: {fileID: 7392952473164256203}
+  m_Target: {fileID: 7392952473164256203}
+  m_AimTargetObject: {fileID: 7885853250845420283}
   m_UseLocalSpace: 1
-  m_MinAngleOffsetAllowed: 0.1
-  m_MaxAngleOffsetAllowed: 3
-  m_LowerSpeed: 8
-  m_UpperSpeed: 12
+  m_AngleStabilization: 20
+  m_PositionStabilization: 0.25
 --- !u!1 &2677049769880455197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,9 +1120,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451232499874151518}
-  - component: {fileID: 4600544360910196885}
+  - component: {fileID: 380240720925388603}
   m_Layer: 0
-  m_Name: LeftHand Ray Origin
+  m_Name: LeftHand Stabilized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,7 +1144,7 @@ Transform:
   - {fileID: 6487772305343049573}
   m_Father: {fileID: 3096285726223893075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4600544360910196885
+--- !u!114 &380240720925388603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1153,15 +1153,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2962377755452296451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a25946893f55a43bb80abdd9d8b53f, type: 3}
+  m_Script: {fileID: 11500000, guid: 64d299502104b064388841ec2adf6def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TargetTransform: {fileID: 4629447401980469414}
+  m_Target: {fileID: 4629447401980469414}
+  m_AimTargetObject: {fileID: 9070449677413334717}
   m_UseLocalSpace: 1
-  m_MinAngleOffsetAllowed: 0.1
-  m_MaxAngleOffsetAllowed: 3
-  m_LowerSpeed: 8
-  m_UpperSpeed: 12
+  m_AngleStabilization: 20
+  m_PositionStabilization: 0.25
 --- !u!1 &3680200963714706331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,6 +1401,30 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ScaleToggleAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Toggle
+      m_Type: 1
+      m_ExpectedControlType: 
+      m_Id: 68a96538-112a-4b9d-8516-3b94c0b71b35
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_ScaleDeltaAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Delta
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 27a24174-bc33-40b4-83f4-d1cc7dfc5306
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   m_ButtonPressPoint: 0.5
 --- !u!114 &7756388242123632630
 MonoBehaviour:
@@ -1446,6 +1469,9 @@ MonoBehaviour:
   m_SmoothMotionEnabled: 0
   m_SmoothTurnEnabled: 0
   m_UIScrollingEnabled: 1
+  m_RayInteractorChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7727286164503290717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1760,6 +1786,30 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ScaleToggleAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Toggle
+      m_Type: 1
+      m_ExpectedControlType: 
+      m_Id: f98c95ca-930a-4398-8ef0-b23d476f106e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_ScaleDeltaAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Delta
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 7ac090e6-0450-4785-8f3d-ebfc9dd05df5
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   m_ButtonPressPoint: 0.5
 --- !u!114 &3494776712274904542
 MonoBehaviour:
@@ -1804,6 +1854,9 @@ MonoBehaviour:
   m_SmoothMotionEnabled: 1
   m_SmoothTurnEnabled: 0
   m_UIScrollingEnabled: 1
+  m_RayInteractorChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9059077705233530801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,6 +2325,30 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ScaleToggleAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Toggle
+      m_Type: 1
+      m_ExpectedControlType: 
+      m_Id: 70a98c9d-f867-4e32-8b8c-a9f74df85a55
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_ScaleDeltaAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Delta
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: f337a611-e4df-4ba2-9937-a6aabadc706c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   m_ButtonPressPoint: 0.5
 --- !u!114 &4454099537262367502
 MonoBehaviour:
@@ -2374,9 +2451,10 @@ MonoBehaviour:
   m_SampleFrequency: 50
   m_HitDetectionType: 0
   m_SphereCastRadius: 0.1
+  m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   m_RaycastTriggerInteraction: 1
   m_RaycastSnapVolumeInteraction: 1
   m_HitClosestOnly: 0
@@ -2400,6 +2478,7 @@ MonoBehaviour:
   m_EnableARRaycasting: 0
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
+  m_ScaleMode: 0
 --- !u!120 &7776653632826392706
 LineRenderer:
   serializedVersion: 2
@@ -2973,7 +3052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000871624600964966}
   m_Layer: 0
-  m_Name: Smooth Anchor
+  m_Name: RightHand Stabilized Attach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3275,6 +3354,7 @@ MonoBehaviour:
   m_SampleFrequency: 20
   m_HitDetectionType: 0
   m_SphereCastRadius: 0.1
+  m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
     m_Bits: 288
@@ -3301,6 +3381,7 @@ MonoBehaviour:
   m_EnableARRaycasting: 0
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
+  m_ScaleMode: 0
 --- !u!120 &9022702478647488792
 LineRenderer:
   serializedVersion: 2
@@ -3811,6 +3892,30 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ScaleToggleAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Toggle
+      m_Type: 1
+      m_ExpectedControlType: 
+      m_Id: 97e09725-51c2-454b-9a3b-b0584eac2b55
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_ScaleDeltaAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Delta
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: cd129779-4ec6-4885-91cd-7d427a1544ab
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   m_ButtonPressPoint: 0.5
 --- !u!114 &6627373440046952735
 MonoBehaviour:
@@ -3913,9 +4018,10 @@ MonoBehaviour:
   m_SampleFrequency: 50
   m_HitDetectionType: 0
   m_SphereCastRadius: 0.1
+  m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   m_RaycastTriggerInteraction: 1
   m_RaycastSnapVolumeInteraction: 1
   m_HitClosestOnly: 0
@@ -3939,6 +4045,7 @@ MonoBehaviour:
   m_EnableARRaycasting: 0
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
+  m_ScaleMode: 0
 --- !u!120 &1026295228786299426
 LineRenderer:
   serializedVersion: 2

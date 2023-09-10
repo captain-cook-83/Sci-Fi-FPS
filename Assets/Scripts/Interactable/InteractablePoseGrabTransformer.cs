@@ -42,22 +42,22 @@ namespace Cc83.Interactable
 
         public override void OnGrabCountChanged(XRGrabInteractable grabInteractable, Pose targetPose, Vector3 localScale)
         {
+            var primaryInteractor = grabInteractable.interactorsSelecting[0];
+            var handController = primaryInteractor.transform.GetComponentInParent<HandController>();
+            
             switch (grabInteractable.interactorsSelecting.Count)
             {
                 case 1:
-                    var primaryInteractor = grabInteractable.interactorsSelecting[0];
-                    var handController = primaryInteractor.transform.GetComponentInParent<HandController>();
-                    
                     if (_primaryHandController && !ReferenceEquals(_primaryHandController, handController))
                     {
-                        _primaryHandController.ResetBindableShell();
+                        _primaryHandController.OnReleaseFromMultiGrab();
                         _primaryHandController = null;
                         _primaryPoseData = default;
                     }
                     
                     if (_secondaryHandController)                // means from 2 to 1
                     {
-                        _secondaryHandController.ResetBindableShell();
+                        _secondaryHandController.OnReleaseFromMultiGrab();
                         _secondaryHandController = null;
                         _secondaryPoseData = default;
                         
@@ -73,6 +73,8 @@ namespace Cc83.Interactable
                     _secondaryPoseData = _secondaryHandController.side == HandSide.Left ? interactablePose.secondaryLeftPose : interactablePose.secondaryRightPose;
                     _secondaryHandController.SetPoseData(_secondaryPoseData, _secondaryPoseData);
                     _secondaryHandController.SetAnimatorController(_secondaryHandController.side == HandSide.Left ? interactableAnimatorControllers.leftController : interactableAnimatorControllers.rightController);
+                    
+                    handController.OnPrimaryFromMultiGrab();
                     break;
             }
         }
@@ -154,7 +156,7 @@ namespace Cc83.Interactable
             var primaryActivatePose = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
             _primaryHandController.SetPoseData(_primaryPoseData, primaryActivatePose);
             _primaryHandController.SetAnimatorController(_primaryHandController.side == HandSide.Left ? interactableAnimatorControllers.leftController : interactableAnimatorControllers.rightController);
-            _primaryHandController.PlayCatchSound();
+            _primaryHandController.OnCatchInteractable();
         }
     }
 }

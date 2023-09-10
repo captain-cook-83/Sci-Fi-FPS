@@ -1,5 +1,6 @@
 using System;
 using Cc83.HandPose;
+using EZCameraShake;
 using RootMotion.FinalIK;
 using Sirenix.OdinInspector;
 using UnityEditor.Animations;
@@ -15,23 +16,30 @@ namespace Cc83.Character
         
         public HandSide side;
 
-        public HandSkeleton skeleton;
-
         public float activateAnimateSpeed = 20;
-
-        public Animator shootingShakeAnimator;
-
-        public Transform interactableBindableShell;
-
-        public Transform interactableFixShell;
 
         [Tooltip("主要手掌虎口上方向")]
         public Vector3 primaryRotationAxis;
         
         [Tooltip("辅助手掌手心上方向")]
         public Vector3 secondaryRotationAxis;
+        
+        public Transform interactableBindableShell;
+
+        public Transform interactableFixShell;
 
         public Action Interrupted;
+        
+        [SerializeField]
+        private HandSkeleton skeleton;
+        
+        [SerializeField]
+        private Animator shootingShakeAnimator;
+        
+        [SerializeField]
+        private CameraShaker waggleShaker;
+
+        private bool _isPrimaryFromMultiGrab;
 
         private void OnValidate()
         {
@@ -51,7 +59,15 @@ namespace Cc83.Character
             }
         }
 
-        public void PlayCatchSound()
+        public void WaggleShake()
+        {
+            if (!_isPrimaryFromMultiGrab && waggleShaker)
+            {
+                waggleShaker.ShakeOnce(0.1f, 5, 0.1f, 1);
+            }
+        }
+
+        public void OnCatchInteractable()
         {
             AkSoundEngine.PostEvent(AK.EVENTS.CATCH_PISTOL_PLAYER, gameObject);
         }
@@ -60,14 +76,14 @@ namespace Cc83.Character
         {
             skeleton.SetPoseData(selectPoseData, activatePoseData, activateAnimateSpeed);
             
-            ResetBindableShell();
+            OnReleaseFromMultiGrab();
         }
 
         public void ClearPoseData()
         {
             skeleton.ClearPoseData();
             
-            ResetBindableShell();
+            OnReleaseFromMultiGrab();
             
             if (shootingShakeAnimator)
             {
@@ -105,10 +121,17 @@ namespace Cc83.Character
             }
         }
 
-        public void ResetBindableShell()
+        public void OnPrimaryFromMultiGrab()
+        {
+            _isPrimaryFromMultiGrab = true;
+        }
+
+        public void OnReleaseFromMultiGrab()
         {
             interactableBindableShell.localRotation = Quaternion.identity;
             interactableBindableShell.localPosition = Vector3.zero;
+
+            _isPrimaryFromMultiGrab = false;
         }
 
 #if UNITY_EDITOR

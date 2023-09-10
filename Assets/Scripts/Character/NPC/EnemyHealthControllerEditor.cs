@@ -1,7 +1,5 @@
-using System.Linq;
 using Cc83.Interactable;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,20 +24,6 @@ namespace Cc83.Character
                 c.GetOrAddComponent<MaterialType>().typeOfMaterial = materialTypeEnum;
                 c.GetOrAddComponent<HealthListener>().healthController = this;
             }
-        }
-
-        [Button("Enable Join Collision", ButtonSizes.Large)]
-        public void EnableJoinCollision()
-        {
-            GetComponentsInChildren<ConfigurableJoint>()
-                .Where(cj => !(cj.name.EndsWith("Foot") || cj.name.EndsWith("Hand") || cj.name.EndsWith("Head") || cj.name.EndsWith("Hips")))
-                .ForEach(cj => cj.enableCollision = true);
-        }
-        
-        [Button("Disable Join Collision", ButtonSizes.Large)]
-        public void DisableJoinCollision()
-        {
-            GetComponentsInChildren<ConfigurableJoint>().ForEach(cj => cj.enableCollision = false);
         }
         
         [Button("Test Death", ButtonSizes.Large)]

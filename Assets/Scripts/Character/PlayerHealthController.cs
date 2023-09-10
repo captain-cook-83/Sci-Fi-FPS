@@ -1,3 +1,4 @@
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Cc83.Character
@@ -10,7 +11,7 @@ namespace Cc83.Character
         public override void TakeDamage(float damage, Transform part, ref Vector3 hitPoint, ref Vector3 direction, bool headShoot = false)
         {
             hp -= damage;
-            // handControllers.ForEach(c => c.Interrupted?.Invoke());
+            handControllers.ForEach(c => c.WaggleShake());
         }
     }
 }

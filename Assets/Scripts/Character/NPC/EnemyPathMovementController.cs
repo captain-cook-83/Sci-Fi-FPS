@@ -104,7 +104,9 @@ namespace Cc83.Character
             _animator.SetFloat(AnimatorSpeed, 0);
             
             //TODO Remove Below Line
+#if UNITY_EDITOR
             GetComponent<EnemyWeaponIKController>().aimTowards.position = lookTarget.position + Vector3.up * 1.5f;
+#endif
 
             if (_shootController)
             {

@@ -7,7 +7,7 @@ namespace Cc83.Character.Behaviour
     {
         private readonly Dictionary<int, float> layerWeights = new();
 
-        private HoldWeaponIKController ikController;
+        private EnemyWeaponIKController ikController;
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -25,7 +25,7 @@ namespace Cc83.Character.Behaviour
 
             if (ikController == null)
             {
-                ikController = animator.GetComponent<HoldWeaponIKController>();
+                ikController = animator.GetComponent<EnemyWeaponIKController>();
             }
             
             ikController.primaryIk = false;

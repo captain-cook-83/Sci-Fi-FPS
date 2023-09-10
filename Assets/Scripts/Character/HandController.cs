@@ -1,3 +1,4 @@
+using System;
 using Cc83.HandPose;
 using RootMotion.FinalIK;
 using Sirenix.OdinInspector;
@@ -29,6 +30,8 @@ namespace Cc83.Character
         
         [Tooltip("辅助手掌手心上方向")]
         public Vector3 secondaryRotationAxis;
+
+        public Action Interrupted;
 
         private void OnValidate()
         {

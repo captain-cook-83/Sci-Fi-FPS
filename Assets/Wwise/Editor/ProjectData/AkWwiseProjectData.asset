@@ -253,8 +253,8 @@ MonoBehaviour:
         guid: f0235243728df642a3fe19ea3b7212bd
       Path: Events\Default Work Unit\Fire_Rifle_Player
       maxAttenuation: 0
-      maxDuration: 4.6023088
-      minDuration: 4.6023088
+      maxDuration: 10.602309
+      minDuration: 10.602309
     - name: Music_Battle
       guid: 5188db53531df649bcfff5747d7b0e7b
       id: 3782024871

@@ -37,7 +37,7 @@ namespace Cc83.Interactable
         private uint _activeId;
 
         private Transform _cameraTransform;
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -89,8 +89,9 @@ namespace Cc83.Interactable
         {
             if (impulseSource && recoil > 0)
             {
-                var velocity = CalculateRecoilVelocity(recoil, transform.forward, _cameraTransform.forward);
-                if (velocity.x != 0 || velocity.y != 0 || velocity.z != 0)
+                float3 weaponForward = transform.forward;
+                float3 cameraForward = _cameraTransform.forward;
+                if (CalculateRecoilVelocity(recoil, ref weaponForward, ref cameraForward, out var velocity))
                 {
                     impulseSource.GenerateImpulseAtPositionWithVelocity(transform.position, velocity);
                 }
@@ -125,6 +126,7 @@ namespace Cc83.Interactable
                 
                 if (continuousShoot)
                 {
+                    _handController.Interrupted += InterruptShooting;
                     _handController.Shake();
                 }
             }
@@ -136,14 +138,21 @@ namespace Cc83.Interactable
             {
                 triggerAnimator.SetBool(TriggerHold, false);
             }
-            
-            if (_handController == null) return;
-            
+
+            if (_handController)
+            {
+                InterruptShooting();
+            }
+        }
+        
+        private void InterruptShooting()
+        {
             if (continuousShoot)
             {
                 StopShooting();
             }
             
+            _handController.Interrupted -= InterruptShooting;
             _handController = null;
             _activeId++;
         }
@@ -164,15 +173,17 @@ namespace Cc83.Interactable
         }
         
         [BurstCompile]
-        private static float3 CalculateRecoilVelocity(float recoil, float3 weaponForward, float3 cameraForward)
+        private static bool CalculateRecoilVelocity(float recoil, ref float3 weaponForward, ref float3 cameraForward, out float3 velocity)
         {
             var dot = math.dot(weaponForward, cameraForward) - 0.5f;        // 左右 60° 角范围内生效
             if (dot > 0)
             {
-                return weaponForward * (-math.sqrt(dot) * recoil);
+                velocity = weaponForward * (-math.sqrt(dot) * recoil);
+                return true;
             }
 
-            return float3.zero;
+            velocity = float3.zero;
+            return false;
         }
     }
 }

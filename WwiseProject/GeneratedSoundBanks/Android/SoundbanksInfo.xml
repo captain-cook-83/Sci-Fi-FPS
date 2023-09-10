@@ -37,7 +37,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{E5A36F71-7151-9C09-155E-A7F236303FDB}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{C86FBE6D-AB7E-CDE9-82D6-C2E83715702B}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -128,7 +128,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="4.6023088" DurationMax="4.6023088">
+				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="10.602309" DurationMax="10.602309">
 					<MediaRefs>
 						<MediaRef Id="462652134"/>
 					</MediaRefs>
@@ -152,5 +152,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4005FAFC-8ABC-CDA8-60A4-0FCA213C538A}</FileHash>
+	<FileHash>{90D7BD8E-E64C-7247-0C64-4FF014100721}</FileHash>
 </SoundBanksInfo>

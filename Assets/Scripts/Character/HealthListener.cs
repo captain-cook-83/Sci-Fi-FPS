@@ -4,6 +4,7 @@ namespace Cc83.Character
 {
     public class HealthListener : MonoBehaviour
     {
+        [SerializeField]
         public HealthController healthController;
 
         [Range(1, 100)]

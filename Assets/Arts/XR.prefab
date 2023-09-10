@@ -4957,6 +4957,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7321710212074778511}
     m_Modifications:
+    - target: {fileID: 1039796222122874856, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: handControllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 9059077705233530801}
+    - target: {fileID: 1039796222122874856, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      propertyPath: handControllers.Array.data[1]
+      value: 
+      objectReference: {fileID: 7727286164503290717}
     - target: {fileID: 2509061056291112848, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
       propertyPath: m_DynamicOccludee
       value: 0

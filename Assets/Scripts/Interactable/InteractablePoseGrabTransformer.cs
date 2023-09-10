@@ -3,16 +3,11 @@ using Cc83.HandPose;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Transformers;
-
-#if BURST_PRESENT
 using Unity.Burst;
-#endif
 
 namespace Cc83.Interactable
 {
-#if BURST_PRESENT
     [BurstCompile]
-#endif
     public class InteractablePoseGrabTransformer : XRBaseGrabTransformer
     {
         [Tooltip("grab more stable, but slight performance loss.")]

@@ -402,6 +402,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a19c8d3e4dc42da889941420ef5b5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 1078630272702069856}
+  explodeEffect: {fileID: 1638949781681410, guid: 8a5811ae0a0f7804fbff1cf892735c20, type: 3}
+  explodeDelay: 1
 --- !u!114 &4330630315053743431
 MonoBehaviour:
   m_ObjectHideFlags: 0

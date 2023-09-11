@@ -150,8 +150,8 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>60.12474</XPos>
-											<YPos>-17.91918</YPos>
+											<XPos>30.14044</XPos>
+											<YPos>-11.8751</YPos>
 											<Flags>0</Flags>
 										</Point>
 										<Point>
@@ -180,11 +180,11 @@
 											<XPos>0</XPos>
 											<YPos>0</YPos>
 											<Flags>5</Flags>
-											<SegmentShape>Exp3</SegmentShape>
+											<SegmentShape>Log2</SegmentShape>
 										</Point>
 										<Point>
 											<XPos>100</XPos>
-											<YPos>58</YPos>
+											<YPos>56</YPos>
 											<Flags>37</Flags>
 										</Point>
 									</PointList>

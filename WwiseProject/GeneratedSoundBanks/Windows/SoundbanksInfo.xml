@@ -37,7 +37,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{C21AA1B5-C913-FE25-65DD-4821734C9D60}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{DB8AE62A-891D-73F2-8CFB-3155E75E14EA}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -56,7 +56,7 @@
 				</File>
 				<File Id="476553176" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>punch-a-rock-161647.wav</ShortName>
-					<CachePath>SFX/punch-a-rock-161647_0E7BED6D.wem</CachePath>
+					<CachePath>SFX/punch-a-rock-161647_DD60E67F.wem</CachePath>
 				</File>
 				<File Id="590472926" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>072777_semi-auto-pistol-27633.wav</ShortName>
@@ -179,5 +179,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E17DA684-9ACA-F790-1378-2930519D9574}</FileHash>
+	<FileHash>{8096C025-FD30-5EC0-3C84-6ED76924D13C}</FileHash>
 </SoundBanksInfo>

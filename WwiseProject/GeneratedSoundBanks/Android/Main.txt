@@ -22,7 +22,7 @@ Switch	ID	Name	Switch Group			Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	7543907	Grenade_Launch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\grenade-launcher-106342_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Launch		41568
 	462652134	Rifle_Fire_Loop	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Pistol_01_Fire_05_SFX_F85EE4EC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Rifle_Fire_Loop		124128
-	476553176	Grenade_Explode	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\punch-a-rock-161647_0E7BED6D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Explode		493864
+	476553176	Grenade_Explode	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\punch-a-rock-161647_DD60E67F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Explode		493864
 	590472926	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\072777_semi-auto-pistol-27633_E914B453.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		76128
 	611201981	Pistol_Catch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Handling_Gun_01_Arming_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Catch		51608
 	653707792	Grenade_Exploding	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\proximity-88003_4CE7C76D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Exploding		73872

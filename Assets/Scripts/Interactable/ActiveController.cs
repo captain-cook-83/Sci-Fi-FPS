@@ -66,6 +66,8 @@ namespace Cc83.Interactable
             activeEvent?.Post(gameObject);
         }
 
+        protected virtual void OnExplode() { }
+
         private void OnDeselected(SelectExitEventArgs args)
         {
             if (_pendingExplosion != null)
@@ -92,6 +94,7 @@ namespace Cc83.Interactable
 
             comingEvent?.Stop(gameObject);
             momentEvent?.Post(gameObject);
+            OnExplode();
             Destroy(Instantiate(explodeEffect, transform.position, Quaternion.identity), 2);
             Destroy(gameObject);
         }

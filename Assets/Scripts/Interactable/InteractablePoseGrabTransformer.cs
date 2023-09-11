@@ -26,7 +26,7 @@ namespace Cc83.Interactable
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
             var attachTransform = grabInteractable.attachTransform;
-            if (!ReferenceEquals(attachTransform.parent, grabInteractable.transform))
+            if (attachTransform && !ReferenceEquals(attachTransform.parent, grabInteractable.transform))
             {
                 Debug.LogError($"AttachTransform({attachTransform.name}) must be a direct child of the grabInteractable({grabInteractable.name})");
             }

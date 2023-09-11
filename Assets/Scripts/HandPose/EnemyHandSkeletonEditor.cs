@@ -29,7 +29,6 @@ namespace Cc83.HandPose
         [Button("GenerateWeaponPose", ButtonSizes.Large)]
         public void GenerateWeaponPose()
         {
-            
             var interactableTransform = weaponReference.weapon.transform;
             var data = ScriptableObject.CreateInstance<InteractablePoseData>();
             data.side = handSide;

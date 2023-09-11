@@ -126,7 +126,7 @@ PrefabInstance:
       addedObject: {fileID: 6958946551319297446}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e69826599c3a4eb46b91cb09755874f3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6847394999540122348}
+      addedObject: {fileID: 5831939214094084318}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e69826599c3a4eb46b91cb09755874f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4330630315053743431}
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: {fileID: 0}
   rightController: {fileID: 0}
---- !u!114 &6847394999540122348
+--- !u!114 &5831939214094084318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,12 +399,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 5819818904838830069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a19c8d3e4dc42da889941420ef5b5c1, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cc1cc199124db588d0dcf8c0c6c6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: {fileID: 1078630272702069856}
   explodeEffect: {fileID: 1638949781681410, guid: 8a5811ae0a0f7804fbff1cf892735c20, type: 3}
-  explodeDelay: 1
+  explodeDelayAfterCollision: 1
+  explodeDelayBeforeThrow: 4.5
+  activeEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6deb356d6e8f54043877931b256fbfd9, type: 2}
+  comingEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 78512e06cbd80cb419e6200070112949, type: 2}
+  momentEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 472d578f26da6db4b844c81070f3c996, type: 2}
 --- !u!114 &4330630315053743431
 MonoBehaviour:
   m_ObjectHideFlags: 0

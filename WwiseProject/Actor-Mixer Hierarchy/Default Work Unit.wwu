@@ -1684,6 +1684,114 @@
 						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
+				<ActorMixer Name="Weapons" ID="{E58E8B08-B025-4E64-A462-61811E63C198}" ShortID="119106724">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Explosion_Attenuations" ID="{F6A9FFBA-F8EE-42AC-BF49-E16C46A30DA5}" WorkUnitID="{89314076-E1F0-4B91-B093-FFAEA3588509}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Grenade_Launch" ID="{DCCA7820-579E-4CC0-9B66-5A8A2E00D711}" ShortID="948677258">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="grenade-launcher-106342" ID="{F6D01E53-33A1-4C5A-9E2A-5DD64D16B934}">
+									<Language>SFX</Language>
+									<AudioFile>grenade-launcher-106342.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="7543907"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="grenade-launcher-106342" ID="{F6D01E53-33A1-4C5A-9E2A-5DD64D16B934}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Grenade_Explode" ID="{362266FD-4F26-45E2-8FD7-C82570B14C8D}" ShortID="623458315">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="punch-a-rock-161647" ID="{0E731160-0852-4ED0-9A83-A33FB54DA56D}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="1.83701098901099"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.334769230769231"/>
+										<Property Name="TrimEnd" Type="Real64" Value="3.13389010989011"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>punch-a-rock-161647.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="476553176"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="punch-a-rock-161647" ID="{0E731160-0852-4ED0-9A83-A33FB54DA56D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Grenade_Exploding" ID="{7D9D9E87-DC4F-4DCF-B368-2D49444D45FE}" ShortID="299587086">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="IsLoopingInfinite" Type="bool" Value="False"/>
+								<Property Name="LoopCount" Type="int32" Value="20"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="proximity-88003" ID="{A8B4B7ED-6FEB-4BEE-A99B-8FEAC47702A5}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="2.09301098901099"/>
+										<Property Name="LoopEnd" Type="Real64" Value="2.50132496075353"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>proximity-88003.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="653707792"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="proximity-88003" ID="{A8B4B7ED-6FEB-4BEE-A99B-8FEAC47702A5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<PositioningInfo>
+						<Position Name="" ID="{AB097C40-BD07-47E3-B09B-B696E7286321}"/>
+					</PositioningInfo>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

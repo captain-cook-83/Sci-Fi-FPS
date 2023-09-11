@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Event = AK.Wwise.Event;
 
 namespace Cc83.Interactable
 {
@@ -20,12 +21,22 @@ namespace Cc83.Interactable
         [Range(3, 5)]
         private float explodeDelayBeforeThrow = 4.5f;
 
+        [SerializeField] 
+        private Event activeEvent;
+
+        [SerializeField] 
+        private Event comingEvent;
+
+        [SerializeField] 
+        private Event momentEvent;
+
         private bool _explodeOnCollision;
         
         private Coroutine _pendingExplosion;
         
         private void Awake()
         {
+            interactable.activated.AddListener(OnActivate);
             interactable.deactivated.AddListener(OnDeactivate);
             interactable.selectExited.AddListener(OnDeselected);
         }
@@ -40,6 +51,7 @@ namespace Cc83.Interactable
 
         private void OnDestroy()
         {
+            interactable.activated.RemoveListener(OnActivate);
             interactable.deactivated.RemoveListener(OnDeactivate);
             interactable.selectExited.RemoveListener(OnDeselected);
 
@@ -47,6 +59,11 @@ namespace Cc83.Interactable
             {
                 StopCoroutine(_pendingExplosion);
             }
+        }
+
+        protected virtual void OnActivate(ActivateEventArgs args)
+        {
+            activeEvent?.Post(gameObject);
         }
 
         private void OnDeselected(SelectExitEventArgs args)
@@ -63,6 +80,8 @@ namespace Cc83.Interactable
         private void OnDeactivate(DeactivateEventArgs args)
         {
             _pendingExplosion = StartCoroutine(ExplodeEffect(explodeDelayBeforeThrow));
+            
+            comingEvent?.Post(gameObject);
         }
 
         private IEnumerator ExplodeEffect(float delay)
@@ -70,7 +89,9 @@ namespace Cc83.Interactable
             yield return new WaitForSeconds(delay);
             
             _pendingExplosion = null;
-            
+
+            comingEvent?.Stop(gameObject);
+            momentEvent?.Post(gameObject);
             Destroy(Instantiate(explodeEffect, transform.position, Quaternion.identity), 2);
             Destroy(gameObject);
         }

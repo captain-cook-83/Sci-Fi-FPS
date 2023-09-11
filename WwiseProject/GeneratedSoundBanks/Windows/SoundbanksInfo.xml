@@ -37,10 +37,14 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{C86FBE6D-AB7E-CDE9-82D6-C2E83715702B}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{C21AA1B5-C913-FE25-65DD-4821734C9D60}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="7543907" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>grenade-launcher-106342.wav</ShortName>
+					<CachePath>SFX/grenade-launcher-106342_10C4C929.wem</CachePath>
+				</File>
 				<File Id="423818807" Language="SFX" Streaming="true" Location="Loose">
 					<ShortName>weapon-ambience-world-war-ii-battlefield-01-153373.wav</ShortName>
 					<Path>Media/423818807.wem</Path>
@@ -50,6 +54,10 @@
 					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
 					<CachePath>SFX/Pistol_01_Fire_05_SFX_F85EE4EC.wem</CachePath>
 				</File>
+				<File Id="476553176" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>punch-a-rock-161647.wav</ShortName>
+					<CachePath>SFX/punch-a-rock-161647_0E7BED6D.wem</CachePath>
+				</File>
 				<File Id="590472926" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>072777_semi-auto-pistol-27633.wav</ShortName>
 					<CachePath>SFX/072777_semi-auto-pistol-27633_E914B453.wem</CachePath>
@@ -57,6 +65,10 @@
 				<File Id="611201981" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Handling_Gun_01_Arming_SFX.wav</ShortName>
 					<CachePath>SFX/Handling_Gun_01_Arming_SFX_10C4C929.wem</CachePath>
+				</File>
+				<File Id="653707792" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>proximity-88003.wav</ShortName>
+					<CachePath>SFX/proximity-88003_4CE7C76D.wem</CachePath>
 				</File>
 				<File Id="856362830" Language="SFX" Streaming="true" Location="Loose">
 					<ShortName>anko-uehara-122618.wav</ShortName>
@@ -85,6 +97,16 @@
 				<Event Id="2910980232" Name="Catch_Pistol_Player" DurationType="OneShot" DurationMin="0.29165533" DurationMax="0.29165533">
 					<MediaRefs>
 						<MediaRef Id="611201981"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2339342519" Name="Explode_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.799121" DurationMax="2.799121">
+					<MediaRefs>
+						<MediaRef Id="476553176"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2466334510" Name="Exploding_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="11.101639" DurationMax="11.101639">
+					<MediaRefs>
+						<MediaRef Id="653707792"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1828056235" Name="Fire_Pistol_Player" DurationType="OneShot" DurationMin="1.5263584" DurationMax="1.9430557">
@@ -133,6 +155,11 @@
 						<MediaRef Id="462652134"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2424391431" Name="Launch_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.4702041" DurationMax="0.4702041">
+					<MediaRefs>
+						<MediaRef Id="7543907"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3782024871" Name="Music_Battle" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="856362830"/>
@@ -152,5 +179,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4F312572-CAEE-1458-C7A5-5F5C8AC27B8E}</FileHash>
+	<FileHash>{E17DA684-9ACA-F790-1378-2930519D9574}</FileHash>
 </SoundBanksInfo>

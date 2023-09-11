@@ -15,9 +15,12 @@ namespace AK
     {
         static const AkUniqueID AMBIENCE_BATTLE = 56249730U;
         static const AkUniqueID CATCH_PISTOL_PLAYER = 2910980232U;
+        static const AkUniqueID EXPLODE_GRENADE = 2339342519U;
+        static const AkUniqueID EXPLODING_GRENADE = 2466334510U;
         static const AkUniqueID FIRE_PISTOL_PLAYER = 1828056235U;
         static const AkUniqueID FIRE_RIFLE_ENEMY = 2154019335U;
         static const AkUniqueID FIRE_RIFLE_PLAYER = 2148509378U;
+        static const AkUniqueID LAUNCH_GRENADE = 2424391431U;
         static const AkUniqueID MUSIC_BATTLE = 3782024871U;
     } // namespace EVENTS
 

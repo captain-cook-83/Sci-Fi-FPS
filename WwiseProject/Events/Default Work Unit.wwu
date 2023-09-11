@@ -92,6 +92,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Explode_Grenade" ID="{41D8C6D0-794B-4079-A375-C5FF38369217}">
+					<ChildrenList>
+						<Action Name="" ID="{83A8CFF1-3CBC-42CD-9414-C091842DD2EF}" ShortID="523439890">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Grenade_Explode" ID="{362266FD-4F26-45E2-8FD7-C82570B14C8D}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Exploding_Grenade" ID="{1BAB663A-B04D-4AE2-A87F-2FDC84425311}">
+					<ChildrenList>
+						<Action Name="" ID="{322BB152-12C0-4D72-B8E8-BE81EFAB9E54}" ShortID="292393967">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Grenade_Exploding" ID="{7D9D9E87-DC4F-4DCF-B368-2D49444D45FE}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Launch_Grenade" ID="{125C1AF1-91CF-43BC-8D64-E4C714C20721}">
+					<ChildrenList>
+						<Action Name="" ID="{674D89E7-6DAC-4E81-8254-6D2BA55EF0E4}" ShortID="988391501">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Grenade_Launch" ID="{DCCA7820-579E-4CC0-9B66-5A8A2E00D711}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -140,7 +140,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 6b4aa5950f07a1448da1b40204b11218
     GuidInternal: 
-    m_lastTime: -8585077835427951713
+    m_lastTime: -8585071671421955562
     List:
     - name: Main
       guid: 892e7314a7614943813e7dbd5f79302f
@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b79e18b1fbe3f84191af14964969cb0e
     GuidInternal: 
-    m_lastTime: -8585074402381209397
+    m_lastTime: -8585071671421945589
     List:
     - name: Ambience_Battle
       guid: 70f57a11862f194b99567e14afd36cdd
@@ -204,6 +204,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.29165533
       minDuration: 0.29165533
+    - name: Explode_Grenade
+      guid: d0c6d8414b797940a375c5ff38369217
+      id: 2339342519
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Explode_Grenade
+        ObjectType: 3
+        guid: d0c6d8414b797940a375c5ff38369217
+      Path: Events\Default Work Unit\Explode_Grenade
+      maxAttenuation: 100
+      maxDuration: 2.799121
+      minDuration: 2.799121
+    - name: Exploding_Grenade
+      guid: 3a66ab1b4db0e24aa87f2fdc84425311
+      id: 2466334510
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Exploding_Grenade
+        ObjectType: 3
+        guid: 3a66ab1b4db0e24aa87f2fdc84425311
+      Path: Events\Default Work Unit\Exploding_Grenade
+      maxAttenuation: 100
+      maxDuration: 11.101639
+      minDuration: 11.101639
     - name: Fire_Pistol_Player
       guid: 865d0b5d89fa1e48be687ce21c914f71
       id: 1828056235
@@ -255,6 +289,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 10.602309
       minDuration: 10.602309
+    - name: Launch_Grenade
+      guid: f11a5c12cf91bc438d64e4c714c20721
+      id: 2424391431
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Launch_Grenade
+        ObjectType: 3
+        guid: f11a5c12cf91bc438d64e4c714c20721
+      Path: Events\Default Work Unit\Launch_Grenade
+      maxAttenuation: 100
+      maxDuration: 0.4702041
+      minDuration: 0.4702041
     - name: Music_Battle
       guid: 5188db53531df649bcfff5747d7b0e7b
       id: 3782024871

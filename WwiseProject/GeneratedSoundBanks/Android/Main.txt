@@ -3,6 +3,9 @@ Event	ID	Name			Wwise Object Path	Notes
 	1828056235	Fire_Pistol_Player			\Default Work Unit\Fire_Pistol_Player	
 	2148509378	Fire_Rifle_Player			\Default Work Unit\Fire_Rifle_Player	
 	2154019335	Fire_Rifle_Enemy			\Default Work Unit\Fire_Rifle_Enemy	
+	2339342519	Explode_Grenade			\Default Work Unit\Explode_Grenade	
+	2424391431	Launch_Grenade			\Default Work Unit\Launch_Grenade	
+	2466334510	Exploding_Grenade			\Default Work Unit\Exploding_Grenade	
 	2910980232	Catch_Pistol_Player			\Default Work Unit\Catch_Pistol_Player	
 	3782024871	Music_Battle			\Default Work Unit\Music_Battle	
 
@@ -17,9 +20,12 @@ Switch	ID	Name	Switch Group			Notes
 	3987970511	Loop_1	Weapon_Fire_Loop			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	7543907	Grenade_Launch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\grenade-launcher-106342_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Launch		41568
 	462652134	Rifle_Fire_Loop	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Pistol_01_Fire_05_SFX_F85EE4EC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Rifle_Fire_Loop		124128
+	476553176	Grenade_Explode	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\punch-a-rock-161647_0E7BED6D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Explode		493864
 	590472926	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\072777_semi-auto-pistol-27633_E914B453.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		76128
 	611201981	Pistol_Catch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Handling_Gun_01_Arming_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Catch		51608
+	653707792	Grenade_Exploding	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\proximity-88003_4CE7C76D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Exploding		73872
 	1002607041	Rifle_Fire_loop_1	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Pistol_01_Fire_05_SFX_0F89758F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemies\Rifle_Fire_Loop\Rifle_Fire_loop_1		124048
 	1066519671	Shell_Short_02_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_02_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_02_SFX		197596
 	1071995294	Shell_Short_01_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_01_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_01_SFX		233588

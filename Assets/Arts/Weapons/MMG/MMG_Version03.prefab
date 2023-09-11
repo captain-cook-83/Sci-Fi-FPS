@@ -971,7 +971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4656417286879920, guid: a5c7dec046c133a48aae86d411ead237, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0147
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4656417286879920, guid: a5c7dec046c133a48aae86d411ead237, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1108,10 +1108,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lazer
       objectReference: {fileID: 0}
-    - target: {fileID: 104034, guid: 5473fca427691b14c8eb21a55ef60089, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 404034, guid: 5473fca427691b14c8eb21a55ef60089, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1122,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 404034, guid: 5473fca427691b14c8eb21a55ef60089, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1059
+      value: -0.106
       objectReference: {fileID: 0}
     - target: {fileID: 404034, guid: 5473fca427691b14c8eb21a55ef60089, type: 3}
       propertyPath: m_LocalRotation.w

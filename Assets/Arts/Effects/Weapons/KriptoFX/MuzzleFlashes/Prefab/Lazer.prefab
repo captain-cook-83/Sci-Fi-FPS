@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 404034}
   - component: {fileID: 12004034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lazer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,10 +76,10 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 200}
+  - {x: 0, y: 0, z: 80}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:

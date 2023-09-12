@@ -7,5 +7,7 @@ namespace Cc83
         public static readonly LayerMask CharacterLayer = LayerMask.NameToLayer("Character");
         
         public static readonly LayerMask WeaponLayer = LayerMask.NameToLayer("Weapon");
+        
+        public static readonly LayerMask DynamicLayer = LayerMask.NameToLayer("Dynamic");
     }
 }

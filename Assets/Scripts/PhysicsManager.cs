@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cc83.Interactable;
 using Unity.Burst;
 using Unity.Collections;
@@ -25,6 +26,9 @@ namespace Cc83.Character
         [Range(8, 64)]
         private int batchForDynamics = 16;
 
+        [SerializeField] 
+        private Transform[] overlapSphereDetectContainers;              // 临时方案，规避 Physics.OverlapSphereNonAlloc 调用时 layerMask 参数无效的问题
+
         private HealthController[] _enemyHealthControllers;
         
         private NativeArray<float4> _playerDetections;
@@ -37,6 +41,8 @@ namespace Cc83.Character
 
         public void TakeExplosionDamage(Vector3 position, float radius, float force, float damage)
         {
+            position += Vector3.up * 0.01f;     // 向上移动 1cm，避免贴表面检测
+            
             float3 origin = position;
 
             #region 处理玩家伤害
@@ -54,7 +60,7 @@ namespace Cc83.Character
                 var distance = _playerDetections[i].w;
                 if (distance > radius) break;
                 
-                if (!Physics.Raycast(position, direction, distance, blockExplosionLayers))
+                if (!Physics.Raycast(position, direction, distance, blockExplosionLayers.value))
                 {
                     var lethalPart = playerHealthController.lethalParts[i];
                     lethalPart.TakeDamage(lethalPart.transform.position, direction, damage);
@@ -90,7 +96,7 @@ namespace Cc83.Character
                         break;
                     } 
                     
-                    if (!Physics.Raycast(position, direction, distance, blockExplosionLayers))
+                    if (!Physics.Raycast(position, direction, distance, blockExplosionLayers.value))
                     {
                         var lethalPart = _enemyHealthControllers[i / unitSize].lethalParts[i % unitSize];
                         lethalPart.TakeDamage(lethalPart.transform.position, direction, damage);
@@ -106,7 +112,8 @@ namespace Cc83.Character
             
             #region 处理动态物体
             
-            var hits = Physics.OverlapSphereNonAlloc(position, radius, _dynamicColliders, hitLayers);
+            // var hits = Physics.OverlapSphereNonAlloc(position, radius, _dynamicColliders, hitLayers.value);      // TODO layerMask 参数目前无效
+            var hits = OverlapSphereNonAlloc(position, radius, _dynamicColliders);
             for (var i = 0; i < hits; i++)
             {
                 _dynamicDetections[i] = new float4(_dynamicColliders[i].transform.position, 0);
@@ -117,12 +124,15 @@ namespace Cc83.Character
             {
                 var direction = (Vector3) _dynamicDetections[i].xyz;
                 var distance = _dynamicDetections[i].w;
-                if (_dynamicColliders[i].TryGetComponent<Rigidbody>(out var rb) && !Physics.Raycast(position, direction, distance, blockExplosionLayers))
+                if (_dynamicColliders[i].TryGetComponent<Rigidbody>(out var rb))
                 {
-                    rb.AddExplosionForce(force, position, radius);
-                    if (rb.TryGetComponent<ExplosionController>(out var controller))
+                    if (!Physics.Raycast(position, direction, distance, blockExplosionLayers.value))
                     {
-                        controller.TakeDamage(damage);
+                        rb.AddExplosionForce(force, position, radius);
+                        if (rb.TryGetComponent<ExplosionController>(out var controller))
+                        {
+                            controller.TakeDamage(damage);
+                        }
                     }
                 }
             }
@@ -165,6 +175,25 @@ namespace Cc83.Character
         private void OnDestroy()
         {
             Instance = null;
+        }
+
+        private int OverlapSphereNonAlloc(Vector3 position, float radius, IList<Collider> results)
+        {
+            var sqrRadius = radius * radius;
+            var index = 0;
+            foreach (var container in overlapSphereDetectContainers)
+            {
+                for (var i = 0; i < container.childCount; i++)
+                {
+                    var child = container.GetChild(i);
+                    if ((child.position - position).sqrMagnitude < sqrRadius)
+                    {
+                        results[index++] = child.GetComponent<Collider>();
+                    }
+                }
+            }
+
+            return index;
         }
 
         [BurstCompile]

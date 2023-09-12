@@ -3,7 +3,6 @@ using Cc83.HandPose;
 using EZCameraShake;
 using RootMotion.FinalIK;
 using Sirenix.OdinInspector;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -91,7 +90,7 @@ namespace Cc83.Character
             }
         }
 
-        public void SetAnimatorController(AnimatorController animatorController)
+        public void SetAnimatorController(RuntimeAnimatorController animatorController)
         {
             if (shootingShakeAnimator)
             {

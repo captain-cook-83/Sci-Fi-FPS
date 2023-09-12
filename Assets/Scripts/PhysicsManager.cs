@@ -1,3 +1,4 @@
+using Cc83.Interactable;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Mathematics;
@@ -20,13 +21,21 @@ namespace Cc83.Character
         [SerializeField] 
         private Transform enemies;
 
+        [SerializeField]
+        [Range(8, 64)]
+        private int batchForDynamics = 16;
+
         private HealthController[] _enemyHealthControllers;
         
         private NativeArray<float4> _playerDetections;
 
         private NativeArray<float4> _enemyDetections;
+        
+        private NativeArray<float4> _dynamicDetections;
 
-        public void TakeExplosionDamage(Vector3 position, float damage, float radius)
+        private Collider[] _dynamicColliders;
+
+        public void TakeExplosionDamage(Vector3 position, float radius, float force, float damage)
         {
             float3 origin = position;
 
@@ -94,6 +103,31 @@ namespace Cc83.Character
             }
             
             #endregion
+            
+            #region 处理动态物体
+            
+            var hits = Physics.OverlapSphereNonAlloc(position, radius, _dynamicColliders, hitLayers);
+            for (var i = 0; i < hits; i++)
+            {
+                _dynamicDetections[i] = new float4(_dynamicColliders[i].transform.position, 0);
+            }
+            
+            CalculateDirections(ref origin, ref _dynamicDetections, 1, hits, radius);
+            for (var i = 0; i < hits; i++)
+            {
+                var direction = (Vector3) _dynamicDetections[i].xyz;
+                var distance = _dynamicDetections[i].w;
+                if (_dynamicColliders[i].TryGetComponent<Rigidbody>(out var rb) && !Physics.Raycast(position, direction, distance, blockExplosionLayers))
+                {
+                    rb.AddExplosionForce(force, position, radius);
+                    if (rb.TryGetComponent<ExplosionController>(out var controller))
+                    {
+                        controller.TakeDamage(damage);
+                    }
+                }
+            }
+            
+            #endregion
         }
 
         private void Awake()
@@ -124,6 +158,8 @@ namespace Cc83.Character
 
             _playerDetections = new NativeArray<float4>(playerHealthController.lethalParts.Length, Allocator.Persistent);
             _enemyDetections = new NativeArray<float4>(totalLethalPartsLength, Allocator.Persistent);
+            _dynamicDetections = new NativeArray<float4>(batchForDynamics, Allocator.Persistent);
+            _dynamicColliders = new Collider[batchForDynamics];
         }
 
         private void OnDestroy()

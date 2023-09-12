@@ -5,6 +5,8 @@ namespace AK
         public static uint AMBIENCE_BATTLE = 56249730U;
         public static uint CATCH_PISTOL_PLAYER = 2910980232U;
         public static uint EXPLODE_GRENADE = 2339342519U;
+        public static uint EXPLODE_HUGE_OIL_DRUM = 1380408814U;
+        public static uint EXPLODE_OIL_DRUM = 502046452U;
         public static uint EXPLODING_GRENADE = 2466334510U;
         public static uint FIRE_PISTOL_PLAYER = 1828056235U;
         public static uint FIRE_RIFLE_ENEMY = 2154019335U;

@@ -140,7 +140,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 6b4aa5950f07a1448da1b40204b11218
     GuidInternal: 
-    m_lastTime: -8585071671421955562
+    m_lastTime: -8585070990107302340
     List:
     - name: Main
       guid: 892e7314a7614943813e7dbd5f79302f
@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b79e18b1fbe3f84191af14964969cb0e
     GuidInternal: 
-    m_lastTime: -8585071671421945589
+    m_lastTime: -8585070991208626311
     List:
     - name: Ambience_Battle
       guid: 70f57a11862f194b99567e14afd36cdd
@@ -221,6 +221,40 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 2.799121
       minDuration: 2.799121
+    - name: Explode_Huge_Oil_Drum
+      guid: 0f9bb1f8de19664f9f3a79751943618d
+      id: 1380408814
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Explode_Huge_Oil_Drum
+        ObjectType: 3
+        guid: 0f9bb1f8de19664f9f3a79751943618d
+      Path: Events\Default Work Unit\Explode_Huge_Oil_Drum
+      maxAttenuation: 100
+      maxDuration: 5.8456154
+      minDuration: 5.8456154
+    - name: Explode_Oil_Drum
+      guid: 31af77b66941f64eb9b13e4eedc95120
+      id: 502046452
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Explode_Oil_Drum
+        ObjectType: 3
+        guid: 31af77b66941f64eb9b13e4eedc95120
+      Path: Events\Default Work Unit\Explode_Oil_Drum
+      maxAttenuation: 100
+      maxDuration: 2.700923
+      minDuration: 2.700923
     - name: Exploding_Grenade
       guid: 3a66ab1b4db0e24aa87f2fdc84425311
       id: 2466334510

@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Cc83.Interactable
 {
-    public class ExplosionActiveController : ActiveController
+    public class GrenadeActiveController : ActiveController
     {
         [SerializeField]
         private CinemachineImpulseSource impulseSource;
@@ -13,10 +13,14 @@ namespace Cc83.Interactable
         [SerializeField]
         [Range(100, 1000)]
         private float damage = 500;
+        
+        [SerializeField]
+        [Range(100, 1000)]
+        private float force = 500;
 
         [SerializeField]
         [Range(5, 30)]
-        private float radius = 15;
+        private float radius = 5;
 
         protected override void OnActivate(ActivateEventArgs args)
         {
@@ -31,7 +35,7 @@ namespace Cc83.Interactable
             
             impulseSource.GenerateImpulse(0.02f);
             
-            PhysicsManager.Instance.TakeExplosionDamage(transform.position, damage, radius);
+            PhysicsManager.Instance.TakeExplosionDamage(transform.position, radius, force, damage);
         }
     }
 }

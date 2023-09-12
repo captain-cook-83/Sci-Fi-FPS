@@ -14,6 +14,8 @@
 						<ObjectRef Name="Exploding_Grenade" ID="{1BAB663A-B04D-4AE2-A87F-2FDC84425311}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Ambience_Battle" ID="{117AF570-2F86-4B19-9956-7E14AFD36CDD}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Fire_Rifle_Enemy" ID="{011D5A33-1C45-4CC9-8F6B-945FDB8666BA}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Explode_Oil_Drum" ID="{B677AF31-4169-4EF6-B9B1-3E4EEDC95120}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Explode_Huge_Oil_Drum" ID="{F8B19B0F-19DE-4F66-9F3A-79751943618D}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

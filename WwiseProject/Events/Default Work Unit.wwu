@@ -125,6 +125,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Explode_Oil_Drum" ID="{B677AF31-4169-4EF6-B9B1-3E4EEDC95120}">
+					<ChildrenList>
+						<Action Name="" ID="{D872306C-4492-4420-A9C8-E6788F2B461E}" ShortID="496661364">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Oil_Drum_Explode" ID="{F2B2D353-38FC-444E-93B8-ABAC371DCE8A}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Explode_Huge_Oil_Drum" ID="{F8B19B0F-19DE-4F66-9F3A-79751943618D}">
+					<ChildrenList>
+						<Action Name="" ID="{5D6C5612-38BC-491E-A2BB-E10E8899610D}" ShortID="334534823">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Oil_Drum_Explode_Huge" ID="{EBC1DB98-09A4-446D-882F-FE472C514CE3}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

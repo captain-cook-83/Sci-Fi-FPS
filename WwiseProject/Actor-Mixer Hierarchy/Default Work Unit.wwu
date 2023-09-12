@@ -1682,6 +1682,79 @@
 								</Sound>
 							</ChildrenList>
 						</ActorMixer>
+						<ActorMixer Name="Explosion" ID="{C5AF86E5-19B3-4EA6-A258-5F5A6D3B9C5C}" ShortID="525989307">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Huge_Explosion_Attenuations" ID="{8A584D6A-FF39-4471-B61F-236CB709424D}" WorkUnitID="{89314076-E1F0-4B91-B093-FFAEA3588509}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Oil_Drum_Explode" ID="{F2B2D353-38FC-444E-93B8-ABAC371DCE8A}" ShortID="873169817">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="explosion-86694" ID="{B9A42479-B5E9-4899-8CE8-D65C9F60F7C1}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.941769230769231"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.70092307692308"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>explosion-86694.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="773245107"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="explosion-86694" ID="{B9A42479-B5E9-4899-8CE8-D65C9F60F7C1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Oil_Drum_Explode_Huge" ID="{EBC1DB98-09A4-446D-882F-FE472C514CE3}" ShortID="767101193">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="explosion-129711" ID="{AFFE6584-BC96-4D3F-A63F-0E21ABCD1479}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.783346153846153"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.84561538461539"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>explosion-129711.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="360762302"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="explosion-129711" ID="{AFFE6584-BC96-4D3F-A63F-0E21ABCD1479}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 				<ActorMixer Name="Weapons" ID="{E58E8B08-B025-4E64-A462-61811E63C198}" ShortID="119106724">

@@ -126,6 +126,10 @@ namespace Cc83.Interactable
             yield return null;
 
             target.AddForceAtPosition(force, position, ForceMode.Impulse);
+            if (target.TryGetComponent<ExplosionController>(out var controller))
+            {
+                controller.TakeDamage(50);
+            }
         }
         
         [System.Serializable]

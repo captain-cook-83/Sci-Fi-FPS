@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde82c4ee3a00a24d9d81394dddbf57d, type: 3}
+  m_Name: B677AF31-4169-4EF6-B9B1-3E4EEDC95120
+  m_EditorClassIdentifier: 
+  objectName: Explode_Oil_Drum
+  id: 502046452
+  guid: B677AF31-4169-4EF6-B9B1-3E4EEDC95120

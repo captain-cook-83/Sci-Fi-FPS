@@ -1,5 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
 	56249730	Ambience_Battle			\Default Work Unit\Ambience_Battle	
+	502046452	Explode_Oil_Drum			\Default Work Unit\Explode_Oil_Drum	
+	1380408814	Explode_Huge_Oil_Drum			\Default Work Unit\Explode_Huge_Oil_Drum	
 	1828056235	Fire_Pistol_Player			\Default Work Unit\Fire_Pistol_Player	
 	2148509378	Fire_Rifle_Player			\Default Work Unit\Fire_Rifle_Player	
 	2154019335	Fire_Rifle_Enemy			\Default Work Unit\Fire_Rifle_Enemy	
@@ -21,11 +23,13 @@ Switch	ID	Name	Switch Group			Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	7543907	Grenade_Launch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\grenade-launcher-106342_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Launch		41568
+	360762302	Oil_Drum_Explode_Huge	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\explosion-129711_1A17A575.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environments\Explosion\Oil_Drum_Explode_Huge		1122456
 	462652134	Rifle_Fire_Loop	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Pistol_01_Fire_05_SFX_F85EE4EC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Rifle_Fire_Loop		124128
 	476553176	Grenade_Explode	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\punch-a-rock-161647_DD60E67F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Explode		493864
 	590472926	Pistol_Fire	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\072777_semi-auto-pistol-27633_E914B453.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Fire		76128
 	611201981	Pistol_Catch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Handling_Gun_01_Arming_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Catch		51608
 	653707792	Grenade_Exploding	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\proximity-88003_4CE7C76D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Exploding		73872
+	773245107	Oil_Drum_Explode	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\explosion-86694_D897EE98.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environments\Explosion\Oil_Drum_Explode		259384
 	1002607041	Rifle_Fire_loop_1	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Pistol_01_Fire_05_SFX_0F89758F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemies\Rifle_Fire_Loop\Rifle_Fire_loop_1		124048
 	1066519671	Shell_Short_02_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_02_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_02_SFX		197596
 	1071995294	Shell_Short_01_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_01_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_01_SFX		233588

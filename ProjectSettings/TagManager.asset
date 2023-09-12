@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - GlobalPhysics
+  - 
   - Water
   - UI
   - Obstacle
   - Character
   - Weapon
-  - 
+  - Dynamic
   - 
   - 
   - 

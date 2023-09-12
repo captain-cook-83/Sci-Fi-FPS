@@ -16,6 +16,8 @@ namespace AK
         static const AkUniqueID AMBIENCE_BATTLE = 56249730U;
         static const AkUniqueID CATCH_PISTOL_PLAYER = 2910980232U;
         static const AkUniqueID EXPLODE_GRENADE = 2339342519U;
+        static const AkUniqueID EXPLODE_HUGE_OIL_DRUM = 1380408814U;
+        static const AkUniqueID EXPLODE_OIL_DRUM = 502046452U;
         static const AkUniqueID EXPLODING_GRENADE = 2466334510U;
         static const AkUniqueID FIRE_PISTOL_PLAYER = 1828056235U;
         static const AkUniqueID FIRE_RIFLE_ENEMY = 2154019335U;

@@ -37,13 +37,17 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{DB8AE62A-891D-73F2-8CFB-3155E75E14EA}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{93AAEFF5-1F88-6CE5-FA41-7E3B50E32712}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
 				<File Id="7543907" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>grenade-launcher-106342.wav</ShortName>
 					<CachePath>SFX/grenade-launcher-106342_10C4C929.wem</CachePath>
+				</File>
+				<File Id="360762302" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>explosion-129711.wav</ShortName>
+					<CachePath>SFX/explosion-129711_1A17A575.wem</CachePath>
 				</File>
 				<File Id="423818807" Language="SFX" Streaming="true" Location="Loose">
 					<ShortName>weapon-ambience-world-war-ii-battlefield-01-153373.wav</ShortName>
@@ -69,6 +73,10 @@
 				<File Id="653707792" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>proximity-88003.wav</ShortName>
 					<CachePath>SFX/proximity-88003_4CE7C76D.wem</CachePath>
+				</File>
+				<File Id="773245107" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>explosion-86694.wav</ShortName>
+					<CachePath>SFX/explosion-86694_D897EE98.wem</CachePath>
 				</File>
 				<File Id="856362830" Language="SFX" Streaming="true" Location="Loose">
 					<ShortName>anko-uehara-122618.wav</ShortName>
@@ -102,6 +110,16 @@
 				<Event Id="2339342519" Name="Explode_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.799121" DurationMax="2.799121">
 					<MediaRefs>
 						<MediaRef Id="476553176"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1380408814" Name="Explode_Huge_Oil_Drum" MaxAttenuation="100" DurationType="OneShot" DurationMin="5.8456154" DurationMax="5.8456154">
+					<MediaRefs>
+						<MediaRef Id="360762302"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="502046452" Name="Explode_Oil_Drum" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.700923" DurationMax="2.700923">
+					<MediaRefs>
+						<MediaRef Id="773245107"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2466334510" Name="Exploding_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="11.101639" DurationMax="11.101639">
@@ -179,5 +197,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8096C025-FD30-5EC0-3C84-6ED76924D13C}</FileHash>
+	<FileHash>{413CDA15-0DE9-913C-DEF3-36112F795F0A}</FileHash>
 </SoundBanksInfo>

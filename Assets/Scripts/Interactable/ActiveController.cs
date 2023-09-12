@@ -63,6 +63,8 @@ namespace Cc83.Interactable
 
         protected virtual void OnActivate(ActivateEventArgs args)
         {
+            _explodeOnCollision = true;
+            
             activeEvent?.Post(gameObject);
         }
 
@@ -73,9 +75,7 @@ namespace Cc83.Interactable
             if (_pendingExplosion != null)
             {
                 StopCoroutine(_pendingExplosion);
-                
                 _pendingExplosion = null;
-                _explodeOnCollision = true;
             }
         }
 

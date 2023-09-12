@@ -388,6 +388,9 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 472d578f26da6db4b844c81070f3c996, type: 2}
   impulseSource: {fileID: 6561094537421392992}
+  damage: 500
+  force: 600
+  radius: 5
 --- !u!114 &4330630315053743431
 MonoBehaviour:
   m_ObjectHideFlags: 0

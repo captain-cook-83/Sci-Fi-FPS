@@ -84,7 +84,7 @@ namespace Cc83.Interactable
             if (stableMode)
             {
                 if (!(updatePhase == XRInteractionUpdateOrder.UpdatePhase.OnBeforeRender ||
-                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;                  // 稳定性更好，但是非移动状态下计算两次
+                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider && _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;                  // 稳定性更好，但是非移动状态下计算两次   // // _moveProvider is null while XR Socket Interactor
             }
             else
             {
@@ -108,6 +108,8 @@ namespace Cc83.Interactable
                     }
                     break;
                 case 2:         // TODO 此处假设 Primary Interactor 为数组中子一个元素，但尚未确认是否与底层 API 承诺一致
+                    if (_primaryHandController == null) return;  // null for XR Socket Interactor
+                    
                     var primaryInteractor = grabInteractable.interactorsSelecting[0];
                     var primaryAttachTransform = primaryInteractor.GetAttachTransform(grabInteractable);
                     var primaryProjection = primaryAttachTransform.TransformPoint(_primaryPoseData.handProjection);
@@ -151,6 +153,8 @@ namespace Cc83.Interactable
             var interactableAnimatorControllers = grabInteractable.GetComponent<InteractableAnimatorController>();
 
             _primaryHandController = interactor.transform.GetComponentInParent<HandController>();
+            if (_primaryHandController == null) return;  // null for XR Socket Interactor
+            
             _primaryPoseData = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
             
             var primaryActivatePose = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;

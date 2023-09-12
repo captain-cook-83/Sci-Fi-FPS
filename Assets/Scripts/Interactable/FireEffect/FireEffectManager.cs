@@ -29,6 +29,8 @@ namespace Cc83.Interactable
 
         private ObjectPool<GameObject> _trajectoryPool;
 
+        private int _layerMask;
+
         private void Awake()
         {
             foreach (var impactElement in impactElements)
@@ -43,6 +45,8 @@ namespace Cc83.Interactable
             _trajectoryPool = new ObjectPool<GameObject>(() => Instantiate(trajectoryPrefab), 
                 go => go.SetActive(true), go => go.SetActive(false), Destroy,
                 true, 2, 4);
+            
+            _layerMask = Physics.DefaultRaycastLayers & ~Definitions.PhysicsIgnoreLayer.value;
         }
 
         private void OnDestroy()
@@ -62,7 +66,7 @@ namespace Cc83.Interactable
             StartCoroutine(ReleasePoolElement(trajectory, _trajectoryPool, trajectoryDuration));
             
             var ray = new Ray(position, direction);
-            if (Physics.Raycast(ray, out var hit, bulletDistance))
+            if (Physics.Raycast(ray, out var hit, bulletDistance, _layerMask))
             {
                 var target = hit.transform;
                 var targetGameObject = target.gameObject;

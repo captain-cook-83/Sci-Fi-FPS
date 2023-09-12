@@ -71,7 +71,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 7
   m_AttachTransform: {fileID: 9026354865973853167}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -638,7 +638,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 7
   m_AttachTransform: {fileID: 9026354865973853167}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -1707,7 +1707,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 7
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -2732,7 +2732,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 7
   m_AttachTransform: {fileID: 935949972002886909}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -3988,8 +3988,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
-  m_AttachTransform: {fileID: 6487772305343049573}
+    m_Bits: 7
+  m_AttachTransform: {fileID: 935949972002886909}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -4097,7 +4097,7 @@ MonoBehaviour:
   m_TimeToAutoDeselect: 3
   m_EnableUIInteraction: 1
   m_AllowAnchorControl: 1
-  m_UseForceGrab: 0
+  m_UseForceGrab: 1
   m_RotateSpeed: 180
   m_TranslateSpeed: 4
   m_AnchorRotateReferenceFrame: {fileID: 0}
@@ -5525,14 +5525,6 @@ PrefabInstance:
       propertyPath: handControllers.Array.data[1]
       value: 
       objectReference: {fileID: 7727286164503290717}
-    - target: {fileID: 2509061056291112848, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2509061056291112848, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
-      propertyPath: m_UpdateWhenOffscreen
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2902496825000839636, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
       propertyPath: solver.leftArm.target
       value: 

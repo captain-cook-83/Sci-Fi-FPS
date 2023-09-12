@@ -915,8 +915,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  lethalParts:
+  - {fileID: 2458489403742142010}
+  - {fileID: 5154898897523392600}
+  - {fileID: 4985990900058874815}
+  - {fileID: 3979514601137325361}
+  - {fileID: 9188986849904856255}
+  - {fileID: 3380597442093322080}
   animator: {fileID: 4140340290104696349}
-  impulseSource: {fileID: 0}
   handControllers:
   - {fileID: 0}
   - {fileID: 0}

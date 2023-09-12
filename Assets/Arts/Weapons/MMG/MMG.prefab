@@ -2005,7 +2005,7 @@ PrefabInstance:
       addedObject: {fileID: 3186384788711347742}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5cbef5e2081c33c489036c29db35f816, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 794835210286948895}
+      addedObject: {fileID: 5347205923934001657}
     - targetCorrespondingSourceObject: {fileID: -1905735797407964117, guid: 5cbef5e2081c33c489036c29db35f816, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1132764459655398606}
@@ -2080,13 +2080,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cdTime: 0.1
-  shootPoint: {fileID: 8819597744393782566}
-  trajectoryPrefab: {fileID: 100004, guid: 85cf656730feba94ca8899d4bc2d5a7f, type: 3}
   fireEffectManager: {fileID: 4559396254591580247}
   akEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 251b95d29b1e662459e12ca98560c2e2, type: 2}
+  maxAmmunitionCapacity: 40
 --- !u!114 &3186384788711347742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2109,7 +2108,7 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!65 &794835210286948895
+--- !u!65 &5347205923934001657
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2128,8 +2127,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.06, y: 0.23, z: 0.7}
-  m_Center: {x: 0, y: 0, z: 0.09}
+  m_Size: {x: 0.07308831, y: 0.28767985, z: 0.7602618}
+  m_Center: {x: -0.00073960796, y: 0.019163221, z: 0.11987127}
 --- !u!1 &5398476287853356301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2485031601096638934, guid: 5cbef5e2081c33c489036c29db35f816, type: 3}

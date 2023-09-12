@@ -94,6 +94,7 @@ namespace Cc83.Interactable
 
             comingEvent?.Stop(gameObject);
             momentEvent?.Post(gameObject);
+            
             OnExplode();
             Destroy(Instantiate(explodeEffect, transform.position, Quaternion.identity), 2);
             Destroy(gameObject);

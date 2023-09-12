@@ -3884,6 +3884,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  lethalParts:
+  - {fileID: 8119029515323789931}
+  - {fileID: 6438245833199680204}
+  - {fileID: 3450403838858419605}
+  - {fileID: 5618218149793736698}
+  - {fileID: 6914277911293584250}
+  - {fileID: 4400618633573071136}
+  - {fileID: 2239266230205033286}
   animator: {fileID: 6991144881697093516}
   rigidbodies:
   - {fileID: 2863335105392714201}

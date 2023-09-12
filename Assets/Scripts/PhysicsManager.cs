@@ -1,0 +1,158 @@
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Mathematics;
+using UnityEngine;
+
+namespace Cc83.Character
+{
+    [BurstCompile]
+    public class PhysicsManager : MonoBehaviour
+    {
+        public static PhysicsManager Instance { get; private set; }
+
+        public LayerMask hitLayers;
+
+        public LayerMask blockExplosionLayers;
+
+        [SerializeField] 
+        private HealthController playerHealthController;
+
+        [SerializeField] 
+        private Transform enemies;
+
+        private HealthController[] _enemyHealthControllers;
+        
+        private NativeArray<float4> _playerDetections;
+
+        private NativeArray<float4> _enemyDetections;
+
+        public void TakeExplosionDamage(Vector3 position, float damage, float radius)
+        {
+            float3 origin = position;
+
+            #region 处理玩家伤害
+
+            var lethalParts = playerHealthController.lethalParts;
+            for (var i = 0; i < lethalParts.Length; i++)
+            {
+                _playerDetections[i] = new float4(lethalParts[i].transform.position, 0);
+            }
+
+            CalculateDirections(ref origin, ref _playerDetections, _playerDetections.Length, _playerDetections.Length, radius);
+            for (var i = 0; i < _playerDetections.Length; i++)
+            {
+                var direction = (Vector3) _playerDetections[i].xyz;
+                var distance = _playerDetections[i].w;
+                if (distance > radius) break;
+                
+                if (!Physics.Raycast(position, direction, distance, blockExplosionLayers))
+                {
+                    var lethalPart = playerHealthController.lethalParts[i];
+                    lethalPart.TakeDamage(lethalPart.transform.position, direction, damage);
+                    break;
+                }
+            }
+
+            #endregion
+            
+            #region 处理 NPC 伤害
+            
+            var index = 0;
+            foreach (var hController in _enemyHealthControllers)
+            {
+                foreach (var lethalPart in hController.lethalParts)
+                {
+                    _enemyDetections[index++] = new float4(lethalPart.transform.position, 0);
+                }
+            }
+
+            var unitSize = index / _enemyHealthControllers.Length;
+            CalculateDirections(ref origin, ref _enemyDetections, unitSize, index, radius);
+            for (var i = 0; i < index; i++)
+            {
+                var unitEnd = i + unitSize;
+                for (; i < unitEnd; i++)
+                {
+                    var direction = (Vector3) _enemyDetections[i].xyz;
+                    var distance = _enemyDetections[i].w;
+                    if (distance > radius)
+                    {
+                        i = unitEnd;
+                        break;
+                    } 
+                    
+                    if (!Physics.Raycast(position, direction, distance, blockExplosionLayers))
+                    {
+                        var lethalPart = _enemyHealthControllers[i / unitSize].lethalParts[i % unitSize];
+                        lethalPart.TakeDamage(lethalPart.transform.position, direction, damage);
+                        i = unitEnd;
+                        break;
+                    }
+                }
+
+                i--;
+            }
+            
+            #endregion
+        }
+
+        private void Awake()
+        {
+            Instance = this;
+
+            hitLayers -= Definitions.CharacterLayer;
+
+            var totalLethalPartsLength = 0;
+            _enemyHealthControllers = new HealthController[enemies.childCount];
+            for (var i = 0; i < _enemyHealthControllers.Length; i++)
+            {
+                var enemy = enemies.GetChild(i);
+                var healthController = enemy.GetComponent<HealthController>();
+                var lethalPartsLength = healthController.lethalParts.Length;
+                
+                if (totalLethalPartsLength % lethalPartsLength != 0)
+                {
+                    Debug.LogError($"the length of lethalParts {lethalPartsLength} from Enemy[{enemy.name}] must be equals with the others.");
+                }
+                else
+                {
+                    totalLethalPartsLength += lethalPartsLength;
+                }
+                
+                _enemyHealthControllers[i] = healthController;
+            }
+
+            _playerDetections = new NativeArray<float4>(playerHealthController.lethalParts.Length, Allocator.Persistent);
+            _enemyDetections = new NativeArray<float4>(totalLethalPartsLength, Allocator.Persistent);
+        }
+
+        private void OnDestroy()
+        {
+            Instance = null;
+        }
+
+        [BurstCompile]
+        private static void CalculateDirections(ref float3 origin, ref NativeArray<float4> inOut, int unitSize, int size, float maxDistance)
+        {
+            for (var i = 0; i < size; i++)
+            {
+                var direction = inOut[i].xyz - origin;
+                var distance = math.length(direction);
+                if (distance > maxDistance)
+                {
+                    var zeroEnd = math.min(i - i % unitSize + unitSize, size);
+                    for (; i < zeroEnd; i++)
+                    {
+                        inOut[i] = new float4(direction, distance);
+                    }
+
+                    i--;
+                }
+                else
+                {
+                    inOut[i] = new float4(direction, distance);
+                }
+            }
+        }
+    }
+}

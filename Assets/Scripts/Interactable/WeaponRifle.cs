@@ -1,4 +1,3 @@
-using Cc83.Character;
 using UnityEngine;
 
 namespace Cc83.Interactable
@@ -7,6 +6,11 @@ namespace Cc83.Interactable
     {
         public Transform primaryAnchor;
         public Transform secondaryAnchor;
+
+        private EnemyShootController _shootController;
+        private Collider _collider;
+        
+        private Rigidbody _rigidbody;
 
         public void RefreshPrimaryAnchor(Vector3 localPosition, Quaternion localRotation)
         {
@@ -22,9 +26,25 @@ namespace Cc83.Interactable
         {
             transform.SetParent(null);
             
-            gameObject.GetComponent<EnemyShootController>().enabled = false;
-            gameObject.GetComponent<Collider>().enabled = true;
-            gameObject.AddComponent<Rigidbody>();
+            _shootController.enabled = false;
+            _collider.enabled = true;
+            _rigidbody = gameObject.AddComponent<Rigidbody>();
+        }
+        
+        public void DropDown(Vector3 force)
+        {
+            if (!_rigidbody)
+            {
+                DropDown();
+            }
+            
+            _rigidbody.AddForce(force);
+        }
+
+        private void Awake()
+        {
+            _shootController = GetComponent<EnemyShootController>();
+            _collider = GetComponent<Collider>();
         }
     }
 }

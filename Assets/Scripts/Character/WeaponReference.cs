@@ -9,7 +9,20 @@ namespace Cc83.Character
 
         public void DropDown()
         {
-            weapon.DropDown();
+            if (weapon)
+            {
+                weapon.DropDown();
+                weapon = null;
+            }
+        }
+        
+        public void DropDown(Vector3 force)
+        {
+            if (weapon)
+            {
+                weapon.DropDown(force);
+                weapon = null;
+            }
         }
     }
 }

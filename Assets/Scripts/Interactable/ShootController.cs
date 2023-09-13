@@ -105,8 +105,7 @@ namespace Cc83.Interactable
 
         private void OnShootActive(ActivateEventArgs args)
         {
-            var interactor = args.interactorObject;
-            if (_handController || !interactor.shouldActivate) return;            // 防止 MultiGrab 模式物体被重复激活（或被不适当的控制器触发）
+            if (_handController) return;            // 防止 MultiGrab 模式物体被意外地重复激活
             
             if (triggerAnimator)
             {
@@ -115,7 +114,7 @@ namespace Cc83.Interactable
             
             if (AmmunitionQuantity <= 0) return;
             
-            _handController = interactor.transform.GetComponentInParent<HandController>();
+            _handController = args.interactorObject.transform.GetComponentInParent<HandController>();
             _activeId++;
             
             if (Shoot(continuousShoot ? AmmunitionQuantity : 1))

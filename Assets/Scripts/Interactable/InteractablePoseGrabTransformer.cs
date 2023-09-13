@@ -49,21 +49,19 @@ namespace Cc83.Interactable
             switch (grabInteractable.interactorsSelecting.Count)
             {
                 case 1:
-                    if (_primaryHandController)
-                    {
-                        if (!ReferenceEquals(_primaryHandController, handController))       // primary controller released from multi grab mode
-                        {
-                            _primaryHandController.OnReleaseFromMultiGrab();
-                            _primaryHandController = null;
-                            _primaryPoseData = default;
-                        }
-                    }
-                    
                     if (_secondaryHandController)                                           // means from 2 to 1
                     {
                         _secondaryHandController.OnReleaseFromMultiGrab();
                         _secondaryHandController = null;
                         _secondaryPoseData = default;
+
+                        _primaryHandController.OnReleaseFromMultiGrab();                    // 有 _secondaryHandController 则必有 _primaryHandController
+                    }
+                    
+                    if (_primaryHandController)
+                    {
+                        _primaryHandController = null;
+                        _primaryPoseData = default;
                     }
 
                     if (primaryInteractor is not XRSocketInteractor)
@@ -77,6 +75,8 @@ namespace Cc83.Interactable
                     }
                     break;
                 case 2:
+                    handController.OnPrimaryFromMultiGrab(primaryInteractor as XRBaseControllerInteractor);
+                    
                     var secondaryInteractor = grabInteractable.interactorsSelecting[1];
                     var interactablePose = grabInteractable.GetComponent<InteractablePose>();
                     var interactableAnimatorControllers = grabInteractable.GetComponent<InteractableAnimatorController>();
@@ -85,8 +85,7 @@ namespace Cc83.Interactable
                     _secondaryPoseData = _secondaryHandController.side == HandSide.Left ? interactablePose.secondaryLeftPose : interactablePose.secondaryRightPose;
                     _secondaryHandController.SetPoseData(_secondaryPoseData, _secondaryPoseData);
                     _secondaryHandController.SetAnimatorController(_secondaryHandController.side == HandSide.Left ? interactableAnimatorControllers.leftController : interactableAnimatorControllers.rightController);
-                    
-                    handController.OnPrimaryFromMultiGrab();
+                    _secondaryHandController.OnSecondaryFromMultiGrab(secondaryInteractor as XRBaseControllerInteractor);
                     break;
             }
         }
@@ -96,7 +95,7 @@ namespace Cc83.Interactable
             if (stableMode)
             {
                 if (!(updatePhase == XRInteractionUpdateOrder.UpdatePhase.OnBeforeRender ||
-                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;                  // 稳定性更好，但是非移动状态下计算两次
+                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider && _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;           // 稳定性更好，但是非移动状态下计算两次
             }
             else
             {
@@ -164,12 +163,11 @@ namespace Cc83.Interactable
         private void SetPrimaryInteractor(XRGrabInteractable grabInteractable, HandController handController)
         {
             var interactablePose = grabInteractable.GetComponent<InteractablePose>();
-            var interactableAnimatorControllers = grabInteractable.GetComponent<InteractableAnimatorController>();
-
             _primaryHandController = handController;
             _primaryPoseData = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
             
             var primaryActivatePose = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;
+            var interactableAnimatorControllers = grabInteractable.GetComponent<InteractableAnimatorController>();
             _primaryHandController.SetPoseData(_primaryPoseData, primaryActivatePose);
             _primaryHandController.SetAnimatorController(_primaryHandController.side == HandSide.Left ? interactableAnimatorControllers.leftController : interactableAnimatorControllers.rightController);
             _primaryHandController.OnCatchInteractable();

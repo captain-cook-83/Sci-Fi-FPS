@@ -40,6 +40,10 @@ namespace Cc83.Character
 
         private bool _isPrimaryFromMultiGrab;
 
+        private XRBaseControllerInteractor _activeInteractor;
+
+        private bool _activeInteractorActiveAllowed = true;
+
         private void OnValidate()
         {
             if (skeleton != null)
@@ -75,14 +79,14 @@ namespace Cc83.Character
         {
             skeleton.SetPoseData(selectPoseData, activatePoseData, activateAnimateSpeed);
             
-            OnReleaseFromMultiGrab();
+            OnReleased();
         }
 
         public void ClearPoseData()
         {
             skeleton.ClearPoseData();
             
-            OnReleaseFromMultiGrab();
+            OnReleased();
             
             if (shootingShakeAnimator)
             {
@@ -120,17 +124,37 @@ namespace Cc83.Character
             }
         }
 
-        public void OnPrimaryFromMultiGrab()
+        public void OnPrimaryFromMultiGrab(XRBaseControllerInteractor interactor)
         {
+            _activeInteractor = interactor;
             _isPrimaryFromMultiGrab = true;
+        }
+
+        public void OnSecondaryFromMultiGrab(XRBaseControllerInteractor interactor)
+        {
+            _activeInteractor = interactor;
+            _activeInteractorActiveAllowed = _activeInteractor.allowActivate;
+            _activeInteractor.allowActivate = false;
         }
 
         public void OnReleaseFromMultiGrab()
         {
+            OnReleased();
+
+            if (!_isPrimaryFromMultiGrab)
+            {
+                _activeInteractor.allowActivate = _activeInteractorActiveAllowed;
+                _activeInteractorActiveAllowed = true;
+            }
+            
+            _activeInteractor = null;
+            _isPrimaryFromMultiGrab = false;
+        }
+
+        private void OnReleased()
+        {
             interactableBindableShell.localRotation = Quaternion.identity;
             interactableBindableShell.localPosition = Vector3.zero;
-
-            _isPrimaryFromMultiGrab = false;
         }
 
 #if UNITY_EDITOR

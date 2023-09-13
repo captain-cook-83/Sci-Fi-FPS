@@ -32,12 +32,13 @@ namespace Cc83.Interactable
             }
         }
         
+        // MultiGrab 模式下，当单手从 XRSocketInteractor 拿取物体时，此方法不会被触发；只能通过 OnGrabCountChanged 处理数据状态切换
         public override void OnGrab(XRGrabInteractable grabInteractable)
         {
-            var interactor = grabInteractable.interactorsSelecting[0];
-            _moveProvider = interactor.transform.GetComponentInParent<ContinuousMoveProviderBase>();
-            
-            SetPrimaryInteractor(grabInteractable);
+            // var interactor = grabInteractable.interactorsSelecting[0];
+            // _moveProvider = interactor.transform.GetComponentInParent<ContinuousMoveProviderBase>();
+            //
+            // SetPrimaryInteractor(grabInteractable);
         }
 
         public override void OnGrabCountChanged(XRGrabInteractable grabInteractable, Pose targetPose, Vector3 localScale)
@@ -48,20 +49,31 @@ namespace Cc83.Interactable
             switch (grabInteractable.interactorsSelecting.Count)
             {
                 case 1:
-                    if (_primaryHandController && !ReferenceEquals(_primaryHandController, handController))
+                    if (_primaryHandController)
                     {
-                        _primaryHandController.OnReleaseFromMultiGrab();
-                        _primaryHandController = null;
-                        _primaryPoseData = default;
+                        if (!ReferenceEquals(_primaryHandController, handController))       // primary controller released from multi grab mode
+                        {
+                            _primaryHandController.OnReleaseFromMultiGrab();
+                            _primaryHandController = null;
+                            _primaryPoseData = default;
+                        }
                     }
                     
-                    if (_secondaryHandController)                // means from 2 to 1
+                    if (_secondaryHandController)                                           // means from 2 to 1
                     {
                         _secondaryHandController.OnReleaseFromMultiGrab();
                         _secondaryHandController = null;
                         _secondaryPoseData = default;
+                    }
+
+                    if (primaryInteractor is not XRSocketInteractor)
+                    {
+                        if (_moveProvider == null)
+                        {
+                            _moveProvider = primaryInteractor.transform.GetComponentInParent<ContinuousMoveProviderBase>();
+                        }
                         
-                        SetPrimaryInteractor(grabInteractable, false);
+                        SetPrimaryInteractor(grabInteractable, handController);
                     }
                     break;
                 case 2:
@@ -84,7 +96,7 @@ namespace Cc83.Interactable
             if (stableMode)
             {
                 if (!(updatePhase == XRInteractionUpdateOrder.UpdatePhase.OnBeforeRender ||
-                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider && _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;                  // 稳定性更好，但是非移动状态下计算两次   // // _moveProvider is null while XR Socket Interactor
+                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;                  // 稳定性更好，但是非移动状态下计算两次
             }
             else
             {
@@ -96,21 +108,24 @@ namespace Cc83.Interactable
                 case 1:
                     var interactor = grabInteractable.interactorsSelecting[0];
                     var interactorAttachTransform = interactor.GetAttachTransform(grabInteractable);
-
+                    var isSocketInteractor = interactor is XRSocketInteractor;
+                    
                     if (grabInteractable.trackRotation)
                     {
-                        targetPose.rotation = interactorAttachTransform.rotation * _primaryPoseData.handLocalRotation;
+                        targetPose.rotation = isSocketInteractor ? 
+                            interactorAttachTransform.rotation : interactorAttachTransform.rotation * _primaryPoseData.handLocalRotation;
                     }
                     
                     if (grabInteractable.trackPosition)
                     {
-                        targetPose.position = interactorAttachTransform.TransformPoint(_primaryPoseData.handLocalPosition);
+                        targetPose.position = isSocketInteractor ? 
+                            interactorAttachTransform.position : interactorAttachTransform.TransformPoint(_primaryPoseData.handLocalPosition);
                     }
                     break;
                 case 2:         // TODO 此处假设 Primary Interactor 为数组中子一个元素，但尚未确认是否与底层 API 承诺一致
-                    if (_primaryHandController == null) return;  // null for XR Socket Interactor
-                    
                     var primaryInteractor = grabInteractable.interactorsSelecting[0];
+                    if (primaryInteractor is XRSocketInteractor) return;
+                    
                     var primaryAttachTransform = primaryInteractor.GetAttachTransform(grabInteractable);
                     var primaryProjection = primaryAttachTransform.TransformPoint(_primaryPoseData.handProjection);
                     
@@ -146,15 +161,12 @@ namespace Cc83.Interactable
             }
         }
         
-        private void SetPrimaryInteractor(XRGrabInteractable grabInteractable, bool firstGrab = true)
+        private void SetPrimaryInteractor(XRGrabInteractable grabInteractable, HandController handController)
         {
-            var interactor = grabInteractable.interactorsSelecting[0];
             var interactablePose = grabInteractable.GetComponent<InteractablePose>();
             var interactableAnimatorControllers = grabInteractable.GetComponent<InteractableAnimatorController>();
 
-            _primaryHandController = interactor.transform.GetComponentInParent<HandController>();
-            if (_primaryHandController == null) return;  // null for XR Socket Interactor
-            
+            _primaryHandController = handController;
             _primaryPoseData = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftPose : interactablePose.primaryRightPose;
             
             var primaryActivatePose = _primaryHandController.side == HandSide.Left ? interactablePose.primaryLeftActivatePose : interactablePose.primaryRightActivatePose;

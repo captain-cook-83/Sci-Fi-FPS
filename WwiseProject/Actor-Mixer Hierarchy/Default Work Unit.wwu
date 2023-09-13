@@ -469,6 +469,50 @@
 								<ActiveSource Name="Pistol_01_Fire_05_SFX" ID="{A2358E75-E180-4727-BFB4-BB760A3A852C}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="Weapon_Mount" ID="{86FB6714-45C7-404C-8D35-31530ADB6562}" ShortID="969391167">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="click-button-app-147358" ID="{8B36993B-F71B-420D-BCE1-DEFBCA786161}">
+									<Language>SFX</Language>
+									<AudioFile>click-button-app-147358.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="925171141"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="click-button-app-147358" ID="{8B36993B-F71B-420D-BCE1-DEFBCA786161}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Wespon_Mounted" ID="{3FB7F7D5-758C-4D7C-8D75-FB82482FCDE9}" ShortID="735317501">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="switch-150130" ID="{4E69978E-78B7-403C-99A1-36F429D38037}">
+									<Language>SFX</Language>
+									<AudioFile>switch-150130.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1011484995"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="switch-150130" ID="{4E69978E-78B7-403C-99A1-36F429D38037}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 					<PositioningInfo>
 						<Position Name="" ID="{6E2FAEA3-FE81-4B5A-8C2C-99C479124BBB}"/>

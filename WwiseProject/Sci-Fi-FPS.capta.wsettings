@@ -4,6 +4,7 @@
 		<UserProjectSettings Name="" ID="{F5BDE1B4-3E30-459B-B178-93D685980AFE}">
 			<PropertyList>
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\capta\Downloads\"/>
+				<Property Name="Event Action List\{00484EF5-33DC-45D1-96B2-B1D25EC78118}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{011D5A33-1C45-4CC9-8F6B-945FDB8666BA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{117AF570-2F86-4B19-9956-7E14AFD36CDD}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{125C1AF1-91CF-43BC-8D64-E4C714C20721}\x64_Expand States" Type="string" Value=""/>
@@ -15,6 +16,7 @@
 				<Property Name="Event Action List\{5D0B5D86-FA89-481E-BE68-7CE21C914F71}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{A63D89C3-A2F7-4F0C-A19B-03727F032232}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{B677AF31-4169-4EF6-B9B1-3E4EEDC95120}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{F1AAB30B-99ED-4D11-8510-779F1C6EB23D}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F8B19B0F-19DE-4F66-9F3A-79751943618D}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="EventView\FilterMode2" Type="int32" Value="2"/>

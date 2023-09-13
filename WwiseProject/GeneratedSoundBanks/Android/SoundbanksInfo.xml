@@ -37,7 +37,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{93AAEFF5-1F88-6CE5-FA41-7E3B50E32712}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{EC9782C7-FC56-E772-64D8-C37DCE474CB7}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -83,9 +83,17 @@
 					<Path>Media/856362830.wem</Path>
 					<CachePath>SFX/anko-uehara-122618_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="925171141" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>click-button-app-147358.wav</ShortName>
+					<CachePath>SFX/click-button-app-147358_10C4C929.wem</CachePath>
+				</File>
 				<File Id="1002607041" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
 					<CachePath>SFX/Pistol_01_Fire_05_SFX_0F89758F.wem</CachePath>
+				</File>
+				<File Id="1011484995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>switch-150130.wav</ShortName>
+					<CachePath>SFX/switch-150130_10C4C929.wem</CachePath>
 				</File>
 				<File Id="1066519671" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Shell\Shell_Short_02_SFX.wav</ShortName>
@@ -178,6 +186,16 @@
 						<MediaRef Id="7543907"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2919956427" Name="Mount_Weapon" DurationType="OneShot" DurationMin="0.83591837" DurationMax="0.83591837">
+					<MediaRefs>
+						<MediaRef Id="925171141"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="810188555" Name="Mount_Weapon_Ready" DurationType="OneShot" DurationMin="4.032" DurationMax="4.032">
+					<MediaRefs>
+						<MediaRef Id="1011484995"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3782024871" Name="Music_Battle" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="856362830"/>
@@ -197,5 +215,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6F220F4B-F296-6EFE-D977-1DA3B62AAAAF}</FileHash>
+	<FileHash>{0A6014CF-0870-F03B-950A-9FCD8B7D6856}</FileHash>
 </SoundBanksInfo>

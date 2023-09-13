@@ -140,7 +140,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 6b4aa5950f07a1448da1b40204b11218
     GuidInternal: 
-    m_lastTime: -8585070990107302340
+    m_lastTime: -8585070261062300396
     List:
     - name: Main
       guid: 892e7314a7614943813e7dbd5f79302f
@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b79e18b1fbe3f84191af14964969cb0e
     GuidInternal: 
-    m_lastTime: -8585070991208626311
+    m_lastTime: -8585070261062320533
     List:
     - name: Ambience_Battle
       guid: 70f57a11862f194b99567e14afd36cdd
@@ -340,6 +340,40 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 0.4702041
       minDuration: 0.4702041
+    - name: Mount_Weapon
+      guid: f54e4800dc33d14596b2b1d25ec78118
+      id: 2919956427
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Mount_Weapon
+        ObjectType: 3
+        guid: f54e4800dc33d14596b2b1d25ec78118
+      Path: Events\Default Work Unit\Mount_Weapon
+      maxAttenuation: 0
+      maxDuration: 0.83591837
+      minDuration: 0.83591837
+    - name: Mount_Weapon_Ready
+      guid: 0bb3aaf1ed99114d8510779f1c6eb23d
+      id: 810188555
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: Mount_Weapon_Ready
+        ObjectType: 3
+        guid: 0bb3aaf1ed99114d8510779f1c6eb23d
+      Path: Events\Default Work Unit\Mount_Weapon_Ready
+      maxAttenuation: 0
+      maxDuration: 4.032
+      minDuration: 4.032
     - name: Music_Battle
       guid: 5188db53531df649bcfff5747d7b0e7b
       id: 3782024871

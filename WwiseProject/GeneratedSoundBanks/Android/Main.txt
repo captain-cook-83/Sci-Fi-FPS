@@ -1,6 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
 	56249730	Ambience_Battle			\Default Work Unit\Ambience_Battle	
 	502046452	Explode_Oil_Drum			\Default Work Unit\Explode_Oil_Drum	
+	810188555	Mount_Weapon_Ready			\Default Work Unit\Mount_Weapon_Ready	
 	1380408814	Explode_Huge_Oil_Drum			\Default Work Unit\Explode_Huge_Oil_Drum	
 	1828056235	Fire_Pistol_Player			\Default Work Unit\Fire_Pistol_Player	
 	2148509378	Fire_Rifle_Player			\Default Work Unit\Fire_Rifle_Player	
@@ -9,6 +10,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2424391431	Launch_Grenade			\Default Work Unit\Launch_Grenade	
 	2466334510	Exploding_Grenade			\Default Work Unit\Exploding_Grenade	
 	2910980232	Catch_Pistol_Player			\Default Work Unit\Catch_Pistol_Player	
+	2919956427	Mount_Weapon			\Default Work Unit\Mount_Weapon	
 	3782024871	Music_Battle			\Default Work Unit\Music_Battle	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
@@ -30,7 +32,9 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	611201981	Pistol_Catch	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Handling_Gun_01_Arming_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Pistol_Catch		51608
 	653707792	Grenade_Exploding	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\proximity-88003_4CE7C76D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapons\Grenade_Exploding		73872
 	773245107	Oil_Drum_Explode	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\explosion-86694_D897EE98.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environments\Explosion\Oil_Drum_Explode		259384
+	925171141	Weapon_Mount	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\click-button-app-147358_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Weapon_Mount		147552
 	1002607041	Rifle_Fire_loop_1	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Pistol_01_Fire_05_SFX_0F89758F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemies\Rifle_Fire_Loop\Rifle_Fire_loop_1		124048
+	1011484995	Wespon_Mounted	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\switch-150130_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Wespon_Mounted		774240
 	1066519671	Shell_Short_02_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_02_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_02_SFX		197596
 	1071995294	Shell_Short_01_SFX	E:\UnityProjects\Sci-Fi-FPS\WwiseProject\.cache\Android\SFX\Shell\Shell_Short_01_SFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Bullet_Fall\Shell_Short_01_SFX		233588
 

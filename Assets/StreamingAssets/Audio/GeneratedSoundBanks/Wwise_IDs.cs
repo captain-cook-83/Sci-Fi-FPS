@@ -12,6 +12,8 @@ namespace AK
         public static uint FIRE_RIFLE_ENEMY = 2154019335U;
         public static uint FIRE_RIFLE_PLAYER = 2148509378U;
         public static uint LAUNCH_GRENADE = 2424391431U;
+        public static uint MOUNT_WEAPON = 2919956427U;
+        public static uint MOUNT_WEAPON_READY = 810188555U;
         public static uint MUSIC_BATTLE = 3782024871U;
     } // public class EVENTS
 

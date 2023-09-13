@@ -23,6 +23,8 @@ namespace AK
         static const AkUniqueID FIRE_RIFLE_ENEMY = 2154019335U;
         static const AkUniqueID FIRE_RIFLE_PLAYER = 2148509378U;
         static const AkUniqueID LAUNCH_GRENADE = 2424391431U;
+        static const AkUniqueID MOUNT_WEAPON = 2919956427U;
+        static const AkUniqueID MOUNT_WEAPON_READY = 810188555U;
         static const AkUniqueID MUSIC_BATTLE = 3782024871U;
     } // namespace EVENTS
 

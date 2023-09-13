@@ -147,6 +147,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Mount_Weapon" ID="{00484EF5-33DC-45D1-96B2-B1D25EC78118}">
+					<ChildrenList>
+						<Action Name="" ID="{33C3BD2F-6CFE-43D7-A0D9-AC0CEA7D1C65}" ShortID="339103962">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_Mount" ID="{86FB6714-45C7-404C-8D35-31530ADB6562}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Mount_Weapon_Ready" ID="{F1AAB30B-99ED-4D11-8510-779F1C6EB23D}">
+					<ChildrenList>
+						<Action Name="" ID="{3E659A09-7279-4C42-ACA3-21A4E505BBF0}" ShortID="602745956">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Wespon_Mounted" ID="{3FB7F7D5-758C-4D7C-8D75-FB82482FCDE9}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -112,7 +112,7 @@ namespace Cc83.Character
             
             #region 处理动态物体
             
-            var hits = Physics.OverlapSphereNonAlloc(position, radius, _dynamicColliders, hitLayers);      // TODO layerMask 参数目前无效
+            var hits = Physics.OverlapSphereNonAlloc(position, radius, _dynamicColliders, hitLayers);
             // var hits = OverlapSphereNonAlloc(position, radius, _dynamicColliders);
             for (var i = 0; i < hits; i++)
             {

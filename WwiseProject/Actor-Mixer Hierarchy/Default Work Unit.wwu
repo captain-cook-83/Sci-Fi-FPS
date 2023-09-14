@@ -470,6 +470,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Weapon_Mount" ID="{86FB6714-45C7-404C-8D35-31530ADB6562}" ShortID="969391167">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>

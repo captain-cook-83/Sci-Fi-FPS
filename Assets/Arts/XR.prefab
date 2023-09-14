@@ -142,8 +142,8 @@ MonoBehaviour:
   m_HapticSelectCancelIntensity: 0
   m_HapticSelectCancelDuration: 0
   m_PlayHapticsOnHoverEntered: 1
-  m_HapticHoverEnterIntensity: 0.5
-  m_HapticHoverEnterDuration: 0.1
+  m_HapticHoverEnterIntensity: 0.75
+  m_HapticHoverEnterDuration: 0.2
   m_PlayHapticsOnHoverExited: 1
   m_HapticHoverExitIntensity: 0.5
   m_HapticHoverExitDuration: 0.1
@@ -2850,8 +2850,8 @@ MonoBehaviour:
   m_HapticSelectCancelIntensity: 0
   m_HapticSelectCancelDuration: 0
   m_PlayHapticsOnHoverEntered: 1
-  m_HapticHoverEnterIntensity: 0.5
-  m_HapticHoverEnterDuration: 0.1
+  m_HapticHoverEnterIntensity: 0.75
+  m_HapticHoverEnterDuration: 0.2
   m_PlayHapticsOnHoverExited: 1
   m_HapticHoverExitIntensity: 0.5
   m_HapticHoverExitDuration: 0.1

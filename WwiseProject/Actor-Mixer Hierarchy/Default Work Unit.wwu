@@ -1909,6 +1909,80 @@
 						<Position Name="" ID="{AB097C40-BD07-47E3-B09B-B696E7286321}"/>
 					</PositioningInfo>
 				</ActorMixer>
+				<ActorMixer Name="UI_Interaction" ID="{28A2E997-6323-4BA1-832F-10984FFA1606}" ShortID="610465616">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Hover" ID="{F37119FF-381A-42D8-BE42-C6A9E32857AB}" ShortID="610931907">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Button_14_hover" ID="{B0D795AE-2508-4ABC-AAF6-95F1C6FA3DC0}">
+									<Language>SFX</Language>
+									<AudioFile>Button_14_hover.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="668757721"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Button_14_hover" ID="{B0D795AE-2508-4ABC-AAF6-95F1C6FA3DC0}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Click" ID="{B1C220B4-EFCD-4DFF-A3A0-3B2D5B2DCE37}" ShortID="183526365">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{98464324-0496-4C15-8457-469AEE05E361}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0CCCCE7A-AD93-4B32-AFAF-76B395E165CE}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Button_22_click" ID="{76A96003-16A4-4651-B49E-969531AE6315}">
+									<Language>SFX</Language>
+									<AudioFile>Button_22_click.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="413154676"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Button_22_click" ID="{76A96003-16A4-4651-B49E-969531AE6315}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

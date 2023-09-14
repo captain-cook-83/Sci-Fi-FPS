@@ -37,7 +37,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{EC9782C7-FC56-E772-64D8-C37DCE474CB7}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{26AF4FF2-089C-79A0-855F-BD5D19D9C58A}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -48,6 +48,10 @@
 				<File Id="360762302" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>explosion-129711.wav</ShortName>
 					<CachePath>SFX/explosion-129711_1A17A575.wem</CachePath>
+				</File>
+				<File Id="413154676" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Button_22_click.wav</ShortName>
+					<CachePath>SFX/Button_22_click_10C4C929.wem</CachePath>
 				</File>
 				<File Id="423818807" Language="SFX" Streaming="true" Location="Loose">
 					<ShortName>weapon-ambience-world-war-ii-battlefield-01-153373.wav</ShortName>
@@ -73,6 +77,10 @@
 				<File Id="653707792" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>proximity-88003.wav</ShortName>
 					<CachePath>SFX/proximity-88003_4CE7C76D.wem</CachePath>
+				</File>
+				<File Id="668757721" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Button_14_hover.wav</ShortName>
+					<CachePath>SFX/Button_14_hover_10C4C929.wem</CachePath>
 				</File>
 				<File Id="773245107" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>explosion-86694.wav</ShortName>
@@ -201,6 +209,16 @@
 						<MediaRef Id="856362830"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2249769530" Name="UI_Click" DurationType="OneShot" DurationMin="0.060385488" DurationMax="0.060385488">
+					<MediaRefs>
+						<MediaRef Id="413154676"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2118900976" Name="UI_Hover" DurationType="OneShot" DurationMin="0.012335601" DurationMax="0.012335601">
+					<MediaRefs>
+						<MediaRef Id="668757721"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 			<SwitchGroups>
 				<SwitchGroup Id="1413087445" Name="Weapon_Fire_Loop">
@@ -215,5 +233,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0A6014CF-0870-F03B-950A-9FCD8B7D6856}</FileHash>
+	<FileHash>{C5E0DD96-6E57-B045-AA13-BC0B1C2E56EC}</FileHash>
 </SoundBanksInfo>

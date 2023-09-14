@@ -11,9 +11,11 @@
 						<ObjectRef Name="Mount_Weapon" ID="{00484EF5-33DC-45D1-96B2-B1D25EC78118}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Catch_Pistol_Player" ID="{33352759-F679-4611-AD7C-AEB175293E6A}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Fire_Pistol_Player" ID="{5D0B5D86-FA89-481E-BE68-7CE21C914F71}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI_Click" ID="{19753D85-CDD3-49A9-BBBB-E1653AE97277}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Music_Battle" ID="{53DB8851-1D53-49F6-BCFF-F5747D7B0E7B}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Exploding_Grenade" ID="{1BAB663A-B04D-4AE2-A87F-2FDC84425311}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Ambience_Battle" ID="{117AF570-2F86-4B19-9956-7E14AFD36CDD}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI_Hover" ID="{71CB7AFD-A6A0-4C3E-99EE-49C493B571D0}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Fire_Rifle_Enemy" ID="{011D5A33-1C45-4CC9-8F6B-945FDB8666BA}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Mount_Weapon_Ready" ID="{F1AAB30B-99ED-4D11-8510-779F1C6EB23D}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Explode_Oil_Drum" ID="{B677AF31-4169-4EF6-B9B1-3E4EEDC95120}" WorkUnitID="{B1189EB7-E3FB-41F8-91AF-14964969CB0E}" Origin="Manual" Filter="7"/>

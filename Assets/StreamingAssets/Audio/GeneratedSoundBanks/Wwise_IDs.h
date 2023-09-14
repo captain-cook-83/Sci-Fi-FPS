@@ -26,6 +26,8 @@ namespace AK
         static const AkUniqueID MOUNT_WEAPON = 2919956427U;
         static const AkUniqueID MOUNT_WEAPON_READY = 810188555U;
         static const AkUniqueID MUSIC_BATTLE = 3782024871U;
+        static const AkUniqueID UI_CLICK = 2249769530U;
+        static const AkUniqueID UI_HOVER = 2118900976U;
     } // namespace EVENTS
 
     namespace SWITCHES

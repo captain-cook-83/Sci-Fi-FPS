@@ -140,7 +140,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 6b4aa5950f07a1448da1b40204b11218
     GuidInternal: 
-    m_lastTime: -8585070244311870595
+    m_lastTime: -8585069195197723847
     List:
     - name: Main
       guid: 892e7314a7614943813e7dbd5f79302f
@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b79e18b1fbe3f84191af14964969cb0e
     GuidInternal: 
-    m_lastTime: -8585070244312379775
+    m_lastTime: -8585069201086444992
     List:
     - name: Ambience_Battle
       guid: 70f57a11862f194b99567e14afd36cdd
@@ -391,6 +391,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: UI_Click
+      guid: 853d7519d3cda949bbbbe1653ae97277
+      id: 2249769530
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: UI_Click
+        ObjectType: 3
+        guid: 853d7519d3cda949bbbbe1653ae97277
+      Path: Events\Default Work Unit\UI_Click
+      maxAttenuation: 0
+      maxDuration: 0.060385488
+      minDuration: 0.060385488
+    - name: UI_Hover
+      guid: fd7acb71a0a63e4c99ee49c493b571d0
+      id: 2118900976
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b79e18b1fbe3f84191af14964969cb0e
+      - ElementName: UI_Hover
+        ObjectType: 3
+        guid: fd7acb71a0a63e4c99ee49c493b571d0
+      Path: Events\Default Work Unit\UI_Hover
+      maxAttenuation: 0
+      maxDuration: 0.012335601
+      minDuration: 0.012335601
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -549,5 +583,5 @@ MonoBehaviour:
   ExpandedWaapiItemIds: 010000000200000003000000040000000500000006000000070000000c0000000d0000000e0000000f00000010000000110000001700000018000000190000001a00000020000000
   AutoSyncSelection: 1
   autoPopulateEnabled: 0
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 

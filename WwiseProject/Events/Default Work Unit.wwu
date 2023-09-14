@@ -169,6 +169,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="UI_Hover" ID="{71CB7AFD-A6A0-4C3E-99EE-49C493B571D0}">
+					<ChildrenList>
+						<Action Name="" ID="{64ACCA86-200D-4321-BD61-CDABE5A3B52A}" ShortID="915917003">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hover" ID="{F37119FF-381A-42D8-BE42-C6A9E32857AB}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Click" ID="{19753D85-CDD3-49A9-BBBB-E1653AE97277}">
+					<ChildrenList>
+						<Action Name="" ID="{E99E38A1-FC76-42E8-91D7-04C8A2CE3D2B}" ShortID="285160131">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Click" ID="{B1C220B4-EFCD-4DFF-A3A0-3B2D5B2DCE37}" WorkUnitID="{90F97EC4-5AAA-4BB8-AEE4-D6AD9193C9B9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

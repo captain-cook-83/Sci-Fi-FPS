@@ -22,8 +22,6 @@ namespace Cc83.Interactable
         private InteractablePoseData _primaryPoseData;
         
         private InteractablePoseData _secondaryPoseData;
-
-        public override bool canProcess => base.canProcess && _primaryHandController;
         
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
@@ -53,11 +51,11 @@ namespace Cc83.Interactable
                 case 1:
                     if (_secondaryHandController)                                           // means from 2 to 1
                     {
+                        _primaryHandController.OnReleaseFromMultiGrab();                    // 有 _secondaryHandController 则必有 _primaryHandController
                         _secondaryHandController.OnReleaseFromMultiGrab();
+                        
                         _secondaryHandController = null;
                         _secondaryPoseData = default;
-
-                        _primaryHandController.OnReleaseFromMultiGrab();                    // 有 _secondaryHandController 则必有 _primaryHandController
                     }
                     
                     if (_primaryHandController)
@@ -97,19 +95,20 @@ namespace Cc83.Interactable
             if (stableMode)
             {
                 if (!(updatePhase == XRInteractionUpdateOrder.UpdatePhase.OnBeforeRender ||
-                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider && _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;           // 稳定性更好，但是非移动状态下计算两次
+                      updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic && _moveProvider &&  _moveProvider.locomotionPhase != LocomotionPhase.Moving)) return;        // 稳定性更好，但是非移动状态下计算两次
             }
             else
             {
-                if (updatePhase != XRInteractionUpdateOrder.UpdatePhase.OnBeforeRender) return;                                                                          // 手部始终有局部微小的延迟对齐
+                if (updatePhase != XRInteractionUpdateOrder.UpdatePhase.OnBeforeRender) return;                                                                                     // 手部始终有局部微小的延迟对齐
             }
+            
+            var primaryInteractor = grabInteractable.interactorsSelecting[0];
+            var isSocketInteractor = primaryInteractor is XRSocketInteractor;
             
             switch (grabInteractable.interactorsSelecting.Count)
             {
                 case 1:
-                    var interactor = grabInteractable.interactorsSelecting[0];
-                    var interactorAttachTransform = _primaryHandController.AttachTransform;     // interactor.GetAttachTransform(grabInteractable);
-                    var isSocketInteractor = interactor is XRSocketInteractor;
+                    var interactorAttachTransform = isSocketInteractor ? primaryInteractor.GetAttachTransform(grabInteractable) : _primaryHandController.AttachTransform;
                     
                     if (grabInteractable.trackRotation)
                     {
@@ -124,8 +123,7 @@ namespace Cc83.Interactable
                     }
                     break;
                 case 2:         // TODO 此处假设 Primary Interactor 为数组中子一个元素，但尚未确认是否与底层 API 承诺一致
-                    var primaryInteractor = grabInteractable.interactorsSelecting[0];
-                    if (primaryInteractor is XRSocketInteractor) return;
+                    if (isSocketInteractor) return;
                     
                     var primaryAttachTransform = _primaryHandController.AttachTransform;        // primaryInteractor.GetAttachTransform(grabInteractable);
                     var primaryProjection = primaryAttachTransform.TransformPoint(_primaryPoseData.handProjection);

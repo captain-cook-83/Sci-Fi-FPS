@@ -112,8 +112,8 @@ namespace Cc83.Character
             
             #region 处理动态物体
             
-            // var hits = Physics.OverlapSphereNonAlloc(position, radius, _dynamicColliders, hitLayers.value);      // TODO layerMask 参数目前无效
-            var hits = OverlapSphereNonAlloc(position, radius, _dynamicColliders);
+            var hits = Physics.OverlapSphereNonAlloc(position, radius, _dynamicColliders, hitLayers);      // TODO layerMask 参数目前无效
+            // var hits = OverlapSphereNonAlloc(position, radius, _dynamicColliders);
             for (var i = 0; i < hits; i++)
             {
                 _dynamicDetections[i] = new float4(_dynamicColliders[i].transform.position, 0);
@@ -144,7 +144,7 @@ namespace Cc83.Character
         {
             Instance = this;
 
-            hitLayers -= Definitions.CharacterLayer;
+            hitLayers &= ~(1 << Definitions.CharacterLayer);
 
             var totalLethalPartsLength = 0;
             _enemyHealthControllers = new HealthController[enemies.childCount];

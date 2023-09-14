@@ -28,6 +28,8 @@ namespace Cc83.Character
         public Transform interactableFixShell;
 
         public Action Interrupted;
+
+        public Transform AttachTransform => directInteractor.attachTransform;
         
         [SerializeField]
         private HandSkeleton skeleton;
@@ -37,6 +39,9 @@ namespace Cc83.Character
         
         [SerializeField]
         private CameraShaker waggleShaker;
+
+        [SerializeField]
+        private XRDirectInteractor directInteractor;
 
         private bool _isPrimaryFromMultiGrab;
 
@@ -164,7 +169,7 @@ namespace Cc83.Character
             var ik = skeleton.GetComponentInParent<VRIK>();
             var handTransform = side == HandSide.Left ? ik.references.leftHand : ik.references.rightHand;
             
-            var directInteractor = GetComponentInChildren<XRDirectInteractor>();
+            directInteractor = GetComponentInChildren<XRDirectInteractor>();
             if (directInteractor)
             {
                 directInteractor.attachTransform = handTransform;

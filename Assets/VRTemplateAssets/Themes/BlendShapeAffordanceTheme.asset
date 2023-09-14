@@ -30,8 +30,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 1
-          value: 1
+          time: 0.99853516
+          value: 0.8008385
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -61,3 +61,6 @@ MonoBehaviour:
     - stateName: activated
       animationStateStartValue: 0
       animationStateEndValue: 0
+    - stateName: focused
+      animationStateStartValue: 5
+      animationStateEndValue: 5

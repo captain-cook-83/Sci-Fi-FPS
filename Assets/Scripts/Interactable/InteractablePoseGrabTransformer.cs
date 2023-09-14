@@ -22,6 +22,8 @@ namespace Cc83.Interactable
         private InteractablePoseData _primaryPoseData;
         
         private InteractablePoseData _secondaryPoseData;
+
+        public override bool canProcess => base.canProcess && _primaryHandController;
         
         public override void OnLink(XRGrabInteractable grabInteractable)
         {
@@ -106,7 +108,7 @@ namespace Cc83.Interactable
             {
                 case 1:
                     var interactor = grabInteractable.interactorsSelecting[0];
-                    var interactorAttachTransform = interactor.GetAttachTransform(grabInteractable);
+                    var interactorAttachTransform = _primaryHandController.AttachTransform;     // interactor.GetAttachTransform(grabInteractable);
                     var isSocketInteractor = interactor is XRSocketInteractor;
                     
                     if (grabInteractable.trackRotation)
@@ -125,7 +127,7 @@ namespace Cc83.Interactable
                     var primaryInteractor = grabInteractable.interactorsSelecting[0];
                     if (primaryInteractor is XRSocketInteractor) return;
                     
-                    var primaryAttachTransform = primaryInteractor.GetAttachTransform(grabInteractable);
+                    var primaryAttachTransform = _primaryHandController.AttachTransform;        // primaryInteractor.GetAttachTransform(grabInteractable);
                     var primaryProjection = primaryAttachTransform.TransformPoint(_primaryPoseData.handProjection);
                     
                     var secondaryBindableShell = _secondaryHandController.interactableBindableShell;

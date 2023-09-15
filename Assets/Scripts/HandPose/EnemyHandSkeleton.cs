@@ -35,14 +35,9 @@ namespace Cc83.HandPose
                     weaponReference.weapon.RefreshPrimaryAnchor(defaultPoseData.handLocalPosition, defaultPoseData.handLocalRotation);
                     break;
             }
-        }
-
-        private void LateUpdate()           // TODO 寻找一次性设置的方式 或 DOTS
-        {
-#if UNITY_EDITOR
-            if (defaultPoseData == null) return;
-#endif
             
+            // 需要注意：如果 Animator 所使用 Avatar 中 LeftHand（或 RightHand）采用了默认关联的手指骨骼，则运行时 Animator 将采用 FBX 中的骨骼默认值覆盖此处设置的手指姿态。
+            // 解决方法：1、使用 LateUpdate 生命周期回调来持续刷新手指姿态；2、删除 Avatar 配置中 LeftHand（和 RightHand）中的全部骨骼引用（推荐）
             SetFingerNodes(defaultPoseData);
         }
 

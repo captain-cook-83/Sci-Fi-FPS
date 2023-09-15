@@ -1,5 +1,4 @@
 using System.Collections;
-using Cc83.HandPose;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -58,13 +57,6 @@ namespace Cc83.Character
 
         private IEnumerator FreezeBody()
         {
-            yield return null;
-            
-            foreach (var handSkeleton in GetComponents<EnemyHandSkeleton>())
-            {
-                handSkeleton.enabled = false;
-            }
-
             yield return null;
             
             Destroy(animator);

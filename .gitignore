@@ -78,8 +78,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Mac.meta
 
 # Wwise
-WwiseProject/*.validationcache
-WWiseProject/.cache/
+/WwiseProject/*.validationcache
+/WWiseProject/.cache/
 
 # Temporary install files
-WwiseUnityIntegration_*_Src.zip
+/WwiseUnityIntegration_*_Src.zip

@@ -28,7 +28,11 @@ namespace Cc83.Interactable
             
             _shootController.enabled = false;
             _collider.enabled = true;
-            _rigidbody = gameObject.AddComponent<Rigidbody>();
+            
+            if (!_rigidbody)
+            {
+                _rigidbody = gameObject.AddComponent<Rigidbody>();
+            }
         }
         
         public void DropDown(Vector3 force)

@@ -41,7 +41,7 @@ namespace Cc83.Character
 
         public void TakeExplosionDamage(Vector3 position, float radius, float force, float damage)
         {
-            position += Vector3.up * 0.01f;     // 向上移动 1cm，避免贴表面检测
+            position.y = Mathf.Max(position.y, 0.1f);       // 避免贴表面检测导致的问题（当动态物体高度为 0 时，贴地检测可能穿透地面上的障碍物）
             
             float3 origin = position;
 

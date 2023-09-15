@@ -27,8 +27,12 @@ namespace Cc83.Character
             if (hp > 0 && !headShoot) return;
             
             _alive = false;
+
+            if (animator)
+            {
+                animator.SetTrigger(TriggerDeath);
+            }
             
-            animator.SetTrigger(TriggerDeath);
             colliders.ForEach(c => c.isTrigger = false);
             rigidbodies.ForEach(rb =>
             {

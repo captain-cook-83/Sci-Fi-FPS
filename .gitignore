@@ -80,6 +80,7 @@ crashlytics-build.properties
 # Wwise
 /[Ww]wise[Pp]roject/*.validationcache
 /[Ww]wise[Pp]roject/.cache/
+/[Aa]ssets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
 
 # Temporary install files
 /[Ww]wiseUnityIntegration_*_Src.zip

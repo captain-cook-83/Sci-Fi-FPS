@@ -76,3 +76,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Windows.meta
 /[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Mac/
 /[Aa]ssets/[Ss]treamingAssets/Audio/GeneratedSoundBanks/Mac.meta
+
+# Temporary install files
+WwiseUnityIntegration_*_Src.zip

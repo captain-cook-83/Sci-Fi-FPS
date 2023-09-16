@@ -78,7 +78,7 @@ namespace Cc83.Interactable
                     {
                         var effectTransform = effectInstance.transform;
                         var effectForward = effectTransform.forward;
-                        Instantiate(impactInfo.DecalEffect, effectTransform.position + effectForward * 0.01f, Quaternion.LookRotation(-effectForward), target);
+                        Instantiate(impactInfo.DecalEffect, effectTransform.position + effectForward * 0.03f, Quaternion.LookRotation(-effectForward), target);
                     }
                 }
 

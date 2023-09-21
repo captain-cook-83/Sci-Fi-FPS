@@ -23,6 +23,9 @@ namespace Cc83.Character
         [Range(0.5f, 5)]
         public float maxRepeatShootDelay = 5;
 
+        [SerializeField] 
+        public GameObject animatorRoot;
+
         private Seeker _seeker;
         
         private Animator _animator;
@@ -46,6 +49,8 @@ namespace Cc83.Character
         private void Start()
         {
             _seeker.StartPath(transform.position, target.position);
+            
+            // AnimatorUtility.OptimizeTransformHierarchy(animatorRoot, null);
         }
 
         private void OnDestroy()

@@ -3871,6 +3871,7 @@ MonoBehaviour:
   lookTarget: {fileID: 0}
   stopDistance: 0.1
   maxRepeatShootDelay: 3
+  animatorRoot: {fileID: 4569495626654684183}
 --- !u!114 &5644427389978244585
 MonoBehaviour:
   m_ObjectHideFlags: 0

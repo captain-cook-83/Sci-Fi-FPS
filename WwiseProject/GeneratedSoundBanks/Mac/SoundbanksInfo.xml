@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{2336FAC5-2295-499C-E0AC-0CFAEDB999C4}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="1069431850" Name="Player"/>
+				<Bus Id="1557941045" Name="Characters"/>
+				<Bus Id="2242381963" Name="Enemies"/>
+				<Bus Id="3761286811" Name="Environments"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<SwitchGroups>
+				<SwitchGroup Id="1413087445" Name="Weapon_Fire_Loop">
+					<Switches>
+						<Switch Id="3987970506" Name="Loop_4"/>
+						<Switch Id="3987970507" Name="Loop_5"/>
+						<Switch Id="3987970508" Name="Loop_2"/>
+						<Switch Id="3987970509" Name="Loop_3"/>
+						<Switch Id="3987970511" Name="Loop_1"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{7C2D51B5-A54F-4921-1BCC-882B3885F27E}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="7543907" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>grenade-launcher-106342.wav</ShortName>
+					<CachePath>SFX/grenade-launcher-106342_10C4C929.wem</CachePath>
+				</File>
+				<File Id="360762302" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>explosion-129711.wav</ShortName>
+					<CachePath>SFX/explosion-129711_1A17A575.wem</CachePath>
+				</File>
+				<File Id="413154676" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Button_22_click.wav</ShortName>
+					<CachePath>SFX/Button_22_click_10C4C929.wem</CachePath>
+				</File>
+				<File Id="423818807" Language="SFX" Streaming="true" Location="Loose">
+					<ShortName>weapon-ambience-world-war-ii-battlefield-01-153373.wav</ShortName>
+					<Path>Media/423818807.wem</Path>
+					<CachePath>SFX/weapon-ambience-world-war-ii-battlefield-01-153373_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="462652134" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
+					<CachePath>SFX/Pistol_01_Fire_05_SFX_F85EE4EC.wem</CachePath>
+				</File>
+				<File Id="476553176" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>punch-a-rock-161647.wav</ShortName>
+					<CachePath>SFX/punch-a-rock-161647_DD60E67F.wem</CachePath>
+				</File>
+				<File Id="590472926" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>072777_semi-auto-pistol-27633.wav</ShortName>
+					<CachePath>SFX/072777_semi-auto-pistol-27633_E914B453.wem</CachePath>
+				</File>
+				<File Id="611201981" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Handling_Gun_01_Arming_SFX.wav</ShortName>
+					<CachePath>SFX/Handling_Gun_01_Arming_SFX_10C4C929.wem</CachePath>
+				</File>
+				<File Id="653707792" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>proximity-88003.wav</ShortName>
+					<CachePath>SFX/proximity-88003_4CE7C76D.wem</CachePath>
+				</File>
+				<File Id="668757721" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Button_14_hover.wav</ShortName>
+					<CachePath>SFX/Button_14_hover_10C4C929.wem</CachePath>
+				</File>
+				<File Id="773245107" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>explosion-86694.wav</ShortName>
+					<CachePath>SFX/explosion-86694_D897EE98.wem</CachePath>
+				</File>
+				<File Id="856362830" Language="SFX" Streaming="true" Location="Loose">
+					<ShortName>anko-uehara-122618.wav</ShortName>
+					<Path>Media/856362830.wem</Path>
+					<CachePath>SFX/anko-uehara-122618_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="925171141" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>click-button-app-147358.wav</ShortName>
+					<CachePath>SFX/click-button-app-147358_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1002607041" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Pistol_01_Fire_05_SFX.wav</ShortName>
+					<CachePath>SFX/Pistol_01_Fire_05_SFX_0F89758F.wem</CachePath>
+				</File>
+				<File Id="1011484995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>switch-150130.wav</ShortName>
+					<CachePath>SFX/switch-150130_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1066519671" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shell\Shell_Short_02_SFX.wav</ShortName>
+					<CachePath>SFX/Shell/Shell_Short_02_SFX_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1071995294" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shell\Shell_Short_01_SFX.wav</ShortName>
+					<CachePath>SFX/Shell/Shell_Short_01_SFX_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="56249730" Name="Ambience_Battle" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="423818807"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2910980232" Name="Catch_Pistol_Player" DurationType="OneShot" DurationMin="0.29165533" DurationMax="0.29165533">
+					<MediaRefs>
+						<MediaRef Id="611201981"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2339342519" Name="Explode_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.799121" DurationMax="2.799121">
+					<MediaRefs>
+						<MediaRef Id="476553176"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1380408814" Name="Explode_Huge_Oil_Drum" MaxAttenuation="100" DurationType="OneShot" DurationMin="5.8456154" DurationMax="5.8456154">
+					<MediaRefs>
+						<MediaRef Id="360762302"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="502046452" Name="Explode_Oil_Drum" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.700923" DurationMax="2.700923">
+					<MediaRefs>
+						<MediaRef Id="773245107"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2466334510" Name="Exploding_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="11.101639" DurationMax="11.101639">
+					<MediaRefs>
+						<MediaRef Id="653707792"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1828056235" Name="Fire_Pistol_Player" DurationType="OneShot" DurationMin="1.5263584" DurationMax="1.9430557">
+					<MediaRefs>
+						<MediaRef Id="590472926"/>
+						<MediaRef Id="1066519671"/>
+						<MediaRef Id="1071995294"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2154019335" Name="Fire_Rifle_Enemy" MaxAttenuation="50" DurationType="OneShot" DurationMin="0.7023087" DurationMax="1.1023088">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970507"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970506"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970508"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970511" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="1002607041"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1413087445" Id="3987970509"/>
+							<MediaRefs>
+								<MediaRef Id="462652134"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="2148509378" Name="Fire_Rifle_Player" DurationType="OneShot" DurationMin="10.602309" DurationMax="10.602309">
+					<MediaRefs>
+						<MediaRef Id="462652134"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2424391431" Name="Launch_Grenade" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.4702041" DurationMax="0.4702041">
+					<MediaRefs>
+						<MediaRef Id="7543907"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2919956427" Name="Mount_Weapon" DurationType="OneShot" DurationMin="0.83591837" DurationMax="0.83591837">
+					<MediaRefs>
+						<MediaRef Id="925171141"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="810188555" Name="Mount_Weapon_Ready" DurationType="OneShot" DurationMin="4.032" DurationMax="4.032">
+					<MediaRefs>
+						<MediaRef Id="1011484995"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3782024871" Name="Music_Battle" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="856362830"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2249769530" Name="UI_Click" DurationType="OneShot" DurationMin="0.060385488" DurationMax="0.060385488">
+					<MediaRefs>
+						<MediaRef Id="413154676"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2118900976" Name="UI_Hover" DurationType="OneShot" DurationMin="0.012335601" DurationMax="0.012335601">
+					<MediaRefs>
+						<MediaRef Id="668757721"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="1413087445" Name="Weapon_Fire_Loop">
+					<Switches>
+						<Switch Id="3987970506" Name="Loop_4"/>
+						<Switch Id="3987970507" Name="Loop_5"/>
+						<Switch Id="3987970508" Name="Loop_2"/>
+						<Switch Id="3987970509" Name="Loop_3"/>
+						<Switch Id="3987970511" Name="Loop_1"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{CE3E094C-8AEF-79A9-CCC3-E6F11A21B8FC}</FileHash>
+</SoundBanksInfo>

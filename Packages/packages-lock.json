@@ -174,9 +174,9 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
-      "version": "14.0.8",
-      "depth": 1,
-      "source": "builtin",
+      "version": "file:../../Unity-Graphics/Packages/com.unity.render-pipelines.core",
+      "depth": 0,
+      "source": "local",
       "dependencies": {
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.physics": "1.0.0",
@@ -185,9 +185,9 @@
       }
     },
     "com.unity.render-pipelines.universal": {
-      "version": "14.0.8",
+      "version": "file:../../Unity-Graphics/Packages/com.unity.render-pipelines.universal",
       "depth": 0,
-      "source": "builtin",
+      "source": "local",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
         "com.unity.burst": "1.8.4",
@@ -197,7 +197,7 @@
     },
     "com.unity.searcher": {
       "version": "4.9.2",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -210,9 +210,9 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.shadergraph": {
-      "version": "14.0.8",
-      "depth": 1,
-      "source": "builtin",
+      "version": "file:../../Unity-Graphics/Packages/com.unity.shadergraph",
+      "depth": 0,
+      "source": "local",
       "dependencies": {
         "com.unity.render-pipelines.core": "14.0.8",
         "com.unity.searcher": "4.9.2"
@@ -346,6 +346,13 @@
         "com.unity.xr.core-utils": "2.1.1"
       },
       "url": "https://packages.unity.com"
+    },
+    "jp.amagamina.overdraw-for-urp": {
+      "version": "https://github.com/ina-amagami/OverdrawForURP.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ca4f29239c828a1b3ec593bea22a0afd4a40a73c"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

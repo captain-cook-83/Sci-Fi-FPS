@@ -4,8 +4,6 @@ namespace Cc83.Character
 {
     public abstract class HealthController : MonoBehaviour
     {
-        protected static readonly int TriggerDeath = Animator.StringToHash("Death");
-        
         [Range(1, 100)]
         public float hp = 100;
 

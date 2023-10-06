@@ -42,20 +42,13 @@ namespace Cc83.Character
             
             _seeker = GetComponent<Seeker>();
             _animator = GetComponent<Animator>();
-            
-            _seeker.pathCallback += OnPathCallback;
         }
 
         private void Start()
         {
-            _seeker.StartPath(transform.position, target.position);
+            _seeker.StartPath(transform.position, target.position, OnPathCallback);
             
             // AnimatorUtility.OptimizeTransformHierarchy(animatorRoot, null);
-        }
-
-        private void OnDestroy()
-        {
-            _seeker.pathCallback -= OnPathCallback;
         }
 
         private void OnPathCallback(Path path)

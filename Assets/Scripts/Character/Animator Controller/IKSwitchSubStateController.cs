@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Cc83.Character.Behaviour
 {
-    public class IKSwitchController : StateMachineBehaviour
+    public class IKSwitchSubStateController : StateMachineBehaviour
     {
         [SerializeField]
         private bool primaryIk;
@@ -23,8 +23,8 @@ namespace Cc83.Character.Behaviour
         private bool _originSecondaryIk;
         
         private bool _originAimingLookAt;
-
-        public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+        
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             if (_ikController == null)
             {
@@ -40,7 +40,7 @@ namespace Cc83.Character.Behaviour
             _ikController.aimingActive = aimingLookAt;
         }
 
-        public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             if (!recoverOnExit) return;
             

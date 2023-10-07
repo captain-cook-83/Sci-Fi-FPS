@@ -30,7 +30,7 @@ namespace Cc83.Character
 
             if (animator)
             {
-                animator.SetTrigger(AnimatorConstants.TriggerDeath);
+                animator.SetTrigger(AnimatorConstants.AnimatorDeath);
             }
             
             colliders.ForEach(c => c.isTrigger = false);

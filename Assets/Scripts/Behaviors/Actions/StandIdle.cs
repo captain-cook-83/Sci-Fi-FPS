@@ -15,8 +15,7 @@ namespace Cc83.Behaviors
         
         public override void OnStart()
         {
-            _animator.SetBool(AnimatorConstants.AnimatorCrouching, false);
-            _animator.SetFloat(AnimatorConstants.AnimatorTensity, -1);
+            _animator.SetFloat(AnimatorConstants.AnimatorTensity, Random.Range(AnimatorConstants.MinimumTensity, 0));
         }
         
         public override TaskStatus OnUpdate()

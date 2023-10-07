@@ -8,6 +8,10 @@ namespace Cc83
         public static readonly int AnimatorSpeed = Animator.StringToHash("Speed");
         public static readonly int AnimatorMoving = Animator.StringToHash("Moving");
         public static readonly int AnimatorCrouching = Animator.StringToHash("Crouching");
-        public static readonly int TriggerDeath = Animator.StringToHash("Death");
+        public static readonly int AnimatorDeath = Animator.StringToHash("Death");
+        public static readonly int AnimatorStop = Animator.StringToHash("Stop");
+
+        public const int MinimumTensity = -2;
+        public const int MaximumTensity = 1;
     }
 }

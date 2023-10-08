@@ -20,8 +20,6 @@ namespace Cc83.Behaviors
         private float _tickTime;
         
         protected override int Tensity => AnimatorConstants.MinimumTensity;
-        
-        protected override bool StopMoveImmediately => true;
 
         public override void OnStart()
         {

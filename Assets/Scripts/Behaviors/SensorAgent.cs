@@ -10,6 +10,7 @@ namespace Cc83.Behaviors
     {
         private const float ReciprocalOfMaxAngle = 90;
         
+        [Serializable]
         public class SensorTarget
         {
             public SensorAgent TargetAgent;
@@ -52,6 +53,8 @@ namespace Cc83.Behaviors
 
         private readonly List<SensorTarget> _enemies = new (1);
 
+        private readonly Dictionary<SensorAgent, SensorTarget> _prevEnemies = new (1);
+
         private void Awake()
         {
             BehaviorTree = GetComponent<BehaviorTree>();
@@ -90,27 +93,17 @@ namespace Cc83.Behaviors
         }
 
 #if UNITY_EDITOR
-        private SensorTarget _gizmosEnemy;
-
         protected virtual void OnDrawGizmos()
         {
             var origin = LookOrigin;
-            
-            if (_gizmosEnemy != null)
+            foreach (var kv in _prevEnemies)
             {
-                Debug.DrawLine(origin, origin + _gizmosEnemy.Direction.normalized * gizmosLength, Color.red);
-            }
-
-            foreach (var enemy in _enemies)
-            {
-                var endOffset = enemy.Direction.normalized * gizmosLength;
-                var originPoint = origin + endOffset;
-                Debug.DrawLine(originPoint, originPoint + endOffset, Color.blue);
+                Debug.DrawLine(origin, origin + kv.Value.Direction.normalized * gizmosLength, Color.red);
             }
         }
 #endif
         
-        protected virtual bool OnSubmit(Vector3 lookOrigin, SensorTarget sensorTarget) { return true; }
+        protected virtual bool OnSubmit(Vector3 lookOrigin, List<SensorTarget> sensorTargets) { return true; }
         
         protected virtual void OnClear() { }
         
@@ -136,15 +129,21 @@ namespace Cc83.Behaviors
             }
 
             var lookOrigin = LookOrigin;
-            var sensorTarget = _enemies.FirstOrDefault(e => CanSeeTarget(lookOrigin, e));
+            var sensorTargets = _enemies.Where(e => CanSeeTarget(lookOrigin, e)).ToList();
+            var haveAnyChanges = CompareChanges(sensorTargets, _prevEnemies);
             
-#if UNITY_EDITOR
-            _gizmosEnemy = sensorTarget;
-#endif
-            
-            if (OnSubmit(lookOrigin, sensorTarget) && sensorTarget != null)
+            if (OnSubmit(lookOrigin, sensorTargets) && haveAnyChanges)
             {
-                BehaviorTree.SendEvent(BehaviorDefinitions.EventEnemyAppear, sensorTarget);
+                BehaviorTree.SendEvent<object>(BehaviorDefinitions.EventEnemyAppear, sensorTargets);
+            }
+
+            if (haveAnyChanges)
+            {
+                _prevEnemies.Clear();
+                foreach (var sensorTarget in sensorTargets)
+                {
+                    _prevEnemies.Add(sensorTarget.TargetAgent, sensorTarget);
+                }
             }
         }
         
@@ -173,16 +172,12 @@ namespace Cc83.Behaviors
 
         protected static bool CanSeeTarget(Vector3 lookOrigin, SensorTarget target)
         {
-#if UNITY_EDITOR
-            if (Physics.Raycast(lookOrigin, target.Direction, out var hit, Mathf.Sqrt(target.SqrDistance), Definitions.ViewObstacleLayerMask))
-            {
-                Debug.LogWarning($"{target.TargetAgent.name} ---->>> {hit.transform.name}");
-                return false;
-            }
-            return true;
-#else
             return !Physics.Raycast(lookOrigin, target.Direction, Mathf.Sqrt(target.SqrDistance), Definitions.ViewObstacleLayerMask);
-#endif
+        }
+
+        private static bool CompareChanges(IReadOnlyCollection<SensorTarget> targets, IReadOnlyDictionary<SensorAgent, SensorTarget> previous)
+        {
+            return targets.Count != previous.Count || targets.Any(target => !previous.ContainsKey(target.TargetAgent));
         }
     }   
 }

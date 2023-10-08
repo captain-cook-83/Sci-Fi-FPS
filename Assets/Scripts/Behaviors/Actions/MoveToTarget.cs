@@ -28,8 +28,6 @@ namespace Cc83.Behaviors
         public SharedVector3 TargetPosition;
         
         protected virtual int Tensity => 0;
-
-        protected virtual bool StopMoveImmediately => false;
         
         protected Animator Animator;
         
@@ -61,19 +59,8 @@ namespace Cc83.Behaviors
         {
             _interrupted = true;
             
-            if (StopMoveImmediately)
-            {
-                Animator.SetBool(AnimatorConstants.AnimatorMoving, false);
-                StartCoroutine(AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, 0, 0.2f));
-            }
-            else
-            {
-                // 异步停止，使动作更加连贯
-                StartCoroutine(AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, 0, 0.2f, () =>
-                {
-                    Animator.SetBool(AnimatorConstants.AnimatorMoving, false);
-                })); 
-            }
+            Animator.SetBool(AnimatorConstants.AnimatorMoving, false);
+            Animator.SetFloat(AnimatorConstants.AnimatorSpeed, 0);
         }
 
         private void OnPathCalculated(Path path)
@@ -87,14 +74,14 @@ namespace Cc83.Behaviors
 
             if (_interrupted) return;
             
-            StartCoroutine(AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorTensity, Tensity));
+            StartCoroutine(AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorTensity, Tensity, NotInterrupted));
             StartCoroutine(MovingToTarget(path.vectorPath));
         }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
         {
             var movingSpeed = Random.Range(1.5f, 4.5f);
-            var prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, movingSpeed);
+            var prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, movingSpeed, NotInterrupted);
             System.Action clearCoroutine = () => prevCoroutine = null;
             
             StartCoroutine(prevCoroutine);
@@ -126,7 +113,7 @@ namespace Cc83.Behaviors
                     {
                         // prevCoroutine = null;
                         // _animator.SetFloat(AnimatorConstants.AnimatorSpeed, 0);
-                        prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, 0, 1, clearCoroutine);
+                        prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, 0, NotInterrupted, 1, clearCoroutine);
                         StartCoroutine(prevCoroutine);
                     }
                 }
@@ -150,7 +137,7 @@ namespace Cc83.Behaviors
                     
                     if (!_interrupted)
                     {
-                        prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, movingSpeed, 1, clearCoroutine);
+                        prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, movingSpeed, NotInterrupted, 1, clearCoroutine);
                         StartCoroutine(prevCoroutine);
                     }
                 }
@@ -173,6 +160,11 @@ namespace Cc83.Behaviors
             {
                 StopCoroutine(coroutine);
             }
+        }
+
+        private bool NotInterrupted()
+        {
+            return !_interrupted;
         }
     }
 }

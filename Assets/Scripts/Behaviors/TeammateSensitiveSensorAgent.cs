@@ -19,13 +19,6 @@ namespace Cc83.Behaviors
             if (_gizmosTeammates == null) return;
             
             var origin = LookOrigin;
-            foreach (var teammate in Teammates)
-            {
-                var endOffset = teammate.Direction.normalized * gizmosLength;
-                var originPoint = origin + endOffset;
-                Debug.DrawLine(originPoint, originPoint + endOffset, Color.blue);
-            }
-            
             foreach (var gizmosTeammate in _gizmosTeammates)
             {
                 Debug.DrawLine(origin, origin + gizmosTeammate.Direction.normalized * gizmosLength, Color.white);
@@ -35,14 +28,13 @@ namespace Cc83.Behaviors
         
         protected readonly List<SensorTarget> Teammates = new (4);
 
-        protected override bool OnSubmit(Vector3 lookOrigin, SensorTarget sensorTarget)
+        protected override bool OnSubmit(Vector3 lookOrigin, List<SensorTarget> sensorTargets)
         {
 #if UNITY_EDITOR
             _gizmosTeammates = null;
 #endif
             
             if (Teammates.Count == 0) return true;
-            
             if (Teammates.Count > 1)
             {
                 Teammates.ForEach(CalculateSortScore);
@@ -68,8 +60,7 @@ namespace Cc83.Behaviors
             _gizmosTeammates = selectedTeammates;
 #endif
             
-            Debug.Log($"{BehaviorDefinitions.EnemyAndTeammateAppear}: {sensorTarget?.TargetAgent.name ?? "^"} {selectedTeammates.Count}");
-            BehaviorTree.SendEvent(BehaviorDefinitions.EnemyAndTeammateAppear, sensorTarget, selectedTeammates);
+            BehaviorTree.SendEvent<object, object>(BehaviorDefinitions.EnemyAndTeammateAppear, sensorTargets, selectedTeammates);
             return false;
         }
 

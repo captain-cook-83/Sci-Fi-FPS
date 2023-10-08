@@ -12,7 +12,7 @@ namespace Cc83.Behaviors
         // ReSharper disable once FieldCanBeMadeReadOnly.Global
         // ReSharper disable once ConvertToConstant.Global
         // ReSharper disable once MemberCanBePrivate.Global
-        public int MaxGScore = 10000;           // 5m 大约左右的范围
+        public int MaxGScore = 10000;           // 10m 左右的范围
         
         // ReSharper disable once UnassignedField.Global
         public SharedTransform CantonmentPoint;

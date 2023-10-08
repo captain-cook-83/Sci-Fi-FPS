@@ -2249,6 +2249,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5644427389978244585}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3476550034232826883}
     - targetCorrespondingSourceObject: {fileID: 944927156297921104, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 30926688842938025}
@@ -3971,6 +3974,24 @@ MonoBehaviour:
   - {fileID: 8376581116909692126}
   materialTypeEnum: 9
   testHitPart: {fileID: 7028209274952138613}
+--- !u!114 &3476550034232826883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372561217522628428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfbc1c8523ce69f4baaadb7cfb8e7e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  halfFov: 60
+  sqrDistance: 900
+  viewHeight: 1
+  gizmosLength: 5
+  forceTeammateSensitive: 1
 --- !u!1 &4427621919320782925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 944927156297921104, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}

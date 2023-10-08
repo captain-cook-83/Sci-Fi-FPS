@@ -37,13 +37,12 @@ namespace Cc83.Behaviors
             {
                 _tickTime = currentTime + RaycastInterval;
 
-                var transform = Animator.transform;
                 if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out var hitInfo, RaycastDistance,
                         Definitions.MovingObstacleLayerMask))
                 {
                     Animator.SetTrigger(AnimatorConstants.AnimatorStop);
                     Animator.SetBool(AnimatorConstants.AnimatorMoving, false);
-                    Debug.LogError("Stop");
+                    Debug.LogWarning("Walking interrupted via raycast detection");
 
                     Status = TaskStatus.Success;
                 }

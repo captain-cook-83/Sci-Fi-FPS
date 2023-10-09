@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using Cc83.Character;
-using Pathfinding;
 using UnityEngine;
 using Action = BehaviorDesigner.Runtime.Tasks.Action;
 using Random = UnityEngine.Random;
@@ -25,17 +23,13 @@ namespace Cc83.Behaviors
         public float LastStopDistance;
         
         // ReSharper disable once UnassignedField.Global
-        public SharedVector3 TargetPosition;
-        
-        protected virtual int Tensity => 0;
+        public SharedVector3List PathPoints;
         
         protected Animator Animator;
 
         protected AnimatorStateController AnimatorStateController;
         
         protected TaskStatus Status;
-        
-        private Seeker _seeker;
 
         private bool _interrupted;
         
@@ -43,25 +37,21 @@ namespace Cc83.Behaviors
         {
             Animator = GetComponent<Animator>();
             AnimatorStateController = GetComponent<AnimatorStateController>();
-            _seeker = GetComponent<Seeker>();
         }
 
         public override void OnStart()
         {
             _interrupted = false;
 
-            var position = transform.position;
-            var targetPosition = TargetPosition.Value;
-            
-            if (Vector3.Distance(position, targetPosition) < StopProjection)
+            var pathPoints = PathPoints.Value;
+            if (Vector3.Distance(transform.position, pathPoints[^1]) < StopProjection)
             {
-                AnimatorStateController.ChangeTensity(Tensity);
                 Status = TaskStatus.Success;
             }
             else
             {
-                _seeker.StartPath(position, targetPosition, OnPathCalculated);
                 Status = TaskStatus.Running;
+                StartCoroutine(MovingToTarget(pathPoints));
             }
         }
 
@@ -75,21 +65,6 @@ namespace Cc83.Behaviors
             _interrupted = true;
 
             AnimatorStateController.ChangeSpeed(0, 0.1f, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false));
-        }
-
-        private void OnPathCalculated(Path path)
-        {
-            if (path.error || path.vectorPath.Count == 0)
-            {
-                Debug.LogError($"Pathfinding error: {path.errorLog}.");
-                Status = TaskStatus.Failure;
-                return;
-            }
-
-            if (_interrupted) return;
-            
-            AnimatorStateController.ChangeTensity(Tensity);
-            StartCoroutine(MovingToTarget(path.vectorPath));
         }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)

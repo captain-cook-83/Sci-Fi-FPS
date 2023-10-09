@@ -1,5 +1,6 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using Cc83.Character;
 using Pathfinding;
 using UnityEngine;
 using Vector3 = System.Numerics.Vector3;
@@ -19,16 +20,24 @@ namespace Cc83.Behaviors
         
         // ReSharper disable once UnassignedField.Global
         public SharedVector3 TargetPosition;
+        
+        private AnimatorStateController _animatorStateController;
 
         private TaskStatus _status;
         
+        public override void OnAwake()
+        {
+            _animatorStateController = GetComponent<AnimatorStateController>();
+        }
+        
         public override void OnStart()
         {
-            _status = TaskStatus.Running;
-
             var cantonmentPoint = CantonmentPoint.Value;
             var startPoint = cantonmentPoint ? cantonmentPoint.position : transform.position;
             AstarPath.StartPath(ConstantPath.Construct(startPoint, MaxGScore, OnPathCalculated));
+            
+            _animatorStateController.ChangeTensity(AnimatorConstants.MinimumTensity);
+            _status = TaskStatus.Running;
         }
 
         public override TaskStatus OnUpdate()

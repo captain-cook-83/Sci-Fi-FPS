@@ -1,7 +1,4 @@
 namespace Cc83.Behaviors
 {
-    public class WalkToTarget : MoveToTarget
-    {
-        protected override int Tensity => AnimatorConstants.MinimumTensity;
-    }
+    public class WalkToTarget : MoveToTarget { }
 }

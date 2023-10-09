@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using Cc83.Character;
 using Cc83.Interactable;
@@ -13,6 +14,12 @@ namespace Cc83.Behaviors
         // ReSharper disable once FieldCanBeMadeReadOnly.Global
         // ReSharper disable once ConvertToConstant.Global
         public float MaxRepeatShootDelay = 3;
+        
+        // ReSharper disable once UnassignedField.Global
+        public SharedFloat AttackFarDistance;
+        
+        // ReSharper disable once UnassignedField.Global
+        public SharedFloat AttackNearDistance;
         
         // ReSharper disable once UnassignedField.Global
         public SharedSensorTargetList Enemies;

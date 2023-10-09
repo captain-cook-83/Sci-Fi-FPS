@@ -19,37 +19,29 @@ namespace Cc83.Character
 
         private void OnDestroy()
         {
-            CancelChangeSpeed();
-            CancelChangeTensity();
+            CancelCoroutine(_speedCoroutine);
+            CancelCoroutine(_tensityCoroutine);
         }
 
         public void ChangeSpeed(float value, float speed = 1, Action onComplete = null)
         {
-            CancelChangeSpeed();
+            CancelCoroutine(_speedCoroutine);
             
             _speedCoroutine = StartCoroutine(AnimatorUtils.ChangeFloat(_animator, AnimatorConstants.AnimatorSpeed, value, speed, onComplete));
         }
 
         public void ChangeTensity(float value, float speed = 1, Action onComplete = null)
         {
-            CancelChangeTensity();
+            CancelCoroutine(_tensityCoroutine);
             
             _tensityCoroutine = StartCoroutine(AnimatorUtils.ChangeFloat(_animator, AnimatorConstants.AnimatorTensity, value, speed, onComplete));
         }
         
-        private void CancelChangeSpeed()
+        private void CancelCoroutine(Coroutine coroutine)
         {
-            if (_speedCoroutine != null)
+            if (coroutine != null)
             {
-                StopCoroutine(_speedCoroutine);
-            }
-        }
-        
-        private void CancelChangeTensity()
-        {
-            if (_tensityCoroutine != null)
-            {
-                StopCoroutine(_tensityCoroutine);
+                StopCoroutine(coroutine);
             }
         }
     }

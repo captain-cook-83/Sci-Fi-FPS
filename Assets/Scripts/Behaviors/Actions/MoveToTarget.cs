@@ -48,9 +48,20 @@ namespace Cc83.Behaviors
 
         public override void OnStart()
         {
-            Status = TaskStatus.Running;
             _interrupted = false;
-            _seeker.StartPath(transform.position, TargetPosition.Value, OnPathCalculated);
+
+            var position = transform.position;
+            var targetPosition = TargetPosition.Value;
+            
+            if (Vector3.Distance(position, targetPosition) < StopProjection)
+            {
+                Status = TaskStatus.Success;
+            }
+            else
+            {
+                Status = TaskStatus.Running;
+                _seeker.StartPath(position, targetPosition, OnPathCalculated);
+            }
         }
 
         public override TaskStatus OnUpdate()

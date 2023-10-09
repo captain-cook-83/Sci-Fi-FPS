@@ -137,12 +137,10 @@ namespace Cc83.Behaviors
                 if (sensorTargets.Count > 0)
                 {
                     BehaviorTree.SendEvent<object, object>(BehaviorDefinitions.EventEnemyAppear, sensorTargets, null);
-                    Debug.LogWarning($"{transform.name} - {BehaviorDefinitions.EventEnemyAppear}");
                 }
                 else
                 {
                     BehaviorTree.SendEvent(BehaviorDefinitions.EventEnemyDisappear);
-                    Debug.LogWarning($"{transform.name} - {BehaviorDefinitions.EventEnemyDisappear}");
                 }
             }
 

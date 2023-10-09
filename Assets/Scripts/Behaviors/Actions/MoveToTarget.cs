@@ -55,12 +55,13 @@ namespace Cc83.Behaviors
             
             if (Vector3.Distance(position, targetPosition) < StopProjection)
             {
+                AnimatorStateController.ChangeTensity(Tensity);
                 Status = TaskStatus.Success;
             }
             else
             {
-                Status = TaskStatus.Running;
                 _seeker.StartPath(position, targetPosition, OnPathCalculated);
+                Status = TaskStatus.Running;
             }
         }
 

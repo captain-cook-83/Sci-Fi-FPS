@@ -4,6 +4,8 @@
     {
         public const string EventEnemyAppear = "EnemyAppear";
         
-        public const string EnemyAndTeammateAppear = "EnemyAndTeammateAppear";
+        public const string EventEnemyDisappear = "EnemyDisappear";
+        
+        public const string EventTeammateChange = "TeammateChange";
     }
 }

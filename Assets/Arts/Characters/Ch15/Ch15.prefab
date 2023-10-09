@@ -2224,6 +2224,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3183614709268161290}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7981602928312325206}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
@@ -2243,9 +2246,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2933572983902416242}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8918563194724971106}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5644427389978244585}
@@ -3723,6 +3723,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
   m_PrefabInstance: {fileID: 3490039655348881949}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3183614709268161290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372561217522628428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58cd4c56fb217754c826f8cecd65765a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7981602928312325206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3751,7 +3763,7 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"TargetPosition","IsShared":true,"Vector3mValue":"(0,0,0)"}]}'
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"TargetPosition","IsShared":true,"Vector3mValue":"(0,0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"CantonmentPoint","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"RandomFloat","IsShared":true,"SinglemValue":0},{"Type":"Cc83.Behaviors.SharedSensorTargetList","Name":"Enemies","IsShared":true,"List`1mValue":[]},{"Type":"Cc83.Behaviors.SharedSensorTargetList","Name":"Teammates","IsShared":true,"List`1mValue":[]}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -3901,23 +3913,6 @@ MonoBehaviour:
   lerpSpeed: 14
   primaryIkValue: 1
   secondaryIkValue: 1
---- !u!114 &8918563194724971106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4372561217522628428}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a4d625f1311614c94ba8edf3fc75ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  lookTarget: {fileID: 0}
-  stopDistance: 0.1
-  maxRepeatShootDelay: 3
-  animatorRoot: {fileID: 4569495626654684183}
 --- !u!114 &5644427389978244585
 MonoBehaviour:
   m_ObjectHideFlags: 0

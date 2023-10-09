@@ -9,9 +9,9 @@ namespace Cc83.Behaviors
         [Tooltip("keep teammate sensitive even if there isn't any enemy")]
         public bool forceTeammateSensitive;
         
-#if UNITY_EDITOR
         private List<SensorTarget> _gizmosTeammates;
-
+        
+#if UNITY_EDITOR
         protected override void OnDrawGizmos()
         {
             base.OnDrawGizmos();
@@ -28,19 +28,19 @@ namespace Cc83.Behaviors
         
         protected readonly List<SensorTarget> Teammates = new (4);
 
-        protected override bool OnSubmit(Vector3 lookOrigin, List<SensorTarget> sensorTargets)
+        protected override bool OnSubmit(Vector3 lookOrigin, List<SensorTarget> sensorTargets, bool haveAnyChanges)
         {
-#if UNITY_EDITOR
-            _gizmosTeammates = null;
-#endif
-            
-            if (Teammates.Count == 0) return true;
-            if (Teammates.Count > 1)
+            switch (Teammates.Count)
             {
-                Teammates.ForEach(CalculateSortScore);
-                Teammates.Sort(DefaultSortFunc);
+                case 0:
+                    _gizmosTeammates = null;
+                    return true;
+                case > 1:
+                    Teammates.ForEach(CalculateSortScore);
+                    Teammates.Sort(DefaultSortFunc);
+                    break;
             }
-            
+
             var selectedTeammates = new List<SensorTarget>(3);
             foreach (var teammate in Teammates.Where(t => CanSeeTarget(lookOrigin, t)))
             {
@@ -50,18 +50,24 @@ namespace Cc83.Behaviors
                     break;
                 }
             }
-            
-            if (selectedTeammates.Count == 0)
-            {
-                return true;
-            }
-            
-#if UNITY_EDITOR
+
+            var teammatesNumChanged = _gizmosTeammates == null
+                ? selectedTeammates.Count > 0
+                : _gizmosTeammates.Count != selectedTeammates.Count;
             _gizmosTeammates = selectedTeammates;
-#endif
             
-            BehaviorTree.SendEvent<object, object>(BehaviorDefinitions.EnemyAndTeammateAppear, sensorTargets, selectedTeammates);
-            return false;
+            if (haveAnyChanges && sensorTargets.Count > 0 && selectedTeammates.Count > 0)
+            {
+                BehaviorTree.SendEvent<object, object>(BehaviorDefinitions.EventEnemyAppear, sensorTargets, selectedTeammates);
+                return false;
+            } 
+            
+            if (teammatesNumChanged)
+            {
+                BehaviorTree.SendEvent(BehaviorDefinitions.EventTeammateChange, selectedTeammates);
+            }
+                
+            return true;
         }
 
         protected override void OnClear()

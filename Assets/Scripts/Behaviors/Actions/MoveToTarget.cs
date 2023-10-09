@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-using Cc83.Utils;
+using Cc83.Character;
 using Pathfinding;
 using UnityEngine;
 using Action = BehaviorDesigner.Runtime.Tasks.Action;
@@ -30,6 +30,8 @@ namespace Cc83.Behaviors
         protected virtual int Tensity => 0;
         
         protected Animator Animator;
+
+        protected AnimatorStateController AnimatorStateController;
         
         protected TaskStatus Status;
         
@@ -40,6 +42,7 @@ namespace Cc83.Behaviors
         public override void OnAwake()
         {
             Animator = GetComponent<Animator>();
+            AnimatorStateController = GetComponent<AnimatorStateController>();
             _seeker = GetComponent<Seeker>();
         }
 
@@ -58,9 +61,8 @@ namespace Cc83.Behaviors
         public override void OnEnd()
         {
             _interrupted = true;
-            
-            Animator.SetBool(AnimatorConstants.AnimatorMoving, false);
-            Animator.SetFloat(AnimatorConstants.AnimatorSpeed, 0);
+
+            AnimatorStateController.ChangeSpeed(0, 0.1f, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false));
         }
 
         private void OnPathCalculated(Path path)
@@ -74,18 +76,16 @@ namespace Cc83.Behaviors
 
             if (_interrupted) return;
             
-            StartCoroutine(AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorTensity, Tensity, NotInterrupted));
+            AnimatorStateController.ChangeTensity(Tensity);
             StartCoroutine(MovingToTarget(path.vectorPath));
         }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
         {
-            var movingSpeed = Random.Range(1.5f, 4.5f);
-            var prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, movingSpeed, NotInterrupted);
-            System.Action clearCoroutine = () => prevCoroutine = null;
+            var movingSpeed = 1+Random.Range(1.5f, 4.5f);
             
-            StartCoroutine(prevCoroutine);
             Animator.SetBool(AnimatorConstants.AnimatorMoving, true);
+            AnimatorStateController.ChangeSpeed(movingSpeed, 0.1f);
             
             for (var i = 1; i < pathPoints.Count; i++)
             {
@@ -104,18 +104,9 @@ namespace Cc83.Behaviors
                 var rotation = transform.rotation;
                 var rotationAngle = Quaternion.Angle(rotation, targetRotation);
                 var changeSpeed = rotationAngle > 45;
-                
-                if (changeSpeed)
+                if (changeSpeed && NotInterrupted())
                 {
-                    StopNullableCoroutine(prevCoroutine);
-
-                    if (!_interrupted)
-                    {
-                        // prevCoroutine = null;
-                        // _animator.SetFloat(AnimatorConstants.AnimatorSpeed, 0);
-                        prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, 0, NotInterrupted, 1, clearCoroutine);
-                        StartCoroutine(prevCoroutine);
-                    }
+                    AnimatorStateController.ChangeSpeed(0, 0.1f);
                 }
                 
                 var prevRotationAngle = 0f;
@@ -131,14 +122,11 @@ namespace Cc83.Behaviors
 
                 transform.rotation = targetRotation;
 
-                if (changeSpeed)
+                if (changeSpeed && NotInterrupted())
                 {
-                    StopNullableCoroutine(prevCoroutine);
-                    
-                    if (!_interrupted)
+                    if (NotInterrupted())
                     {
-                        prevCoroutine = AnimatorUtils.ChangeFloat(Animator, AnimatorConstants.AnimatorSpeed, movingSpeed, NotInterrupted, 1, clearCoroutine);
-                        StartCoroutine(prevCoroutine);
+                        AnimatorStateController.ChangeSpeed(movingSpeed, 0.1f);
                     }
                 }
                 
@@ -152,14 +140,6 @@ namespace Cc83.Behaviors
             }
             
             Status = TaskStatus.Success;
-        }
-
-        private void StopNullableCoroutine(IEnumerator coroutine)
-        {
-            if (coroutine != null)
-            {
-                StopCoroutine(coroutine);
-            }
         }
 
         private bool NotInterrupted()

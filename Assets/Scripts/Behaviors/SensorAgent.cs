@@ -103,7 +103,7 @@ namespace Cc83.Behaviors
         }
 #endif
         
-        protected virtual bool OnSubmit(Vector3 lookOrigin, List<SensorTarget> sensorTargets) { return true; }
+        protected virtual bool OnSubmit(Vector3 lookOrigin, List<SensorTarget> sensorTargets, bool haveAnyChanges) { return true; }
         
         protected virtual void OnClear() { }
         
@@ -131,19 +131,25 @@ namespace Cc83.Behaviors
             var lookOrigin = LookOrigin;
             var sensorTargets = _enemies.Where(e => CanSeeTarget(lookOrigin, e)).ToList();
             var haveAnyChanges = CompareChanges(sensorTargets, _prevEnemies);
-            
-            if (OnSubmit(lookOrigin, sensorTargets) && haveAnyChanges)
+
+            if (OnSubmit(lookOrigin, sensorTargets, haveAnyChanges) && haveAnyChanges)
             {
-                BehaviorTree.SendEvent<object>(BehaviorDefinitions.EventEnemyAppear, sensorTargets);
+                if (sensorTargets.Count > 0)
+                {
+                    BehaviorTree.SendEvent<object, object>(BehaviorDefinitions.EventEnemyAppear, sensorTargets, null);
+                    Debug.LogWarning($"{transform.name} - {BehaviorDefinitions.EventEnemyAppear}");
+                }
+                else
+                {
+                    BehaviorTree.SendEvent(BehaviorDefinitions.EventEnemyDisappear);
+                    Debug.LogWarning($"{transform.name} - {BehaviorDefinitions.EventEnemyDisappear}");
+                }
             }
 
-            if (haveAnyChanges)
+            _prevEnemies.Clear();
+            foreach (var sensorTarget in sensorTargets)
             {
-                _prevEnemies.Clear();
-                foreach (var sensorTarget in sensorTargets)
-                {
-                    _prevEnemies.Add(sensorTarget.TargetAgent, sensorTarget);
-                }
+                _prevEnemies.Add(sensorTarget.TargetAgent, sensorTarget);
             }
         }
         
@@ -177,7 +183,7 @@ namespace Cc83.Behaviors
 
         private static bool CompareChanges(IReadOnlyCollection<SensorTarget> targets, IReadOnlyDictionary<SensorAgent, SensorTarget> previous)
         {
-            return targets.Count != previous.Count || targets.Any(target => !previous.ContainsKey(target.TargetAgent));
+            return targets.Count != previous.Count || targets.Any(t => !previous.ContainsKey(t.TargetAgent));
         }
     }   
 }

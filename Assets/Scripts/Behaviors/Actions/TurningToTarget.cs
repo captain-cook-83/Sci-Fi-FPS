@@ -31,14 +31,14 @@ namespace Cc83.Behaviors
 
             
             var forward = transform.forward;
-            var direction = pathPoints[1] - transform.position;         // 不能使用 pathPoints[0]，因为计算时位置可能与当前不一致（Walk To Stop）
+            var direction = pathPoints[1] - transform.position;         // 不能使用 pathPoints[0]，因为路径点计算时位置可能已经与当下不一致（Walk To Stop）；或许也不是，需要时再考虑？
             var forward2 = new Vector2(forward.x, forward.z);
             var direction2 = new Vector2(direction.x, direction.z);
             
             var angle = Vector3.Angle(forward2, direction2);
             if (angle > 15)
             {
-                var dot = Vector2.Dot( new Vector2(forward2.y, -forward2.x), direction2);
+                var dot = Vector2.Dot(new Vector2(forward2.y, -forward2.x), direction2);       // Left(-) or Right(+)
                 _animator.SetFloat(AnimatorConstants.AnimatorTurn, dot > 0 ? angle : -angle);
                 _successTime = Time.time + Duration;
             }

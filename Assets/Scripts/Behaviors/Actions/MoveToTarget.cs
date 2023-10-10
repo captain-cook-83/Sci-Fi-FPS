@@ -64,7 +64,7 @@ namespace Cc83.Behaviors
         {
             _interrupted = true;
 
-            AnimatorStateController.ChangeSpeed(0, 0.1f, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false));
+            AnimatorStateController.ChangeSpeed(0, 0.1f, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
         }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)

@@ -6,6 +6,12 @@ namespace Cc83.Behaviors
     [TaskCategory("Cc83")]
     public class TurningToTarget : Action
     {
+        [Range(15, 45)]
+        // ReSharper disable once MemberCanBePrivate.Global
+        // ReSharper disable once FieldCanBeMadeReadOnly.Global
+        // ReSharper disable once ConvertToConstant.Global
+        public float MinAngle = 45;
+        
         [Range(1, 2)]
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once FieldCanBeMadeReadOnly.Global
@@ -39,7 +45,7 @@ namespace Cc83.Behaviors
 
             if (RandomAngle)
             {
-                angle = Random.Range(30, 180);
+                angle = Random.Range(MinAngle, 180);
                 angle *= Random.value > 0.5 ? 1 : -1;
             }
             else
@@ -55,7 +61,7 @@ namespace Cc83.Behaviors
                 angle = dot > 0 ? angle : -angle;
             }
             
-            if (Mathf.Abs(angle) > 20)
+            if (Mathf.Abs(angle) >= MinAngle)
             {
                 _animator.SetFloat(AnimatorConstants.AnimatorTurn, angle);
                 _status = TaskStatus.Running;

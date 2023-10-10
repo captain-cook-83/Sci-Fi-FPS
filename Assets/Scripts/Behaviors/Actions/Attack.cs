@@ -1,7 +1,6 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using Cc83.Character;
-using Cc83.Interactable;
 using UnityEngine;
 
 namespace Cc83.Behaviors
@@ -23,38 +22,27 @@ namespace Cc83.Behaviors
         
         // ReSharper disable once UnassignedField.Global
         public SharedSensorTargetList Enemies;
-        
-        private EnemyShootController _shootController;
 
-        private float _nextShootTime;
+        private EnemyAttackController _attackController;
 
         public override void OnAwake()
         {
-            var weaponReference = GetComponent<WeaponReference>();
-            if (weaponReference)
-            {
-                _shootController = weaponReference.weapon.GetComponent<EnemyShootController>();
-            }
+            _attackController = GetComponent<EnemyAttackController>();
         }
-        
+
+        public override void OnStart()
+        {
+            _attackController.Active(Enemies.Value[0], AttackNearDistance.Value, AttackFarDistance.Value, MaxRepeatShootDelay);
+        }
+
         public override TaskStatus OnUpdate()
         {
-            if (_shootController.IsEnabled)
-            {
-                var currentTime = Time.time;
-                if (currentTime > _nextShootTime)
-                {
-                    var times = Random.Range(1, 6);
-                    var duration = times * _shootController.cdTime;
+            return _attackController.IsActive ? TaskStatus.Running : TaskStatus.Failure;
+        }
 
-                    _nextShootTime = currentTime + duration + Random.Range(0.5f, MaxRepeatShootDelay);
-                    _shootController.Shoot(times);
-                }
-                
-                return TaskStatus.Running;
-            }
-            
-            return TaskStatus.Failure;
+        public override void OnEnd()
+        {
+            _attackController.Deactive();
         }
     }
 }

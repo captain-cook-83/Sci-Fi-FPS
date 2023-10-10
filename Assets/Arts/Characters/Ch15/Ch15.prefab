@@ -2251,6 +2251,9 @@ PrefabInstance:
       addedObject: {fileID: 5644427389978244585}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6649070007552766304}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3476550034232826883}
     - targetCorrespondingSourceObject: {fileID: 944927156297921104, guid: af6ac5616abb3a34984aeef638a665f3, type: 3}
       insertIndex: -1
@@ -3763,7 +3766,7 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"TargetPosition","IsShared":true,"Vector3mValue":"(0,0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"CantonmentPoint","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"RandomFloat","IsShared":true,"SinglemValue":0},{"Type":"Cc83.Behaviors.SharedSensorTargetList","Name":"Enemies","IsShared":true,"List`1mValue":[]},{"Type":"Cc83.Behaviors.SharedSensorTargetList","Name":"Teammates","IsShared":true,"List`1mValue":[]}]}'
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"TargetPosition","IsShared":true,"Vector3mValue":"(0,0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"CantonmentPoint","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"RandomFloat","IsShared":true,"SinglemValue":0},{"Type":"Cc83.Behaviors.SharedSensorTargetList","Name":"Enemies","IsShared":true,"List`1mValue":[]},{"Type":"Cc83.Behaviors.SharedSensorTargetList","Name":"Teammates","IsShared":true,"List`1mValue":[]},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"AttackNearDistance","IsShared":true,"SinglemValue":5},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"AttackFarDistance","IsShared":true,"SinglemValue":10},{"Type":"Cc83.Behaviors.SharedVector3List","Name":"PathPoints","IsShared":true,"List`1mValue":[]},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"IdleTurnProbability","IsShared":true,"SinglemValue":0}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -3969,6 +3972,18 @@ MonoBehaviour:
   - {fileID: 8376581116909692126}
   materialTypeEnum: 9
   testHitPart: {fileID: 7028209274952138613}
+--- !u!114 &6649070007552766304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372561217522628428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b661c9b4b43ec48812119708f56fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3476550034232826883
 MonoBehaviour:
   m_ObjectHideFlags: 0

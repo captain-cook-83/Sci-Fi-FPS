@@ -8,6 +8,6 @@
         
         public const string EventTeammateChange = "TeammateChange";
         
-        public const string EventWalkingStopped = "WalkingStopped";
+        public const string EventTurningStopped = "TurningStopped";
     }
 }

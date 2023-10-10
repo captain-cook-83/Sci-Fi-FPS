@@ -36,7 +36,7 @@ namespace Cc83.Behaviors
         
         private void OnPathCalculated(Path path)
         {
-            if (path.error || path.vectorPath.Count == 0)
+            if (path.error || path.vectorPath.Count < 2)
             {
                 Debug.LogError($"Pathfinding error: {path.errorLog}.");
                 _status = TaskStatus.Failure;

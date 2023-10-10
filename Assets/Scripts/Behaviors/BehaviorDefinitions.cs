@@ -7,5 +7,7 @@
         public const string EventEnemyDisappear = "EnemyDisappear";
         
         public const string EventTeammateChange = "TeammateChange";
+        
+        public const string EventWalkingStopped = "WalkingStopped";
     }
 }

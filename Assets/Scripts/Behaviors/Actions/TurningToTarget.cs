@@ -28,7 +28,6 @@ namespace Cc83.Behaviors
         {
             var pathPoints = PathPoints.Value;
             if (pathPoints.Count < 2) return;
-
             
             var forward = transform.forward;
             var direction = pathPoints[1] - transform.position;         // 不能使用 pathPoints[0]，因为路径点计算时位置可能已经与当下不一致（Walk To Stop）；或许也不是，需要时再考虑？

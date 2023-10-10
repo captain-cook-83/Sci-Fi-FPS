@@ -36,7 +36,7 @@ namespace Cc83.Behaviors
             var startPoint = cantonmentPoint ? cantonmentPoint.position : transform.position;
             AstarPath.StartPath(ConstantPath.Construct(startPoint, MaxGScore, OnPathCalculated));
             
-            _animatorStateController.ChangeTensity(AnimatorConstants.MinimumTensity);
+            _animatorStateController.ChangeTensity(AnimatorConstants.WalkTensity);
             _status = TaskStatus.Running;
         }
 

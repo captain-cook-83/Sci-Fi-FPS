@@ -50,12 +50,7 @@ namespace Cc83.Behaviors
             }
 
             var teammatesNumChanged = _prevTeammates.Count != selectedTeammates.Count;
-            
-            _prevTeammates.Clear();
-            foreach (var sensorTarget in selectedTeammates)
-            {
-                _prevTeammates.Add(sensorTarget.targetAgent, sensorTarget);
-            }
+            ConvertToDictionary(selectedTeammates, _prevTeammates);
             
             if (haveAnyChanges && sensorTargets.Count > 0 && selectedTeammates.Count > 0)
             {

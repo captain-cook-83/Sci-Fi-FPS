@@ -21,6 +21,9 @@ namespace Cc83.Behaviors
         // ReSharper disable once UnassignedField.Global
         public SharedVector3 TargetPosition;
         
+        // ReSharper disable once UnassignedField.Global
+        public SharedVector3 TargetTurn;
+        
         private AnimatorStateController _animatorStateController;
 
         private TaskStatus _status;
@@ -70,7 +73,9 @@ namespace Cc83.Behaviors
             }
             else
             {
-                TargetPosition.SetValue(randomPoints[0]);
+                var randomPoint = randomPoints[0];
+                TargetPosition.SetValue(randomPoint);
+                TargetTurn.SetValue(randomPoint);
                 _status = TaskStatus.Success;
             }
         }

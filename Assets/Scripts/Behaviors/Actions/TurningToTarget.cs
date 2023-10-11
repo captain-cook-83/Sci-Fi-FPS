@@ -20,7 +20,7 @@ namespace Cc83.Behaviors
         public float TimeOut = 2;
         
         // ReSharper disable once UnassignedField.Global
-        public SharedVector3 TargetPosition;
+        public SharedVector3 TargetTurn;
 
         // ReSharper disable once UnassignedField.Global
         public bool RandomAngle;
@@ -52,7 +52,7 @@ namespace Cc83.Behaviors
             else
             {
                 var forward = transform.forward;
-                var direction = TargetPosition.Value - transform.position;         // 不能使用 pathPoints[0]，因为路径点计算时位置可能已经与当下不一致（Walk To Stop）；或许也不是，需要时再考虑？
+                var direction = TargetTurn.Value - transform.position;         // 不能使用 pathPoints[0]，因为路径点计算时位置可能已经与当下不一致（Walk To Stop）；或许也不是，需要时再考虑？
                 var forward2 = new Vector2(forward.x, forward.z);
                 var direction2 = new Vector2(direction.x, direction.z);
                 var dot = Vector2.Dot(new Vector2(forward2.y, -forward2.x), direction2);       // Left(-) or Right(+)

@@ -17,6 +17,9 @@ namespace Cc83.Behaviors
         // ReSharper disable once UnassignedField.Global
         public SharedVector3 TargetPosition;
         
+        // ReSharper disable once UnassignedField.Global
+        public SharedVector3 TargetTurn;
+        
         private AnimatorStateController _animatorStateController;
 
         private TaskStatus _status;
@@ -28,6 +31,9 @@ namespace Cc83.Behaviors
 
         public override void OnStart()
         {
+            // TargetPosition.SetValue(BehaviorDefinitions.InvalidSharedVector3);
+            // TargetTurn.SetValue(BehaviorDefinitions.InvalidSharedVector3);
+            
             var sensorTargets = Enemies.Value;
             if (sensorTargets == null || sensorTargets.Count == 0)
             {
@@ -37,9 +43,18 @@ namespace Cc83.Behaviors
             
             var sensorTarget = sensorTargets[0];
             var targetTransform = sensorTarget.targetAgent.transform;
-            var attackDistance = Mathf.Min(AttackFarDistance.Value, Mathf.Sqrt(sensorTarget.sqrDistance));
-            TargetPosition.SetValue(targetTransform.position - sensorTarget.direction.normalized * attackDistance);     // TODO 检测是否可到达（如果不可达，计算可用目标点）
 
+            if (Mathf.Sqrt(sensorTarget.sqrDistance) > AttackFarDistance.Value)
+            {
+                TargetPosition.SetValue(targetTransform.position - sensorTarget.direction.normalized * AttackFarDistance.Value);     // TODO 检测是否可到达（如果不可达，计算可用目标点）
+            }
+            else
+            {
+                TargetPosition.SetValue(transform.position);
+            }
+            
+            TargetTurn.SetValue(targetTransform.position);
+            
             if (_animatorStateController.Tensity < AnimatorConstants.WalkTensity)           // 此时确保进入双手持枪状态，避免单手持枪
             {
                 _animatorStateController.ChangeTensity(AnimatorConstants.WalkTensity);

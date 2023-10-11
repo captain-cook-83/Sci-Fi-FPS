@@ -15,7 +15,10 @@ namespace Cc83.Behaviors
         public float MinPathDistance = 0.1f;
         
         // ReSharper disable once UnassignedField.Global
-        public SharedVector3 TargetPosition;                    // 读取目标位置，输出移动前的旋转朝向位置（不是朝向）
+        public SharedVector3 TargetPosition;
+        
+        // ReSharper disable once UnassignedField.Global
+        public SharedVector3 TargetTurn;
         
         // ReSharper disable once UnassignedField.Global
         public SharedVector3List PathPoints;
@@ -35,6 +38,7 @@ namespace Cc83.Behaviors
             
             var currentPosition = transform.position;
             var targetPosition = TargetPosition.Value;
+            
             if (Vector3.Distance(currentPosition, targetPosition) > MinPathDistance)
             {
                 _status = TaskStatus.Running;
@@ -61,9 +65,9 @@ namespace Cc83.Behaviors
                 _status = TaskStatus.Failure;
                 return;
             }
-
-            TargetPosition.SetValue(vectorPath[1]);
+            
             PathPoints.SetValue(vectorPath);
+            TargetTurn.SetValue(vectorPath[1]);
             
             _status = TaskStatus.Success;
         }

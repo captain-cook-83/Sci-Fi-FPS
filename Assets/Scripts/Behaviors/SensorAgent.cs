@@ -155,11 +155,7 @@ namespace Cc83.Behaviors
                 }
             }
 
-            _prevEnemies.Clear();
-            foreach (var sensorTarget in sensorTargets)
-            {
-                _prevEnemies.Add(sensorTarget.targetAgent, sensorTarget);
-            }
+            ConvertToDictionary(sensorTargets, _prevEnemies);
         }
         
         internal void Clear()
@@ -188,6 +184,12 @@ namespace Cc83.Behaviors
         protected static bool CanSeeTarget(Vector3 lookOrigin, SensorTarget target)
         {
             return !Physics.Raycast(lookOrigin, target.direction, Mathf.Sqrt(target.sqrDistance), Definitions.ViewObstacleLayerMask);
+        }
+        
+        protected static void ConvertToDictionary(List<SensorTarget> source, Dictionary<SensorAgent, SensorTarget> destination)
+        {
+            destination.Clear();
+            source.ForEach(t => destination.Add(t.targetAgent, t));
         }
 
         private static bool CompareChanges(IReadOnlyCollection<SensorTarget> targets, IReadOnlyDictionary<SensorAgent, SensorTarget> previous)

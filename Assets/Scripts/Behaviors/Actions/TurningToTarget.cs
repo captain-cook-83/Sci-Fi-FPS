@@ -57,8 +57,9 @@ namespace Cc83.Behaviors
                 var direction2 = new Vector2(direction.x, direction.z);
                 var dot = Vector2.Dot(new Vector2(forward2.y, -forward2.x), direction2);       // Left(-) or Right(+)
             
-                angle = Vector3.Angle(forward2, direction2);
+                angle = Vector2.Angle(forward2, direction2);
                 angle = dot > 0 ? angle : -angle;
+                // Debug.LogWarning($"TurningToTarget: {angle}");
             }
             
             if (Mathf.Abs(angle) >= MinAngle)

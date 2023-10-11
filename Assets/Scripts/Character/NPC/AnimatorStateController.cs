@@ -25,20 +25,21 @@ namespace Cc83.Character
             CancelCoroutine(_tensityCoroutine);
         }
 
-        public void ChangeSpeed(float value, float speed = 1, Action onComplete = null, bool forceComplete = false)         // 方法体内代码顺序严格保证链式调用下的正常清理及回调
+        public void ChangeSpeed(float value, float speed = 1, Action onStart = null , Action onComplete = null, bool forceComplete = false)         // 方法体内代码顺序严格保证链式调用下的正常清理及回调
         {
             CancelCoroutine(_speedCoroutine);
             
             _speedCoroutine = StartCoroutine(AnimatorUtils.ChangeFloat(_animator, AnimatorConstants.AnimatorSpeed, value, speed, () => 
             {
-                var callback = _speedOnComplete;
                 _speedOnComplete = null;
-                callback?.Invoke();
+                onComplete?.Invoke();
             }));
             
             var callback = _speedOnComplete;
             _speedOnComplete = forceComplete ? onComplete : null;
             callback?.Invoke();
+            
+            onStart?.Invoke();
         }
 
         public void ChangeTensity(float value, float speed = 1)

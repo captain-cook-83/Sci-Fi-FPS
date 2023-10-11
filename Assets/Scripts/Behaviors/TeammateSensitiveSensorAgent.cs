@@ -9,40 +9,38 @@ namespace Cc83.Behaviors
         [Tooltip("keep teammate sensitive even if there isn't any enemy")]
         public bool forceTeammateSensitive;
         
-        private List<SensorTarget> _gizmosTeammates;
+        private readonly List<SensorTarget> _teammates = new (4);
+        
+        private readonly Dictionary<SensorAgent, SensorTarget> _prevTeammates = new (3);
         
 #if UNITY_EDITOR
         protected override void OnDrawGizmos()
         {
             base.OnDrawGizmos();
-
-            if (_gizmosTeammates == null) return;
             
             var origin = LookOrigin;
-            foreach (var gizmosTeammate in _gizmosTeammates)
+            foreach (var kv in _prevTeammates)
             {
-                Debug.DrawLine(origin, origin + gizmosTeammate.Direction.normalized * gizmosLength, Color.white);
+                Debug.DrawLine(origin, origin + kv.Value.direction.normalized * gizmosLength, Color.white);
             }
         }
 #endif
         
-        protected readonly List<SensorTarget> Teammates = new (4);
-
         protected override bool OnSubmit(Vector3 lookOrigin, List<SensorTarget> sensorTargets, bool haveAnyChanges)
         {
-            switch (Teammates.Count)
+            switch (_teammates.Count)
             {
                 case 0:
-                    _gizmosTeammates = null;
+                    _prevTeammates.Clear();
                     return true;
                 case > 1:
-                    Teammates.ForEach(CalculateSortScore);
-                    Teammates.Sort(DefaultSortFunc);
+                    _teammates.ForEach(CalculateSortScore);
+                    _teammates.Sort(DefaultSortFunc);
                     break;
             }
 
             var selectedTeammates = new List<SensorTarget>(3);
-            foreach (var teammate in Teammates.Where(t => CanSeeTarget(lookOrigin, t)))
+            foreach (var teammate in _teammates.Where(t => CanSeeTarget(lookOrigin, t)))
             {
                 selectedTeammates.Add(teammate);
                 if (selectedTeammates.Count == selectedTeammates.Capacity)
@@ -51,10 +49,13 @@ namespace Cc83.Behaviors
                 }
             }
 
-            var teammatesNumChanged = _gizmosTeammates == null
-                ? selectedTeammates.Count > 0
-                : _gizmosTeammates.Count != selectedTeammates.Count;
-            _gizmosTeammates = selectedTeammates;
+            var teammatesNumChanged = _prevTeammates.Count != selectedTeammates.Count;
+            
+            _prevTeammates.Clear();
+            foreach (var sensorTarget in selectedTeammates)
+            {
+                _prevTeammates.Add(sensorTarget.targetAgent, sensorTarget);
+            }
             
             if (haveAnyChanges && sensorTargets.Count > 0 && selectedTeammates.Count > 0)
             {
@@ -72,27 +73,38 @@ namespace Cc83.Behaviors
 
         protected override void OnClear()
         {
-            Teammates.Clear();
+            _teammates.Clear();
         }
         
         internal void NotifyTeammate(SensorAgent teammate, Vector3 direction, float sDistance, float angle)
         {
-            Teammates.Add(new SensorTarget
+            if (_prevTeammates.TryGetValue(teammate, out var originTarget))
             {
-                TargetAgent = teammate,
-                Direction = direction,
-                SqrDistance = sDistance,
-                Angle = angle
-            });
+                originTarget.direction = direction;
+                originTarget.sqrDistance = sDistance;
+                originTarget.angle = angle;
+                
+                _teammates.Add(originTarget);
+            }
+            else
+            {
+                _teammates.Add(new SensorTarget
+                {
+                    targetAgent = teammate,
+                    direction = direction,
+                    sqrDistance = sDistance,
+                    angle = angle
+                });
+            }
         }
 
         internal void RemoveTeammates(Dictionary<SensorAgent, bool> teammates)
         {
-            for (var i = Teammates.Count - 1; i >= 0; --i)
+            for (var i = _teammates.Count - 1; i >= 0; --i)
             {
-                if (teammates.TryGetValue(Teammates[i].TargetAgent, out var operation) && operation == SensorSystem.OperationRemove)
+                if (teammates.TryGetValue(_teammates[i].targetAgent, out var operation) && operation == SensorSystem.OperationRemove)
                 {
-                    Teammates.RemoveAt(i);
+                    _teammates.RemoveAt(i);
                 }
             }
         }

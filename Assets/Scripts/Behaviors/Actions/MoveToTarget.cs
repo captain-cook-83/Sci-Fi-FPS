@@ -44,7 +44,7 @@ namespace Cc83.Behaviors
             _interrupted = false;
 
             var pathPoints = PathPoints.Value;
-            if (Vector3.Distance(transform.position, pathPoints[^1]) < StopProjection)
+            if (pathPoints == null || Vector3.Distance(transform.position, pathPoints[^1]) < StopProjection)
             {
                 Status = TaskStatus.Success;
             }

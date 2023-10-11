@@ -13,15 +13,15 @@ namespace Cc83.Behaviors
         [Serializable]
         public class SensorTarget
         {
-            public SensorAgent TargetAgent;
+            public SensorAgent targetAgent;
 
-            public Vector3 Direction;
+            public Vector3 direction;
 
-            public float SqrDistance;
+            public float sqrDistance;
 
-            public float Angle;
+            public float angle;
 
-            public float SortScore;
+            public float sortScore;
         }
 
         public enum SensorAgentType
@@ -98,7 +98,7 @@ namespace Cc83.Behaviors
             var origin = LookOrigin;
             foreach (var kv in _prevEnemies)
             {
-                Debug.DrawLine(origin, origin + kv.Value.Direction.normalized * gizmosLength, Color.red);
+                Debug.DrawLine(origin, origin + kv.Value.direction.normalized * gizmosLength, Color.red);
             }
         }
 #endif
@@ -111,13 +111,24 @@ namespace Cc83.Behaviors
 
         internal void NotifyEnemy(SensorAgent enemy, Vector3 direction, float sDistance, float angle)
         {
-            _enemies.Add(new SensorTarget
+            if (_prevEnemies.TryGetValue(enemy, out var originTarget))
             {
-                TargetAgent = enemy,
-                Direction = direction,
-                SqrDistance = sDistance,
-                Angle = angle
-            });
+                originTarget.direction = direction;
+                originTarget.sqrDistance = sDistance;
+                originTarget.angle = angle;
+                
+                _enemies.Add(originTarget);
+            }
+            else
+            {
+                _enemies.Add(new SensorTarget
+                {
+                    targetAgent = enemy,
+                    direction = direction,
+                    sqrDistance = sDistance,
+                    angle = angle
+                });
+            }
         }
         
         internal void Submit()
@@ -147,7 +158,7 @@ namespace Cc83.Behaviors
             _prevEnemies.Clear();
             foreach (var sensorTarget in sensorTargets)
             {
-                _prevEnemies.Add(sensorTarget.TargetAgent, sensorTarget);
+                _prevEnemies.Add(sensorTarget.targetAgent, sensorTarget);
             }
         }
         
@@ -166,22 +177,22 @@ namespace Cc83.Behaviors
 
         protected static int DefaultSortFunc(SensorTarget a, SensorTarget b)
         {
-            return a.SortScore > b.SortScore ? 1 : (a.SortScore < b.SortScore ? -1 : 0);
+            return a.sortScore > b.sortScore ? 1 : (a.sortScore < b.sortScore ? -1 : 0);
         }
 
         protected static void CalculateSortScore(SensorTarget sensorTarget)
         {
-            sensorTarget.SortScore = (1 + sensorTarget.Angle * ReciprocalOfMaxAngle) * sensorTarget.SqrDistance;
+            sensorTarget.sortScore = (1 + sensorTarget.angle * ReciprocalOfMaxAngle) * sensorTarget.sqrDistance;
         }
 
         protected static bool CanSeeTarget(Vector3 lookOrigin, SensorTarget target)
         {
-            return !Physics.Raycast(lookOrigin, target.Direction, Mathf.Sqrt(target.SqrDistance), Definitions.ViewObstacleLayerMask);
+            return !Physics.Raycast(lookOrigin, target.direction, Mathf.Sqrt(target.sqrDistance), Definitions.ViewObstacleLayerMask);
         }
 
         private static bool CompareChanges(IReadOnlyCollection<SensorTarget> targets, IReadOnlyDictionary<SensorAgent, SensorTarget> previous)
         {
-            return targets.Count != previous.Count || targets.Any(t => !previous.ContainsKey(t.TargetAgent));
+            return targets.Count != previous.Count || targets.Any(t => !previous.ContainsKey(t.targetAgent));
         }
     }   
 }

@@ -24,6 +24,8 @@ namespace Cc83.Behaviors
 
         // ReSharper disable once UnassignedField.Global
         public bool RandomAngle;
+        
+        public bool FastTurn;
 
         private Animator _animator;
 
@@ -65,7 +67,7 @@ namespace Cc83.Behaviors
             if (Mathf.Abs(angle) >= MinAngle)
             {
                 _animator.SetFloat(AnimatorConstants.AnimatorTurn, angle);
-                _animator.SetTrigger(AnimatorConstants.AnimatorStartTurn);
+                _animator.SetTrigger(FastTurn ? AnimatorConstants.AnimatorFastTurn : AnimatorConstants.AnimatorStartTurn);
                 _status = TaskStatus.Running;
             }
             else

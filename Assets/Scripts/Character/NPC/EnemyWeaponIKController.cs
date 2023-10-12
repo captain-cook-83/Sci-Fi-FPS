@@ -20,8 +20,9 @@ namespace Cc83.Character
             get => primaryIkValue;
             set
             {
+                if (primaryIkValue == value) return;
+                
                 primaryIkValue = value;
-
                 if (value)
                 {
                     primaryLerpWeight = 0;
@@ -34,8 +35,9 @@ namespace Cc83.Character
             get => secondaryIkValue;
             set
             {
+                if (secondaryIkValue == value) return;
+                
                 secondaryIkValue = value;
-
                 if (value)
                 {
                     secondaryLerpWeight = 0;

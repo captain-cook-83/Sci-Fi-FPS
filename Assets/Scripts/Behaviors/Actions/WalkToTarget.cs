@@ -4,7 +4,7 @@ namespace Cc83.Behaviors
 {
     public class WalkToTarget : MoveToTarget
     {
-        protected override TaskStatus FastComponentStatus => TaskStatus.Failure;            // 避免进入 Walk To Stop 状态
+        protected override TaskStatus FastEndingStatus => TaskStatus.Failure;            // 避免进入 Walk To Stop 状态
         
         public override void OnConditionalAbort()
         {

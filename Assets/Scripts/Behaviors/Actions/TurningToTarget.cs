@@ -1,17 +1,15 @@
 ﻿using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
+using Cc83.Utils;
 using UnityEngine;
 
 namespace Cc83.Behaviors
 {
     [TaskCategory("Cc83")]
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class TurningToTarget : Action
     {
-        [Range(15, 45)]
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once FieldCanBeMadeReadOnly.Global
-        // ReSharper disable once ConvertToConstant.Global
-        public float MinAngle = 45;
+        public const float MinAngle = 45;
         
         [Range(1, 2)]
         // ReSharper disable once MemberCanBePrivate.Global
@@ -25,6 +23,7 @@ namespace Cc83.Behaviors
         // ReSharper disable once UnassignedField.Global
         public bool RandomAngle;
         
+        // ReSharper disable once UnassignedField.Global
         public bool FastTurn;
 
         private Animator _animator;
@@ -37,7 +36,7 @@ namespace Cc83.Behaviors
         {
             _animator = GetComponent<Animator>();
         }
-
+        
         public override void OnStart()
         {
             Owner.RegisterEvent(BehaviorDefinitions.EventTurningStopped, OnTurningStopped);         // 目前偶尔情况：无法受到动画系统发出的事件；所以采用超时机制来预防这种错误
@@ -53,18 +52,12 @@ namespace Cc83.Behaviors
             }
             else
             {
-                var forward = transform.forward;
                 var direction = TargetTurn.Value - transform.position;         // 不能使用 pathPoints[0]，因为路径点计算时位置可能已经与当下不一致（Walk To Stop）；或许也不是，需要时再考虑？
-                var forward2 = new Vector2(forward.x, forward.z);
-                var direction2 = new Vector2(direction.x, direction.z);
-                var dot = Vector2.Dot(new Vector2(forward2.y, -forward2.x), direction2);       // Left(-) or Right(+)
-            
-                angle = Vector2.Angle(forward2, direction2);
-                angle = dot > 0 ? angle : -angle;
+                angle = VectorUtils.DirectionalAngle2D(transform.forward, direction);
                 // Debug.LogWarning($"TurningToTarget: {angle}");
             }
             
-            if (Mathf.Abs(angle) >= MinAngle)
+            if (Mathf.Abs(angle) + 0.1f >= MinAngle)               // +0.1f, 保证精度错误后依然满足条件
             {
                 _animator.SetFloat(AnimatorConstants.AnimatorTurn, angle);
                 _animator.SetTrigger(FastTurn ? AnimatorConstants.AnimatorFastTurn : AnimatorConstants.AnimatorStartTurn);
@@ -73,6 +66,7 @@ namespace Cc83.Behaviors
             else
             {
                 _status = TaskStatus.Success;
+                Debug.LogWarning($"Turning Ignored {angle}");
             }
         }
 

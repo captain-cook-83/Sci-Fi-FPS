@@ -44,6 +44,8 @@ namespace Cc83.Behaviors
         [Range(1, 10)]
         public int gizmosLength = 5;
 #endif
+
+        public Vector3 HitPosition => transform.position + Vector3.up * 1.5f;
         
         protected BehaviorTree BehaviorTree;
         

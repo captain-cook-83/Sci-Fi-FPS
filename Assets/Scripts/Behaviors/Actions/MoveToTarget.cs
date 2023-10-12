@@ -29,9 +29,9 @@ namespace Cc83.Behaviors
 
         protected AnimatorStateController AnimatorStateController;
 
-        protected virtual TaskStatus FastComponentStatus => TaskStatus.Success;
-        
-        protected TaskStatus Status;
+        protected virtual TaskStatus FastEndingStatus => TaskStatus.Success;
+
+        private TaskStatus _status;
 
         private bool _interrupted;
         
@@ -48,32 +48,32 @@ namespace Cc83.Behaviors
             var pathPoints = PathPoints.Value;
             if (pathPoints == null || Vector3.Distance(transform.position, pathPoints[^1]) < StopProjection)
             {
-                Status = FastComponentStatus;
+                _status = FastEndingStatus;
             }
             else
             {
-                Status = TaskStatus.Running;
+                _status = TaskStatus.Running;
                 StartCoroutine(MovingToTarget(pathPoints));
             }
         }
 
         public override TaskStatus OnUpdate()
         {
-            return Status;
+            return _status;
         }
 
         public override void OnEnd()
         {
             _interrupted = true;
 
-            AnimatorStateController.ChangeSpeed(0, 0.1f, null, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
+            AnimatorStateController.ChangeSpeed(0, null, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
         }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
         {
             var movingSpeed = 1+Random.Range(1.5f, 4.5f);
             
-            AnimatorStateController.ChangeSpeed(movingSpeed, 0.1f, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, true));
+            AnimatorStateController.ChangeSpeed(movingSpeed, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, true));
             
             for (var i = 1; i < pathPoints.Count; i++)
             {
@@ -88,13 +88,15 @@ namespace Cc83.Behaviors
                 {
                     targetPoint -= direction * LastStopDistance;
                 }
-                
+
+                #region 强制旋转方向
+
                 var rotation = transform.rotation;
                 var rotationAngle = Quaternion.Angle(rotation, targetRotation);
                 var changeSpeed = rotationAngle > 45;
                 if (changeSpeed && NotInterrupted())
                 {
-                    AnimatorStateController.ChangeSpeed(0, 0.1f);
+                    AnimatorStateController.ChangeSpeed(0);
                 }
                 
                 var prevRotationAngle = 0f;
@@ -112,11 +114,10 @@ namespace Cc83.Behaviors
 
                 if (changeSpeed && NotInterrupted())
                 {
-                    if (NotInterrupted())
-                    {
-                        AnimatorStateController.ChangeSpeed(movingSpeed, 0.1f);
-                    }
+                    AnimatorStateController.ChangeSpeed(movingSpeed);
                 }
+
+                #endregion
                 
                 var targetProjection = 0f;
                 do
@@ -127,7 +128,7 @@ namespace Cc83.Behaviors
                 } while (targetProjection > StopProjection);
             }
             
-            Status = TaskStatus.Success;
+            _status = TaskStatus.Success;
         }
 
         private bool NotInterrupted()

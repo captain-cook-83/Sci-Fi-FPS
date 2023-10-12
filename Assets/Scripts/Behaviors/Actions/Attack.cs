@@ -22,6 +22,9 @@ namespace Cc83.Behaviors
         
         // ReSharper disable once UnassignedField.Global
         public SharedSensorTargetList Enemies;
+        
+        // ReSharper disable once UnassignedField.Global
+        public SharedVector3 TargetTurn;
 
         private EnemyAttackController _attackController;
 
@@ -37,7 +40,14 @@ namespace Cc83.Behaviors
 
         public override TaskStatus OnUpdate()
         {
-            return _attackController.IsActive ? TaskStatus.Running : TaskStatus.Failure;
+            var dotDirection = _attackController.Tick();
+            if (dotDirection == 0) return TaskStatus.Running;
+
+            const float angle = TurningToTarget.MinAngle;
+            var rotation = Quaternion.AngleAxis(dotDirection < 0 ? -angle : angle, Vector3.up);
+            var targetPosition = transform.position + rotation * transform.forward;
+            TargetTurn.SetValue(targetPosition);
+            return TaskStatus.Success;
         }
 
         public override void OnEnd()

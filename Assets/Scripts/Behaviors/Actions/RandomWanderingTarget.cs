@@ -3,7 +3,6 @@ using BehaviorDesigner.Runtime.Tasks;
 using Cc83.Character;
 using Pathfinding;
 using UnityEngine;
-using Vector3 = System.Numerics.Vector3;
 
 namespace Cc83.Behaviors
 {
@@ -14,6 +13,9 @@ namespace Cc83.Behaviors
         // ReSharper disable once ConvertToConstant.Global
         // ReSharper disable once MemberCanBePrivate.Global
         public int MaxGScore = 10000;           // 10m 左右的范围
+
+        // ReSharper disable once UnassignedField.Global
+        public SharedInt Randomness;
         
         // ReSharper disable once UnassignedField.Global
         public SharedTransform CantonmentPoint;
@@ -35,6 +37,10 @@ namespace Cc83.Behaviors
         
         public override void OnStart()
         {
+            // 为了调试过程中正确反映实际数据，首先做一次清理，以防止下面逻辑短路返回
+            TargetPosition.SetValue(BehaviorDefinitions.InvalidSharedVector3);
+            TargetTurn.SetValue(BehaviorDefinitions.InvalidSharedVector3);
+            
             var cantonmentPoint = CantonmentPoint.Value;
             var startPoint = cantonmentPoint ? cantonmentPoint.position : transform.position;
             AstarPath.StartPath(ConstantPath.Construct(startPoint, MaxGScore, OnPathCalculated));
@@ -65,17 +71,17 @@ namespace Cc83.Behaviors
                 return;
             }
             
-            var randomPoints = PathUtilities.GetPointsOnNodes(constantPath.allNodes, 1);
+            var randomPoints = PathUtilities.GetPointsOnNodes(constantPath.allNodes, 1 + Mathf.Min(5, Randomness.Value));    // 获取多个随机点，增加随机性
             if (randomPoints.Count == 0)
             {
-                TargetPosition.SetValue(Vector3.Zero);
                 _status = TaskStatus.Failure;
             }
             else
             {
-                var randomPoint = randomPoints[0];
+                var randomPoint = randomPoints[Random.Range(0, randomPoints.Count)];
                 TargetPosition.SetValue(randomPoint);
                 TargetTurn.SetValue(randomPoint);
+                
                 _status = TaskStatus.Success;
             }
         }

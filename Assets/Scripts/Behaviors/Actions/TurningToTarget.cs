@@ -65,6 +65,7 @@ namespace Cc83.Behaviors
             if (Mathf.Abs(angle) >= MinAngle)
             {
                 _animator.SetFloat(AnimatorConstants.AnimatorTurn, angle);
+                _animator.SetTrigger(AnimatorConstants.AnimatorStartTurn);
                 _status = TaskStatus.Running;
             }
             else

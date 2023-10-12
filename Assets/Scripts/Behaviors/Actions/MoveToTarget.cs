@@ -28,6 +28,8 @@ namespace Cc83.Behaviors
         protected Animator Animator;
 
         protected AnimatorStateController AnimatorStateController;
+
+        protected virtual TaskStatus FastComponentStatus => TaskStatus.Success;
         
         protected TaskStatus Status;
 
@@ -46,7 +48,7 @@ namespace Cc83.Behaviors
             var pathPoints = PathPoints.Value;
             if (pathPoints == null || Vector3.Distance(transform.position, pathPoints[^1]) < StopProjection)
             {
-                Status = TaskStatus.Success;
+                Status = FastComponentStatus;
             }
             else
             {

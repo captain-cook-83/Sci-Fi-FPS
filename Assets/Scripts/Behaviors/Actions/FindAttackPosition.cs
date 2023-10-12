@@ -31,8 +31,9 @@ namespace Cc83.Behaviors
 
         public override void OnStart()
         {
-            // TargetPosition.SetValue(BehaviorDefinitions.InvalidSharedVector3);
-            // TargetTurn.SetValue(BehaviorDefinitions.InvalidSharedVector3);
+            // 为了调试过程中正确反映实际数据，首先做一次清理，以防止下面逻辑短路返回
+            TargetPosition.SetValue(BehaviorDefinitions.InvalidSharedVector3);
+            TargetTurn.SetValue(BehaviorDefinitions.InvalidSharedVector3);
             
             var sensorTargets = Enemies.Value;
             if (sensorTargets == null || sensorTargets.Count == 0)
@@ -41,18 +42,13 @@ namespace Cc83.Behaviors
                 return;
             }
             
-            var sensorTarget = sensorTargets[0];
+            var sensorTarget = sensorTargets[0];                    // TODO 增加更多目标选取可能性
             var targetTransform = sensorTarget.targetAgent.transform;
+            var targetPosition = Mathf.Sqrt(sensorTarget.sqrDistance) > AttackFarDistance.Value
+                ? targetTransform.position - sensorTarget.direction.normalized * AttackFarDistance.Value        // TODO 检测是否可到达（如果不可达，计算可用目标点）
+                : transform.position;
 
-            if (Mathf.Sqrt(sensorTarget.sqrDistance) > AttackFarDistance.Value)
-            {
-                TargetPosition.SetValue(targetTransform.position - sensorTarget.direction.normalized * AttackFarDistance.Value);     // TODO 检测是否可到达（如果不可达，计算可用目标点）
-            }
-            else
-            {
-                TargetPosition.SetValue(transform.position);
-            }
-            
+            TargetPosition.SetValue(targetPosition);
             TargetTurn.SetValue(targetTransform.position);
             
             if (_animatorStateController.Tensity < AnimatorConstants.WalkTensity)           // 此时确保进入双手持枪状态，避免单手持枪

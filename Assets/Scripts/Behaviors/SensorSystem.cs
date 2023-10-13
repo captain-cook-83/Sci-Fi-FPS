@@ -147,7 +147,6 @@ namespace Cc83.Behaviors
                         var otherSqrDistance = otherDirection.sqrMagnitude;
                         if (otherSqrDistance > enemy.sqrDistance)
                         {
-                            Debug.LogWarning("Out of range");
                             continue;
                         }
                     

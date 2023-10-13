@@ -90,7 +90,7 @@ namespace Cc83.Character
             return 0;
         }
 
-        public void TickAiming()
+        public void TickAiming(bool delayed = true)
         {
             var currentHitPosition = _sensorTarget.targetAgent.HitPosition;
             var aimingDeviation = Vector3.SqrMagnitude(aimingTowards.position - currentHitPosition);
@@ -102,7 +102,8 @@ namespace Cc83.Character
             var aimingPosition = aimingTowards.position;
             if (!aimingPosition.Equals(_aimingTarget))
             {
-                var position = Vector3.Lerp(aimingPosition, _aimingTarget, Time.deltaTime * 15f);            // TODO 旋转速度需要依据旋转量，不应该使用固定速度
+                var speed = delayed ? 15 : 45;
+                var position = Vector3.Lerp(aimingPosition, _aimingTarget, Time.deltaTime * speed);            // TODO 旋转速度需要依据旋转量，不应该使用固定速度
                 aimingTowards.position = position;
                 
                 if (Vector3.SqrMagnitude(position - _aimingTarget) < 0.01f)

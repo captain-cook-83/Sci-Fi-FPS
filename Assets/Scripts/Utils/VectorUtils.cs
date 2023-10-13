@@ -23,7 +23,7 @@ namespace Cc83.Utils
         /// <param name="forward"></param>
         /// <param name="direction"></param>
         /// <returns></returns>
-        public static float DirectionalAngle2D(Vector3 forward, Vector3 direction)
+        public static float DotDirectionalAngle2D(Vector3 forward, Vector3 direction)
         {
             var forward2 = new Vector2(forward.x, forward.z);
             var direction2 = new Vector2(direction.x, direction.z);

@@ -53,7 +53,7 @@ namespace Cc83.Behaviors
             else
             {
                 var direction = TargetTurn.Value - transform.position;         // 不能使用 pathPoints[0]，因为路径点计算时位置可能已经与当下不一致（Walk To Stop）；或许也不是，需要时再考虑？
-                angle = VectorUtils.DirectionalAngle2D(transform.forward, direction);
+                angle = VectorUtils.DotDirectionalAngle2D(transform.forward, direction);
                 // Debug.LogWarning($"TurningToTarget: {angle}");
             }
             

@@ -15,7 +15,7 @@ namespace Cc83.Behaviors
 
         public override TaskStatus OnUpdate()
         {
-            _attackController.TickAiming();
+            _attackController.TickAiming(false);
             
             return TaskStatus.Running;
         }

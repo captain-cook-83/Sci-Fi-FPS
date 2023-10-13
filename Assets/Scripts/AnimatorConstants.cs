@@ -14,9 +14,10 @@ namespace Cc83
         public static readonly int AnimatorFastTurn = Animator.StringToHash("FastTurn");          // Trigger
         public static readonly int AnimatorStop = Animator.StringToHash("Stop");                    // Trigger
         
-        public const int MinimumTensity = -2;
-        public const int WalkTensity = -1;
-        public const int MaximumTensity = 1;
+        public const float MinimumTensity = -2;
+        public const float WalkTensity = -1;
+        public const float AimingTensity = 0.5f;
+        public const float MaximumTensity = 1f;
 
         public const float InvalidTurn = 0;
     }

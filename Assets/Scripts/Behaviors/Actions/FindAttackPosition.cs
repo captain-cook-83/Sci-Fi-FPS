@@ -15,6 +15,9 @@ namespace Cc83.Behaviors
         public SharedSensorTargetList Enemies;
         
         // ReSharper disable once UnassignedField.Global
+        public SharedSensorTarget Enemy;
+        
+        // ReSharper disable once UnassignedField.Global
         public SharedVector3 TargetPosition;
         
         // ReSharper disable once UnassignedField.Global
@@ -32,6 +35,7 @@ namespace Cc83.Behaviors
         public override void OnStart()
         {
             // 为了调试过程中正确反映实际数据，首先做一次清理，以防止下面逻辑短路返回
+            Enemy.SetValue(null);
             TargetPosition.SetValue(BehaviorDefinitions.InvalidSharedVector3);
             TargetTurn.SetValue(BehaviorDefinitions.InvalidSharedVector3);
             
@@ -48,6 +52,7 @@ namespace Cc83.Behaviors
                 ? targetTransform.position - sensorTarget.direction.normalized * AttackFarDistance.Value        // TODO 检测是否可到达（如果不可达，计算可用目标点）
                 : transform.position;
 
+            Enemy.SetValue(sensorTarget);
             TargetPosition.SetValue(targetPosition);
             TargetTurn.SetValue(targetTransform.position);
             

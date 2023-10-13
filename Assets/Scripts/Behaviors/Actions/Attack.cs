@@ -26,31 +26,44 @@ namespace Cc83.Behaviors
         public SharedFloat AttackNearDistance;
         
         // ReSharper disable once UnassignedField.Global
-        public SharedSensorTargetList Enemies;
+        public SharedSensorTarget Enemy;
         
         // ReSharper disable once UnassignedField.Global
         public SharedVector3 TargetTurn;
-
+        
         private EnemyAttackController _attackController;
 
         private SensorAgent.SensorTarget _sensorTarget;
         
         private Vector3 _currentDirection;
 
+        private float _attackFarSqrDistance;
+
+        private float _attackNearSqrDistance;
+
         public override void OnAwake()
         {
             _attackController = GetComponent<EnemyAttackController>();
+            _attackFarSqrDistance = Mathf.Pow(AttackFarDistance.Value, 2);
+            _attackNearSqrDistance = Mathf.Pow(AttackNearDistance.Value, 2);
         }
 
         public override void OnStart()
         {
-            _sensorTarget = Enemies.Value[0];
+            _sensorTarget = Enemy.Value;
             _currentDirection = _sensorTarget.direction;
             _attackController.Active(_sensorTarget, MaxRepeatShootDelay);
         }
 
         public override TaskStatus OnUpdate()
         {
+            // var sqrDistance = Vector3.SqrMagnitude(_sensorTarget.targetAgent.transform.position - transform.position);
+            // if (sqrDistance > _attackFarSqrDistance)
+            // {
+            //     _attackController.Reset();
+            //     return TaskStatus.Failure;
+            // }
+            
             var targetDirection = _sensorTarget.direction;
             if (!targetDirection.Equals(_currentDirection))     // 在目标未移动的情况下，_currentDirection 可以做到精准 Equals；而当前 NPC 的 forward 做不到这一点，从而无法进行当前检测优化
             {
@@ -67,6 +80,11 @@ namespace Cc83.Behaviors
             
             _attackController.Tick();
             return TaskStatus.Running;
+        }
+
+        public override void OnConditionalAbort()
+        {
+            _attackController.Reset();
         }
     }
 }

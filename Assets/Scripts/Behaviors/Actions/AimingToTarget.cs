@@ -1,5 +1,4 @@
-﻿using BehaviorDesigner.Runtime;
-using BehaviorDesigner.Runtime.Tasks;
+﻿using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
 namespace Cc83.Behaviors
@@ -8,7 +7,7 @@ namespace Cc83.Behaviors
     public class AimingToTarget : Action
     {
         // ReSharper disable once UnassignedField.Global
-        public SharedVector3 TargetTurn;
+        public SharedSensorTarget Enemy;
 
         private Quaternion _targetRotation;
 
@@ -17,7 +16,7 @@ namespace Cc83.Behaviors
         public override void OnStart()
         {
             var position = transform.position;
-            var targetPosition = TargetTurn.Value;
+            var targetPosition = Enemy.Value.targetAgent.transform.position;
             targetPosition.y = position.y;
             
             _targetRotation = Quaternion.LookRotation(targetPosition - position);

@@ -19,5 +19,10 @@ namespace Cc83.Behaviors
             
             return TaskStatus.Running;
         }
+
+        public override void OnConditionalAbort()
+        {
+            _attackController.Reset();
+        }
     }
 }

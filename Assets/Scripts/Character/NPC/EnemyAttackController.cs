@@ -11,6 +11,8 @@ namespace Cc83.Character
         private Transform aimingTowards;
         
         private EnemyShootController _shootController;
+        
+        private Vector3 _localAimingTowards;
 
         private SensorAgent.SensorTarget _sensorTarget;
         
@@ -27,6 +29,8 @@ namespace Cc83.Character
             {
                 _shootController = weaponReference.weapon.GetComponent<EnemyShootController>();
             }
+            
+            _localAimingTowards = aimingTowards.localPosition;
         }
         
         public void Active(SensorAgent.SensorTarget sensorTarget, float maxRepeatShootDelay)
@@ -54,14 +58,15 @@ namespace Cc83.Character
 
         public void TickAiming(bool delayed = true)             // TODO 应当使用方向差进行旋转，更加高效准确
         {
+            var aimingPosition = aimingTowards.position;
+            
             var currentHitPosition = _sensorTarget.targetAgent.HitPosition;
-            var aimingDeviation = Vector3.SqrMagnitude(aimingTowards.position - currentHitPosition);
+            var aimingDeviation = Vector3.SqrMagnitude(aimingPosition - currentHitPosition);
             if (aimingDeviation > 0.01f)       // 0.1m
             {
                 _aimingTarget = currentHitPosition;
             }
             
-            var aimingPosition = aimingTowards.position;
             if (!aimingPosition.Equals(_aimingTarget))
             {
                 var speed = delayed ? 15 : 45;
@@ -73,6 +78,11 @@ namespace Cc83.Character
                     _aimingTarget = position;                       // 此处并非像常规差值结果一样执行 aimingTowards.position = _aimingTarget，而是反过来修改原始目标值 _aimingTarget，这样来营造射击时重新瞄准造成的偏差
                 }
             }
+        }
+
+        public void Reset()
+        {
+            aimingTowards.localPosition = _localAimingTowards;
         }
     }
 }

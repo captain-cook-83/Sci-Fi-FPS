@@ -528,14 +528,14 @@ AnimatorStateMachine:
   m_StateMachineTransitions:
   - first: {fileID: -8998266432083283773}
     second: []
-  - first: {fileID: -8600181745188490082}
-    second:
-    - {fileID: -2560123731205208226}
-    - {fileID: 1866764726311196621}
   - first: {fileID: 2008141132994394796}
     second:
     - {fileID: 7101402260381304967}
     - {fileID: 293832609006807908}
+  - first: {fileID: -8600181745188490082}
+    second:
+    - {fileID: -2560123731205208226}
+    - {fileID: 1866764726311196621}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 540, y: 440, z: 0}
   m_EntryPosition: {x: 540, y: -160, z: 0}
@@ -928,7 +928,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FastTurn
-  m_Speed: 2
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6520855317225396888}

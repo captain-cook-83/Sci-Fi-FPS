@@ -31,5 +31,12 @@ namespace Cc83.Utils
             var dotDirection = Vector2.Dot(new Vector2(forward2.y, -forward2.x), direction2);
             return dotDirection < 0 ? -angle : angle;
         }
+
+        public static Vector2 Direction2D(Vector3 from, Vector3 to)
+        {
+            var from2 = new Vector2(from.x, from.z);
+            var to2 = new Vector2(to.x, to.z);
+            return to2 - from2;
+        }
     }
 }

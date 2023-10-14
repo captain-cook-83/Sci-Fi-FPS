@@ -54,6 +54,7 @@ namespace Cc83.Behaviors
             {
                 _status = TaskStatus.Running;
                 StartCoroutine(MovingToTarget(pathPoints));
+                StartMonitor(pathPoints);
             }
         }
 
@@ -68,6 +69,8 @@ namespace Cc83.Behaviors
 
             AnimatorStateController.ChangeSpeed(0, null, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
         }
+        
+        protected virtual void StartMonitor(List<Vector3> pathPoints) { }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
         {

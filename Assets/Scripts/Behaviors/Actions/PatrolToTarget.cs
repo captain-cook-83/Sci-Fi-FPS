@@ -23,6 +23,13 @@ namespace Cc83.Behaviors
         private Vector2 _lastDirection;
         
         private Vector3 _prevEnemyPosition;
+        
+        public override void OnStart()
+        {
+            base.OnStart();
+            
+            AnimatorStateController.ChangeTensity(Random.Range(AnimatorConstants.AimingTensity, AnimatorConstants.MaximumTensity));            // Tensity 直到移动之前才设置，避免之前的先举枪再转身的不自然表现
+        }
 
         protected override void StartMonitor(List<Vector3> pathPoints)
         {
@@ -31,12 +38,12 @@ namespace Cc83.Behaviors
             _lastPathPoint = pathPoints[^1];
             _lastDirection = VectorUtils.Direction2D(pathPoints[^2], _lastPathPoint);
             _prevEnemyPosition = _sensorTarget.targetAgent.transform.position;
-            
-            AnimatorStateController.ChangeTensity(Random.Range(AnimatorConstants.AimingTensity, AnimatorConstants.MaximumTensity));            // Tensity 直到移动之前才设置，避免之前的先举枪再转身的不自然表现
         }
         
         public override TaskStatus OnUpdate()
         {
+            if (_sensorTarget == null) return base.OnUpdate();
+            
             var targetPosition = _sensorTarget.targetAgent.transform.position;
             if (!targetPosition.Equals(_prevEnemyPosition))
             {
@@ -47,8 +54,15 @@ namespace Cc83.Behaviors
                     return TaskStatus.Failure;
                 }
             }
-            
+
             return base.OnUpdate();
+        }
+
+        public override void OnEnd()
+        {
+            base.OnEnd();
+            
+            _sensorTarget = null;
         }
     }
 }

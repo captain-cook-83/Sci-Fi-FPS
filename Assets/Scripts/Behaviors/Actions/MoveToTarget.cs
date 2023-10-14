@@ -31,7 +31,7 @@ namespace Cc83.Behaviors
 
         protected virtual TaskStatus FastEndingStatus => TaskStatus.Success;
 
-        private TaskStatus _status;
+        protected TaskStatus Status;
 
         private bool _interrupted;
         
@@ -48,11 +48,11 @@ namespace Cc83.Behaviors
             var pathPoints = PathPoints.Value;
             if (pathPoints == null || pathPoints.Count == 0 || Vector3.Distance(transform.position, pathPoints[^1]) < StopProjection)
             {
-                _status = FastEndingStatus;
+                Status = FastEndingStatus;
             }
             else
             {
-                _status = TaskStatus.Running;
+                Status = TaskStatus.Running;
                 StartCoroutine(MovingToTarget(pathPoints));
                 StartMonitor(pathPoints);
             }
@@ -60,7 +60,7 @@ namespace Cc83.Behaviors
 
         public override TaskStatus OnUpdate()
         {
-            return _status;
+            return Status;
         }
 
         public override void OnEnd()
@@ -131,7 +131,7 @@ namespace Cc83.Behaviors
                 } while (targetProjection > StopProjection);
             }
             
-            _status = TaskStatus.Success;
+            Status = TaskStatus.Success;
         }
 
         private bool NotInterrupted()

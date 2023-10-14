@@ -94,6 +94,12 @@ namespace Cc83.Behaviors
             }
         }
 
+        public virtual void Reset()
+        {
+            _enemies.Clear();
+            _prevEnemies.Clear();
+        }
+
 #if UNITY_EDITOR
         protected virtual void OnDrawGizmos()
         {

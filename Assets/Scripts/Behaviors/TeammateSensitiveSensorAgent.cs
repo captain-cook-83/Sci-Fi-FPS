@@ -12,6 +12,14 @@ namespace Cc83.Behaviors
         private readonly List<SensorTarget> _teammates = new (4);
         
         private readonly Dictionary<SensorAgent, SensorTarget> _prevTeammates = new (3);
+
+        public override void Reset()
+        {
+            base.Reset();
+            
+            _teammates.Clear();
+            _prevTeammates.Clear();
+        }
         
 #if UNITY_EDITOR
         protected override void OnDrawGizmos()

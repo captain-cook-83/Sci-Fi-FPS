@@ -57,12 +57,12 @@ namespace Cc83.Behaviors
 
         public override TaskStatus OnUpdate()
         {
-            // var sqrDistance = Vector3.SqrMagnitude(_sensorTarget.targetAgent.transform.position - transform.position);
-            // if (sqrDistance > _attackFarSqrDistance)
-            // {
-            //     _attackController.Reset();
-            //     return TaskStatus.Failure;
-            // }
+            var sqrDistance = Vector3.SqrMagnitude(_sensorTarget.targetAgent.transform.position - transform.position);
+            if (sqrDistance > _attackFarSqrDistance)
+            {
+                _attackController.Reset();
+                return TaskStatus.Failure;
+            }
             
             var targetDirection = _sensorTarget.direction;
             if (!targetDirection.Equals(_currentDirection))     // 在目标未移动的情况下，_currentDirection 可以做到精准 Equals；而当前 NPC 的 forward 做不到这一点，从而无法进行当前检测优化

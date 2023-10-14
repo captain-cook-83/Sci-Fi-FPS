@@ -6,6 +6,9 @@ namespace Cc83.Behaviors
     public class ResetSensorAgent : Action
     {
         // ReSharper disable once UnassignedField.Global
+        public bool RetainEnemy;
+        
+        // ReSharper disable once UnassignedField.Global
         public SharedSensorTargetList Teammates;
         
         // ReSharper disable once UnassignedField.Global
@@ -23,11 +26,14 @@ namespace Cc83.Behaviors
         
         public override void OnStart()
         {
+            _sensorAgent.Reset();
+            
             Teammates.SetValue(null);
             Enemies.SetValue(null);
-            Enemy.SetValue(null);
-            
-            _sensorAgent.Reset();
+            if (!RetainEnemy)
+            {
+                Enemy.SetValue(null);
+            }
         }
 
         public override TaskStatus OnUpdate()

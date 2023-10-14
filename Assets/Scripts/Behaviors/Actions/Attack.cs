@@ -70,7 +70,7 @@ namespace Cc83.Behaviors
                 var directionalAngle = VectorUtils.DotDirectionalAngle2D(transform.forward, targetDirection);
                 if (Mathf.Abs(directionalAngle) > (directionalAngle < 0 ? LeftRetargetAngle : RightRetargetAngle))
                 {
-                    const float angle = TurningToTarget.MinAngle;
+                    const float angle = TurningToTarget.MinAngle + (LeftRetargetAngle + RightRetargetAngle) * 0.5f;
                     var rotation = Quaternion.AngleAxis(directionalAngle < 0 ? -angle : angle, Vector3.up);
                     var targetPosition = transform.position + rotation * transform.forward;
                     TargetTurn.SetValue(targetPosition);

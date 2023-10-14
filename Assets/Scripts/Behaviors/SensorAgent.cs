@@ -159,6 +159,7 @@ namespace Cc83.Behaviors
                 }
                 else
                 {
+                    Reset();
                     BehaviorTree.SendEvent(BehaviorDefinitions.EventEnemyDisappear);
                 }
             }

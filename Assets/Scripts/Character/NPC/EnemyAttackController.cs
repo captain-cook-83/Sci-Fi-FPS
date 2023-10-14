@@ -67,7 +67,7 @@ namespace Cc83.Character
                 _aimingTarget = currentHitPosition;
             }
             
-            if (!aimingPosition.Equals(_aimingTarget))
+            if (!aimingPosition.Equals(_aimingTarget))          // TODO 控制枪支瞄准角度不超过指定范围 Action.LeftRetargetAngle & Action.RightRetargetAngle
             {
                 var speed = delayed ? 15 : 45;
                 var position = Vector3.Lerp(aimingPosition, _aimingTarget, Time.deltaTime * speed);            // TODO 旋转速度需要依据旋转量，不应该使用固定速度

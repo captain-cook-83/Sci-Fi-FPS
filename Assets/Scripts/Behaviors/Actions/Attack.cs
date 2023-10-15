@@ -10,8 +10,8 @@ namespace Cc83.Behaviors
     public class Attack : Action
     {
         // 左右两侧夹角之和，必须大于 TurningToTarget.MinAngle，否则会出现转向某一侧之后因不满足新的条件而立即转向另一侧的尴尬情况
-        private const float LeftRetargetAngle = 35;
-        private const float RightRetargetAngle = 15;
+        public const float LeftRetargetAngle = 35;
+        public const float RightRetargetAngle = 15;
         
         [Range(0.5f, 5)]
         // ReSharper disable once MemberCanBePrivate.Global

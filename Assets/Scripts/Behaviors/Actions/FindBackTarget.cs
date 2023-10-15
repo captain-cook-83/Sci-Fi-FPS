@@ -29,15 +29,15 @@ namespace Cc83.Behaviors
             {
                 var position = transform.position;
                 var forward = transform.forward;
-                var targetDirection = (target.targetAgent.transform.position - position).normalized;
-                if (Vector3.Dot(forward, targetDirection) > 0.2f)           // TODO 比较随意的先写 0.2
+                var angle = VectorUtils.DotDirectionalAngle2D(forward, target.targetAgent.transform.position - position);
+                if (angle is > -Attack.LeftRetargetAngle and < Attack.RightRetargetAngle)
                 {
                     _status = TaskStatus.Failure;
                 }
                 else
                 {
-                    var dotDirection = VectorUtils.DotDirection2D(forward, targetDirection);
-                    var rotation = Quaternion.AngleAxis(dotDirection < 0 ? -Angle : Angle, Vector3.up);
+                    var searchAngle = Random.Range(90, Angle);
+                    var rotation = Quaternion.AngleAxis(angle < 0 ? -searchAngle : searchAngle, Vector3.up);
                     TargetTurn.SetValue(position + rotation * forward);
                     _status = TaskStatus.Success;
                 }

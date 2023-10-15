@@ -30,6 +30,9 @@ namespace Cc83.Behaviors
         
         // ReSharper disable once UnassignedField.Global
         public SharedVector3 TargetTurn;
+
+        // ReSharper disable once UnassignedField.Global
+        public SharedBool EscapeFighting;
         
         private EnemyAttackController _attackController;
 
@@ -50,6 +53,8 @@ namespace Cc83.Behaviors
 
         public override void OnStart()
         {
+            EscapeFighting.SetValue(false);
+            
             _sensorTarget = Enemy.Value;
             _currentDirection = _sensorTarget.direction;
             _attackController.Active(_sensorTarget, MaxRepeatShootDelay);
@@ -62,6 +67,12 @@ namespace Cc83.Behaviors
             {
                 _attackController.Reset();
                 return TaskStatus.Failure;
+            } 
+            
+            if (sqrDistance < _attackNearSqrDistance && EscapeFighting.Value == false)
+            {
+                EscapeFighting.SetValue(true);
+                Owner.SendEvent(BehaviorDefinitions.EventEscapeFighting);
             }
             
             var targetDirection = _sensorTarget.direction;
@@ -70,7 +81,7 @@ namespace Cc83.Behaviors
                 var directionalAngle = VectorUtils.DotDirectionalAngle2D(transform.forward, targetDirection);
                 if (Mathf.Abs(directionalAngle) > (directionalAngle < 0 ? LeftRetargetAngle : RightRetargetAngle))
                 {
-                    const float angle = TurningToTarget.MinAngle + (LeftRetargetAngle + RightRetargetAngle) * 0.5f;
+                    var angle = Mathf.Min(TurningToTarget.MinAngle, LeftRetargetAngle + RightRetargetAngle - 5);            // 减小 5°，避免一侧转身后立即出发另一侧的临界角度
                     var rotation = Quaternion.AngleAxis(directionalAngle < 0 ? -angle : angle, Vector3.up);
                     var targetPosition = transform.position + rotation * transform.forward;
                     TargetTurn.SetValue(targetPosition);

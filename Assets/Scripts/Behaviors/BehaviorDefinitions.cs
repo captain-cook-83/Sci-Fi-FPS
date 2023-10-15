@@ -10,6 +10,8 @@ namespace Cc83.Behaviors
         
         public const string EventTeammateChange = "TeammateChange";
         
+        public const string EventEscapeFighting = "EscapeFighting";
+        
         public const string EventTurningStopped = "TurningStopped";
 
         public static Vector3 InvalidSharedVector3 = Vector3.zero;

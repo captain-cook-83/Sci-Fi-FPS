@@ -30,6 +30,8 @@ namespace Cc83.Behaviors
 
         private TaskStatus _status;
 
+        private Quaternion _targetRotation;
+
         private float _timeout;
 
         public override void OnAwake()
@@ -59,14 +61,15 @@ namespace Cc83.Behaviors
             
             if (Mathf.Abs(angle) + 0.1f >= MinAngle)               // +0.1f, 保证精度错误后依然满足条件
             {
+                Debug.Log($"Turn: {angle}");
                 _animator.SetFloat(AnimatorConstants.AnimatorTurn, angle);
                 _animator.SetTrigger(FastTurn ? AnimatorConstants.AnimatorFastTurn : AnimatorConstants.AnimatorStartTurn);
                 _status = TaskStatus.Running;
             }
             else
             {
-                _status = TaskStatus.Success;
                 Debug.LogWarning($"Turning Ignored {angle}");
+                _status = TaskStatus.Success;
             }
         }
 
@@ -85,6 +88,15 @@ namespace Cc83.Behaviors
 
         private void OnTurningStopped()
         {
+            var prevRotationAngle = 0f;
+            do
+            {
+                rotation = Quaternion.Lerp(rotation, targetRotation, Time.deltaTime * 10f);
+                prevRotationAngle = rotationAngle;
+                rotationAngle = Quaternion.Angle(rotation, targetRotation);
+                transform.rotation = rotation;
+            } while (prevRotationAngle > rotationAngle);
+            
             _status = TaskStatus.Success;
         }
     }

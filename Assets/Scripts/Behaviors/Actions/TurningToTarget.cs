@@ -88,14 +88,14 @@ namespace Cc83.Behaviors
 
         private void OnTurningStopped()
         {
-            var prevRotationAngle = 0f;
-            do
-            {
-                rotation = Quaternion.Lerp(rotation, targetRotation, Time.deltaTime * 10f);
-                prevRotationAngle = rotationAngle;
-                rotationAngle = Quaternion.Angle(rotation, targetRotation);
-                transform.rotation = rotation;
-            } while (prevRotationAngle > rotationAngle);
+            // var prevRotationAngle = 0f;
+            // do
+            // {
+            //     rotation = Quaternion.Lerp(rotation, targetRotation, Time.deltaTime * 10f);
+            //     prevRotationAngle = rotationAngle;
+            //     rotationAngle = Quaternion.Angle(rotation, targetRotation);
+            //     transform.rotation = rotation;
+            // } while (prevRotationAngle > rotationAngle);
             
             _status = TaskStatus.Success;
         }

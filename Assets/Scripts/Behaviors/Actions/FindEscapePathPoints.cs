@@ -31,6 +31,8 @@ namespace Cc83.Behaviors
 
         private Vector3 _optimalDirection;
 
+        private float _optimalDistance;
+
         private bool _finalSearch;
         
         public override void OnAwake()
@@ -42,11 +44,13 @@ namespace Cc83.Behaviors
         {
             var position = transform.position;
             var enemyPosition = Enemy.Value.targetAgent.transform.position;
-
+            
             _finalSearch = false;
             _optimalDirection = (position - enemyPosition).normalized;
+            _optimalDistance = (AttackNearDistance.Value + AttackFarDistance.Value) * 0.5f;
+            
             _status = TaskStatus.Running;
-            _seeker.StartPath(position, enemyPosition + _optimalDirection * AttackFarDistance.Value, OnDirectPathCalculated);
+            _seeker.StartPath(position, enemyPosition + _optimalDirection * _optimalDistance, OnDirectPathCalculated);
         }
         
         public override TaskStatus OnUpdate()
@@ -79,7 +83,7 @@ namespace Cc83.Behaviors
             else
             {
                 _finalSearch = true;
-                AstarPath.StartPath(ConstantPath.Construct(enemyPosition, (int)(MaxGScore * 0.1f * AttackFarDistance.Value), OnPathCalculated));
+                AstarPath.StartPath(ConstantPath.Construct(enemyPosition, (int)(MaxGScore * 0.1f * AttackFarDistance.Value), OnPathCalculated));        // 采用 AttackFarDistance 获得有效地址的概率高于 _optimalDistance
             }
         }
         

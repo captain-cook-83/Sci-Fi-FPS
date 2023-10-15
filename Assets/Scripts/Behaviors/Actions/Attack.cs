@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Cc83.Behaviors
 {
     [TaskCategory("Cc83")]
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class Attack : Action
     {
         // 左右两侧夹角之和，必须大于 TurningToTarget.MinAngle，否则会出现转向某一侧之后因不满足新的条件而立即转向另一侧的尴尬情况
@@ -26,6 +27,9 @@ namespace Cc83.Behaviors
         public SharedFloat AttackNearDistance;
         
         // ReSharper disable once UnassignedField.Global
+        public SharedFloat EscapeDistance;
+        
+        // ReSharper disable once UnassignedField.Global
         public SharedSensorTarget Enemy;
         
         // ReSharper disable once UnassignedField.Global
@@ -41,14 +45,17 @@ namespace Cc83.Behaviors
         private Vector3 _currentDirection;
 
         private float _attackFarSqrDistance;
-
+        
         private float _attackNearSqrDistance;
+
+        private float _escapeSqrDistance;
 
         public override void OnAwake()
         {
             _attackController = GetComponent<EnemyAttackController>();
             _attackFarSqrDistance = Mathf.Pow(AttackFarDistance.Value, 2);
             _attackNearSqrDistance = Mathf.Pow(AttackNearDistance.Value, 2);
+            _escapeSqrDistance = Mathf.Pow(EscapeDistance.Value, 2);
         }
 
         public override void OnStart()
@@ -67,14 +74,29 @@ namespace Cc83.Behaviors
             {
                 _attackController.Reset();
                 return TaskStatus.Failure;
-            } 
+            }
+
+            #region 后撤判断
             
-            if (sqrDistance < _attackNearSqrDistance && EscapeFighting.Value == false)
+            if (sqrDistance > _attackNearSqrDistance)
             {
-                EscapeFighting.SetValue(true);
-                Owner.SendEvent(BehaviorDefinitions.EventEscapeFighting);
+                if (EscapeFighting.Value)
+                {
+                    EscapeFighting.SetValue(false);
+                }
+            } 
+            else if (sqrDistance < _escapeSqrDistance)
+            {
+                if (EscapeFighting.Value == false)
+                {
+                    EscapeFighting.SetValue(true);
+                }
             }
             
+            #endregion
+
+            #region 转身判断
+
             var targetDirection = _sensorTarget.direction;
             if (!targetDirection.Equals(_currentDirection))     // 在目标未移动的情况下，_currentDirection 可以做到精准 Equals；而当前 NPC 的 forward 做不到这一点，从而无法进行当前检测优化
             {
@@ -88,9 +110,16 @@ namespace Cc83.Behaviors
                     return TaskStatus.Success;
                 }
             }
+
+            #endregion
             
             _attackController.Tick();
             return TaskStatus.Running;
+        }
+
+        public override void OnEnd()
+        {
+            EscapeFighting.SetValue(false);
         }
 
         public override void OnConditionalAbort()

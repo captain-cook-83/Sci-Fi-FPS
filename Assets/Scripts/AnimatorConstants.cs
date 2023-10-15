@@ -6,6 +6,7 @@ namespace Cc83
     {
         public static readonly int AnimatorTensity = Animator.StringToHash("Tensity");
         public static readonly int AnimatorSpeed = Animator.StringToHash("Speed");
+        public static readonly int AnimatorDirection = Animator.StringToHash("Direction");
         public static readonly int AnimatorMoving = Animator.StringToHash("Moving");
         public static readonly int AnimatorCrouching = Animator.StringToHash("Crouching");
         public static readonly int AnimatorDeath = Animator.StringToHash("Death");

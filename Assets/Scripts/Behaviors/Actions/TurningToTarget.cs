@@ -1,4 +1,5 @@
-﻿using BehaviorDesigner.Runtime.Tasks;
+﻿using System.Collections;
+using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
 using Cc83.Utils;
 using UnityEngine;
@@ -32,6 +33,12 @@ namespace Cc83.Behaviors
 
         private Quaternion _targetRotation;
 
+        private bool _postTurning;
+        
+        private float _prevRotationAngle;
+        
+        private Quaternion _lastPostRotation;
+
         private float _timeout;
 
         public override void OnAwake()
@@ -43,8 +50,6 @@ namespace Cc83.Behaviors
         {
             Owner.RegisterEvent(BehaviorDefinitions.EventTurningStopped, OnTurningStopped);         // 目前偶尔情况：无法受到动画系统发出的事件；所以采用超时机制来预防这种错误
             
-            _timeout = Time.time + TimeOut;
-
             var angle = 0f;
 
             if (RandomAngle)
@@ -56,25 +61,45 @@ namespace Cc83.Behaviors
             {
                 var direction = TargetTurn.Value - transform.position;         // 不能使用 pathPoints[0]，因为路径点计算时位置可能已经与当下不一致（Walk To Stop）；或许也不是，需要时再考虑？
                 angle = VectorUtils.DotDirectionalAngle2D(transform.forward, direction);
-                // Debug.LogWarning($"TurningToTarget: {angle}");
             }
             
-            if (Mathf.Abs(angle) + 0.1f >= MinAngle)               // +0.1f, 保证精度错误后依然满足条件
+            _status = TaskStatus.Running;
+            _timeout = Time.time + TimeOut;
+            
+            _lastPostRotation = transform.rotation;
+            _targetRotation = Quaternion.AngleAxis(angle, Vector3.up) * _lastPostRotation;
+            _postTurning = Mathf.Abs(angle) + 0.1f < MinAngle;
+            
+            if (_postTurning)               // +0.1f, 保证精度错误后依然满足条件
             {
-                Debug.Log($"Turn: {angle}");
-                _animator.SetFloat(AnimatorConstants.AnimatorTurn, angle);
-                _animator.SetTrigger(FastTurn ? AnimatorConstants.AnimatorFastTurn : AnimatorConstants.AnimatorStartTurn);
-                _status = TaskStatus.Running;
+                Debug.LogWarning($"Turning angle: {angle}");
+                _prevRotationAngle = Mathf.Abs(angle);
             }
             else
             {
-                Debug.LogWarning($"Turning Ignored {angle}");
-                _status = TaskStatus.Success;
+                _animator.SetFloat(AnimatorConstants.AnimatorTurn, angle);
+                _animator.SetTrigger(FastTurn ? AnimatorConstants.AnimatorFastTurn : AnimatorConstants.AnimatorStartTurn);
             }
         }
 
         public override TaskStatus OnUpdate()
         {
+            if (_postTurning)               // 进入后处理阶段后，超时机制失效
+            {
+                _lastPostRotation = Quaternion.Lerp(_lastPostRotation, _targetRotation, Time.deltaTime * 10f);
+                
+                var angle = Quaternion.Angle(_lastPostRotation, _targetRotation);
+                if (angle < _prevRotationAngle)
+                {
+                    transform.rotation = _lastPostRotation;
+                    _prevRotationAngle = angle;
+                    return TaskStatus.Running;
+                }
+                
+                transform.rotation = _targetRotation;
+                return TaskStatus.Success;
+            }
+            
             if (Time.time < _timeout) return _status;
             
             Debug.LogWarning($"Missing Behavior Event: {BehaviorDefinitions.EventTurningStopped}");
@@ -88,16 +113,17 @@ namespace Cc83.Behaviors
 
         private void OnTurningStopped()
         {
-            // var prevRotationAngle = 0f;
-            // do
-            // {
-            //     rotation = Quaternion.Lerp(rotation, targetRotation, Time.deltaTime * 10f);
-            //     prevRotationAngle = rotationAngle;
-            //     rotationAngle = Quaternion.Angle(rotation, targetRotation);
-            //     transform.rotation = rotation;
-            // } while (prevRotationAngle > rotationAngle);
+            _prevRotationAngle = Quaternion.Angle(transform.rotation, _targetRotation);
             
-            _status = TaskStatus.Success;
+            if (_prevRotationAngle > 0.1f)
+            {
+                _lastPostRotation = transform.rotation;
+                _postTurning = true;
+            }
+            else
+            {
+                _status = TaskStatus.Success;
+            }
         }
     }
 }

@@ -71,10 +71,10 @@ namespace Cc83.Behaviors
                     EscapeFighting.SetValue(true);
                 }
             }
-            else if (EscapeFighting.Value)
-            {
-                EscapeFighting.SetValue(false);
-            }
+            // else if (EscapeFighting.Value)
+            // {
+            //     EscapeFighting.SetValue(false);
+            // }
             
             #endregion
 

@@ -12,6 +12,9 @@ namespace Cc83.Behaviors
         public SharedFloat AttackNearDistance;
         
         // ReSharper disable once UnassignedField.Global
+        public SharedFloat AttackFarDistance;
+        
+        // ReSharper disable once UnassignedField.Global
         public SharedSensorTargetList Enemies;
         
         // ReSharper disable once UnassignedField.Global
@@ -48,8 +51,9 @@ namespace Cc83.Behaviors
             
             var sensorTarget = sensorTargets[0];                    // TODO 增加更多目标选取可能性
             var targetTransform = sensorTarget.targetAgent.transform;
-            var targetPosition = Mathf.Sqrt(sensorTarget.sqrDistance) > AttackNearDistance.Value
-                ? targetTransform.position - sensorTarget.direction.normalized * AttackNearDistance.Value        // TODO 检测是否可到达（如果不可达，计算可用目标点）
+            var optimalDistance = (AttackNearDistance.Value + AttackFarDistance.Value) * 0.5f;
+            var targetPosition = Mathf.Sqrt(sensorTarget.sqrDistance) > optimalDistance
+                ? targetTransform.position - sensorTarget.direction.normalized * optimalDistance        // TODO 检测是否可到达（如果不可达，计算可用目标点）
                 : transform.position;
 
             Enemy.SetValue(sensorTarget);

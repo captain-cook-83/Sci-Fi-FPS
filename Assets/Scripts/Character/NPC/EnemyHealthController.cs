@@ -1,4 +1,5 @@
 using System.Collections;
+using Cc83.Behaviors;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -12,10 +13,20 @@ namespace Cc83.Character
         [SerializeField]
         private Collider[] colliders;
 
+        [SerializeField] 
+        [Range(1, 5)]
+        private float hitEventInterval = 3;
+
+        private SensorAgent _sensorAgent;
+
         private bool _alive = true;
+
+        private float _hitEventCd;
 
         private void Awake()
         {
+            _sensorAgent = GetComponent<SensorAgent>();
+            
             rigidbodies.ForEach(rb => rb.maxDepenetrationVelocity = 0.01f);
         }
 
@@ -54,6 +65,13 @@ namespace Cc83.Character
             else
             {
                 GetComponent<WeaponReference>().DropDown();
+            }
+
+            var currentTime = Time.time;
+            if (currentTime > _hitEventCd)
+            {
+                _hitEventCd = currentTime + hitEventInterval;
+                _sensorAgent.SendEvent(BehaviorDefinitions.EventHit, direction);
             }
             
             StartCoroutine(FreezeBody());

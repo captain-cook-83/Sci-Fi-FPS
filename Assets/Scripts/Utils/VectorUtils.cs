@@ -28,7 +28,7 @@ namespace Cc83.Utils
             var forward2 = new Vector2(forward.x, forward.z);
             var direction2 = new Vector2(direction.x, direction.z);
             var angle = Vector2.Angle(forward2, direction2);
-            var dotDirection = Vector2.Dot(new Vector2(forward2.y, -forward2.x), direction2);
+            var dotDirection = Vector2.Dot(GetRightDirection2D(forward), direction2);
             return dotDirection < 0 ? -angle : angle;
         }
 
@@ -44,6 +44,26 @@ namespace Cc83.Utils
             var from2 = new Vector2(from.x, from.z);
             var to2 = new Vector2(to.x, to.z);
             return Vector2.Angle(from2, to2);
+        }
+        
+        public static Vector2 GetLeftDirection2D(Vector3 forward)
+        {
+            return new Vector2(-forward.z, forward.x);
+        }
+        
+        public static Vector2 GetRightDirection2D(Vector3 forward)
+        {
+            return new Vector2(forward.z, -forward.x);
+        }
+        
+        public static Vector3 GetLeftDirection(Vector3 forward)
+        {
+            return new Vector3(-forward.z, forward.y, forward.x);
+        }
+        
+        public static Vector3 GetRightDirection(Vector3 forward)
+        {
+            return new Vector3(forward.z, forward.y, -forward.x);
         }
     }
 }

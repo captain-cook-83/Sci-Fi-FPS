@@ -46,11 +46,13 @@ namespace Cc83.Behaviors
 
         private float _nextTickTime;
 
+#if UNITY_EDITOR
         [Button(ButtonSizes.Large)]
-        public void SendSoundTest()
+        public void TestSoundEvent()
         {
             SendSoundEvent(_player.transform.position);
         }
+#endif
         
         #region 基础数据结构
         

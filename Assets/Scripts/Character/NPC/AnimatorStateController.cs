@@ -12,6 +12,10 @@ namespace Cc83.Character
 
         private Action _speedOnComplete;
         
+        private Coroutine _hSpeedCoroutine;
+
+        private Action _hSpeedOnComplete;
+        
         private Coroutine _tensityCoroutine;
 
         private void Awake()
@@ -37,6 +41,23 @@ namespace Cc83.Character
             
             var callback = _speedOnComplete;
             _speedOnComplete = forceComplete ? onComplete : null;
+            callback?.Invoke();
+            
+            onStart?.Invoke();
+        }
+        
+        public void ChangeHSpeed(float value, Action onStart = null , Action onComplete = null, bool forceComplete = false)         // 方法体内代码顺序严格保证链式调用下的正常清理及回调
+        {
+            CancelCoroutine(_hSpeedCoroutine);
+            
+            _hSpeedCoroutine = StartCoroutine(AnimatorUtils.ChangeFloat(_animator, AnimatorConstants.AnimatorDirection, value, 0.1f, () => 
+            {
+                _hSpeedOnComplete = null;
+                onComplete?.Invoke();
+            }));
+            
+            var callback = _hSpeedOnComplete;
+            _hSpeedOnComplete = forceComplete ? onComplete : null;
             callback?.Invoke();
             
             onStart?.Invoke();

@@ -36,10 +36,6 @@ namespace Cc83.Behaviors
         {
             _status = TaskStatus.Running;
             _coroutine = MovingToTarget(PathPoints.Value);
-            _animatorStateController.ChangeSpeed(0, 
-                () =>  _animator.SetFloat(AnimatorConstants.AnimatorDirection, 0), 
-                () => _animator.SetBool(AnimatorConstants.AnimatorMoving, true), true);
-            
             StartCoroutine(_coroutine);
         }
 
@@ -52,7 +48,7 @@ namespace Cc83.Behaviors
         {
             _coroutine = null;
             _animatorStateController.ChangeSpeed(0, 
-                () =>  _animator.SetFloat(AnimatorConstants.AnimatorDirection, 0), 
+                () =>  _animatorStateController.ChangeHSpeed(0), 
                 () => _animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
         }
 
@@ -63,7 +59,7 @@ namespace Cc83.Behaviors
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
         {
-            var movingSpeed = Random.Range(1.5f, 4.5f);
+            var movingSpeed = Random.Range(2, 4.5f);
             
             for (var i = 1; i < pathPoints.Count; i++)
             {
@@ -75,12 +71,14 @@ namespace Cc83.Behaviors
                 var direction = (targetPoint - position).normalized;
                 var dotDirectionalAngle = VectorUtils.DotDirectionalAngle2D(forward, direction);
 
-                var verticalSpeed = Vector3.Dot(forward, direction) < 0 ? -movingSpeed : movingSpeed;
-                var horizontallySpeed = Mathf.Abs(Mathf.Tan(Mathf.PI * dotDirectionalAngle / 180) * movingSpeed) * (dotDirectionalAngle < 0 ? -1 : 1);
+                var verticalSpeed = Mathf.Cos(Mathf.PI * dotDirectionalAngle / 180) * movingSpeed;
+                var horizontallySpeed = Mathf.Abs(Mathf.Sin(Mathf.PI * dotDirectionalAngle / 180) * movingSpeed) * (dotDirectionalAngle < 0 ? -1 : 1);
                 
                 if (i == 1)
                 {
-                    _animatorStateController.ChangeSpeed(verticalSpeed, () => _animator.SetFloat(AnimatorConstants.AnimatorDirection, horizontallySpeed));
+                    _animatorStateController.ChangeSpeed(verticalSpeed, 
+                        () => _animator.SetBool(AnimatorConstants.AnimatorMoving, true), 
+                        () => _animatorStateController.ChangeHSpeed(horizontallySpeed), true);
                 }
                 else
                 {

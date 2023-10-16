@@ -53,8 +53,6 @@ namespace Cc83.Behaviors
 
         public override void OnStart()
         {
-            EscapeFighting.SetValue(false);
-            
             _sensorTarget = Enemy.Value;
             _currentDirection = _sensorTarget.direction;
             _attackController.Active(_sensorTarget, MaxRepeatShootDelay);

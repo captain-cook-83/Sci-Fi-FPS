@@ -32,8 +32,15 @@ namespace Cc83.Behaviors
         {
             _sensorAgent.Reset();
 
-            PrevEnemy.SetValue(RetainPrevEnemy ? Enemy.Value.targetAgent.transform : null);
-
+            if (Enemy is { Value: not null })
+            {
+                PrevEnemy.SetValue(RetainPrevEnemy ? Enemy.Value.targetAgent.transform : null);
+            }
+            else
+            {
+                PrevEnemy.SetValue(null);
+            }
+            
             Teammates.SetValue(null);
             Enemies.SetValue(null);
             Enemy.SetValue(null);

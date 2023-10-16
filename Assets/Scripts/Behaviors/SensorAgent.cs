@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BehaviorDesigner.Runtime;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Cc83.Behaviors
@@ -113,6 +114,12 @@ namespace Cc83.Behaviors
             {
                 Debug.DrawLine(origin, origin + kv.Value.direction.normalized * gizmosLength, Color.red);
             }
+        }
+
+        [Button(ButtonSizes.Large)]
+        public void TestHitEvent()
+        {
+            SendEvent(BehaviorDefinitions.EventHit, -transform.forward);
         }
 #endif
         

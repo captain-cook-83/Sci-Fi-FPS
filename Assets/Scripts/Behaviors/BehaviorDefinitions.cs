@@ -17,6 +17,8 @@ namespace Cc83.Behaviors
         
         public const string EventSoundAlert = "SoundAlert";
         
+        public const string EventHit = "Hit";
+        
         public const string EventTurningStopped = "TurningStopped";
 
         public static Vector3 InvalidSharedVector3 = Vector3.zero;

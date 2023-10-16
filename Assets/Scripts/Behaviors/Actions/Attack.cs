@@ -7,12 +7,11 @@ using UnityEngine;
 namespace Cc83.Behaviors
 {
     [TaskCategory("Cc83")]
-    // ReSharper disable once ClassNeverInstantiated.Global
     public class Attack : Action
     {
         // 左右两侧夹角之和，必须大于 TurningToTarget.MinAngle，否则会出现转向某一侧之后因不满足新的条件而立即转向另一侧的尴尬情况
-        public const float LeftRetargetAngle = 35;
-        public const float RightRetargetAngle = 15;
+        private const float LeftRetargetAngle = 35;
+        private const float RightRetargetAngle = 15;
         
         [Range(0.5f, 5)]
         // ReSharper disable once MemberCanBePrivate.Global
@@ -22,9 +21,6 @@ namespace Cc83.Behaviors
         
         // ReSharper disable once UnassignedField.Global
         public SharedFloat AttackFarDistance;
-        
-        // ReSharper disable once UnassignedField.Global
-        public SharedFloat AttackNearDistance;
         
         // ReSharper disable once UnassignedField.Global
         public SharedFloat EscapeDistance;
@@ -45,8 +41,6 @@ namespace Cc83.Behaviors
         private Vector3 _currentDirection;
 
         private float _attackFarSqrDistance;
-        
-        private float _attackNearSqrDistance;
 
         private float _escapeSqrDistance;
 
@@ -54,7 +48,6 @@ namespace Cc83.Behaviors
         {
             _attackController = GetComponent<EnemyAttackController>();
             _attackFarSqrDistance = Mathf.Pow(AttackFarDistance.Value, 2);
-            _attackNearSqrDistance = Mathf.Pow(AttackNearDistance.Value, 2);
             _escapeSqrDistance = Mathf.Pow(EscapeDistance.Value, 2);
         }
 
@@ -69,28 +62,20 @@ namespace Cc83.Behaviors
 
         public override TaskStatus OnUpdate()
         {
-            var sqrDistance = Vector3.SqrMagnitude(_sensorTarget.targetAgent.transform.position - transform.position);
-            if (sqrDistance > _attackFarSqrDistance)
-            {
-                _attackController.Reset();
-                return TaskStatus.Failure;
-            }
-
-            #region 后撤判断
+            #region 移动判断
             
-            if (sqrDistance > _attackNearSqrDistance)
-            {
-                if (EscapeFighting.Value)
-                {
-                    EscapeFighting.SetValue(false);
-                }
-            } 
-            else if (sqrDistance < _escapeSqrDistance)
+            // TODO 优化距离区间及停止位置计算
+            var sqrDistance = Vector3.SqrMagnitude(_sensorTarget.targetAgent.transform.position - transform.position);
+            if (sqrDistance > _attackFarSqrDistance || sqrDistance < _escapeSqrDistance)
             {
                 if (EscapeFighting.Value == false)
                 {
                     EscapeFighting.SetValue(true);
                 }
+            }
+            else if (EscapeFighting.Value)
+            {
+                EscapeFighting.SetValue(false);
             }
             
             #endregion

@@ -3975,6 +3975,7 @@ MonoBehaviour:
   - {fileID: 6268123630246915860}
   - {fileID: 1038895286325645739}
   - {fileID: 8376581116909692126}
+  hitEventInterval: 3
   materialTypeEnum: 9
   testHitPart: {fileID: 7028209274952138613}
 --- !u!114 &6649070007552766304

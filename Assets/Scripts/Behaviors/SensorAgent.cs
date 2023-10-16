@@ -95,9 +95,9 @@ namespace Cc83.Behaviors
             }
         }
 
-        public void SendEvent(string eventName, object data0)
+        public void SendEvent(string eventName, object data)
         {
-            BehaviorTree.SendEvent<object>(eventName, data0);
+            BehaviorTree.SendEvent<object>(eventName, data);
         }
 
         public virtual void Reset()

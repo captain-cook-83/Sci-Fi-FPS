@@ -35,7 +35,16 @@ namespace Cc83.Character
             if (!_alive && extraDamage == 0) return;
             
             hp -= damage + extraDamage;
-            if (hp > 0 && !headShoot) return;
+            if (hp > 0 && !headShoot)
+            {
+                var currentTime = Time.time;
+                if (currentTime > _hitEventCd)
+                {
+                    _hitEventCd = currentTime + hitEventInterval;
+                    _sensorAgent.SendEvent(BehaviorDefinitions.EventHit, direction);
+                }
+                return;
+            }
             
             _alive = false;
 
@@ -65,13 +74,6 @@ namespace Cc83.Character
             else
             {
                 GetComponent<WeaponReference>().DropDown();
-            }
-
-            var currentTime = Time.time;
-            if (currentTime > _hitEventCd)
-            {
-                _hitEventCd = currentTime + hitEventInterval;
-                _sensorAgent.SendEvent(BehaviorDefinitions.EventHit, direction);
             }
             
             StartCoroutine(FreezeBody());

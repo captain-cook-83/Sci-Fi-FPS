@@ -1,4 +1,5 @@
 using System.Collections;
+using Cc83.Behaviors;
 using Cc83.Character;
 using Cinemachine;
 using Unity.Burst;
@@ -131,6 +132,8 @@ namespace Cc83.Interactable
                     _handController.Interrupted += InterruptShooting;
                     _handController.Shake();
                 }
+                
+                SensorSystem.Instance.SendSoundEvent(transform.position);
             }
         }
 

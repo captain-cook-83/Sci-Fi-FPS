@@ -42,11 +42,11 @@ namespace Cc83.Character
             onStart?.Invoke();
         }
 
-        public void ChangeTensity(float value)
+        public void ChangeTensity(float value, float speed = 1.0f)
         {
             CancelCoroutine(_tensityCoroutine);
             
-            _tensityCoroutine = StartCoroutine(AnimatorUtils.ChangeFloat(_animator, AnimatorConstants.AnimatorTensity, value));
+            _tensityCoroutine = StartCoroutine(AnimatorUtils.ChangeFloat(_animator, AnimatorConstants.AnimatorTensity, value, speed));
         }
         
         public float Tensity => _animator.GetFloat(AnimatorConstants.AnimatorTensity);

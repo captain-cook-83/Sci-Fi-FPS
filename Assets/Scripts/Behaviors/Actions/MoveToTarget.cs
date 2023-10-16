@@ -30,6 +30,8 @@ namespace Cc83.Behaviors
         protected AnimatorStateController AnimatorStateController;
 
         protected virtual TaskStatus FastEndingStatus => TaskStatus.Success;
+        
+        protected virtual float Speed => 1 + Random.Range(1.5f, 4.5f);
 
         private TaskStatus _status;
 
@@ -65,16 +67,21 @@ namespace Cc83.Behaviors
 
         public override void OnEnd()
         {
-            _interrupted = true;
+            Interrupt();
 
             AnimatorStateController.ChangeSpeed(0, null, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
+        }
+        
+        protected void Interrupt()
+        {
+            _interrupted = true;
         }
         
         protected virtual void StartMonitor(List<Vector3> pathPoints) { }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
         {
-            var movingSpeed = 1+Random.Range(1.5f, 4.5f);
+            var movingSpeed = Speed;
             
             AnimatorStateController.ChangeSpeed(movingSpeed, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, true));
             

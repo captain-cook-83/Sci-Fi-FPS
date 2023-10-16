@@ -32,13 +32,10 @@ namespace Cc83.Behaviors
         public SensorAgentType type;
         
         [Range(45, 90)]
-        public float halfFov = 60;
+        public float halfFov = 80;
 
         [Range(100, 10000)]
         public float sqrDistance = 900;
-
-        [Range(1, 2)]
-        public float viewHeight = 1.6f;
         
 #if UNITY_EDITOR
         [Range(1, 10)]
@@ -51,7 +48,10 @@ namespace Cc83.Behaviors
         
         protected internal Vector3 LookForward => transform.forward;
         
-        protected Vector3 LookOrigin => transform.position + Vector3.up * viewHeight;
+        protected Vector3 LookOrigin => transform.position + Vector3.up * (viewPosition ? viewPosition.position.y : 1.6f);
+
+        [SerializeField]
+        private Transform viewPosition;
 
         private readonly List<SensorTarget> _enemies = new (1);
 
@@ -92,6 +92,11 @@ namespace Cc83.Behaviors
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public void SendEvent(string eventName, object data0)
+        {
+            BehaviorTree.SendEvent<object>(eventName, data0);
         }
 
         public virtual void Reset()

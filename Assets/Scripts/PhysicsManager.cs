@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using Cc83.Behaviors;
 using Cc83.Interactable;
 using Unity.Burst;
 using Unity.Collections;
@@ -138,6 +140,8 @@ namespace Cc83.Character
             }
             
             #endregion
+
+            StartCoroutine(BroadcastSoundEffect(position));
         }
 
         private void Awake()
@@ -218,6 +222,13 @@ namespace Cc83.Character
                     inOut[i] = new float4(direction, distance);
                 }
             }
+        }
+        
+        private static IEnumerator BroadcastSoundEffect(Vector3 position)
+        {
+            yield return new WaitForSeconds(0.5f);
+            
+            SensorSystem.Instance.SendExplosionEvent(position);
         }
     }
 }

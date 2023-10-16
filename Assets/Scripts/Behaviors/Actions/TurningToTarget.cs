@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using BehaviorDesigner.Runtime.Tasks;
+﻿using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
 using Cc83.Utils;
 using UnityEngine;

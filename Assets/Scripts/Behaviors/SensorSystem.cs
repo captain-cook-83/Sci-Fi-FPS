@@ -1,11 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Cc83.Behaviors
 {
+    public enum SoundEventType
+    {
+        Shooting, Explosion
+    }
+
+    [Serializable]
+    public class SoundData
+    {
+        public SoundEventType type;
+        
+        public Vector3 position;
+
+        public bool precisely;
+    }
+    
     [DisallowMultipleComponent]
     public class SensorSystem : MonoBehaviour
     {
@@ -19,7 +36,21 @@ namespace Cc83.Behaviors
         [Range(0.1f, 5)]
         private float tickInterval = 1;
 
+        [SerializeField]
+        [Range(5, 30)]
+        private float soundCdTime = 15;
+
+        [SerializeField]
+        [Range(10, 50)]
+        private float soundEffectDistance = 10;
+
         private float _nextTickTime;
+
+        [Button(ButtonSizes.Large)]
+        public void SendSoundTest()
+        {
+            SendSoundEvent(_player.transform.position);
+        }
         
         #region 基础数据结构
         
@@ -76,8 +107,38 @@ namespace Cc83.Behaviors
                 _tmpEnemies.Add(enemy, OperationRemove);
             }
         }
+
+        private Vector3 _lastSoundPosition;
+
+        private float _lastSoundTime;
+
+        private float _soundBlockTimeout;
         
         #endregion
+
+        public void SendExplosionEvent(Vector3 position)
+        {
+            //TODO
+        }
+
+        public void SendSoundEvent(Vector3 position)
+        {
+            var currentTime = Time.time;
+            if (currentTime < _soundBlockTimeout) return;
+            
+            if (currentTime > _lastSoundTime + 5 || Vector3.SqrMagnitude(position - _lastSoundPosition) > 100)      // 10m
+            {
+                StartCoroutine(SendSoundBroadcast(false, position));
+            }
+            else
+            {
+                _soundBlockTimeout = currentTime + soundCdTime;
+                StartCoroutine(SendSoundBroadcast(true, position));
+            }
+            
+            _lastSoundTime = currentTime;
+            _lastSoundPosition = position;
+        }
 
         private Coroutine _coroutine;
 
@@ -95,6 +156,24 @@ namespace Cc83.Behaviors
             {
                 StopCoroutine(_coroutine);
                 _coroutine = null;
+            }
+        }
+        
+        private IEnumerator SendSoundBroadcast(bool precisely, Vector3 position)
+        {
+            var sqrEffectDistance = Mathf.Pow(soundEffectDistance, 2);
+            foreach (var sensorAgent in from sensorAgent in _enemies 
+                     let agentPosition = sensorAgent.transform.position 
+                     where !(Vector3.SqrMagnitude(agentPosition - position) > sqrEffectDistance) select sensorAgent)
+            {
+                sensorAgent.SendEvent(BehaviorDefinitions.EventSoundAlert, new SoundData
+                {
+                    type = SoundEventType.Shooting, 
+                    position = position, 
+                    precisely = precisely
+                });
+                
+                yield return null;
             }
         }
 

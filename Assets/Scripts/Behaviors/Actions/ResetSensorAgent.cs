@@ -1,4 +1,5 @@
-﻿using BehaviorDesigner.Runtime.Tasks;
+﻿using BehaviorDesigner.Runtime;
+using BehaviorDesigner.Runtime.Tasks;
 
 namespace Cc83.Behaviors
 {
@@ -6,7 +7,7 @@ namespace Cc83.Behaviors
     public class ResetSensorAgent : Action
     {
         // ReSharper disable once UnassignedField.Global
-        public bool RetainEnemy;
+        public bool RetainPrevEnemy;
         
         // ReSharper disable once UnassignedField.Global
         public SharedSensorTargetList Teammates;
@@ -16,6 +17,9 @@ namespace Cc83.Behaviors
         
         // ReSharper disable once UnassignedField.Global
         public SharedSensorTarget Enemy;
+
+        // ReSharper disable once UnassignedField.Global
+        public SharedTransform PrevEnemy;
         
         private SensorAgent _sensorAgent;
         
@@ -27,13 +31,12 @@ namespace Cc83.Behaviors
         public override void OnStart()
         {
             _sensorAgent.Reset();
-            
+
+            PrevEnemy.SetValue(RetainPrevEnemy ? Enemy.Value.targetAgent.transform : null);
+
             Teammates.SetValue(null);
             Enemies.SetValue(null);
-            if (!RetainEnemy)
-            {
-                Enemy.SetValue(null);
-            }
+            Enemy.SetValue(null);
         }
 
         public override TaskStatus OnUpdate()

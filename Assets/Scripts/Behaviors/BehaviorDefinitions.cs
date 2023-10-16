@@ -2,6 +2,11 @@
 
 namespace Cc83.Behaviors
 {
+    public enum Tensity
+    {
+        LowestIdle, LowerIdle, Rifle, HigherRifle, HighestRifle
+    }
+    
     public static class BehaviorDefinitions
     {
         public const string EventEnemyAppear = "EnemyAppear";
@@ -10,7 +15,7 @@ namespace Cc83.Behaviors
         
         public const string EventTeammateChange = "TeammateChange";
         
-        public const string EventEscapeFighting = "EscapeFighting";
+        public const string EventSoundAlert = "SoundAlert";
         
         public const string EventTurningStopped = "TurningStopped";
 

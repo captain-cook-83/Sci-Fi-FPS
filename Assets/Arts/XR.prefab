@@ -5847,14 +5847,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5408093711791070168, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4895483766877680617}
   m_SourcePrefab: {fileID: 100100000, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
 --- !u!114 &739661878979410312 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8047714284462486746, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
   m_PrefabInstance: {fileID: 7344516738635926866}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3378156689178662538}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2903f428080ff8e42ba1485028f63c36, type: 3}
@@ -5870,7 +5873,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8905211248914582656, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
   m_PrefabInstance: {fileID: 7344516738635926866}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3378156689178662538}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2903f428080ff8e42ba1485028f63c36, type: 3}
@@ -5881,6 +5884,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4631591848625095010, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
   m_PrefabInstance: {fileID: 7344516738635926866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3378156689178662538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5408093711791070168, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}
+  m_PrefabInstance: {fileID: 7344516738635926866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4895483766877680617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378156689178662538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f5f15d252245a4a820527b879390e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  halfFov: 55
+  sqrDistance: 900
+  gizmosLength: 5
+  viewPosition: {fileID: 483204726407782564}
 --- !u!4 &9026354865973853167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1776945905320294077, guid: 815e4f5fba0aa6143b55b8cb808a6505, type: 3}

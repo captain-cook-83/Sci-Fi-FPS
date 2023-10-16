@@ -38,5 +38,12 @@ namespace Cc83.Utils
             var to2 = new Vector2(to.x, to.z);
             return to2 - from2;
         }
+        
+        public static float Angle2D(Vector3 from, Vector3 to)
+        {
+            var from2 = new Vector2(from.x, from.z);
+            var to2 = new Vector2(to.x, to.z);
+            return Vector2.Angle(from2, to2);
+        }
     }
 }

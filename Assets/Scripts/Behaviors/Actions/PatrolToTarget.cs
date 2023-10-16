@@ -23,18 +23,21 @@ namespace Cc83.Behaviors
         private Vector2 _lastDirection;
         
         private Vector3 _prevEnemyPosition;
+
+        private bool _repathInterrupt;
         
         public override void OnStart()
         {
             base.OnStart();
             
+            _repathInterrupt = false;
             AnimatorStateController.ChangeTensity(Random.Range(AnimatorConstants.AimingTensity, AnimatorConstants.MaximumTensity));            // Tensity 直到移动之前才设置，避免之前的先举枪再转身的不自然表现
         }
 
         protected override void StartMonitor(List<Vector3> pathPoints)
         {
             _sensorTarget = Enemy.Value;
-
+            
             _lastPathPoint = pathPoints[^1];
             _lastDirection = VectorUtils.Direction2D(pathPoints[^2], _lastPathPoint);
             _prevEnemyPosition = _sensorTarget.targetAgent.transform.position;
@@ -51,6 +54,7 @@ namespace Cc83.Behaviors
                 var angle = Vector2.Angle(direction, _lastDirection);
                 if (angle > RepathAngle)          // 此处的角度限制与 TurningToTarget.MinAngle 并没有什么关联
                 {
+                    _repathInterrupt = true;
                     return TaskStatus.Failure;
                 }
             }
@@ -60,7 +64,14 @@ namespace Cc83.Behaviors
 
         public override void OnEnd()
         {
-            base.OnEnd();
+            if (_repathInterrupt)
+            {
+                Interrupt();
+            }
+            else
+            {
+                base.OnEnd();
+            }
             
             _sensorTarget = null;
         }

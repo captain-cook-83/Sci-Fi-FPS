@@ -14,8 +14,8 @@ namespace Cc83.Character
         private Collider[] colliders;
 
         [SerializeField] 
-        [Range(1, 5)]
-        private float hitEventInterval = 3;
+        [Range(1, 3)]
+        private float hitEventInterval = 1;
 
         private SensorAgent _sensorAgent;
 

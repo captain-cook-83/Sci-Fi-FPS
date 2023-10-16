@@ -47,9 +47,8 @@ namespace Cc83.Behaviors
         public override void OnEnd()
         {
             _coroutine = null;
-            _animatorStateController.ChangeSpeed(0, 
-                () =>  _animatorStateController.ChangeHSpeed(0), 
-                () => _animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
+            _animatorStateController.ChangeSpeed(0, StopMoving);
+            _animatorStateController.ChangeHSpeed(0, StopMoving);
         }
 
         public override void OnConditionalAbort()
@@ -71,14 +70,14 @@ namespace Cc83.Behaviors
                 var direction = (targetPoint - position).normalized;
                 var dotDirectionalAngle = VectorUtils.DotDirectionalAngle2D(forward, direction);
 
-                var verticalSpeed = Mathf.Cos(Mathf.PI * dotDirectionalAngle / 180) * movingSpeed;
-                var horizontallySpeed = Mathf.Abs(Mathf.Sin(Mathf.PI * dotDirectionalAngle / 180) * movingSpeed) * (dotDirectionalAngle < 0 ? -1 : 1);
+                var radian = Mathf.PI * dotDirectionalAngle / 180;
+                var verticalSpeed = Mathf.Cos(radian) * movingSpeed;
+                var horizontallySpeed = Mathf.Abs(Mathf.Sin(radian) * movingSpeed) * (dotDirectionalAngle < 0 ? -1 : 1);
                 
                 if (i == 1)
                 {
-                    _animatorStateController.ChangeSpeed(verticalSpeed, 
-                        () => _animator.SetBool(AnimatorConstants.AnimatorMoving, true), 
-                        () => _animatorStateController.ChangeHSpeed(horizontallySpeed), true);
+                    _animatorStateController.ChangeSpeed(verticalSpeed, StartMoving);
+                    _animatorStateController.ChangeHSpeed(horizontallySpeed, StartMoving);
                 }
                 else
                 {
@@ -95,6 +94,16 @@ namespace Cc83.Behaviors
             }
             
             _status = TaskStatus.Success;
+        }
+
+        private void StartMoving()
+        {
+            _animator.SetBool(AnimatorConstants.AnimatorMoving, true);
+        }
+        
+        private void StopMoving()
+        {
+            _animator.SetBool(AnimatorConstants.AnimatorMoving, false);
         }
     }
 }

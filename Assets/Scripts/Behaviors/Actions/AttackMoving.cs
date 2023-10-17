@@ -58,7 +58,7 @@ namespace Cc83.Behaviors
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
         {
-            var movingSpeed = Random.Range(2, 4.5f);
+            var movingSpeed = Random.Range(3, 4.5f);
             
             for (var i = 1; i < pathPoints.Count; i++)
             {
@@ -73,17 +73,30 @@ namespace Cc83.Behaviors
                 var radian = Mathf.PI * dotDirectionalAngle / 180;
                 var verticalSpeed = Mathf.Cos(radian) * movingSpeed;
                 var horizontallySpeed = Mathf.Abs(Mathf.Sin(radian) * movingSpeed) * (dotDirectionalAngle < 0 ? -1 : 1);
+                var hvRatio = horizontallySpeed / verticalSpeed;
                 
                 if (i == 1)
                 {
-                    _animatorStateController.ChangeSpeed(verticalSpeed, StartMoving);
-                    _animatorStateController.ChangeHSpeed(horizontallySpeed, StartMoving);
+                    _animatorStateController.CancelSpeed();
+                    _animatorStateController.CancelHSpeed();
+                    
+                    _animator.SetBool(AnimatorConstants.AnimatorMoving, true);
+
+                    var t = 0f;
+                    var currentSpeed = _animator.GetFloat(AnimatorConstants.AnimatorSpeed);
+                    var currentValue = currentSpeed;
+                    while (Mathf.Abs(verticalSpeed - currentValue) > 0.001f)
+                    {
+                        t += Time.deltaTime;
+                        currentValue = Mathf.Lerp(currentSpeed, verticalSpeed, t * 10);
+                        _animator.SetFloat(AnimatorConstants.AnimatorSpeed, currentValue);
+                        _animator.SetFloat(AnimatorConstants.AnimatorDirection, currentValue * hvRatio);
+                        yield return null;
+                    }
                 }
-                else
-                {
-                    _animator.SetFloat(AnimatorConstants.AnimatorSpeed, verticalSpeed);
-                    _animator.SetFloat(AnimatorConstants.AnimatorDirection, horizontallySpeed);
-                }
+                
+                _animator.SetFloat(AnimatorConstants.AnimatorSpeed, verticalSpeed);
+                _animator.SetFloat(AnimatorConstants.AnimatorDirection, horizontallySpeed);
                 
                 var targetProjection = 0f;
                 do
@@ -94,11 +107,6 @@ namespace Cc83.Behaviors
             }
             
             _status = TaskStatus.Success;
-        }
-
-        private void StartMoving()
-        {
-            _animator.SetBool(AnimatorConstants.AnimatorMoving, true);
         }
         
         private void StopMoving()

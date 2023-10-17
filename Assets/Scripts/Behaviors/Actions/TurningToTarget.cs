@@ -34,6 +34,10 @@ namespace Cc83.Behaviors
 
         private bool _postTurning;
         
+        private float _lerpTime;
+
+        private Quaternion _lerpRotation;
+        
         private float _prevRotationAngle;
         
         private Quaternion _lastPostRotation;
@@ -68,6 +72,7 @@ namespace Cc83.Behaviors
             _lastPostRotation = transform.rotation;
             _targetRotation = Quaternion.AngleAxis(angle, Vector3.up) * _lastPostRotation;
             _postTurning = Mathf.Abs(angle) + 0.1f < MinAngle;
+            _lerpTime = 0;
             
             if (_postTurning)               // +0.1f, 保证精度错误后依然满足条件
             {
@@ -85,12 +90,13 @@ namespace Cc83.Behaviors
         {
             if (_postTurning)               // 进入后处理阶段后，超时机制失效
             {
-                _lastPostRotation = Quaternion.Lerp(_lastPostRotation, _targetRotation, Time.deltaTime * 10f);
+                _lerpTime += Time.deltaTime;
+                _lerpRotation = Quaternion.Lerp(_lastPostRotation, _targetRotation, _lerpTime * 10f);
                 
-                var angle = Quaternion.Angle(_lastPostRotation, _targetRotation);
+                var angle = Quaternion.Angle(_lerpRotation, _targetRotation);
                 if (angle < _prevRotationAngle)
                 {
-                    transform.rotation = _lastPostRotation;
+                    transform.rotation = _lerpRotation;
                     _prevRotationAngle = angle;
                     return TaskStatus.Running;
                 }
@@ -118,6 +124,7 @@ namespace Cc83.Behaviors
             {
                 _lastPostRotation = transform.rotation;
                 _postTurning = true;
+                _lerpTime = 0;
             }
             else
             {

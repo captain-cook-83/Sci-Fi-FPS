@@ -22,13 +22,15 @@ namespace Cc83.Utils
         
         public static IEnumerator ChangeFloat(Animator animator, int key, float value, float speed = 1, System.Action onComplete = null)
         {
-            var tensity = animator.GetFloat(key);
-            var currentTensity = tensity;
+            var t = 0f;
+            var current = animator.GetFloat(key);
+            var currentValue = current;
 
-            while (Mathf.Abs(value - currentTensity) > 0.001f)
+            while (Mathf.Abs(value - currentValue) > 0.001f)
             {
-                currentTensity = Mathf.Lerp(currentTensity, value, Time.deltaTime * speed * 100);
-                animator.SetFloat(key, currentTensity);
+                t += Time.deltaTime;
+                currentValue = Mathf.Lerp(current, value, t * speed * 100);
+                animator.SetFloat(key, currentValue);
                 yield return null;
             }
             animator.SetFloat(key, value);

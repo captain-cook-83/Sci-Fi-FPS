@@ -10,6 +10,11 @@ namespace Cc83.Behaviors
     [TaskCategory("Cc83")]
     public class SearchMoving : Action
     {
+        private enum RotateType
+        {
+            None, Rotate, PreRotate
+        }
+        
         // ReSharper disable once FieldCanBeMadeReadOnly.Global
         // ReSharper disable once ConvertToConstant.Global
         // ReSharper disable once MemberCanBePrivate.Global
@@ -26,23 +31,15 @@ namespace Cc83.Behaviors
 
         private TaskStatus _status;
 
-        private List<Vector3> _pathPoints = new (2);
+        private readonly List<Vector3> _pathPoints = new (2);
         
-        private List<bool> _pathRotations = new (2);
+        private readonly List<RotateType> _pathRotations = new (2);
         
         public override void OnAwake()
         {
             _animator = GetComponent<Animator>();
             _animatorStateController = GetComponent<AnimatorStateController>();
         }
-
-        // public override void OnDrawGizmos()
-        // {
-        //     for (var i = 1; i < _pathPoints.Count; i++)
-        //     {
-        //         Debug.DrawLine(_pathPoints[i - 1] + Vector3.up, _pathPoints[i] + Vector3.up, Color.black);
-        //     }
-        // }
 
         public override void OnStart()
         {
@@ -51,17 +48,36 @@ namespace Cc83.Behaviors
             {
                 var n = i - 1;
                 var direction = pathPoints[n] - pathPoints[n - 1];
-                if (direction.sqrMagnitude > 2)
+                var length = direction.magnitude;
+                direction.Normalize();
+
+                var split = false;
+                for (var j = 1; length > 6; j++)
                 {
-                    _pathPoints.Add(pathPoints[n] - direction.normalized);
-                    _pathRotations.Add(true);
+                    split = true;
+                    length -= 4;
+                    _pathPoints.Add(pathPoints[n - 1] + direction * (j * 4));
+                    _pathRotations.Add(RotateType.None);
+                }
+
+                var lastPoint = pathPoints[n] - direction * 1.5f;
+                if (split && length < 2)
+                {
+                    _pathPoints[^1] = lastPoint;
+                    _pathRotations[^1] = RotateType.PreRotate;
+                }
+                else if (length >= 2)
+                {
+                    _pathPoints.Add(lastPoint);
+                    _pathRotations.Add(RotateType.PreRotate);
                 }
                 
                 _pathPoints.Add(pathPoints[n]);
-                _pathRotations.Add(false);
+                _pathRotations.Add(!split && length < 2 ? RotateType.Rotate : RotateType.None);
             }
             
             _pathPoints.Add(pathPoints[^1]);
+            _pathRotations.Add(RotateType.None);
             
             _status = TaskStatus.Running;
             _coroutine = MovingToTarget(_pathPoints);
@@ -80,10 +96,10 @@ namespace Cc83.Behaviors
 
         public override void OnEnd()
         {
+            OnConditionalAbort();
+            
             _pathPoints.Clear();
             _pathRotations.Clear();
-            
-            _coroutine = null;
             _animatorStateController.ChangeSpeed(0, 
                 () =>  _animatorStateController.ChangeHSpeed(0), 
                 () => _animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
@@ -91,7 +107,10 @@ namespace Cc83.Behaviors
 
         public override void OnConditionalAbort()
         {
+            if (_coroutine == null) return;
+            
             StopCoroutine(_coroutine);
+            _coroutine = null;
         }
 
         private IEnumerator MovingToTarget(IReadOnlyList<Vector3> pathPoints)
@@ -110,18 +129,30 @@ namespace Cc83.Behaviors
 
                 var verticalSpeed = Mathf.Cos(Mathf.PI * dotDirectionalAngle / 180) * movingSpeed;
                 var horizontallySpeed = Mathf.Abs(Mathf.Sin(Mathf.PI * dotDirectionalAngle / 180) * movingSpeed) * (dotDirectionalAngle < 0 ? -1 : 1);
+                var hvRatio = horizontallySpeed / verticalSpeed;
                 
                 if (i == 0)
                 {
-                    _animatorStateController.ChangeSpeed(verticalSpeed);
-                    _animatorStateController.ChangeHSpeed(horizontallySpeed);
+                    _animatorStateController.CancelSpeed();
+                    _animatorStateController.CancelHSpeed();
+                    
                     _animator.SetBool(AnimatorConstants.AnimatorMoving, true);
                 }
-                else
+
+                var t = 0f;
+                var currentSpeed = _animator.GetFloat(AnimatorConstants.AnimatorSpeed);
+                var currentValue = currentSpeed;
+                while (Mathf.Abs(verticalSpeed - currentValue) > 0.001f)
                 {
-                    _animator.SetFloat(AnimatorConstants.AnimatorSpeed, verticalSpeed);
-                    _animator.SetFloat(AnimatorConstants.AnimatorDirection, horizontallySpeed);
+                    t += Time.deltaTime;
+                    yield return null;
+                    currentValue = Mathf.Lerp(currentSpeed, verticalSpeed, t * 10);
+                    _animator.SetFloat(AnimatorConstants.AnimatorSpeed, currentValue);
+                    _animator.SetFloat(AnimatorConstants.AnimatorDirection, currentValue * hvRatio);
                 }
+                
+                _animator.SetFloat(AnimatorConstants.AnimatorSpeed, verticalSpeed);
+                _animator.SetFloat(AnimatorConstants.AnimatorDirection, horizontallySpeed);
                 
                 var targetProjection = 0f;
                 do
@@ -130,39 +161,43 @@ namespace Cc83.Behaviors
                     targetProjection = Vector3.Dot((targetPoint - transform.position).normalized, direction);
                 } while (targetProjection > StopProjection);
 
-                if (_pathRotations[i])
+                var pathRotation = _pathRotations[i];
+                if (pathRotation == RotateType.None) continue;
+                
+                var index = pathRotation == RotateType.Rotate ? i + 1 : i + 2;
+                var targetRotation = Quaternion.LookRotation(_pathPoints[index] - _pathPoints[index - 1]);
+                var rotation = transform.rotation;
+                var rotationAngle = Quaternion.Angle(rotation, targetRotation);
+                if (rotationAngle < 45)
                 {
-                    direction = _pathPoints[i + 2] - _pathPoints[i + 1];
-                        
-                    var targetRotation = Quaternion.LookRotation(direction);
-                    var rotation = transform.rotation;
-                    var rotationAngle = Quaternion.Angle(rotation, targetRotation);
-                    // var changeSpeed = rotationAngle > 45;
-                    // if (changeSpeed)
-                    // {
-                    //     _animatorStateController.ChangeSpeed(0);
-                    //     _animatorStateController.ChangeHSpeed(0);
-                    // }
-                
-                    // var prevRotationAngle = 0f;
-                    // do
-                    // {
-                    //     yield return null;
-                    //
-                    //     rotation = Quaternion.Lerp(rotation, targetRotation, Time.deltaTime * 10f);
-                    //     prevRotationAngle = rotationAngle;
-                    //     rotationAngle = Quaternion.Angle(rotation, targetRotation);
-                    //     transform.rotation = rotation;
-                    // } while (prevRotationAngle > rotationAngle);
-                
-                    transform.rotation = targetRotation;
-                
-                    // if (changeSpeed)
-                    // {
-                    //     _animatorStateController.ChangeSpeed(verticalSpeed);
-                    //     _animatorStateController.ChangeHSpeed(horizontallySpeed);
-                    // }
+                    continue;
                 }
+                    
+                t = 0f;
+                currentValue = verticalSpeed;
+                while (currentValue > 0)
+                {
+                    t += Time.deltaTime;
+                    yield return null;
+                    currentValue = Mathf.Lerp(verticalSpeed, 0, t * 10);
+                    _animator.SetFloat(AnimatorConstants.AnimatorSpeed, currentValue);
+                    _animator.SetFloat(AnimatorConstants.AnimatorDirection, currentValue * hvRatio);
+                }
+
+                t = 0;
+                rotation = transform.rotation;
+                var prevRotationAngle = 0f;
+                do
+                {
+                    t += Time.deltaTime;
+                    yield return null;
+                    rotation = Quaternion.Lerp(rotation, targetRotation, t * 2f);
+                    prevRotationAngle = rotationAngle;
+                    rotationAngle = Quaternion.Angle(rotation, targetRotation);
+                    transform.rotation = rotation;
+                } while (prevRotationAngle > rotationAngle);
+                
+                transform.rotation = targetRotation;
             }
             
             _status = TaskStatus.Success;

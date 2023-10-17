@@ -43,12 +43,18 @@ namespace Cc83.Behaviors
         private float _attackFarSqrDistance;
 
         private float _escapeSqrDistance;
+        
+        private float _middleSqrDistance;
+
+        private bool _escapeMoving;         // 是否为逃离移动模式（只有 EscapeFighting.Value 为 true 时，才有意义）
 
         public override void OnAwake()
         {
             _attackController = GetComponent<EnemyAttackController>();
+            
             _attackFarSqrDistance = Mathf.Pow(AttackFarDistance.Value, 2);
             _escapeSqrDistance = Mathf.Pow(EscapeDistance.Value, 2);
+            _middleSqrDistance = Mathf.Pow((AttackFarDistance.Value + EscapeDistance.Value) * 0.5f, 2);
         }
 
         public override void OnStart()
@@ -62,19 +68,28 @@ namespace Cc83.Behaviors
         {
             #region 移动判断
             
-            // TODO 优化距离区间及停止位置计算
+            //TODO 没有必要每帧计算
             var sqrDistance = Vector3.SqrMagnitude(_sensorTarget.targetAgent.transform.position - transform.position);
-            if (sqrDistance > _attackFarSqrDistance || sqrDistance < _escapeSqrDistance)
+            if (EscapeFighting.Value)
             {
-                if (EscapeFighting.Value == false)
+                if (_escapeMoving ? sqrDistance > _middleSqrDistance : sqrDistance < _middleSqrDistance)
                 {
+                    EscapeFighting.SetValue(false);
+                }
+            }
+            else
+            {
+                if (sqrDistance > _attackFarSqrDistance)
+                {
+                    _escapeMoving = false;
+                    EscapeFighting.SetValue(true);
+                }
+                else if (sqrDistance < _escapeSqrDistance)
+                {
+                    _escapeMoving = true;;
                     EscapeFighting.SetValue(true);
                 }
             }
-            // else if (EscapeFighting.Value)
-            // {
-            //     EscapeFighting.SetValue(false);
-            // }
             
             #endregion
 

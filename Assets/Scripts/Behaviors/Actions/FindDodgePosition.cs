@@ -30,7 +30,7 @@ namespace Cc83.Behaviors
             var dodgeDirection = Random.value < 0.5f ? VectorUtils.GetLeftDirection(-direction) : VectorUtils.GetRightDirection(-direction);
 
             var position = transform.position;
-            var distance = Random.Range(1, 1.5f);
+            var distance = Random.Range(0.6f, 1.2f);
             var pathOrigin = new Vector3(position.x, 0.5f, position.z);         // 太高举例，避免贴地面检测
             if (Physics.Raycast(pathOrigin, dodgeDirection, distance + 1, Definitions.MovingObstacleLayerMask))
             {

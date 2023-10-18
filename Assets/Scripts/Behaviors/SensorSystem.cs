@@ -164,10 +164,15 @@ namespace Cc83.Behaviors
         private IEnumerator SendSoundBroadcast(bool precisely, Vector3 position)
         {
             var sqrEffectDistance = Mathf.Pow(soundEffectDistance, 2);
-            foreach (var sensorAgent in from sensorAgent in _enemies 
-                     let agentPosition = sensorAgent.transform.position 
-                     where !(Vector3.SqrMagnitude(agentPosition - position) > sqrEffectDistance) select sensorAgent)
+            var duplicateLock = new Dictionary<SensorAgent, bool>();
+            for (var i = _enemies.Count - 1; i >= 0; --i)
             {
+                if (i >= _enemies.Count) continue;              // 遍历过程中可能由于 NPC 死亡而减少长度
+                
+                var sensorAgent = _enemies[i];
+                if (!(sensorAgent.enabled && duplicateLock.TryAdd(sensorAgent, true))) continue;
+                if (Vector3.SqrMagnitude(sensorAgent.transform.position - position) > sqrEffectDistance) continue;
+
                 sensorAgent.SendEvent(BehaviorDefinitions.EventSoundAlert, new SoundData
                 {
                     type = SoundEventType.Shooting, 
@@ -200,6 +205,8 @@ namespace Cc83.Behaviors
 
                 foreach (var enemy in _enemies)
                 {
+                    if (!enemy.enabled) continue;
+                    
                     enemy.Clear();
                 
                     var enemyPosition = enemy.transform.position;
@@ -223,6 +230,9 @@ namespace Cc83.Behaviors
                     foreach (var otherEnemy in _enemies.Where(e => !ReferenceEquals(e, enemy)))
                     {
                         yield return null;
+                        
+                        if (!enemy.enabled) break;
+                        if (!otherEnemy.enabled) continue;
                         
                         var otherDirection = otherEnemy.transform.position - enemyPosition;
                         var otherSqrDistance = otherDirection.sqrMagnitude;
@@ -272,8 +282,11 @@ namespace Cc83.Behaviors
                 foreach (var enemy in _enemies)
                 {
                     yield return null;
-                    
-                    enemy.Submit();
+
+                    if (enemy.enabled)
+                    {
+                        enemy.Submit();
+                    }
                 }
             }
         }

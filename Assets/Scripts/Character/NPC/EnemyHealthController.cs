@@ -48,8 +48,8 @@ namespace Cc83.Character
             }
             
             _alive = false;
-            
-            Destroy(GetComponent<SensorAgent>());
+
+            GetComponent<SensorAgent>().enabled = false;
             Destroy(GetComponent<BehaviorTree>());
 
             if (animator)

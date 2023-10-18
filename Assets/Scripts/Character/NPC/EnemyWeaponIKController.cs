@@ -5,13 +5,13 @@ namespace Cc83.Character
     [RequireComponent(typeof(WeaponReference))]
     public class EnemyWeaponIKController : MonoBehaviour
     {
-        private const float StopFactor = 0.01f;
+        private const float StopFactor = 0.02f;
         
         public Transform aimingAxis;
 
         public Transform aimTowards;
-        
-        public bool aimingActive;
+
+        public bool blockAiming;
 
         private WeaponReference _weaponReference;
         
@@ -44,6 +44,21 @@ namespace Cc83.Character
                 }
             }
         }
+
+        public bool aimingActive
+        {
+            get => aimingActiveValue;
+            set
+            {
+                if (aimingActiveValue == value) return;
+                
+                aimingActiveValue = value;
+                if (value)
+                {
+                    aimLerpWeight = 0;
+                }
+            }
+        }
         
         public int activeLayerIndex;
 
@@ -54,6 +69,8 @@ namespace Cc83.Character
         private bool primaryIkValue = true;
         [SerializeField]
         private bool secondaryIkValue = true;
+
+        private bool aimingActiveValue = true;
 
         private float primaryLerpWeight;
         private float secondaryLerpWeight;
@@ -99,8 +116,9 @@ namespace Cc83.Character
                 {
                     SetHandIK(AvatarIKGoal.LeftHand, _weaponReference.weapon.secondaryAnchor, secondaryWeight);
                 }
-                
-                var aimingWeight = aimingActive ? weight : 0;
+
+                var aimingEnabled = aimingActiveValue && !blockAiming;
+                var aimingWeight = aimingEnabled ? weight : 0;
                 if (Mathf.Abs(aimingWeight - aimLerpWeight) > StopFactor)
                 {
                     aimLerpWeight = Mathf.Lerp(aimLerpWeight, aimingWeight, Time.deltaTime * lerpSpeed);
@@ -111,61 +129,16 @@ namespace Cc83.Character
                 {
                     var targetRotation = Quaternion.LookRotation(aimingAxis.parent.InverseTransformPoint(aimTowards.position));
                     aimingAxis.localRotation = Quaternion.Lerp(Quaternion.identity, targetRotation, aimingWeight);
-                }
-                else
+                } 
+                else if (aimingEnabled)
                 {
-                    aimingAxis.localRotation = Quaternion.identity;
+                    var localRotation = aimingAxis.localRotation;
+                    if (localRotation.Equals(Quaternion.identity)) return;
+                    
+                    aimingAxis.localRotation = Quaternion.Lerp(aimingAxis.localRotation, Quaternion.identity, Time.deltaTime * lerpSpeed);
                 }
             }
         }
-
-        // private void OnAnimatorIK(int layerIndex)
-        // {
-        //     if (layerIndex == activeLayerIndex)
-        //     {
-        //         var weight = animator.GetLayerWeight(layerIndex);
-        //         if (weight > 0)
-        //         {
-        //             if (primaryIkValue)
-        //             {
-        //                 var primaryWeight = weight;
-        //                 if (primaryWeight > primaryLerpWeight + StopFactor)
-        //                 {
-        //                     primaryLerpWeight = Mathf.Lerp(primaryLerpWeight, primaryWeight, Time.deltaTime * lerpSpeed);
-        //                     primaryWeight = primaryLerpWeight;
-        //                 }
-        //                 
-        //                 SetHandIK(AvatarIKGoal.RightHand, weaponReference.weapon.primaryAnchor, primaryWeight);
-        //             }
-        //
-        //             if (secondaryIkValue)
-        //             {
-        //                 var secondaryWeight = weight;
-        //                 if (secondaryWeight > secondaryLerpWeight + StopFactor)
-        //                 {
-        //                     secondaryLerpWeight = Mathf.Lerp(secondaryLerpWeight, secondaryWeight, Time.deltaTime * lerpSpeed);
-        //                     secondaryWeight = secondaryLerpWeight;
-        //                 }
-        //                 
-        //                 SetHandIK(AvatarIKGoal.LeftHand, weaponReference.weapon.secondaryAnchor, secondaryWeight);
-        //             }
-        //             
-        //             if (aimingActive)
-        //             {
-        //                 var aimingWeight = weight;
-        //                 if (aimingWeight > aimLerpWeight + StopFactor)
-        //                 {
-        //                     aimLerpWeight = Mathf.Lerp(aimLerpWeight, aimingWeight, Time.deltaTime * lerpSpeed);
-        //                     aimingWeight = aimLerpWeight;
-        //                 }
-        //                 
-        //                 var targetRotation = Quaternion.LookRotation(aimTowards.position - aimingAxis.position);
-        //                 aimingAxis.rotation = Quaternion.Lerp(Quaternion.identity, targetRotation, aimingWeight);
-        //                 // aimingAxis.LookAt(aimTowards.position);
-        //             }
-        //         }
-        //     }
-        // }
         
         private void SetHandIK(AvatarIKGoal ikGoal, Transform anchor, float weight)
         {

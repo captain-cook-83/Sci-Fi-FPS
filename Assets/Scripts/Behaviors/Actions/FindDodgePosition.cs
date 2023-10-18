@@ -9,6 +9,8 @@ namespace Cc83.Behaviors
     [TaskCategory("Cc83")]
     public class FindDodgePosition : Action
     {
+        private static readonly float[] Speeds = { 0.36f, 0.6f, 0.86f, 1.2f, 1.77f };
+
         // ReSharper disable once UnassignedField.Global
         public SharedVector3 DodgeDirection;
 
@@ -30,7 +32,7 @@ namespace Cc83.Behaviors
             var dodgeDirection = Random.value < 0.5f ? VectorUtils.GetLeftDirection(-direction) : VectorUtils.GetRightDirection(-direction);
 
             var position = transform.position;
-            var distance = Random.Range(0.6f, 1.2f);
+            var distance = Speeds[Random.Range(0, Speeds.Length)];
             var pathOrigin = new Vector3(position.x, 0.5f, position.z);         // 太高举例，避免贴地面检测
             if (Physics.Raycast(pathOrigin, dodgeDirection, distance + 1, Definitions.MovingObstacleLayerMask))
             {

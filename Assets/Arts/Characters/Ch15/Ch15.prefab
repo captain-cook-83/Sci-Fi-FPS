@@ -3990,6 +3990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimingTowards: {fileID: 5276735266458536573}
+  aimingAxis: {fileID: 8863304191261295187}
 --- !u!114 &3476550034232826883
 MonoBehaviour:
   m_ObjectHideFlags: 0

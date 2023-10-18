@@ -1,5 +1,6 @@
 using Cc83.Behaviors;
 using Cc83.Interactable;
+using Cc83.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,12 +8,18 @@ namespace Cc83.Character
 {
     public class EnemyAttackController : MonoBehaviour
     {
-        [SerializeField]
-        private Transform aimingTowards;
+        // 左右两侧夹角之和，必须大于 TurningToTarget.MinAngle，否则会出现转向某一侧之后因不满足新的条件而立即转向另一侧的尴尬情况
+        // ReSharper disable once MemberCanBePrivate.Global
+        public const float LeftRetargetAngle = 35;
+        // ReSharper disable once MemberCanBePrivate.Global
+        public const float RightRetargetAngle = 15;
+        
+        [SerializeField] 
+        private Transform aimingAxis;
         
         private EnemyShootController _shootController;
-        
-        private Vector3 _localAimingTowards;
+
+        private EnemyWeaponIKController _weaponIKController;
 
         private SensorAgent.SensorTarget _sensorTarget;
         
@@ -20,7 +27,9 @@ namespace Cc83.Character
         
         private float _nextShootTime = float.MaxValue;
 
-        private Vector3 _aimingTarget;
+        private bool _validAiming;
+
+        private bool _shoot;
 
         private void Awake()
         {
@@ -30,59 +39,51 @@ namespace Cc83.Character
                 _shootController = weaponReference.weapon.GetComponent<EnemyShootController>();
             }
             
-            _localAimingTowards = aimingTowards.localPosition;
+            _weaponIKController = GetComponent<EnemyWeaponIKController>();
         }
-        
+
         public void Active(SensorAgent.SensorTarget sensorTarget, float maxRepeatShootDelay)
         {
             _sensorTarget = sensorTarget;
-            _aimingTarget = sensorTarget.targetAgent.HitPosition;
             _maxRepeatShootDelay = maxRepeatShootDelay;
-            _nextShootTime = 0;
+            _nextShootTime = Time.time + 0.5f;                      // 延后 0.5s，确保可能出现的转身动作后的枪口朝向已经对齐
+            _validAiming = true;
+
+            _weaponIKController.blockAiming = true;
         }
         
-        public void Tick()
+        public bool Tick()
         {
-            TickAiming();
+            if (!_validAiming) return false;
+            if (_nextShootTime > Time.time) return true;
             
-            var currentTime = Time.time;
-            if (currentTime > _nextShootTime)
-            {
-                var times = Random.Range(1, 6);
-                var duration = times * _shootController.cdTime;
+            var times = Random.Range(1, 6);
+            var duration = times * _shootController.cdTime;
 
-                _nextShootTime = currentTime + duration + Random.Range(0.5f, _maxRepeatShootDelay);
-                _shootController.Shoot(times);
-            }
+            _nextShootTime = Time.time + duration + Random.Range(0.5f, _maxRepeatShootDelay);
+            _shootController.Shoot(times);
+            return true;
         }
 
-        public void TickAiming(bool delayed = true)             // TODO 应当使用方向差进行旋转，更加高效准确
+        public void TickAiming()
         {
-            var aimingPosition = aimingTowards.position;
-            
-            var currentHitPosition = _sensorTarget.targetAgent.HitPosition;
-            var aimingDeviation = Vector3.SqrMagnitude(aimingPosition - currentHitPosition);
-            if (aimingDeviation > 0.01f)       // 0.1m
+            var t = transform;
+            var hitPosition = _sensorTarget.targetAgent.HitPosition;
+            var directionAngle = VectorUtils.DotDirectionalAngle2D(t.forward, hitPosition - t.position);
+
+            _validAiming = directionAngle is > -LeftRetargetAngle and < RightRetargetAngle;
+            if (_validAiming)
             {
-                _aimingTarget = currentHitPosition;
-            }
-            
-            if (!aimingPosition.Equals(_aimingTarget))          // TODO 控制枪支瞄准角度不超过指定范围 Action.LeftRetargetAngle & Action.RightRetargetAngle
-            {
-                var speed = delayed ? 15 : 45;
-                var position = Vector3.Lerp(aimingPosition, _aimingTarget, Time.deltaTime * speed);            // TODO 旋转速度需要依据旋转量，不应该使用固定速度
-                aimingTowards.position = position;
-                
-                if (Vector3.SqrMagnitude(position - _aimingTarget) < 0.01f)
-                {
-                    _aimingTarget = position;                       // 此处并非像常规差值结果一样执行 aimingTowards.position = _aimingTarget，而是反过来修改原始目标值 _aimingTarget，这样来营造射击时重新瞄准造成的偏差
-                }
+                var direction = hitPosition - aimingAxis.transform.position;
+                direction.y = 0;
+                aimingAxis.rotation = Quaternion.LookRotation(direction, Vector3.up);
             }
         }
 
         public void Reset()
         {
-            aimingTowards.localPosition = _localAimingTowards;
+            _sensorTarget = null;
+            _weaponIKController.blockAiming = false;
         }
     }
 }

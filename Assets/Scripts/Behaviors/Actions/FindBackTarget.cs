@@ -39,9 +39,10 @@ namespace Cc83.Behaviors
                 var angle = VectorUtils.DotDirectionalAngle2D(forward, prevEnemy.position - position);
                 if (Mathf.Abs(angle) > _sensorAgent.halfFov)
                 {
-                    var searchAngle = Random.Range(90, Angle);
-                    var rotation = Quaternion.AngleAxis(angle < 0 ? -searchAngle : searchAngle, Vector3.up);
-                    TargetTurn.SetValue(position + rotation * forward);
+                    // var searchAngle = Random.Range(90, Angle);
+                    // var rotation = Quaternion.AngleAxis(angle < 0 ? -searchAngle : searchAngle, Vector3.up);
+                    // TargetTurn.SetValue(position + rotation * forward);
+                    TargetTurn.SetValue(prevEnemy.transform.position);      // 立即瞄准
                     _status = TaskStatus.Success;
                     return;
                 }

@@ -9,16 +9,6 @@ namespace Cc83.Behaviors
     [TaskCategory("Cc83")]
     public class Attack : Action
     {
-        // 左右两侧夹角之和，必须大于 TurningToTarget.MinAngle，否则会出现转向某一侧之后因不满足新的条件而立即转向另一侧的尴尬情况
-        private const float LeftRetargetAngle = 35;
-        private const float RightRetargetAngle = 15;
-        
-        [Range(0.5f, 5)]
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once FieldCanBeMadeReadOnly.Global
-        // ReSharper disable once ConvertToConstant.Global
-        public float MaxRepeatShootDelay = 3;
-        
         // ReSharper disable once UnassignedField.Global
         public SharedFloat AttackFarDistance;
         
@@ -37,8 +27,6 @@ namespace Cc83.Behaviors
         private EnemyAttackController _attackController;
 
         private SensorAgent.SensorTarget _sensorTarget;
-        
-        private Vector3 _currentDirection;
 
         private float _attackFarSqrDistance;
 
@@ -46,7 +34,7 @@ namespace Cc83.Behaviors
         
         private float _middleSqrDistance;
 
-        private bool _escapeMoving;         // 是否为逃离移动模式（只有 EscapeFighting.Value 为 true 时，才有意义）
+        private bool _escapeMoving;         // 是否为逃离移动模式（false 为进攻移动模式），只有 EscapeFighting.Value 为 true 时，才有意义
 
         public override void OnAwake()
         {
@@ -60,16 +48,18 @@ namespace Cc83.Behaviors
         public override void OnStart()
         {
             _sensorTarget = Enemy.Value;
-            _currentDirection = _sensorTarget.direction;
-            _attackController.Active(_sensorTarget, MaxRepeatShootDelay);
         }
 
         public override TaskStatus OnUpdate()
         {
-            #region 移动判断
+            var position = transform.position;
+            var targetPosition = _sensorTarget.targetAgent.transform.position;
+            var direction = targetPosition - position;
+            
+            #region 移动
             
             //TODO 没有必要每帧计算
-            var sqrDistance = Vector3.SqrMagnitude(_sensorTarget.targetAgent.transform.position - transform.position);
+            var sqrDistance = Vector3.SqrMagnitude(direction);
             if (EscapeFighting.Value)
             {
                 if (_escapeMoving ? sqrDistance > _middleSqrDistance : sqrDistance < _middleSqrDistance)
@@ -93,36 +83,23 @@ namespace Cc83.Behaviors
             
             #endregion
 
-            #region 转身判断
+            #region 射击与转身
 
-            var targetDirection = _sensorTarget.direction;
-            if (!targetDirection.Equals(_currentDirection))     // 在目标未移动的情况下，_currentDirection 可以做到精准 Equals；而当前 NPC 的 forward 做不到这一点，从而无法进行当前检测优化
-            {
-                var directionalAngle = VectorUtils.DotDirectionalAngle2D(transform.forward, targetDirection);
-                if (Mathf.Abs(directionalAngle) > (directionalAngle < 0 ? LeftRetargetAngle : RightRetargetAngle))
-                {
-                    var angle = Mathf.Min(TurningToTarget.MinAngle, LeftRetargetAngle + RightRetargetAngle - 5);            // 减小 5°，避免一侧转身后立即出发另一侧的临界角度
-                    var rotation = Quaternion.AngleAxis(directionalAngle < 0 ? -angle : angle, Vector3.up);
-                    var targetPosition = transform.position + rotation * transform.forward;
-                    TargetTurn.SetValue(targetPosition);
-                    return TaskStatus.Success;
-                }
-            }
+            if (_attackController.Tick()) return TaskStatus.Running;
+            
+            var forward = transform.forward;
+            var directionalAngle = VectorUtils.DotDirectionalAngle2D(forward, direction);
+            var angle = Mathf.Min(TurningToTarget.MinAngle, EnemyAttackController.LeftRetargetAngle + EnemyAttackController.RightRetargetAngle - 5);            // 减小 5°，避免一侧转身后立即出发另一侧的临界角度
+            targetPosition = position + Quaternion.AngleAxis(directionalAngle < 0 ? -angle : angle, Vector3.up) * forward;
+            TargetTurn.SetValue(targetPosition);
+            return TaskStatus.Success;
 
             #endregion
-            
-            _attackController.Tick();
-            return TaskStatus.Running;
         }
 
         public override void OnEnd()
         {
             EscapeFighting.SetValue(false);
-        }
-
-        public override void OnConditionalAbort()
-        {
-            _attackController.Reset();
         }
     }
 }

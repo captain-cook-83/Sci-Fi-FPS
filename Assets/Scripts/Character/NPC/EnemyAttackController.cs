@@ -57,7 +57,7 @@ namespace Cc83.Character
             if (!_validAiming) return false;
             if (_nextShootTime > Time.time) return true;
             
-            var times = Random.Range(1, 6);
+            var times = Random.Range(1, 4);     // 6
             var duration = times * _shootController.cdTime;
 
             _nextShootTime = Time.time + duration + Random.Range(0.5f, _maxRepeatShootDelay);
@@ -82,7 +82,6 @@ namespace Cc83.Character
 
         public void Reset()
         {
-            _sensorTarget = null;
             _weaponIKController.blockAiming = false;
         }
     }

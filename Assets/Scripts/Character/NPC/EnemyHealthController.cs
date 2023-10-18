@@ -1,4 +1,5 @@
 using System.Collections;
+using BehaviorDesigner.Runtime;
 using Cc83.Behaviors;
 using Sirenix.Utilities;
 using UnityEngine;
@@ -47,6 +48,9 @@ namespace Cc83.Character
             }
             
             _alive = false;
+            
+            Destroy(GetComponent<SensorAgent>());
+            Destroy(GetComponent<BehaviorTree>());
 
             if (animator)
             {

@@ -30,10 +30,21 @@ namespace Cc83.Utils
             {
                 t += Time.deltaTime;
                 currentValue = Mathf.Lerp(current, value, t * speed * 100);
-                animator.SetFloat(key, currentValue);
-                yield return null;
+                if (animator)
+                {
+                    animator.SetFloat(key, currentValue);
+                    yield return null;
+                }
+                else
+                {
+                    yield break;
+                }
             }
-            animator.SetFloat(key, value);
+
+            if (animator)
+            {
+                animator.SetFloat(key, value);
+            }
             
             onComplete?.Invoke();
         }

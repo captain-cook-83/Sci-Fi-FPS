@@ -57,8 +57,13 @@ namespace Cc83.Character
             }
 
             var rootPosition = ik.references.root.position;
+            if (headTargetPosition < rootPosition.y)
+            {
+                Debug.Log($"Update -> headTargetPosition({headTargetPosition})");
+                return;
+            }
+            
             var scale = (initHeadPosition - rootPosition.y) / (headTargetPosition - rootPosition.y);
-
             switch (scaleMode)
             {
                 case OriginScaleMode.Origin:

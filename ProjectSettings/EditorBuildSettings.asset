@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AIScene.unity
     guid: e3173a66f51e82c4eb834e9401a8585f
+  - enabled: 1
+    path: Assets/Airport_Terminal_Scene/Scene/terminal_scene.unity
+    guid: 6bc140bad8b00ec42a1bb27545282a49
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

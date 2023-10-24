@@ -65,6 +65,8 @@ namespace Cc83.Behaviors
 
         private void OnEnable()
         {
+            if (SensorSystem.Instance == null) return;
+            
             switch (type)
             {
                 case SensorAgentType.Player:
@@ -97,7 +99,10 @@ namespace Cc83.Behaviors
 
         public void SendEvent(string eventName, object data)
         {
-            BehaviorTree.SendEvent<object>(eventName, data);
+            if (BehaviorTree)
+            {
+                BehaviorTree.SendEvent<object>(eventName, data);
+            }
         }
 
         public virtual void Reset()

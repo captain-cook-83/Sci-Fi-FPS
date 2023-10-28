@@ -72,9 +72,9 @@ Shader "Cc83/Planar Projected Shadows"
                 o.color = _ShadowColor;
 
                 //得到中心点世界坐标，计算阴影衰减
-                const float3 center = float3(unity_ObjectToWorld[0].w, _GroundHeight, unity_ObjectToWorld[2].w);        // unity_ObjectToWorld 矩阵每一行的第四个分量分别对应 Transform 的 xyz
-                const float falloff = 1 - saturate(distance(shadowPos, center) * _ShadowFalloff);
-                o.color.a *= falloff;
+                // const float3 center = float3(unity_ObjectToWorld[0].w, _GroundHeight, unity_ObjectToWorld[2].w);        // unity_ObjectToWorld 矩阵每一行的第四个分量分别对应 Transform 的 xyz
+                // const float falloff = 1 - saturate(distance(shadowPos, center) * _ShadowFalloff);
+                // o.color.a *= falloff;
                 
                 return o;
             }

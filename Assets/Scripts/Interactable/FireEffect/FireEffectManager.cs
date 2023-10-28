@@ -36,7 +36,7 @@ namespace Cc83.Interactable
                 _impactInfos.Add(impactElement.MaterialType, impactElement);
             }
             
-            _effectPool = new ObjectPool<GameObject>(() => Instantiate(impactEffect), 
+            _effectPool = new ObjectPool<GameObject>(() => Instantiate(impactEffect, transform), 
                 go => go.SetActive(true), go => go.SetActive(false), Destroy,
                 true, 8, 16);
             
@@ -54,7 +54,7 @@ namespace Cc83.Interactable
         public void Shoot(Vector3 position, Quaternion rotation, Vector3 direction)
         {
             var effect = _effectPool.Get();
-            effect.transform.SetPositionAndRotation(position, rotation);
+            // effect.transform.SetPositionAndRotation(position, rotation);
             StartCoroutine(ReleasePoolElement(effect, _effectPool, effectDuration));
 
             var trajectory = _trajectoryPool.Get();

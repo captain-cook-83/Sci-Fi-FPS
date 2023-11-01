@@ -7,7 +7,7 @@ namespace Cc83.Interactable
 {
     public class GrenadeActiveController : ActiveController
     {
-        private const string KwEmission = "_EMISSION";
+        private static readonly int EmissionColor1 = Shader.PropertyToID("_EmissionColor");
         
         [SerializeField]
         private CinemachineImpulseSource impulseSource;
@@ -35,14 +35,14 @@ namespace Cc83.Interactable
         
         private void OnEnable()
         {
-            _material.DisableKeyword(KwEmission);
+            _material.SetColor(EmissionColor1, Color.black);
         }
 
         protected override void OnActivate(ActivateEventArgs args)
         {
             base.OnActivate(args);
             
-            _material.EnableKeyword(KwEmission);
+            _material.SetColor(EmissionColor1, Color.white);
         }
 
         protected override void OnExplode()

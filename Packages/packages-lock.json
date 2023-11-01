@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.arongranberg.astar": {
-      "version": "4.3.82",
+      "version": "4.3.84",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -43,7 +43,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.1.0",
+      "version": "2.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -164,7 +164,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.probuilder": {
-      "version": "5.1.1",
+      "version": "5.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -191,7 +191,7 @@
       "source": "builtin",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
-        "com.unity.burst": "1.8.4",
+        "com.unity.burst": "1.8.9",
         "com.unity.render-pipelines.core": "14.0.9",
         "com.unity.shadergraph": "14.0.9"
       }

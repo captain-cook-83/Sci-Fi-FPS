@@ -34,7 +34,7 @@ namespace Cc83.Interactable
         
         private Coroutine _pendingExplosion;
         
-        private void Awake()
+        protected virtual void Awake()
         {
             interactable.activated.AddListener(OnActivate);
             interactable.deactivated.AddListener(OnDeactivate);

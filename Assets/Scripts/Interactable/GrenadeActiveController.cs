@@ -7,6 +7,8 @@ namespace Cc83.Interactable
 {
     public class GrenadeActiveController : ActiveController
     {
+        private const string KwEmission = "_EMISSION";
+        
         [SerializeField]
         private CinemachineImpulseSource impulseSource;
         
@@ -22,11 +24,25 @@ namespace Cc83.Interactable
         [Range(5, 30)]
         private float radius = 5;
 
+        private Material _material;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            _material = GetComponent<MeshRenderer>().material;
+        }
+        
+        private void OnEnable()
+        {
+            _material.DisableKeyword(KwEmission);
+        }
+
         protected override void OnActivate(ActivateEventArgs args)
         {
             base.OnActivate(args);
             
-            GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+            _material.EnableKeyword(KwEmission);
         }
 
         protected override void OnExplode()

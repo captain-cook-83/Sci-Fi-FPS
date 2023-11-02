@@ -69,7 +69,10 @@ namespace Cc83.Behaviors
         {
             Interrupt();
 
-            AnimatorStateController.ChangeSpeed(0, null, () => Animator.SetBool(AnimatorConstants.AnimatorMoving, false), true);
+            AnimatorStateController.ChangeSpeed(0, null, () =>
+            {
+                if (Animator) Animator.SetBool(AnimatorConstants.AnimatorMoving, false);
+            }, true);
         }
         
         protected void Interrupt()

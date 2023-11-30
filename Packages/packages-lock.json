@@ -25,7 +25,7 @@
       "url": "https://arongranberg.com/packages/84cc181b39cac542b23b18cabecab28e64e75f8bedfff"
     },
     "com.unity.burst": {
-      "version": "1.8.9",
+      "version": "1.8.10",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -94,7 +94,7 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.xr.oculus": "4.1.1",
+        "com.unity.xr.oculus": "4.1.2",
         "com.unity.xr.openxr": "1.9.1"
       }
     },
@@ -193,7 +193,16 @@
         "com.unity.mathematics": "1.2.1",
         "com.unity.burst": "1.8.9",
         "com.unity.render-pipelines.core": "14.0.9",
-        "com.unity.shadergraph": "14.0.9"
+        "com.unity.shadergraph": "14.0.9",
+        "com.unity.render-pipelines.universal-config": "14.0.9"
+      }
+    },
+    "com.unity.render-pipelines.universal-config": {
+      "version": "14.0.9",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "14.0.9"
       }
     },
     "com.unity.searcher": {
@@ -328,7 +337,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.oculus": {
-      "version": "4.1.1",
+      "version": "4.1.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
